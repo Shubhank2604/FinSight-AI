@@ -1,0 +1,13 @@
+{
+  "jurisdiction": "DEMO",
+  "tax_year": 2026,
+  "version": "demo-flat-2026",
+  "demo_only": true,
+  "brackets": {
+    "single": [
+      {"up_to": 50000, "rate": 0.10},
+      {"up_to": 100000, "rate": 0.20},
+      {"up_to": null, "rate": 0.30}
+    ]
+  }
+}

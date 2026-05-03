@@ -1,0 +1,18 @@
+[
+  {
+    "query": "What risks are discussed in the Apple SEC filing?",
+    "expected_source": "Apple SEC Filing.pdf"
+  },
+  {
+    "query": "Summarize the sample brokerage statement asset allocation",
+    "expected_source": "Sample Brokerage Statement.pdf"
+  },
+  {
+    "query": "What does the tax saving incentives document discuss?",
+    "expected_source": "Tax Saving Incentives.pdf"
+  },
+  {
+    "query": "Explain the NVIDIA investor presentation",
+    "expected_source": "NVIDIA-Investor-Presentation-Oct-2024.pdf"
+  }
+]
