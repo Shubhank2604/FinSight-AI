@@ -1,0 +1,189 @@
+{
+  "name": "finsight-synthetic-finance-retrieval",
+  "version": "1.0.0",
+  "description": "Synthetic, non-advisory finance passages with human-authored relevance labels.",
+  "documents": [
+    {
+      "id": "00000000-0000-0000-0000-000000000101",
+      "document_id": "apple-10k",
+      "source_name": "Synthetic Apple 10-K.pdf",
+      "type": "text",
+      "content": "Supply chain concentration is a material risk. Component shortages and dependence on a small number of manufacturing partners could delay product availability and increase costs.",
+      "page": 12,
+      "section": "Risk Factors"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000102",
+      "document_id": "apple-10k",
+      "source_name": "Synthetic Apple 10-K.pdf",
+      "type": "table",
+      "content": "Segment | FY2025 revenue | Growth\nProducts | 310 billion | 4 percent\nServices | 105 billion | 12 percent",
+      "page": 31,
+      "section": "Segment Results"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000103",
+      "document_id": "apple-10k",
+      "source_name": "Synthetic Apple 10-K.pdf",
+      "type": "text",
+      "content": "Liquidity remained strong with 72 billion dollars in cash and marketable securities. Operating cash flow funded capital expenditure and shareholder returns.",
+      "page": 44,
+      "section": "Liquidity"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000201",
+      "document_id": "brokerage-statement",
+      "source_name": "Synthetic Brokerage Statement.pdf",
+      "type": "table",
+      "content": "Asset class | Allocation\nUS equities | 60 percent\nBonds | 25 percent\nCash | 10 percent\nAlternatives | 5 percent",
+      "page": 2,
+      "section": "Asset Allocation"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000202",
+      "document_id": "brokerage-statement",
+      "source_name": "Synthetic Brokerage Statement.pdf",
+      "type": "text",
+      "content": "The advisory management fee was 0.35 percent for the quarter. Fund expense ratios and transaction charges are separate costs.",
+      "page": 4,
+      "section": "Fees"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000203",
+      "document_id": "brokerage-statement",
+      "source_name": "Synthetic Brokerage Statement.pdf",
+      "type": "text",
+      "content": "Tax lots show acquisition date, cost basis, unrealized gain, and unrealized loss for each security position.",
+      "page": 6,
+      "section": "Tax Lots"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000301",
+      "document_id": "tax-guide",
+      "source_name": "Synthetic Tax Incentives Guide.pdf",
+      "type": "text",
+      "content": "Traditional 401(k) contributions can reduce current taxable income, while Roth contributions use after-tax money. HSA contributions may receive distinct tax advantages when eligibility rules are met.",
+      "page": 3,
+      "section": "Retirement Accounts"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000302",
+      "document_id": "tax-guide",
+      "source_name": "Synthetic Tax Incentives Guide.pdf",
+      "type": "text",
+      "content": "The clean vehicle credit is subject to vehicle price limits, buyer income caps, battery sourcing rules, and final assembly requirements.",
+      "page": 8,
+      "section": "Clean Vehicle Credit"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000303",
+      "document_id": "tax-guide",
+      "source_name": "Synthetic Tax Incentives Guide.pdf",
+      "type": "text",
+      "content": "Capital losses first offset capital gains. Remaining net losses may offset a limited amount of ordinary income, with unused losses carried forward under applicable rules.",
+      "page": 11,
+      "section": "Capital Losses"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000401",
+      "document_id": "nvidia-presentation",
+      "source_name": "Synthetic NVIDIA Investor Presentation.pdf",
+      "type": "text",
+      "content": "Data center revenue growth was driven by accelerated computing demand, cloud deployments, and adoption of generative AI infrastructure.",
+      "page": 7,
+      "section": "Data Center"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000402",
+      "document_id": "nvidia-presentation",
+      "source_name": "Synthetic NVIDIA Investor Presentation.pdf",
+      "type": "table",
+      "content": "Metric | Prior quarter | Current quarter\nGross margin | 72.1 percent | 74.4 percent\nOperating margin | 54.2 percent | 57.0 percent",
+      "page": 10,
+      "section": "Margins"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000403",
+      "document_id": "nvidia-presentation",
+      "source_name": "Synthetic NVIDIA Investor Presentation.pdf",
+      "type": "text",
+      "content": "Near-term supply constraints affect advanced packaging and networking components. Capacity commitments are intended to reduce bottlenecks.",
+      "page": 14,
+      "section": "Supply"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000501",
+      "document_id": "mortgage-disclosure",
+      "source_name": "Synthetic Mortgage Disclosure.pdf",
+      "type": "text",
+      "content": "The adjustable-rate mortgage has a five-year fixed period. After year five, the interest rate resets annually to the SOFR index plus a 2.25 percent margin, subject to adjustment caps.",
+      "page": 2,
+      "section": "Interest Rate"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000502",
+      "document_id": "mortgage-disclosure",
+      "source_name": "Synthetic Mortgage Disclosure.pdf",
+      "type": "text",
+      "content": "There is no prepayment penalty. The borrower may make additional principal payments or repay the loan early without a lender fee.",
+      "page": 5,
+      "section": "Prepayment"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000503",
+      "document_id": "mortgage-disclosure",
+      "source_name": "Synthetic Mortgage Disclosure.pdf",
+      "type": "text",
+      "content": "The monthly escrow payment collects estimated property taxes and homeowners insurance. Escrow is analyzed annually and may create a surplus or shortage.",
+      "page": 6,
+      "section": "Escrow"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000601",
+      "document_id": "retirement-guide",
+      "source_name": "Synthetic Retirement Guide.pdf",
+      "type": "text",
+      "content": "The four percent withdrawal rule is a planning heuristic, not a guarantee. Portfolio horizon, fees, taxes, and asset allocation can change a sustainable withdrawal rate.",
+      "page": 3,
+      "section": "Withdrawals"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000602",
+      "document_id": "retirement-guide",
+      "source_name": "Synthetic Retirement Guide.pdf",
+      "type": "text",
+      "content": "Sequence-of-returns risk is the danger that poor market performance early in retirement permanently damages a portfolio while withdrawals are occurring.",
+      "page": 5,
+      "section": "Sequence Risk"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000603",
+      "document_id": "retirement-guide",
+      "source_name": "Synthetic Retirement Guide.pdf",
+      "type": "text",
+      "content": "Inflation reduces future purchasing power. Retirement projections should distinguish nominal returns from real returns after inflation.",
+      "page": 7,
+      "section": "Inflation"
+    }
+  ],
+  "cases": [
+    {"id": "apple-supply-risk", "category": "risk", "query": "What supply chain and component shortage risks are described?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000101"]},
+    {"id": "apple-services-growth", "category": "table", "query": "What was Services revenue growth in FY2025?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000102"]},
+    {"id": "apple-liquidity", "category": "numeric", "query": "How much cash and marketable securities supported liquidity?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000103"]},
+    {"id": "brokerage-allocation", "category": "table", "query": "What percentage of the portfolio is allocated to bonds?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000201"]},
+    {"id": "brokerage-fees", "category": "exact", "query": "What advisory management fee was charged?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000202"]},
+    {"id": "brokerage-tax-lots", "category": "exact", "query": "Where can I find acquisition date and cost basis by position?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000203"]},
+    {"id": "tax-retirement-accounts", "category": "comparison", "query": "Compare the tax treatment of traditional 401(k), Roth, and HSA contributions.", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000301"]},
+    {"id": "tax-clean-vehicle", "category": "rules", "query": "Which buyer income and vehicle requirements constrain the clean vehicle credit?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000302"]},
+    {"id": "tax-losses", "category": "rules", "query": "How do capital losses offset gains and ordinary income?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000303"]},
+    {"id": "nvidia-data-center", "category": "drivers", "query": "What drove data center revenue and accelerated computing demand?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000401"]},
+    {"id": "nvidia-margin", "category": "table", "query": "How did gross margin change quarter over quarter?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000402"]},
+    {"id": "nvidia-supply", "category": "risk", "query": "Which advanced packaging and networking bottlenecks constrain supply?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000403"]},
+    {"id": "mortgage-reset", "category": "rules", "query": "When does the adjustable mortgage reset and what index and margin apply?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000501"]},
+    {"id": "mortgage-prepayment", "category": "exact", "query": "Can the borrower repay early without a prepayment penalty?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000502"]},
+    {"id": "mortgage-escrow", "category": "explanation", "query": "Why can the property tax and insurance escrow payment change?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000503"]},
+    {"id": "retirement-four-percent", "category": "limitations", "query": "What are the limitations of the four percent withdrawal rule?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000601"]},
+    {"id": "retirement-sequence", "category": "risk", "query": "Why are poor market returns early in retirement especially dangerous?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000602"]},
+    {"id": "retirement-inflation", "category": "concept", "query": "How does inflation affect purchasing power and real returns?", "relevant_chunk_ids": ["00000000-0000-0000-0000-000000000603"]}
+  ]
+}

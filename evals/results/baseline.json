@@ -1,0 +1,1180 @@
+{
+  "benchmark": "finsight-synthetic-finance-retrieval",
+  "dataset_version": "1.0.0",
+  "generated_at": "2026-08-28T18:14:52.515694+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+    "embedding_provider": "local_hash",
+    "network_access": false
+  },
+  "top_k": 3,
+  "document_count": 18,
+  "case_count": 18,
+  "summary": {
+    "dense": {
+      "precision_at_k": 0.314815,
+      "recall_at_k": 0.944444,
+      "hit_rate_at_k": 0.944444,
+      "reciprocal_rank": 0.861111,
+      "ndcg_at_k": 0.882933,
+      "latency_ms_p50": 0.595,
+      "latency_ms_p95": 0.835
+    },
+    "sparse": {
+      "precision_at_k": 0.333333,
+      "recall_at_k": 1.0,
+      "hit_rate_at_k": 1.0,
+      "reciprocal_rank": 0.972222,
+      "ndcg_at_k": 0.979496,
+      "latency_ms_p50": 0.09,
+      "latency_ms_p95": 0.11
+    },
+    "hybrid": {
+      "precision_at_k": 0.314815,
+      "recall_at_k": 0.944444,
+      "hit_rate_at_k": 0.944444,
+      "reciprocal_rank": 0.888889,
+      "ndcg_at_k": 0.903437,
+      "latency_ms_p50": 0.75,
+      "latency_ms_p95": 0.959
+    }
+  },
+  "cases": {
+    "dense": [
+      {
+        "case_id": "apple-supply-risk",
+        "category": "risk",
+        "query": "What supply chain and component shortage risks are described?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000101"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000403",
+          "00000000-0000-0000-0000-000000000101",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 1.327,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg_at_k": 0.63093
+        }
+      },
+      {
+        "case_id": "apple-services-growth",
+        "category": "table",
+        "query": "What was Services revenue growth in FY2025?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000102"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000102",
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.704,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "apple-liquidity",
+        "category": "numeric",
+        "query": "How much cash and marketable securities supported liquidity?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000103"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000103",
+          "00000000-0000-0000-0000-000000000101",
+          "00000000-0000-0000-0000-000000000503"
+        ],
+        "latency_ms": 0.637,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "brokerage-allocation",
+        "category": "table",
+        "query": "What percentage of the portfolio is allocated to bonds?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000201"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000501",
+          "00000000-0000-0000-0000-000000000502",
+          "00000000-0000-0000-0000-000000000602"
+        ],
+        "latency_ms": 0.571,
+        "metrics": {
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "hit_rate_at_k": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg_at_k": 0.0
+        }
+      },
+      {
+        "case_id": "brokerage-fees",
+        "category": "exact",
+        "query": "What advisory management fee was charged?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000403",
+          "00000000-0000-0000-0000-000000000401"
+        ],
+        "latency_ms": 0.603,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "brokerage-tax-lots",
+        "category": "exact",
+        "query": "Where can I find acquisition date and cost basis by position?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000203"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000203",
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000103"
+        ],
+        "latency_ms": 0.588,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-retirement-accounts",
+        "category": "comparison",
+        "query": "Compare the tax treatment of traditional 401(k), Roth, and HSA contributions.",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000301"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000301",
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "latency_ms": 0.569,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-clean-vehicle",
+        "category": "rules",
+        "query": "Which buyer income and vehicle requirements constrain the clean vehicle credit?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000302"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000302",
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000101"
+        ],
+        "latency_ms": 0.574,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-losses",
+        "category": "rules",
+        "query": "How do capital losses offset gains and ordinary income?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000303"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000303",
+          "00000000-0000-0000-0000-000000000103",
+          "00000000-0000-0000-0000-000000000503"
+        ],
+        "latency_ms": 0.624,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-data-center",
+        "category": "drivers",
+        "query": "What drove data center revenue and accelerated computing demand?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000401"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000103",
+          "00000000-0000-0000-0000-000000000503"
+        ],
+        "latency_ms": 0.561,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-margin",
+        "category": "table",
+        "query": "How did gross margin change quarter over quarter?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000402"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000402",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "latency_ms": 0.608,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-supply",
+        "category": "risk",
+        "query": "Which advanced packaging and networking bottlenecks constrain supply?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000403"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000403",
+          "00000000-0000-0000-0000-000000000101",
+          "00000000-0000-0000-0000-000000000103"
+        ],
+        "latency_ms": 0.588,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "mortgage-reset",
+        "category": "rules",
+        "query": "When does the adjustable mortgage reset and what index and margin apply?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000503",
+          "00000000-0000-0000-0000-000000000501",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.559,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg_at_k": 0.63093
+        }
+      },
+      {
+        "case_id": "mortgage-prepayment",
+        "category": "exact",
+        "query": "Can the borrower repay early without a prepayment penalty?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000502"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000502",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "latency_ms": 0.748,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "mortgage-escrow",
+        "category": "explanation",
+        "query": "Why can the property tax and insurance escrow payment change?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000503"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000503",
+          "00000000-0000-0000-0000-000000000302",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.699,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "retirement-four-percent",
+        "category": "limitations",
+        "query": "What are the limitations of the four percent withdrawal rule?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000601"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "latency_ms": 0.609,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg_at_k": 0.63093
+        }
+      },
+      {
+        "case_id": "retirement-sequence",
+        "category": "risk",
+        "query": "Why are poor market returns early in retirement especially dangerous?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000602"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000602",
+          "00000000-0000-0000-0000-000000000603",
+          "00000000-0000-0000-0000-000000000301"
+        ],
+        "latency_ms": 0.573,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "retirement-inflation",
+        "category": "concept",
+        "query": "How does inflation affect purchasing power and real returns?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000603"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000603",
+          "00000000-0000-0000-0000-000000000303",
+          "00000000-0000-0000-0000-000000000403"
+        ],
+        "latency_ms": 0.557,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      }
+    ],
+    "sparse": [
+      {
+        "case_id": "apple-supply-risk",
+        "category": "risk",
+        "query": "What supply chain and component shortage risks are described?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000101"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000101",
+          "00000000-0000-0000-0000-000000000403",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.134,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "apple-services-growth",
+        "category": "table",
+        "query": "What was Services revenue growth in FY2025?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000102"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000102",
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.077,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "apple-liquidity",
+        "category": "numeric",
+        "query": "How much cash and marketable securities supported liquidity?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000103"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000103",
+          "00000000-0000-0000-0000-000000000201"
+        ],
+        "latency_ms": 0.082,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "brokerage-allocation",
+        "category": "table",
+        "query": "What percentage of the portfolio is allocated to bonds?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000201"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000602",
+          "00000000-0000-0000-0000-000000000201",
+          "00000000-0000-0000-0000-000000000601"
+        ],
+        "latency_ms": 0.087,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg_at_k": 0.63093
+        }
+      },
+      {
+        "case_id": "brokerage-fees",
+        "category": "exact",
+        "query": "What advisory management fee was charged?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000401"
+        ],
+        "latency_ms": 0.065,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "brokerage-tax-lots",
+        "category": "exact",
+        "query": "Where can I find acquisition date and cost basis by position?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000203"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000203",
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000601"
+        ],
+        "latency_ms": 0.102,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-retirement-accounts",
+        "category": "comparison",
+        "query": "Compare the tax treatment of traditional 401(k), Roth, and HSA contributions.",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000301"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000301",
+          "00000000-0000-0000-0000-000000000203",
+          "00000000-0000-0000-0000-000000000401"
+        ],
+        "latency_ms": 0.106,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-clean-vehicle",
+        "category": "rules",
+        "query": "Which buyer income and vehicle requirements constrain the clean vehicle credit?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000302"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000302",
+          "00000000-0000-0000-0000-000000000303",
+          "00000000-0000-0000-0000-000000000301"
+        ],
+        "latency_ms": 0.099,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-losses",
+        "category": "rules",
+        "query": "How do capital losses offset gains and ordinary income?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000303"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000303",
+          "00000000-0000-0000-0000-000000000103",
+          "00000000-0000-0000-0000-000000000302"
+        ],
+        "latency_ms": 0.089,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-data-center",
+        "category": "drivers",
+        "query": "What drove data center revenue and accelerated computing demand?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000401"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000102"
+        ],
+        "latency_ms": 0.083,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-margin",
+        "category": "table",
+        "query": "How did gross margin change quarter over quarter?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000402"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000402",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "latency_ms": 0.079,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-supply",
+        "category": "risk",
+        "query": "Which advanced packaging and networking bottlenecks constrain supply?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000403"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000403",
+          "00000000-0000-0000-0000-000000000101"
+        ],
+        "latency_ms": 0.078,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "mortgage-reset",
+        "category": "rules",
+        "query": "When does the adjustable mortgage reset and what index and margin apply?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000501",
+          "00000000-0000-0000-0000-000000000402",
+          "00000000-0000-0000-0000-000000000301"
+        ],
+        "latency_ms": 0.106,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "mortgage-prepayment",
+        "category": "exact",
+        "query": "Can the borrower repay early without a prepayment penalty?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000502"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000502",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000602"
+        ],
+        "latency_ms": 0.095,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "mortgage-escrow",
+        "category": "explanation",
+        "query": "Why can the property tax and insurance escrow payment change?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000503"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000503",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000301"
+        ],
+        "latency_ms": 0.097,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "retirement-four-percent",
+        "category": "limitations",
+        "query": "What are the limitations of the four percent withdrawal rule?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000601"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000602"
+        ],
+        "latency_ms": 0.092,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "retirement-sequence",
+        "category": "risk",
+        "query": "Why are poor market returns early in retirement especially dangerous?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000602"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000602",
+          "00000000-0000-0000-0000-000000000603",
+          "00000000-0000-0000-0000-000000000103"
+        ],
+        "latency_ms": 0.091,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "retirement-inflation",
+        "category": "concept",
+        "query": "How does inflation affect purchasing power and real returns?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000603"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000603",
+          "00000000-0000-0000-0000-000000000403"
+        ],
+        "latency_ms": 0.083,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      }
+    ],
+    "hybrid": [
+      {
+        "case_id": "apple-supply-risk",
+        "category": "risk",
+        "query": "What supply chain and component shortage risks are described?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000101"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000403",
+          "00000000-0000-0000-0000-000000000101",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.796,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg_at_k": 0.63093
+        }
+      },
+      {
+        "case_id": "apple-services-growth",
+        "category": "table",
+        "query": "What was Services revenue growth in FY2025?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000102"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000102",
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.715,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "apple-liquidity",
+        "category": "numeric",
+        "query": "How much cash and marketable securities supported liquidity?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000103"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000103",
+          "00000000-0000-0000-0000-000000000201",
+          "00000000-0000-0000-0000-000000000101"
+        ],
+        "latency_ms": 0.755,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "brokerage-allocation",
+        "category": "table",
+        "query": "What percentage of the portfolio is allocated to bonds?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000201"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000602",
+          "00000000-0000-0000-0000-000000000501",
+          "00000000-0000-0000-0000-000000000601"
+        ],
+        "latency_ms": 0.789,
+        "metrics": {
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "hit_rate_at_k": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg_at_k": 0.0
+        }
+      },
+      {
+        "case_id": "brokerage-fees",
+        "category": "exact",
+        "query": "What advisory management fee was charged?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000403"
+        ],
+        "latency_ms": 0.721,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "brokerage-tax-lots",
+        "category": "exact",
+        "query": "Where can I find acquisition date and cost basis by position?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000203"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000203",
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000601"
+        ],
+        "latency_ms": 0.788,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-retirement-accounts",
+        "category": "comparison",
+        "query": "Compare the tax treatment of traditional 401(k), Roth, and HSA contributions.",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000301"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000301",
+          "00000000-0000-0000-0000-000000000203",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.958,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-clean-vehicle",
+        "category": "rules",
+        "query": "Which buyer income and vehicle requirements constrain the clean vehicle credit?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000302"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000302",
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "latency_ms": 0.897,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "tax-losses",
+        "category": "rules",
+        "query": "How do capital losses offset gains and ordinary income?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000303"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000303",
+          "00000000-0000-0000-0000-000000000103",
+          "00000000-0000-0000-0000-000000000302"
+        ],
+        "latency_ms": 0.719,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-data-center",
+        "category": "drivers",
+        "query": "What drove data center revenue and accelerated computing demand?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000401"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000401",
+          "00000000-0000-0000-0000-000000000102",
+          "00000000-0000-0000-0000-000000000103"
+        ],
+        "latency_ms": 0.705,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-margin",
+        "category": "table",
+        "query": "How did gross margin change quarter over quarter?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000402"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000402",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "latency_ms": 0.964,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "nvidia-supply",
+        "category": "risk",
+        "query": "Which advanced packaging and networking bottlenecks constrain supply?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000403"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000403",
+          "00000000-0000-0000-0000-000000000101",
+          "00000000-0000-0000-0000-000000000103"
+        ],
+        "latency_ms": 0.698,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "mortgage-reset",
+        "category": "rules",
+        "query": "When does the adjustable mortgage reset and what index and margin apply?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000501",
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000503"
+        ],
+        "latency_ms": 0.92,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "mortgage-prepayment",
+        "category": "exact",
+        "query": "Can the borrower repay early without a prepayment penalty?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000502"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000502",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000602"
+        ],
+        "latency_ms": 0.745,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "mortgage-escrow",
+        "category": "explanation",
+        "query": "Why can the property tax and insurance escrow payment change?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000503"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000503",
+          "00000000-0000-0000-0000-000000000203",
+          "00000000-0000-0000-0000-000000000202"
+        ],
+        "latency_ms": 0.732,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "retirement-four-percent",
+        "category": "limitations",
+        "query": "What are the limitations of the four percent withdrawal rule?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000601"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000202",
+          "00000000-0000-0000-0000-000000000601",
+          "00000000-0000-0000-0000-000000000501"
+        ],
+        "latency_ms": 0.794,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg_at_k": 0.63093
+        }
+      },
+      {
+        "case_id": "retirement-sequence",
+        "category": "risk",
+        "query": "Why are poor market returns early in retirement especially dangerous?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000602"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000602",
+          "00000000-0000-0000-0000-000000000603",
+          "00000000-0000-0000-0000-000000000403"
+        ],
+        "latency_ms": 0.721,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      },
+      {
+        "case_id": "retirement-inflation",
+        "category": "concept",
+        "query": "How does inflation affect purchasing power and real returns?",
+        "relevant_chunk_ids": [
+          "00000000-0000-0000-0000-000000000603"
+        ],
+        "retrieved_chunk_ids": [
+          "00000000-0000-0000-0000-000000000603",
+          "00000000-0000-0000-0000-000000000403",
+          "00000000-0000-0000-0000-000000000303"
+        ],
+        "latency_ms": 0.698,
+        "metrics": {
+          "precision_at_k": 0.333333,
+          "recall_at_k": 1.0,
+          "hit_rate_at_k": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg_at_k": 1.0
+        }
+      }
+    ]
+  }
+}
