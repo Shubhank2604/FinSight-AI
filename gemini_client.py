@@ -14,11 +14,22 @@ from schemas import Citation, RetrievalHit, StructuredLLMAnswer, ToolCalculation
 
 class GeminiClient:
     def __init__(self, settings: Settings, embedding_dimensions: int = 768) -> None:
-        if not settings.gemini_api_key:
-            raise ValueError("GEMINI_API_KEY is not configured.")
+        if not settings.gemini_api_key and settings.embedding_provider != "local_hash":
+            raise ValueError(
+                "GEMINI_API_KEY is required unless EMBEDDING_PROVIDER=local_hash."
+            )
         self.settings = settings
         self.embedding_dimensions = embedding_dimensions
-        self.client = genai.Client(api_key=settings.gemini_api_key)
+        self.client = (
+            genai.Client(api_key=settings.gemini_api_key)
+            if settings.gemini_api_key
+            else None
+        )
+
+    def _require_client(self) -> genai.Client:
+        if self.client is None:
+            raise ValueError("GEMINI_API_KEY is required for generative operations.")
+        return self.client
 
     def embed_texts(self, texts: list[str]) -> list[list[float]]:
         if not texts:
@@ -29,7 +40,7 @@ class GeminiClient:
                 for text in texts
             ]
 
-        response = self.client.models.embed_content(
+        response = self._require_client().models.embed_content(
             model=self.settings.gemini_embedding_model,
             contents=texts,
             config=types.EmbedContentConfig(
@@ -43,7 +54,7 @@ class GeminiClient:
         if self.settings.embedding_provider == "local_hash":
             return hash_embedding(query, dimensions=self.embedding_dimensions)
 
-        response = self.client.models.embed_content(
+        response = self._require_client().models.embed_content(
             model=self.settings.gemini_embedding_model,
             contents=query,
             config=types.EmbedContentConfig(
@@ -59,7 +70,7 @@ class GeminiClient:
         hits: list[RetrievalHit],
         calculations: list[ToolCalculation] | None = None,
     ) -> StructuredLLMAnswer:
-        response = self.client.models.generate_content(
+        response = self._require_client().models.generate_content(
             model=self.settings.gemini_text_model,
             contents=self._structured_prompt(
                 query=query,
@@ -80,7 +91,7 @@ class GeminiClient:
         hits: list[RetrievalHit] | None = None,
         calculations: list[ToolCalculation] | None = None,
     ) -> StructuredLLMAnswer:
-        response = self.client.models.generate_content(
+        response = self._require_client().models.generate_content(
             model=self.settings.gemini_text_model,
             contents=self._educational_prompt(
                 query=query,
@@ -111,7 +122,7 @@ class GeminiClient:
         ]
         contents.extend(self._image_parts(image_paths))
 
-        response = self.client.models.generate_content(
+        response = self._require_client().models.generate_content(
             model=self.settings.gemini_text_model,
             contents=contents,
             config={
@@ -126,7 +137,7 @@ class GeminiClient:
         query: str,
     ) -> tuple[StructuredLLMAnswer, list[Citation]]:
         grounding_tool = types.Tool(google_search=types.GoogleSearch())
-        response = self.client.models.generate_content(
+        response = self._require_client().models.generate_content(
             model=self.settings.gemini_web_grounding_model,
             contents=self._web_prompt(query),
             config=types.GenerateContentConfig(tools=[grounding_tool]),

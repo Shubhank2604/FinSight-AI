@@ -7,7 +7,6 @@ rank-bm25
 
 pdfplumber
 PyMuPDF
-unstructured[pdf]
 Pillow
 
 numpy

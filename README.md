@@ -1,5 +1,7 @@
 # FinSight AI
 
+[![CI](https://github.com/Shubhank2604/FinSight-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/Shubhank2604/FinSight-AI/actions/workflows/ci.yml)
+
 ## Overview
 
 **FinSight AI** is a local-first **financial decision engine** built using a Streamlit interface.
@@ -314,9 +316,24 @@ python index_uploads.py --folder data/uploads/originals --embedding-provider loc
 
 ## Evaluation
 
+FinSight includes a deterministic, credential-free retrieval benchmark that exercises the production Qdrant, BM25, and reciprocal-rank-fusion paths over 18 synthetic finance chunks and 18 human-labeled queries.
+
 ```bash
-python eval_retrieval.py --top-k 5
+python eval_retrieval.py \
+  --top-k 3 \
+  --output evals/results/latest.json \
+  --min-hybrid-recall 0.90
 ```
+
+Current version 1.0 baseline:
+
+| Mode | Recall@3 | Hit rate@3 | MRR@3 | nDCG@3 |
+| --- | ---: | ---: | ---: | ---: |
+| Dense local hash | 0.944 | 0.944 | 0.861 | 0.883 |
+| BM25 | 1.000 | 1.000 | 0.972 | 0.979 |
+| Hybrid RRF | 0.944 | 0.944 | 0.889 | 0.903 |
+
+BM25 performs best on this small lexical benchmark. The result is reported as-is rather than presenting hybrid retrieval as universally superior. See [the evaluation methodology](docs/evaluation.md) for metric definitions, limitations, per-case failure analysis, and the next evaluation layers.
 
 ---
 

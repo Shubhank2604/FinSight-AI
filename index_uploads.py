@@ -17,8 +17,10 @@ def index_folder(folder: Path, embedding_provider: str | None = None) -> tuple[i
     settings = load_settings()
     if embedding_provider:
         settings = replace(settings, embedding_provider=embedding_provider)
-    if not settings.gemini_configured:
-        raise RuntimeError("GEMINI_API_KEY is required for embedding and indexing.")
+    if not settings.gemini_configured and settings.embedding_provider != "local_hash":
+        raise RuntimeError(
+            "GEMINI_API_KEY is required unless --embedding-provider local_hash is used."
+        )
 
     gemini = GeminiClient(settings)
     retriever = HybridRetriever(

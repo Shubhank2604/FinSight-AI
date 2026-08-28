@@ -4,46 +4,39 @@ import argparse
 import json
 from pathlib import Path
 
-from config import load_settings
-from gemini_client import GeminiClient
-from retrieval import HybridRetriever
-
-
-def run_eval(path: Path, top_k: int) -> tuple[int, int]:
-    settings = load_settings()
-    gemini = GeminiClient(settings)
-    retriever = HybridRetriever(
-        collection_name=settings.qdrant_collection,
-        qdrant_path=settings.qdrant_path,
-        gemini=gemini,
-    )
-
-    cases = json.loads(path.read_text(encoding="utf-8"))
-    passed = 0
-    for case in cases:
-        hits = retriever.hybrid_search(case["query"], limit=top_k)
-        sources = [hit.chunk.source_name for hit in hits]
-        ok = case["expected_source"] in sources
-        passed += int(ok)
-        status = "PASS" if ok else "FAIL"
-        print(f"{status} | {case['query']}")
-        print(f"  expected: {case['expected_source']}")
-        print(f"  got:      {sources}")
-
-    retriever.client.close()
-    return passed, len(cases)
+from evaluation.benchmark import markdown_summary, run_benchmark
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run FinSight retrieval checks.")
-    parser.add_argument("--cases", default="evals/retrieval_eval.json")
-    parser.add_argument("--top-k", type=int, default=5)
+    parser = argparse.ArgumentParser(
+        description="Run the deterministic FinSight retrieval benchmark."
+    )
+    parser.add_argument("--dataset", default="evals/retrieval_benchmark.json")
+    parser.add_argument("--top-k", type=int, default=3)
+    parser.add_argument("--output", default=None)
+    parser.add_argument(
+        "--min-hybrid-recall",
+        type=float,
+        default=None,
+        help="Exit non-zero when hybrid Recall@K is below this threshold.",
+    )
     args = parser.parse_args()
 
-    passed, total = run_eval(Path(args.cases), args.top_k)
-    print(f"Retrieval eval: {passed}/{total} passed")
-    if passed != total:
-        raise SystemExit(1)
+    report = run_benchmark(Path(args.dataset), top_k=args.top_k)
+    print(markdown_summary(report))
+
+    if args.output:
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+        print(f"\nWrote detailed report to {output_path}")
+
+    hybrid_recall = report["summary"]["hybrid"]["recall_at_k"]
+    if args.min_hybrid_recall is not None and hybrid_recall < args.min_hybrid_recall:
+        raise SystemExit(
+            f"Hybrid Recall@{args.top_k} {hybrid_recall:.3f} is below "
+            f"required threshold {args.min_hybrid_recall:.3f}"
+        )
 
 
 if __name__ == "__main__":
