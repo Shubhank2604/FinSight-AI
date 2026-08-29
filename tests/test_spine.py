@@ -267,6 +267,33 @@ def test_verifier_blocks_structured_answer_with_unknown_citation() -> None:
     )
 
     assert verified.answer == "Insufficient data to answer reliably."
+
+
+def test_verifier_blocks_numeric_claim_not_present_in_cited_evidence() -> None:
+    decision = route_query("Summarize this financial report", has_documents=True)
+    chunk = DocumentChunk(
+        id="debt-1",
+        document_id="doc-1",
+        source_name="report.pdf",
+        type=ChunkType.TEXT,
+        content="Debt declined 8% year over year.",
+        page=2,
+    )
+    structured = StructuredLLMAnswer(
+        answer="Revenue grew 12% [debt-1].",
+        used_citation_ids=["debt-1"],
+        claims=[AnswerClaim(text="Revenue grew 12%.", citation_ids=["debt-1"])],
+        confidence=0.9,
+    )
+
+    verified = verify_response(
+        draft_answer="",
+        decision=decision,
+        retrieval_hits=[RetrievalHit(chunk=chunk, score=0.9, source="hybrid")],
+        structured_answer=structured,
+    )
+
+    assert verified.answer == "Insufficient data to answer reliably."
     assert verified.confidence < 0.45
 
 
