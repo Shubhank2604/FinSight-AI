@@ -61,10 +61,32 @@ python eval_retrieval.py \
 
 The JSON report includes aggregate metrics, per-case rankings, relevance labels, latency, dataset version, runtime, and embedding-provider metadata.
 
+## Claim/citation linkage baseline
+
+`evals/citation_benchmark.json` contains ten structured-answer cases. It covers correct citations, unknown IDs, missing claim citations, partially cited answers, explicit missing-data signals, extraneous IDs, and one intentionally wrong-but-valid citation.
+
+| Metric | Baseline |
+| --- | ---: |
+| Citation precision | 0.750 |
+| Citation recall | 0.643 |
+| Abstention precision | 1.000 |
+| Abstention recall | 0.833 |
+| Accept/abstain accuracy | 0.900 |
+
+The verifier now rejects claims with missing or unknown citation IDs. It still accepts the `wrong-valid-citation` case because the cited chunk exists even though the label says it does not support the claim. That failure is retained deliberately: the current layer validates citation linkage, not semantic entailment.
+
+Reproduce it without credentials:
+
+```bash
+python eval_citations.py \
+  --min-abstention-recall 0.80 \
+  --output evals/results/citation_baseline.json
+```
+
 ## Next evaluation layers
 
 1. Add a licensed or authored real-document corpus with independently reviewed labels.
 2. Compare local hash, Gemini embeddings, and additional embedding models under the same cases.
-3. Add answer-level citation precision, claim support, abstention accuracy, and numerical consistency.
+3. Add claim-level entailment scoring and independently reviewed support labels.
 4. Track token usage, provider cost, end-to-end latency, and model/version metadata.
 5. Split benchmark development and held-out test cases before tuning retrieval parameters.
