@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "cases": [
+    {"id":"valid-single","available_ids":["risk-1"],"claims":[{"text":"Liquidity risk increased.","expected_ids":["risk-1"],"cited_ids":["risk-1"]}],"expected_abstain":false},
+    {"id":"valid-multiple","available_ids":["revenue-1","margin-1"],"claims":[{"text":"Revenue grew.","expected_ids":["revenue-1"],"cited_ids":["revenue-1"]},{"text":"Margin declined.","expected_ids":["margin-1"],"cited_ids":["margin-1"]}],"expected_abstain":false},
+    {"id":"unknown-citation","available_ids":["risk-1"],"claims":[{"text":"Liquidity risk increased.","expected_ids":["risk-1"],"cited_ids":["missing-9"]}],"expected_abstain":true},
+    {"id":"missing-citation","available_ids":["fees-1"],"claims":[{"text":"The account charges an annual fee.","expected_ids":["fees-1"],"cited_ids":[]}],"expected_abstain":true},
+    {"id":"partially-uncited","available_ids":["allocation-1","fees-1"],"claims":[{"text":"Stocks are 60% of the portfolio.","expected_ids":["allocation-1"],"cited_ids":["allocation-1"]},{"text":"The annual fee is 0.5%.","expected_ids":["fees-1"],"cited_ids":[]}],"expected_abstain":true},
+    {"id":"wrong-valid-citation","available_ids":["revenue-1","debt-1"],"claims":[{"text":"Revenue grew 12%.","expected_ids":["revenue-1"],"cited_ids":["debt-1"]}],"expected_abstain":true},
+    {"id":"needs-more-data","available_ids":["mortgage-1"],"claims":[{"text":"The payment will reset next month.","expected_ids":["mortgage-1"],"cited_ids":["mortgage-1"]}],"needs_more_data":true,"expected_abstain":true},
+    {"id":"one-of-two-valid","available_ids":["tax-1","tax-2"],"claims":[{"text":"The contribution limit is indexed.","expected_ids":["tax-1","tax-2"],"cited_ids":["tax-2"]}],"expected_abstain":false},
+    {"id":"valid-plus-unknown","available_ids":["escrow-1"],"claims":[{"text":"Escrow covers taxes.","expected_ids":["escrow-1"],"cited_ids":["escrow-1","unknown-1"]}],"expected_abstain":true},
+    {"id":"valid-shared-source","available_ids":["filing-1"],"claims":[{"text":"The filing lists supply risk.","expected_ids":["filing-1"],"cited_ids":["filing-1"]},{"text":"The filing lists customer concentration.","expected_ids":["filing-1"],"cited_ids":["filing-1"]}],"expected_abstain":false}
+  ]
+}

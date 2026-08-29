@@ -1,0 +1,71 @@
+{
+  "dataset_version": 1,
+  "cases": 10,
+  "citation_precision": 0.75,
+  "citation_recall": 0.6429,
+  "abstention_precision": 1.0,
+  "abstention_recall": 0.8333,
+  "decision_accuracy": 0.9,
+  "results": [
+    {
+      "id": "valid-single",
+      "expected_abstain": false,
+      "predicted_abstain": false,
+      "confidence": 0.97
+    },
+    {
+      "id": "valid-multiple",
+      "expected_abstain": false,
+      "predicted_abstain": false,
+      "confidence": 0.97
+    },
+    {
+      "id": "unknown-citation",
+      "expected_abstain": true,
+      "predicted_abstain": true,
+      "confidence": 0.35
+    },
+    {
+      "id": "missing-citation",
+      "expected_abstain": true,
+      "predicted_abstain": true,
+      "confidence": 0.35
+    },
+    {
+      "id": "partially-uncited",
+      "expected_abstain": true,
+      "predicted_abstain": true,
+      "confidence": 0.35
+    },
+    {
+      "id": "wrong-valid-citation",
+      "expected_abstain": true,
+      "predicted_abstain": false,
+      "confidence": 0.97
+    },
+    {
+      "id": "needs-more-data",
+      "expected_abstain": true,
+      "predicted_abstain": true,
+      "confidence": 0.35
+    },
+    {
+      "id": "one-of-two-valid",
+      "expected_abstain": false,
+      "predicted_abstain": false,
+      "confidence": 0.97
+    },
+    {
+      "id": "valid-plus-unknown",
+      "expected_abstain": true,
+      "predicted_abstain": true,
+      "confidence": 0.35
+    },
+    {
+      "id": "valid-shared-source",
+      "expected_abstain": false,
+      "predicted_abstain": false,
+      "confidence": 0.97
+    }
+  ]
+}

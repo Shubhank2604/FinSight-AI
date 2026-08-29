@@ -103,11 +103,6 @@ def verify_response(
     if structured_answer and needs_citations:
         if used_citation_ids and not unsupported_citation_ids:
             citation_score = 1.0
-        elif retrieval_hits:
-            # Keep broad document-grounded explanations usable even when the model
-            # fails to echo exact chunk IDs. The top retrieved chunks are still
-            # attached as citations internally.
-            citation_score = 0.7
         else:
             citation_score = 0.0
     if structured_answer and structured_answer.needs_more_data:
@@ -126,8 +121,7 @@ def verify_response(
         confidence = min(confidence, 0.35)
     if needs_tools and not calculations:
         confidence = min(confidence, 0.35)
-    unsupported_claims_with_ids = [claim for claim in unsupported_claims if claim.citation_ids]
-    if unsupported_citation_ids or unsupported_claims_with_ids:
+    if unsupported_citation_ids or unsupported_claims:
         confidence = min(confidence, 0.35)
     if structured_answer and structured_answer.needs_more_data:
         confidence = min(confidence, 0.35)

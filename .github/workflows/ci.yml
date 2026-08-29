@@ -41,3 +41,9 @@ jobs:
             --top-k 3 \
             --min-hybrid-recall 0.90 \
             --output /tmp/finsight-retrieval-report.json
+
+      - name: Enforce citation and abstention gate
+        run: |
+          python eval_citations.py \
+            --min-abstention-recall 0.80 \
+            --output /tmp/finsight-citation-report.json

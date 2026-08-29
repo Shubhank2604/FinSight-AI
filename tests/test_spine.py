@@ -214,7 +214,7 @@ def test_verifier_accepts_structured_cited_answer() -> None:
     assert verified.claims
 
 
-def test_verifier_allows_retrieved_answer_without_exact_llm_citation_ids() -> None:
+def test_verifier_blocks_retrieved_answer_without_claim_citation_ids() -> None:
     decision = route_query("Summarize this report", has_documents=True)
     chunk = DocumentChunk(
         id="chunk-1",
@@ -238,8 +238,8 @@ def test_verifier_allows_retrieved_answer_without_exact_llm_citation_ids() -> No
         structured_answer=structured,
     )
 
-    assert verified.answer == structured.answer
-    assert verified.confidence >= 0.45
+    assert verified.answer == "Insufficient data to answer reliably."
+    assert verified.confidence < 0.45
 
 
 def test_verifier_blocks_structured_answer_with_unknown_citation() -> None:

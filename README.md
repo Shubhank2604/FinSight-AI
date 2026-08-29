@@ -36,7 +36,9 @@ The router selects among compute-only, educational, document retrieval, retrieva
 
 ### Validation boundary
 
-The `VeriFi` component checks citation IDs, retrieved-context presence, tool use, missing-data signals, and confidence thresholds. It validates the grounding infrastructure; it does **not** yet prove claim-level semantic entailment. Claim-level citation precision/recall and answer-faithfulness evaluation remain planned work.
+The `VeriFi` component checks citation IDs, retrieved-context presence, tool use, missing-data signals, and confidence thresholds. It validates the grounding infrastructure; it does **not** yet prove claim-level semantic entailment. Independently reviewed entailment and answer-faithfulness evaluation remain planned work.
+
+The versioned ten-case citation benchmark reports `1.000` abstention precision and `0.833` abstention recall. Missing and unknown claim citations are rejected. A wrong but existing citation ID still passes, which is published as the current semantic-support failure rather than described as verification.
 
 ## Run locally
 
@@ -79,6 +81,10 @@ python eval_retrieval.py \
   --min-hybrid-recall 0.90
 
 python -m pytest -q
+
+python eval_citations.py \
+  --min-abstention-recall 0.80 \
+  --output evals/results/citation_baseline.json
 ```
 
 GitHub Actions runs the test suite and credential-free retrieval quality gate for every pull request.
