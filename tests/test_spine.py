@@ -295,7 +295,6 @@ def test_verifier_blocks_numeric_claim_not_present_in_cited_evidence() -> None:
 
     assert verified.answer == "Insufficient data to answer reliably."
     assert verified.confidence < 0.45
-    assert verified.confidence < 0.45
 
 
 class FakeGemini:
