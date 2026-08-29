@@ -2,286 +2,54 @@
 
 [![CI](https://github.com/Shubhank2604/FinSight-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/Shubhank2604/FinSight-AI/actions/workflows/ci.yml)
 
-## Overview
+FinSight is an experimental financial RAG application with query routing, document ingestion, dense and BM25 retrieval, reciprocal-rank fusion, finance calculators, and structured Gemini responses. Its evaluation suite runs locally without API credentials and reports retrieval quality instead of assuming hybrid retrieval is better.
 
-**FinSight AI** is a local-first **financial decision engine** built using a Streamlit interface.
+It supports analysis and education. It does not execute trades or provide licensed financial advice.
 
-It is not a simple chatbot. Instead, it intelligently routes user queries through:
+## Measured retrieval baseline
 
-* Hybrid document retrieval (RAG)
-* Multimodal reasoning (text + images)
-* Structured LLM reasoning (Gemini)
-* Automatic web grounding (for live data)
-* A verification layer (**VeriFi**) to ensure reliability
+The versioned benchmark contains 18 labeled queries over 18 synthetic finance chunks. It exercises the same Qdrant, BM25, and fusion paths used by the application with deterministic local embeddings.
 
-The system is designed for **analysis and understanding**, not for executing trades or providing licensed financial advice.
+| Mode | Recall@3 | MRR@3 | nDCG@3 |
+| --- | ---: | ---: | ---: |
+| Dense local hash | 0.944 | 0.861 | 0.883 |
+| BM25 | 1.000 | 0.972 | 0.979 |
+| Hybrid RRF | 0.944 | 0.889 | 0.903 |
 
----
+BM25 wins on this small, lexical corpus. The benchmark is a reproducible baseline, not evidence that the application is accurate on arbitrary financial questions. See [the evaluation methodology](docs/evaluation.md) for definitions, per-query failures, and limitations.
 
-## Core Idea
-
-Instead of answering directly using an LLM, FinSight AI follows a structured pipeline:
+## Request flow
 
 ```text
-User Query
-→ Router (classify intent)
-→ Retrieval / Multimodal / Web / Educational path
-→ Gemini reasoning
-→ VeriFi verification
-→ Final Answer
+Query -> intent router -> retrieval / calculator / multimodal / web path
+      -> structured Gemini response -> citation and confidence checks -> answer
 ```
 
-This ensures that answers are:
+The router selects among compute-only, educational, document retrieval, retrieval plus calculation, multimodal, web-grounded, and abstention paths.
 
-* grounded in data
-* logically structured
-* verifiable
+### Retrieval
 
----
+- Qdrant dense search captures semantic similarity.
+- BM25 preserves exact financial terms and identifiers.
+- Reciprocal-rank fusion combines both rankings.
+- Context packing removes duplicate chunks and prioritizes tables for numerical queries.
 
-## Key Capabilities
+### Validation boundary
 
-### 1. Intelligent Query Routing
+The `VeriFi` component checks citation IDs, retrieved-context presence, tool use, missing-data signals, and confidence thresholds. It validates the grounding infrastructure; it does **not** yet prove claim-level semantic entailment. Claim-level citation precision/recall and answer-faithfulness evaluation remain planned work.
 
-Every user query is classified into a specific type before processing:
+## Run locally
 
-* `compute_only`
-* `educational_answer`
-* `retrieve_then_answer`
-* `retrieve_then_compute_then_answer`
-* `multimodal_reasoning`
-* `web_grounded_answer`
-* `abstain`
-
-This prevents generic LLM responses and improves accuracy.
-
----
-
-### 2. Hybrid RAG (Retrieval-Augmented Generation)
-
-FinSight AI uses **two retrieval systems together**:
-
-#### Dense Retrieval
-
-* Uses embeddings
-* Powered by Qdrant
-* Captures semantic meaning
-
-#### Sparse Retrieval (BM25)
-
-* Captures exact keywords
-* Handles finance-specific terminology
-
-#### Fusion (RRF)
-
-* Combines both results into a final ranked set
-
----
-
-### 3. Context Packing
-
-Before sending data to Gemini:
-
-* duplicate chunks are removed
-* relevant chunks are prioritized
-* table data is boosted for numerical queries
-* irrelevant content is filtered
-
-This improves answer precision.
-
----
-
-### 4. Multimodal Reasoning
-
-The system supports:
-
-* PDFs
-* Tables
-* Images
-* Charts
-* Screenshots
-
-For image-based queries:
-
-```text
-Image + Query + Context → Gemini → Explanation
-```
-
-Example:
-
-* “Explain this portfolio screenshot”
-* “What trend is visible in this chart?”
-
----
-
-### 5. Automatic Web Grounding
-
-For live or current queries, the system automatically uses Gemini search grounding.
-
-Triggered when query contains:
-
-* current / latest / today / recent
-* stock prices
-* exchange rates
-* market conditions
-* interest rates
-
-Example:
-
-```text
-"What is the current USD to INR rate?"
-```
-
----
-
-### 6. Structured Gemini Output
-
-Gemini does not return free-form text.
-
-Instead, it returns structured JSON:
-
-```json
-{
-  "answer": "...",
-  "used_citation_ids": ["chunk-id"],
-  "claims": [],
-  "assumptions": [],
-  "confidence": 0.0,
-  "needs_more_data": false
-}
-```
-
-This allows downstream validation.
-
----
-
-### 7. VeriFi (Verification Layer)
-
-VeriFi ensures answer quality by checking:
-
-* claims are supported by retrieved context
-* citations are valid
-* missing data is handled properly
-* confidence level is sufficient
-
-If verification fails:
-
-```text
-"Insufficient data to answer reliably."
-```
-
----
-
-## System Architecture
-
-```text
-         User
-          ↓
-      Streamlit UI
-          ↓
-        Router
-          ↓
-----------------------------------------------
-| Retrieval | Multimodal | Web | Educational |
-----------------------------------------------
-          ↓
-Gemini Structured Answer
-          ↓
-        VeriFi
-          ↓
-      Final Answer
-```
-
----
-
-## Data Ingestion Pipeline
-
-```text
-PDF / Image
-→ Extract (text, tables, images)
-→ Chunking
-→ Embedding
-→ Store in Qdrant
-→ Build BM25 index
-```
-
-Each chunk includes:
-
-* content
-* type (text / table / image)
-* page number
-* section metadata
-
----
-
-## Repository Structure
-
-```text
-app.py                  Main Streamlit app
-config.py               Configuration
-schemas.py              Data schemas
-
-ingestion/
-  extractor.py          Document parsing
-  chunker.py            Chunk creation
-
-retrieval/
-  hybrid.py             Hybrid RAG implementation
-
-router/
-  intent_router.py      Query classification
-
-verifier/
-  verifi.py             Validation layer
-
-data/
-  uploads/originals/    Uploaded documents
-  index/qdrant/         Vector DB
-  index/chunks.json     Retrieval catalog
-```
-
----
-
-## Example Queries
-
-### Educational
-
-```text
-Tell me about SEC filings
-How do I calculate retirement corpus?
-```
-
-### Document-Based
-
-```text
-What risks are discussed in the Apple filing?
-Summarize the brokerage statement
-```
-
-### Multimodal
-
-```text
-Explain this portfolio screenshot
-What does this chart show?
-```
-
-### Web Grounded
-
-```text
-What is the latest Fed interest rate?
-```
-
----
-
-## Setup
+Requirements: Python 3.11+.
 
 ```bash
 python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
+source .venv/bin/activate                 # macOS/Linux
+# .\.venv\Scripts\Activate.ps1          # Windows PowerShell
+python -m pip install -r requirements.txt
 ```
 
-Create `.env`:
+Create `.env` for Gemini-backed application paths:
 
 ```env
 GEMINI_API_KEY=your_key_here
@@ -290,63 +58,48 @@ GEMINI_EMBEDDING_MODEL=gemini-embedding-001
 GEMINI_WEB_GROUNDING_MODEL=gemini-2.5-flash
 ```
 
----
-
-## Run
+Start the Streamlit app:
 
 ```bash
 streamlit run app.py
 ```
 
-App runs at:
-
-```text
-http://localhost:8510
-```
-
----
-
-## Index Documents
+Index local documents with deterministic embeddings:
 
 ```bash
 python index_uploads.py --folder data/uploads/originals --embedding-provider local_hash
 ```
 
----
-
-## Evaluation
-
-FinSight includes a deterministic, credential-free retrieval benchmark that exercises the production Qdrant, BM25, and reciprocal-rank-fusion paths over 18 synthetic finance chunks and 18 human-labeled queries.
+## Evaluation and tests
 
 ```bash
 python eval_retrieval.py \
   --top-k 3 \
   --output evals/results/latest.json \
   --min-hybrid-recall 0.90
+
+python -m pytest -q
 ```
 
-Current version 1.0 baseline:
+GitHub Actions runs the test suite and credential-free retrieval quality gate for every pull request.
 
-| Mode | Recall@3 | Hit rate@3 | MRR@3 | nDCG@3 |
-| --- | ---: | ---: | ---: | ---: |
-| Dense local hash | 0.944 | 0.944 | 0.861 | 0.883 |
-| BM25 | 1.000 | 1.000 | 0.972 | 0.979 |
-| Hybrid RRF | 0.944 | 0.944 | 0.889 | 0.903 |
+## Repository map
 
-BM25 performs best on this small lexical benchmark. The result is reported as-is rather than presenting hybrid retrieval as universally superior. See [the evaluation methodology](docs/evaluation.md) for metric definitions, limitations, per-case failure analysis, and the next evaluation layers.
+```text
+app.py                  Streamlit application
+router/                 Intent classification
+ingestion/              PDF extraction and chunking
+retrieval/              Qdrant, BM25, and RRF
+tools/                  Finance calculators
+verifier/               Citation and confidence checks
+evaluation/             Benchmark runner and metrics
+evals/                  Labeled cases and versioned results
+docs/evaluation.md      Methodology, failures, and limitations
+```
 
----
+## Current limitations
 
-## Technical Highlights
-
-* Router-first architecture
-* Hybrid RAG (Qdrant + BM25)
-* RRF fusion strategy
-* Context-aware chunk selection
-* Structured LLM output
-* Multimodal reasoning
-* Automatic web grounding
-* Verification layer (VeriFi)
-* Quota-resilient design
-
----
+- The retrieval benchmark is deliberately small and synthetic.
+- Retrieval metrics do not measure final-answer correctness or claim support.
+- Web-grounded and Gemini-backed paths require external services and are not deterministic.
+- Financial outputs require independent verification before use in a real decision.
