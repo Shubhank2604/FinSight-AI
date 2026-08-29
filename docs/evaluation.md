@@ -67,11 +67,11 @@ The JSON report includes aggregate metrics, per-case rankings, relevance labels,
 
 | Metric | Baseline |
 | --- | ---: |
-| Citation precision | 0.750 |
-| Citation recall | 0.643 |
+| Citation precision | 0.692 |
+| Citation recall | 0.600 |
 | Abstention precision | 1.000 |
-| Abstention recall | 0.833 |
-| Accept/abstain accuracy | 0.900 |
+| Abstention recall | 0.857 |
+| Accept/abstain accuracy | 0.909 |
 
 The verifier rejects claims with missing or unknown citation IDs. For retrieval-only answers, it also rejects a claim when its explicit numbers are absent from the cited evidence. This catches the numerical mismatch case without an LLM or external service.
 
