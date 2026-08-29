@@ -45,5 +45,5 @@ jobs:
       - name: Enforce citation and abstention gate
         run: |
           python eval_citations.py \
-            --min-abstention-recall 0.80 \
+            --min-abstention-recall 0.85 \
             --output /tmp/finsight-citation-report.json

@@ -30,7 +30,9 @@ def evaluate_citations(dataset_path: str | Path) -> dict:
                     document_id="benchmark",
                     source_name="benchmark.pdf",
                     type=ChunkType.TEXT,
-                    content=f"Evidence stored in {chunk_id}.",
+                    content=case.get("evidence", {}).get(
+                        chunk_id, f"Evidence stored in {chunk_id}."
+                    ),
                 ),
                 score=0.9,
                 source="hybrid",

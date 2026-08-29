@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import re
+from decimal import Decimal, InvalidOperation
+
 from schemas import (
     Citation,
     RetrievalHit,
@@ -43,6 +46,29 @@ def _tool_confidence(tool_results: list[ToolResult]) -> float:
     return sum(result.calculation.confidence for result in successes if result.calculation) / len(
         tool_results
     )
+
+
+def _numbers(text: str) -> set[Decimal]:
+    values = set()
+    for match in re.findall(r"(?<![\w])[-+]?\$?\d[\d,]*(?:\.\d+)?%?", text):
+        normalized = match.replace("$", "").replace(",", "").replace("%", "")
+        try:
+            values.add(Decimal(normalized))
+        except InvalidOperation:
+            continue
+    return values
+
+
+def claim_has_unsupported_numbers(claim, evidence_by_id: dict[str, str]) -> bool:
+    claim_numbers = _numbers(claim.text)
+    if not claim_numbers:
+        return False
+    evidence = " ".join(
+        evidence_by_id[citation_id]
+        for citation_id in claim.citation_ids
+        if citation_id in evidence_by_id
+    )
+    return not claim_numbers.issubset(_numbers(evidence))
 
 
 def verify_response(
@@ -94,10 +120,17 @@ def verify_response(
     used_citation_ids = set(structured_answer.used_citation_ids) if structured_answer else set()
     unsupported_citation_ids = used_citation_ids - available_citation_ids
     cited_claims = structured_answer.claims if structured_answer else []
+    evidence_by_id = {hit.chunk.id: hit.chunk.content for hit in retrieval_hits}
+    evidence_by_id.update(
+        {citation.chunk_id: citation.snippet for citation in citations if citation.chunk_id}
+    )
     unsupported_claims = [
         claim
         for claim in cited_claims
-        if needs_citations and not set(claim.citation_ids).intersection(available_citation_ids)
+        if needs_citations and (
+            not set(claim.citation_ids).intersection(available_citation_ids)
+            or (not needs_tools and claim_has_unsupported_numbers(claim, evidence_by_id))
+        )
     ]
 
     if structured_answer and needs_citations:

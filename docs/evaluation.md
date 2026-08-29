@@ -63,7 +63,7 @@ The JSON report includes aggregate metrics, per-case rankings, relevance labels,
 
 ## Claim/citation linkage baseline
 
-`evals/citation_benchmark.json` contains ten structured-answer cases. It covers correct citations, unknown IDs, missing claim citations, partially cited answers, explicit missing-data signals, extraneous IDs, and one intentionally wrong-but-valid citation.
+`evals/citation_benchmark.json` contains 11 structured-answer cases. It covers correct citations, unknown IDs, missing claim citations, partially cited answers, explicit missing-data signals, extraneous IDs, a wrong numerical citation, and a wrong nonnumeric citation.
 
 | Metric | Baseline |
 | --- | ---: |
@@ -73,13 +73,15 @@ The JSON report includes aggregate metrics, per-case rankings, relevance labels,
 | Abstention recall | 0.833 |
 | Accept/abstain accuracy | 0.900 |
 
-The verifier now rejects claims with missing or unknown citation IDs. It still accepts the `wrong-valid-citation` case because the cited chunk exists even though the label says it does not support the claim. That failure is retained deliberately: the current layer validates citation linkage, not semantic entailment.
+The verifier rejects claims with missing or unknown citation IDs. For retrieval-only answers, it also rejects a claim when its explicit numbers are absent from the cited evidence. This catches the numerical mismatch case without an LLM or external service.
+
+It still accepts `wrong-valid-nonnumeric-citation` because the cited chunk exists and the claim contains no deterministic numeric contradiction. That failure is retained deliberately: the current layer validates citation linkage and numerical consistency, not semantic entailment.
 
 Reproduce it without credentials:
 
 ```bash
 python eval_citations.py \
-  --min-abstention-recall 0.80 \
+  --min-abstention-recall 0.85 \
   --output evals/results/citation_baseline.json
 ```
 
