@@ -152,14 +152,20 @@ evals/                  Versioned datasets and result artifacts
 docs/evaluation.md      Methodology, failures, and limitations
 ```
 
-## Current limitations
+## Evaluation scope and safety boundary
 
-- The retrieval corpus is small and synthetic.
-- Local hash vectors are a deterministic CI proxy, not a semantic embedding benchmark.
-- Retrieval metrics do not measure final-answer correctness.
-- Nonnumeric claim/source entailment is not implemented.
-- Gemini and web-grounded paths depend on external services and are not deterministic.
-- Financial outputs require independent verification before use in a real decision.
+FinSight separates deterministic regression tests from provider-dependent behavior so CI remains reproducible and credential-free.
+
+| Verified in this repository | Outside the current benchmark |
+| --- | --- |
+| Retrieval ranking over 18 labeled finance queries | Accuracy across arbitrary financial documents |
+| Citation linkage and abstention over 11 structured cases | General nonnumeric claim/source entailment |
+| Numerical consistency between claims and cited evidence | End-to-end correctness of generated financial advice |
+| Router, tool, retrieval, and verifier behavior without network access | Gemini and web-grounded behavior across provider/model changes |
+
+The synthetic corpus and local hash vectors provide a stable regression baseline for the retrieval implementation. They are deliberately reported separately from Gemini-backed semantic retrieval so model changes cannot silently alter the CI result.
+
+FinSight is decision-support software. Calculations are performed by deterministic tools, while generated explanations and external financial information should be independently reviewed before they inform a real financial decision.
 
 ## License
 
