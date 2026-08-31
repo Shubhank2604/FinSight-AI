@@ -1,44 +1,91 @@
 # FinSight AI
 
 [![CI](https://github.com/Shubhank2604/FinSight-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/Shubhank2604/FinSight-AI/actions/workflows/ci.yml)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
 
-FinSight is an experimental financial RAG application with query routing, document ingestion, dense and BM25 retrieval, reciprocal-rank fusion, finance calculators, and structured Gemini responses. Its evaluation suite runs locally without API credentials and reports retrieval quality instead of assuming hybrid retrieval is better.
+FinSight is an experimental financial analysis application that routes each request to document retrieval, deterministic finance tools, multimodal analysis, or an explicit abstention path. It combines Qdrant dense retrieval, BM25, reciprocal-rank fusion, structured Gemini output, and deterministic citation checks.
 
-It supports analysis and education. It does not execute trades or provide licensed financial advice.
+The repository includes credential-free evaluation for retrieval and response validation. It supports analysis and education; it does not execute trades or provide licensed financial advice.
 
-## Measured retrieval baseline
+## What is implemented
 
-The versioned benchmark contains 18 labeled queries over 18 synthetic finance chunks. It exercises the same Qdrant, BM25, and fusion paths used by the application with deterministic local embeddings.
+- PDF text and table ingestion with typed document chunks.
+- Router-first execution across retrieval, calculation, multimodal, web-grounded, educational, and abstention paths.
+- Dense retrieval through Qdrant, sparse retrieval through BM25, and reciprocal-rank fusion.
+- Deterministic EMI, portfolio-growth, tax, and options calculations.
+- Structured model responses with claim-level citation IDs.
+- Validation for missing citations, unknown sources, required tool use, missing inputs, and numerical citation mismatches.
+- Offline tests and versioned evaluation reports that run without Gemini credentials.
 
-| Mode | Recall@3 | MRR@3 | nDCG@3 |
-| --- | ---: | ---: | ---: |
-| Dense local hash | 0.944 | 0.861 | 0.883 |
-| BM25 | 1.000 | 0.972 | 0.979 |
-| Hybrid RRF | 0.944 | 0.889 | 0.903 |
+## Architecture
 
-BM25 wins on this small, lexical corpus. The benchmark is a reproducible baseline, not evidence that the application is accurate on arbitrary financial questions. See [the evaluation methodology](docs/evaluation.md) for definitions, per-query failures, and limitations.
-
-## Request flow
-
-```text
-Query -> intent router -> retrieval / calculator / multimodal / web path
-      -> structured Gemini response -> citation and confidence checks -> answer
+```mermaid
+flowchart TD
+    Q["User query + optional documents"] --> R["Intent router"]
+    R -->|Document facts| H["Hybrid retrieval"]
+    R -->|Financial calculation| T["Deterministic tools"]
+    R -->|Image or chart| M["Multimodal path"]
+    R -->|Current information| W["Web-grounded path"]
+    R -->|Missing evidence| A["Abstain"]
+    H --> G["Structured Gemini response"]
+    T --> G
+    M --> G
+    W --> G
+    G --> V["Citation and confidence validation"]
+    V --> O["Answer or abstention"]
 ```
 
-The router selects among compute-only, educational, document retrieval, retrieval plus calculation, multimodal, web-grounded, and abstention paths.
+The router decides which evidence and tools are required before generation. Calculation routes use deterministic functions for numerical work; the model explains results but does not replace the calculation.
 
-### Retrieval
+### Retrieval and validation
 
-- Qdrant dense search captures semantic similarity.
-- BM25 preserves exact financial terms and identifiers.
-- Reciprocal-rank fusion combines both rankings.
-- Context packing removes duplicate chunks and prioritizes tables for numerical queries.
+```mermaid
+flowchart LR
+    D["Document chunks"] --> QD["Qdrant dense index"]
+    D --> BM["BM25 index"]
+    U["Query"] --> QD
+    U --> BM
+    QD --> RRF["Reciprocal-rank fusion"]
+    BM --> RRF
+    RRF --> CP["Deduplicate and pack context"]
+    CP --> SR["Structured response"]
+    SR --> CV["Citation ID checks"]
+    SR --> NV["Numerical evidence checks"]
+    CV --> DEC["Accept or abstain"]
+    NV --> DEC
+```
 
-### Validation boundary
+The validation layer checks grounding mechanics and deterministic numerical consistency. It does **not** prove that every natural-language claim is semantically entailed by its source.
 
-The `VeriFi` component checks citation IDs, retrieved-context presence, tool use, missing-data signals, confidence thresholds, and whether numbers in retrieval-only claims appear in their cited evidence. It validates the grounding infrastructure and catches explicit numerical mismatches; it does **not** prove claim-level semantic entailment. Independently reviewed entailment and answer-faithfulness evaluation remain planned work.
+## Reproducible evaluation
 
-The versioned 11-case citation benchmark reports `1.000` abstention precision and `0.857` abstention recall. Missing citations, unknown IDs, and a wrong citation with conflicting numerical evidence are rejected. A wrong but existing citation for a nonnumeric claim still passes, which remains published as the semantic-support failure rather than described as verification.
+### Retrieval baseline
+
+The versioned retrieval benchmark contains 18 labeled queries over 18 synthetic finance chunks. It exercises the production Qdrant, BM25, and fusion paths using deterministic local embeddings.
+
+| Mode | Precision@3 | Recall@3 | MRR@3 | nDCG@3 |
+| --- | ---: | ---: | ---: | ---: |
+| Dense local hash | 0.315 | 0.944 | 0.861 | 0.883 |
+| BM25 | 0.333 | 1.000 | 0.972 | 0.979 |
+| Hybrid RRF | 0.315 | 0.944 | 0.889 | 0.903 |
+
+BM25 wins on this small, deliberately lexical corpus. That result is retained because the benchmark is intended to expose trade-offs, not assert that hybrid retrieval is always superior.
+
+### Citation and abstention baseline
+
+The versioned validation benchmark contains 11 structured-answer cases.
+
+| Metric | Result |
+| --- | ---: |
+| Citation precision | 0.692 |
+| Citation recall | 0.600 |
+| Abstention precision | 1.000 |
+| Abstention recall | 0.857 |
+| Accept/abstain accuracy | 0.909 |
+
+Missing and unknown citations are rejected, as is a citation with conflicting numerical evidence. A wrong but valid citation for a nonnumeric claim still passes. This known failure is documented rather than presented as semantic verification.
+
+See [the evaluation methodology](docs/evaluation.md) for dataset construction, metric definitions, per-query failures, and limitations.
 
 ## Run locally
 
@@ -49,63 +96,71 @@ python -m venv .venv
 source .venv/bin/activate                 # macOS/Linux
 # .\.venv\Scripts\Activate.ps1          # Windows PowerShell
 python -m pip install -r requirements.txt
-```
-
-Create `.env` for Gemini-backed application paths:
-
-```env
-GEMINI_API_KEY=your_key_here
-GEMINI_TEXT_MODEL=gemini-3-flash-preview
-GEMINI_EMBEDDING_MODEL=gemini-embedding-001
-GEMINI_WEB_GROUNDING_MODEL=gemini-2.5-flash
-```
-
-Start the Streamlit app:
-
-```bash
+cp .env.example .env                      # macOS/Linux
+# Copy-Item .env.example .env             # Windows PowerShell
 streamlit run app.py
 ```
 
-Index local documents with deterministic embeddings:
+Gemini-backed application paths require `GEMINI_API_KEY`. Tests and evaluation use deterministic local embeddings and do not require external credentials.
+
+Index local documents:
 
 ```bash
-python index_uploads.py --folder data/uploads/originals --embedding-provider local_hash
+python index_uploads.py \
+  --folder data/uploads/originals \
+  --embedding-provider local_hash
 ```
 
-## Evaluation and tests
+## Test and evaluate
 
 ```bash
-python eval_retrieval.py \
-  --top-k 3 \
-  --output evals/results/latest.json \
-  --min-hybrid-recall 0.90
-
 python -m pytest -q
 
+python eval_retrieval.py \
+  --top-k 3 \
+  --min-hybrid-recall 0.90 \
+  --output evals/results/latest.json
+
 python eval_citations.py \
-  --min-abstention-recall 0.80 \
+  --min-abstention-recall 0.85 \
   --output evals/results/citation_baseline.json
 ```
 
-GitHub Actions runs the test suite and credential-free retrieval quality gate for every pull request.
+GitHub Actions runs all three checks on every pull request to `master`.
+
+## Design decisions
+
+| Decision | Reason | Trade-off |
+| --- | --- | --- |
+| Route before generation | Makes required evidence and tools explicit | Rule-based routing needs maintained intent coverage |
+| Keep deterministic calculators outside the LLM | Prevents the model from performing authoritative arithmetic | Supported calculations must be implemented separately |
+| Combine BM25 and dense retrieval | Preserves exact financial terms while allowing semantic matches | Fusion adds complexity and can underperform BM25 on lexical corpora |
+| Validate before returning an answer | Rejects missing citations, inputs, and numerical mismatches | Current checks cannot establish general semantic entailment |
+| Use synthetic evaluation data | Keeps CI deterministic, redistributable, and credential-free | Results do not establish performance on arbitrary real documents |
 
 ## Repository map
 
 ```text
-app.py                  Streamlit application
-router/                 Intent classification
-ingestion/              PDF extraction and chunking
-retrieval/              Qdrant, BM25, and RRF
-tools/                  Finance calculators
-verifier/               Citation and confidence checks
-evaluation/             Benchmark runner and metrics
-evals/                  Labeled cases and versioned results
+app.py                  Streamlit application and request orchestration
+router/                 Intent and execution-path selection
+ingestion/              PDF extraction and typed chunking
+retrieval/              Qdrant, BM25, RRF, and context selection
+tools/                  Deterministic finance calculators
+verifier/               Citation, input, confidence, and number checks
+evaluation/             Benchmark runners and metric implementations
+evals/                  Versioned datasets and result artifacts
 docs/evaluation.md      Methodology, failures, and limitations
 ```
 
 ## Current limitations
 
-- The retrieval benchmark is deliberately small and synthetic.
-- Retrieval metrics do not measure final-answer correctness or claim support.
-- Web-grounded and Gemini-backed paths require external services and are not deterministic.
+- The retrieval corpus is small and synthetic.
+- Local hash vectors are a deterministic CI proxy, not a semantic embedding benchmark.
+- Retrieval metrics do not measure final-answer correctness.
+- Nonnumeric claim/source entailment is not implemented.
+- Gemini and web-grounded paths depend on external services and are not deterministic.
 - Financial outputs require independent verification before use in a real decision.
+
+## License
+
+MIT
