@@ -100,10 +100,26 @@ def verify_response(draft_answer: str, decision: RouterDecision, retrieval_hits:
                 reasons.append('Generated answer numbers disagree with authoritative claims.')
         if needs_tools:
             authoritative = []
+            periods = set()
             for c in calculations:
-                authoritative.extend(Decimal(str(v)) for v in c.result.values() if isinstance(v, (int, float)))
+                periods.update(Decimal(str(v)) for v in c.result.get('periods', []) if isinstance(v, int))
+                # Document-derived monetary inputs may be quoted in an explanation;
+                # their units come from the extraction provenance, not the model.
+                for key, value in c.inputs.items():
+                    origin = c.provenance.get(key, {})
+                    if isinstance(value, (int, float)) and not isinstance(value, bool) and isinstance(origin, dict) and origin.get('unit') in {'USD', 'CAD', 'AUD', 'EUR', 'GBP', 'INR'}:
+                        authoritative.append((Decimal(str(value)), origin['unit']))
+                for key, value in c.result.items():
+                    if isinstance(value, (int, float)) and not isinstance(value, bool):
+                        amount = Decimal(str(value))
+                        authoritative.append((amount, 'number'))
+                        if key.endswith('_pct'):
+                            authoritative.append((amount / 100, 'fraction'))
             prose = re.sub(r'\[[^\[\]]+\]', '', structured_answer.answer + '\n' + '\n'.join(c.text for c in claims))
-            if any(not any(abs(n.value-a) <= Decimal('0.00005') for a in authoritative) for n in quantities(prose)):
+            # Ratio suffixes must be parsed, and years must match the tool's
+            # reporting periods rather than being compared to its arithmetic.
+            prose = re.sub(r'(?<=\d)x\b', ' ', prose, flags=re.I)
+            if any(not (n.unit == 'number' and n.value in periods) and not any(n.unit == unit and abs(n.value-a) <= Decimal('0.00005') for a, unit in authoritative) for n in quantities(prose)):
                 reasons.append('Generated numerical results disagree with authoritative tool outputs (rounding: four decimals).')
     if needs_tools:
         used.update(p['chunk_id'] for c in calculations for p in c.provenance.values() if isinstance(p, dict) and p.get('chunk_id'))

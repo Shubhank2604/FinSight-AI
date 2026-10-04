@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from app import _extract_currency
-from config import _normalise_model_name
+from config import DEFAULT_MODEL, Settings
 from fallback_answers import local_educational_answer
 from ingestion.chunker import chunk_text, table_to_text
 from retrieval import HybridRetriever
@@ -11,8 +11,8 @@ from tools import calculate_emi, estimate_tax, price_black_scholes_option, simul
 from verifier import build_citations, verify_response
 
 
-def test_model_alias_is_normalised() -> None:
-    assert _normalise_model_name("gemini-3-flash") == "gemini-3-flash-preview"
+def test_model_default_is_pinned() -> None:
+    assert Settings().openai_model == DEFAULT_MODEL
 
 
 def test_currency_defaults_to_usd() -> None:
@@ -298,7 +298,7 @@ def test_verifier_blocks_numeric_claim_not_present_in_cited_evidence() -> None:
     assert verified.confidence < 0.45
 
 
-class FakeGemini:
+class FakeEmbeddings:
     def embed_texts(self, texts: list[str]) -> list[list[float]]:
         return [[1.0] + [0.0] * 767 for _ in texts]
 
@@ -310,7 +310,7 @@ def test_retriever_source_filter_and_diagnostics(tmp_path) -> None:
     retriever = HybridRetriever(
         collection_name="test_chunks",
         qdrant_path=str(tmp_path / "qdrant"),
-        gemini=FakeGemini(),
+        embedding_client=FakeEmbeddings(),
     )
     chunks = [
         DocumentChunk(
@@ -345,7 +345,7 @@ def test_context_selector_prefers_text_over_images(tmp_path) -> None:
     retriever = HybridRetriever(
         collection_name="test_context_chunks",
         qdrant_path=str(tmp_path / "qdrant_context"),
-        gemini=FakeGemini(),
+        embedding_client=FakeEmbeddings(),
     )
     image_chunk = DocumentChunk(
         id="00000000-0000-0000-0000-000000000010",

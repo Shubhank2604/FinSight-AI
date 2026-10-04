@@ -84,7 +84,7 @@ def run_benchmark(dataset_path: Path, top_k: int = 3) -> dict[str, Any]:
         retriever = HybridRetriever(
             collection_name="finsight_eval",
             qdrant_path=str(Path(temp_dir) / "qdrant"),
-            gemini=LocalEmbeddingClient(),  # type: ignore[arg-type]
+            embedding_client=LocalEmbeddingClient(),  # type: ignore[arg-type]
         )
         retriever.index_chunks(chunks)
         searchers = _searchers(retriever, top_k)

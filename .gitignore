@@ -1,6 +1,9 @@
 deep_research_report.md
 .venv/
+.venv-verify/
+.test-tmp/
 .env
+.env.gemini-embeddings
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -13,6 +16,7 @@ htmlcov/
 data/uploads/
 data/index/
 *.log
+evals/results/dependency-install.json
 logs/
 *.tmp
 *.bak

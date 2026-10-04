@@ -20,6 +20,8 @@ def route_query(query: str, has_documents: bool = False, has_images: bool = Fals
     compute = bool(re.search(r"\b(?:calculate|compute|project|simulate|estimate|how much|what is (?:the )?emi)\b", q))
     current = bool(re.search(r"\b(?:latest|today|recent|news|online|web|stock price|exchange rate)\b|\bcurrent\b(?!\s+(?:ratio|assets|liabilities))", q))
     if document:
+        if current and re.search(r"\b(?:web|online|external|today|stock price|exchange rate)\b", q):
+            return RouterDecision(route=Route.ABSTAIN, evidence_source="document", action="unsupported", reason="Combined document/external comparisons are unsupported. Ask separate document and current-information questions.")
         if not has_documents:
             return RouterDecision(route=Route.ABSTAIN, required_retrieval=True, evidence_source="document", missing_inputs=["document_context"], reason="Select an indexed document for this document question.")
         if visual:

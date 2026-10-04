@@ -1,0 +1,2 @@
+# Optional: retain existing Gemini embedding spaces. Never used for generation.
+google-genai==1.74.0

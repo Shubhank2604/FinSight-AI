@@ -26,14 +26,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.13"
           cache: pip
 
       - name: Install dependencies
-        run: python -m pip install --upgrade pip && pip install -r requirements.txt
+        run: python -m pip install -r requirements.lock
 
       - name: Run unit tests
-        run: python -m pytest -q
+        run: python -m pytest -q -p no:cacheprovider
 
       - name: Enforce retrieval quality gate
         run: |
@@ -47,3 +47,12 @@ jobs:
           python eval_citations.py \
             --min-abstention-recall 0.85 \
             --output /tmp/finsight-citation-report.json
+      - name: Enforce router and useful-answer application gates
+        run: |
+          python -m evaluation.router --quality-gate --output /tmp/finsight-router.json
+          python -m evaluation.application --quality-gate --output /tmp/finsight-application.json
+      - name: Publish offline evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-evaluation
+          path: /tmp/finsight-*.json

@@ -12,7 +12,7 @@ import pytest
 from calculation_inputs import InputIssue, currency_from_text, extract_calculation_inputs
 from config import Settings
 from financial_evidence import quantities, supported_numbers
-from gemini_client import GeminiClient
+from openai_client import OpenAIClient
 from ingestion import ingest_file
 from ingestion.chunker import chunk_text
 from ingestion.extractor import render_pdf_pages
@@ -26,7 +26,7 @@ from verifier.verifi import verify_response
 
 
 def settings(path, provider='local_hash', model='test'):
-    return Settings('', 'test', model, 'test', provider, 'test', str(path))
+    return Settings(gemini_embedding_model=model, embedding_provider=provider, qdrant_collection='test', qdrant_path=str(path))
 
 
 def chunk(content, name='Acme.pdf', doc='doc', page=1):
@@ -39,7 +39,7 @@ PRIOR = REPORT.replace('2025', '2024').replace('Revenue | 120', 'Revenue | 100')
 
 @pytest.fixture
 def retriever(tmp_path):
-    client = GeminiClient(settings(tmp_path/'qdrant'))
+    client = OpenAIClient(settings(tmp_path/'qdrant'))
     r = HybridRetriever('test', str(tmp_path/'qdrant'), client)
     yield r
     r.close()
@@ -206,6 +206,30 @@ def test_document_emi_no_query_numbers(retriever):
     assert calc.provenance['principal']['source']=='document'
 
 
+@pytest.mark.parametrize('text, operation, accepted', [
+    ('Current ratio for 2025 is 2.0x.', 'current ratio', True),
+    ('Current ratio for 2025 is 999.0x.', 'current ratio', False),
+    ('Current ratio for 2024 is 2.0x.', 'current ratio', False),
+    ('Current ratio for 2025 is 2.0x, from USD 60 million of assets and USD 30 million of liabilities.', 'current ratio', True),
+    ('Current ratio for 2025 is 2.0x, from USD 999 million of assets and USD 30 million of liabilities.', 'current ratio', False),
+    ('Current ratio for 2025 is 2.0x, from CAD 60 million of assets and USD 30 million of liabilities.', 'current ratio', False),
+    ('Net margin for 2025 is 20%.', 'net margin', True),
+    ('Net margin for 2025 is 999%.', 'net margin', False),
+])
+def test_generated_document_calculation_period_ratio_and_percent(retriever, text, operation, accepted):
+    from schemas import ToolResult
+    retriever.index_chunks([chunk(REPORT)])
+    base = ResearchAssistant(retriever).ask(f'Calculate {operation} for 2025 in the report', ['Acme.pdf'])
+    response = verify_response('', RouterDecision.model_validate(base.diagnostics['route']),
+        [RetrievalHit.model_validate(h) for h in base.diagnostics['evidence']],
+        tool_results=[ToolResult(success=True, calculation=c) for c in base.calculations],
+        structured_answer=StructuredLLMAnswer(answer=text, claims=[AnswerClaim(text=text)]))
+    assert (response.status == 'ok') == accepted
+    if accepted:
+        assert response.calculations == base.calculations
+        assert response.answer == base.answer
+
+
 def test_conflicting_evidence_abstains(retriever):
     retriever.index_chunks([chunk(REPORT),chunk(REPORT.replace('Revenue | 120','Revenue | 999'))])
     response=ResearchAssistant(retriever).ask('What is revenue in the report for 2025?',['Acme.pdf'])
@@ -214,7 +238,7 @@ def test_conflicting_evidence_abstains(retriever):
 
 def test_index_restart_replace_delete_and_stale_catalog(tmp_path):
     path=tmp_path/'qdrant'
-    provider=GeminiClient(settings(path))
+    provider=OpenAIClient(settings(path))
     first=HybridRetriever('test',str(path),provider)
     old=chunk(REPORT,doc='old')
     first.index_chunks([old])
@@ -236,18 +260,18 @@ def test_index_restart_replace_delete_and_stale_catalog(tmp_path):
 
 def test_lock_and_embedding_identity(retriever,tmp_path):
     with pytest.raises(RuntimeError,match='in use'):
-        HybridRetriever('test',str(retriever.qdrant_path),retriever.gemini)
+        HybridRetriever('test',str(retriever.qdrant_path),retriever.embedding_client)
     retriever.index_chunks([chunk(REPORT)])
     old_name=retriever.collection_name
     retriever.close()
-    changed=HybridRetriever('other',str(retriever.qdrant_path),retriever.gemini,vector_size=384)
+    changed=HybridRetriever('other',str(retriever.qdrant_path),retriever.embedding_client,vector_size=384)
     assert changed.collection_name != old_name and changed.chunks==[]
     changed.close()
 
 
 def test_interrupted_embedding_batches_roll_back(retriever,monkeypatch):
     retriever.index_chunks([chunk(REPORT,doc='old')])
-    real=retriever.gemini.embed_texts
+    real=retriever.embedding_client.embed_texts
     count=0
     def broken(texts):
         nonlocal count
@@ -255,7 +279,7 @@ def test_interrupted_embedding_batches_roll_back(retriever,monkeypatch):
         if count==2:
             raise TimeoutError('provider timeout')
         return real(texts)
-    monkeypatch.setattr(retriever.gemini,'embed_texts',broken)
+    monkeypatch.setattr(retriever.embedding_client,'embed_texts',broken)
     with pytest.raises(TimeoutError):
         retriever.index_chunks([chunk(REPORT,doc='new'),chunk(PRIOR,doc='new')],batch_size=1)
     assert len(retriever.chunks)==1 and retriever.chunks[0].document_id=='old'
@@ -265,7 +289,7 @@ def test_interrupted_embedding_batches_roll_back(retriever,monkeypatch):
 def test_crash_journal_recovery_and_duplicate_ids(tmp_path):
     from qdrant_client import models
     path=tmp_path/'qdrant'
-    provider=GeminiClient(settings(path))
+    provider=OpenAIClient(settings(path))
     r=HybridRetriever('test',str(path),provider)
     c=chunk(REPORT)
     with pytest.raises(ValueError,match='Duplicate'):
@@ -291,6 +315,28 @@ def test_source_filter_before_ranking_and_empty_scope(retriever):
     assert all(h.chunk.source_name=='Acme.pdf' for h in retriever.dense_search('revenue',limit=2,source_names=['Acme.pdf']))
     assert retriever.dense_search('revenue',source_names=[])==[]
     assert retriever.sparse_search('revenue',source_names=[])==[]
+
+
+def test_distinct_conflicting_chunks_not_deduplicated(retriever):
+    prefix='Shared introduction. '*10
+    chunks=[chunk(prefix+'Revenue: USD 12 million.'),chunk(prefix+'Revenue: USD 99 million.')]
+    hits=[RetrievalHit(chunk=c,score=1,source='hybrid') for c in chunks]
+    assert len(retriever.select_context_hits('revenue',hits))==2
+
+
+def test_rebuild_embedding_failure_preserves_points(retriever,monkeypatch):
+    retriever.index_chunks([chunk(REPORT)])
+    def failed(texts):
+        raise TimeoutError('timeout')
+    monkeypatch.setattr(retriever.embedding_client,'embed_texts',failed)
+    with pytest.raises(TimeoutError):
+        retriever.rebuild()
+    assert retriever.client.count(retriever.collection_name).count==1
+
+
+def test_mixed_document_and_external_request_unsupported():
+    decision=route_query('Compare revenue in this report with online stock price today',has_documents=True,allow_web=True)
+    assert decision.route==Route.ABSTAIN and decision.action=='unsupported'
 
 
 def test_pdf_extraction_and_vector_page_render(tmp_path):
@@ -331,4 +377,4 @@ def test_provider_failure_and_invalid_json(retriever):
     assert service.ask('Calculate current ratio in the report for 2025?',['Acme.pdf'],use_provider=True).status=='ok'
     for raw in ('', 'not json', '{}'):
         with pytest.raises(Exception):
-            retriever.gemini._parse_structured_response(raw)
+            retriever.embedding_client._parse_structured_response(raw)

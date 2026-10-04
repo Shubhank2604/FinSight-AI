@@ -5,7 +5,7 @@ from pathlib import Path
 import streamlit as st
 from calculation_inputs import currency_from_text as _extract_currency
 from config import load_settings
-from gemini_client import GeminiClient
+from openai_client import OpenAIClient
 from ingestion import ingest_file
 from orchestration import ResearchAssistant
 from retrieval import HybridRetriever
@@ -16,13 +16,16 @@ from uploads import save_upload
 
 @st.cache_resource(show_spinner=False)
 def resources(settings):
-    provider = GeminiClient(settings)
+    provider = OpenAIClient(settings)
     retriever = HybridRetriever(settings.qdrant_collection, settings.qdrant_path, provider)
     return retriever, provider
 
 
 def display_response(response):
-    if response.status != 'ok':
+    if response.status == 'experimental':
+        st.info('Experimental result: source freshness and claim support have not been verified.')
+        st.write(response.answer)
+    elif response.status != 'ok':
         st.warning(f'{response.status.replace("_", " ").capitalize()}: {response.answer}')
     else:
         st.write(response.answer)
@@ -33,6 +36,8 @@ def display_response(response):
         for citation in response.citations:
             location = citation.source_name + (f', page {citation.page}' if citation.page else '')
             st.markdown(f'**{location}** · `{citation.chunk_id}`')
+            if citation.url:
+                st.markdown(f'[{location}]({citation.url})')
             st.caption(citation.snippet)
     for calculation in response.calculations:
         with st.expander(f'Inputs and result: {calculation.tool_name}', expanded=True):
@@ -54,7 +59,11 @@ def main():
     st.set_page_config(page_title='FinSight AI', layout='wide')
     st.title('FinSight AI')
     st.caption('Financial document research and deterministic calculations. Each question is independent; earlier turns are not used as evidence.')
-    settings = load_settings()
+    try:
+        settings = load_settings()
+    except ValueError as exc:
+        st.error(str(exc))
+        return
     retriever, provider = None, None
     try:
         retriever, provider = resources(settings)
@@ -83,8 +92,12 @@ def main():
             st.session_state.pop('active_documents', None)
             st.rerun()
         st.caption('Removal deletes indexed evidence. Original private uploads remain in your local data/uploads folder.')
-        use_provider = st.checkbox('Use Gemini for document explanations', value=False)
-        allow_web = st.checkbox('Allow web access (experimental)', value=False)
+        use_provider = st.checkbox('Use OpenAI for document explanations', value=False)
+        if use_provider and not settings.openai_configured:
+            st.warning('Set OPENAI_API_KEY in your local .env or environment to enable OpenAI generation.')
+        allow_web = st.checkbox('Allow web access (experimental)', value=False, disabled=not settings.web_enabled)
+        if not settings.web_enabled:
+            st.caption('Set OPENAI_WEB_ENABLED=true to enable the web option. OpenAI generation must also be selected.')
         st.caption('Web and visual reading are experimental and excluded from verified performance. Images are accepted for ingestion; image filenames are never numerical evidence.')
     research_tab, calculator_tab = st.tabs(['Document research', 'Calculators'])
     with research_tab:

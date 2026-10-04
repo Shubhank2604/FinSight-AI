@@ -1,0 +1,1 @@
+CC0 1.0: These synthetic documents and labels were authored for FinSight evaluation. No real company facts or private documents are included. No independent human review has occurred.

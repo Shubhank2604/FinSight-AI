@@ -4,12 +4,13 @@ import json
 import re
 import hashlib
 import os
+import math
 from pathlib import Path
 
 from qdrant_client import QdrantClient, models
 from rank_bm25 import BM25Okapi
 
-from gemini_client import GeminiClient
+from embeddings import EmbeddingClient
 from schemas import ChunkType, DocumentChunk, RetrievalHit
 
 
@@ -44,21 +45,23 @@ class HybridRetriever:
         self,
         collection_name: str,
         qdrant_path: str,
-        gemini: GeminiClient,
+        embedding_client: EmbeddingClient,
         vector_size: int = 768,
         ingestion_version: str = "financial-lines-v2",
     ) -> None:
-        settings = getattr(gemini, "settings", None)
-        identity = {"provider": getattr(settings, "embedding_provider", type(gemini).__name__), "model": getattr(settings, "gemini_embedding_model", "test"), "dimensions": vector_size, "ingestion": ingestion_version}
+        settings = getattr(embedding_client, "settings", None)
+        identity = {"provider": getattr(settings, "embedding_provider", type(embedding_client).__name__), "model": getattr(settings, "gemini_embedding_model", "test"), "dimensions": vector_size, "ingestion": ingestion_version}
         if identity["provider"] == "local_hash":
             identity["model"] = "blake2b-hash-v1"
+        elif identity['provider'] == 'openai':
+            identity['model'] = settings.openai_embedding_model
         self.index_identity = identity
         digest = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()[:16]
         self.collection_name = f"{collection_name}_{digest}"
         self.qdrant_path = Path(qdrant_path)
         self.catalog_path = self.qdrant_path.parent / f"{self.collection_name}.catalog.json"
         self.journal_path = self.qdrant_path.parent / f"{self.collection_name}.pending.json"
-        self.gemini = gemini
+        self.embedding_client = embedding_client
         self.vector_size = vector_size
         self.storage_mode = "local"
         self.qdrant_path.mkdir(parents=True, exist_ok=True)
@@ -70,9 +73,13 @@ class HybridRetriever:
             raise RuntimeError("Index storage is in use. Close the other FinSight process and retry, or use a different QDRANT_PATH.") from exc
         self.chunks: list[DocumentChunk] = []
         self._bm25: BM25Okapi | None = None
-        self._ensure_collection()
-        self._recover_transaction()
-        self.load_catalog()
+        try:
+            self._ensure_collection()
+            self._recover_transaction()
+            self.load_catalog()
+        except Exception:
+            self.client.close()
+            raise
 
     def _ensure_collection(self) -> None:
         if self.client.collection_exists(self.collection_name):
@@ -164,9 +171,11 @@ class HybridRetriever:
             for start in range(0, len(new_chunks), batch_size):
                 batch = new_chunks[start : start + batch_size]
                 texts = [self._embedding_text(chunk) for chunk in batch]
-                vectors = self.gemini.embed_texts(texts)
+                vectors = self.embedding_client.embed_texts(texts)
                 if any(len(vector) != self.vector_size for vector in vectors):
                     raise ValueError("Embedding dimensions do not match the index identity")
+                if any(not math.isfinite(value) for vector in vectors for value in vector):
+                    raise ValueError("Embedding values must be finite")
                 points = [models.PointStruct(id=chunk.id, vector=vector, payload=chunk.model_dump(mode="json")) for chunk, vector in zip(batch, vectors, strict=True)]
                 self.client.upsert(collection_name=self.collection_name, points=points, wait=True)
             journal["phase"] = "ready"
@@ -192,7 +201,7 @@ class HybridRetriever:
         chunks = list(self.chunks)
         for start in range(0, len(chunks), 24):
             batch = chunks[start:start+24]
-            vectors = self.gemini.embed_texts([self._embedding_text(c) for c in batch])
+            vectors = self.embedding_client.embed_texts([self._embedding_text(c) for c in batch])
             points = [models.PointStruct(id=c.id, vector=v, payload=c.model_dump(mode="json")) for c,v in zip(batch,vectors,strict=True)]
             self.client.upsert(collection_name=self.collection_name, points=points, wait=True)
         self.load_catalog()
@@ -225,7 +234,7 @@ class HybridRetriever:
         if not self.chunks or source_names == []:
             return []
 
-        query_vector = self.gemini.embed_query(query)
+        query_vector = self.embedding_client.embed_query(query)
         response = self.client.query_points(
             collection_name=self.collection_name,
             query=query_vector,
@@ -336,7 +345,7 @@ class HybridRetriever:
             key = (
                 hit.chunk.source_name,
                 hit.chunk.page,
-                hit.chunk.content[:120],
+                hashlib.sha256(hit.chunk.content.encode()).hexdigest(),
             )
             if key in seen_keys:
                 continue
