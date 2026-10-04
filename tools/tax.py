@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from schemas import ToolCalculation, ToolResult
+from tools.validation import finite_values, valid_currency
 
 
 def _load_rule_pack(
@@ -45,6 +46,8 @@ def estimate_tax(
     }
 
     try:
+        finite_values(gross_income=gross_income, deductions=deductions, tax_year=tax_year)
+        valid_currency(currency)
         if gross_income < 0 or deductions < 0:
             raise ValueError("gross_income and deductions cannot be negative")
 
@@ -81,6 +84,9 @@ def estimate_tax(
             upper = bracket.get("up_to")
             rate = float(bracket["rate"])
             upper_value = float("inf") if upper is None else float(upper)
+            finite_values(rate=rate)
+            if not 0 <= rate <= 1 or (upper is not None and (not __import__('math').isfinite(upper_value) or upper_value <= lower)):
+                raise ValueError("Rule pack brackets must have ordered finite bounds and rates in [0,1]")
             taxable_at_rate = max(0.0, min(taxable_income, upper_value) - lower)
             if taxable_at_rate > 0:
                 tax += taxable_at_rate * rate
@@ -102,6 +108,7 @@ def estimate_tax(
             "estimated_tax": round(tax, 2),
             "effective_rate_pct": round((tax / gross_income * 100) if gross_income else 0, 4),
         }
+        finite_values(estimated_tax=tax)
         calculation = ToolCalculation(
             tool_name="tax_rule_pack_estimator",
             inputs=inputs,

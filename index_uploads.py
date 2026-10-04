@@ -43,9 +43,12 @@ def index_folder(folder: Path, embedding_provider: str | None = None) -> tuple[i
         chunks.extend(document_chunks)
         print(f"Extracted {len(document_chunks):>4} chunks from {path.name}")
 
-    indexed_count = retriever.index_chunks(chunks)
-    print(f"Catalog now contains {len(retriever.chunks)} chunks")
-    return len(files), extracted_count, indexed_count
+    try:
+        indexed_count = retriever.index_chunks(chunks)
+        print(f"Catalog now contains {len(retriever.chunks)} chunks")
+        return len(files), extracted_count, indexed_count
+    finally:
+        retriever.close()
 
 
 def main() -> None:

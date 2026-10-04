@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import mimetypes
+from datetime import UTC, datetime
 from pathlib import Path
 
 from google import genai
@@ -21,10 +22,29 @@ class GeminiClient:
         self.settings = settings
         self.embedding_dimensions = embedding_dimensions
         self.client = (
-            genai.Client(api_key=settings.gemini_api_key)
+            genai.Client(api_key=settings.gemini_api_key, http_options=types.HttpOptions(timeout=30000, retry_options=types.HttpRetryOptions(attempts=1)))
             if settings.gemini_api_key
             else None
         )
+        self.last_usage = None
+        self.last_response = None
+        self.query_embeddings = {}
+
+    def embed_queries(self, queries: list[str]) -> None:
+        unique = list(dict.fromkeys(q for q in queries if q not in self.query_embeddings))
+        for start in range(0, len(unique), 24):
+            batch = unique[start:start+24]
+            if self.settings.embedding_provider == "local_hash":
+                vectors = [hash_embedding(q, self.embedding_dimensions) for q in batch]
+            else:
+                response = self._require_client().models.embed_content(model=self.settings.gemini_embedding_model, contents=batch, config=types.EmbedContentConfig(output_dimensionality=self.embedding_dimensions, task_type="RETRIEVAL_QUERY"))
+                vectors = [list(e.values) for e in response.embeddings]
+            self.query_embeddings.update(zip(batch, vectors, strict=True))
+
+    def _record_response(self, response):
+        usage = getattr(response, "usage_metadata", None)
+        self.last_usage = usage.model_dump(mode="json") if usage else None
+        self.last_response = {"text": getattr(response, "text", None), "usage": self.last_usage}
 
     def _require_client(self) -> genai.Client:
         if self.client is None:
@@ -51,6 +71,8 @@ class GeminiClient:
         return [list(embedding.values) for embedding in response.embeddings] # type: ignore
 
     def embed_query(self, query: str) -> list[float]:
+        if query in self.query_embeddings:
+            return self.query_embeddings[query]
         if self.settings.embedding_provider == "local_hash":
             return hash_embedding(query, dimensions=self.embedding_dimensions)
 
@@ -83,6 +105,7 @@ class GeminiClient:
                 "response_json_schema": StructuredLLMAnswer.model_json_schema(),
             },
         )
+        self._record_response(response)
         return self._parse_structured_response(response.text or "")
 
     def generate_educational_answer(
@@ -103,6 +126,7 @@ class GeminiClient:
                 "response_json_schema": StructuredLLMAnswer.model_json_schema(),
             },
         )
+        self._record_response(response)
         return self._parse_structured_response(response.text or "")
 
     def generate_multimodal_answer(
@@ -130,6 +154,7 @@ class GeminiClient:
                 "response_json_schema": StructuredLLMAnswer.model_json_schema(),
             },
         )
+        self._record_response(response)
         return self._parse_structured_response(response.text or "")
 
     def generate_web_grounded_answer(
@@ -143,6 +168,7 @@ class GeminiClient:
             config=types.GenerateContentConfig(tools=[grounding_tool]),
         )
         citations = self._extract_web_citations(response)
+        self._record_response(response)
         structured = StructuredLLMAnswer(
             answer=response.text or "Insufficient data to answer reliably.",
             used_citation_ids=[citation.chunk_id for citation in citations if citation.chunk_id],
@@ -209,8 +235,11 @@ Rules:
 - Do not perform new calculations.
 - Prefer specific figures, dates, document sections, and table evidence when present.
 - If multiple chunks disagree, explain the conflict instead of forcing one answer.
-- If the user asks how to calculate, estimate, plan, or reason about a financial goal, provide the calculation framework, formulas, and required inputs. Do not set `needs_more_data` merely because the user's personal numbers are missing.
-- Set `needs_more_data` to true only when no useful method, explanation, or grounded answer can be provided.
+- If the requested fact is missing, ambiguous, or contradictory, set `needs_more_data` to true.
+- Validated claims are authoritative; the application displays claims, not unchecked narrative. Include every factual statement in claims.
+- Put currency, magnitude, company and reporting period in each numerical financial claim; do not rely on separate unit-only claims.
+- Include only facts requested by the question. Do not add unrelated reporting periods or figures.
+- A comparison may state provided values; do not calculate absolute or percentage changes unless a deterministic tool supplied them.
 - Cite evidence using the exact chunk IDs provided in square brackets.
 - Put every cited chunk ID in `used_citation_ids`.
 - For each factual claim, include a `claims` item with supporting citation IDs.
@@ -297,26 +326,18 @@ User query:
         for image_path in image_paths:
             path = Path(image_path)
             if not path.exists() or path.stat().st_size > 18 * 1024 * 1024:
-                continue
+                raise ValueError("Image evidence is missing or exceeds the provider limit")
             mime_type = mimetypes.guess_type(path.name)[0] or "image/png"
+            import hashlib
+            evidence_id = "visual-" + hashlib.sha256(path.read_bytes()).hexdigest()[:16]
+            parts.append(types.Part.from_text(text=f"Image evidence ID: {evidence_id}; numerical visual reading is experimental."))
             parts.append(types.Part.from_bytes(data=path.read_bytes(), mime_type=mime_type))
         return parts
 
     def _parse_structured_response(self, raw_text: str) -> StructuredLLMAnswer:
-        try:
-            return StructuredLLMAnswer.model_validate_json(raw_text)
-        except Exception:
-            try:
-                return StructuredLLMAnswer.model_validate(json.loads(raw_text))
-            except Exception:
-                return StructuredLLMAnswer(
-                    answer=raw_text.strip() or "Insufficient data to answer reliably.",
-                    used_citation_ids=[],
-                    claims=[],
-                    assumptions=[],
-                    confidence=0.2,
-                    needs_more_data=True,
-                )
+        if not raw_text.strip():
+            raise ValueError("Empty provider JSON response")
+        return StructuredLLMAnswer.model_validate_json(raw_text)
 
     def _extract_web_citations(self, response: object) -> list[Citation]:
         citations: list[Citation] = []
@@ -325,6 +346,7 @@ User query:
         candidates = getattr(response, "candidates", None) or []
         for candidate in candidates:
             metadata = getattr(candidate, "grounding_metadata", None)
+            supports = getattr(metadata, "grounding_supports", None) or []
             chunks = getattr(metadata, "grounding_chunks", None) if metadata else None
             for index, chunk in enumerate(chunks or [], start=1):
                 web = getattr(chunk, "web", None)
@@ -342,6 +364,7 @@ User query:
                         snippet=title,
                         source_type="web",
                         url=url,
+                        metadata={"retrieved_at": datetime.now(UTC).isoformat(), "published_at": None, "grounding_chunk_index": index-1, "grounding_supports": [s.model_dump(mode="json") if hasattr(s, "model_dump") else {"indices": getattr(s, "grounding_chunk_indices", [])} for s in supports if index-1 in (getattr(s, "grounding_chunk_indices", None) or [])], "freshness_verified": False},
                     )
                 )
 

@@ -47,6 +47,7 @@ class Citation(BaseModel):
     snippet: str
     source_type: Literal["document", "web"] = "document"
     url: str | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
 
 class ToolCalculation(BaseModel):
@@ -56,6 +57,7 @@ class ToolCalculation(BaseModel):
     assumptions: list[str] = Field(default_factory=list)
     trace: str
     confidence: float = 1.0
+    provenance: dict[str, Any] = Field(default_factory=dict)
 
 
 class ToolResult(BaseModel):
@@ -86,6 +88,8 @@ class RouterDecision(BaseModel):
     missing_inputs: list[str] = Field(default_factory=list)
     risk_level: Literal["low", "medium", "high"] = "low"
     reason: str
+    action: str = "answer"
+    evidence_source: Literal["none", "document", "web", "visual"] = "none"
 
 
 class VerifiedResponse(BaseModel):
@@ -95,3 +99,6 @@ class VerifiedResponse(BaseModel):
     assumptions: list[str] = Field(default_factory=list)
     confidence: float = 0.0
     claims: list[AnswerClaim] = Field(default_factory=list)
+    status: Literal["ok", "clarification", "abstained", "unsupported", "provider_failure"] = "ok"
+    reasons: list[str] = Field(default_factory=list)
+    diagnostics: dict[str, Any] = Field(default_factory=dict)

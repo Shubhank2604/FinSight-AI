@@ -42,7 +42,7 @@ def load_settings() -> Settings:
         gemini_web_grounding_model=_normalise_model_name(
             os.getenv("GEMINI_WEB_GROUNDING_MODEL", "gemini-2.5-flash")
         ),
-        embedding_provider=os.getenv("EMBEDDING_PROVIDER", "gemini").strip().lower(),
+        embedding_provider=os.getenv("EMBEDDING_PROVIDER", "local_hash").strip().lower(),
         qdrant_collection=os.getenv("QDRANT_COLLECTION", "finsight_chunks").strip(),
         qdrant_path=os.getenv("QDRANT_PATH", "data/index/qdrant").strip(),
     )

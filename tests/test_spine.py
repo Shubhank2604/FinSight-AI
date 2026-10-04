@@ -142,7 +142,8 @@ def test_verifier_allows_tool_backed_compute_answer() -> None:
         tool_results=[tool_result],
     )
 
-    assert verified.answer == "Tool-backed EMI result."
+    assert verified.status == "ok"
+    assert str(tool_result.calculation.result["monthly_emi"]) in verified.answer
     assert verified.confidence >= 0.7
     assert verified.calculations
 
@@ -209,7 +210,7 @@ def test_verifier_accepts_structured_cited_answer() -> None:
         structured_answer=structured,
     )
 
-    assert verified.answer == structured.answer
+    assert verified.answer == "Liquidity risk increased. [chunk-1]"
     assert verified.confidence >= 0.6
     assert verified.claims
 

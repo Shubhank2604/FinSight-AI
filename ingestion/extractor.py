@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import hashlib
 import uuid
+import re
 from pathlib import Path
 
-import fitz
+import pymupdf as fitz
 import pdfplumber
+from PIL import Image
 
 from ingestion.chunker import chunk_text, detect_section, table_to_text
 from schemas import ChunkType, DocumentChunk
@@ -62,6 +64,11 @@ def _ingest_pdf(path: Path, document_id: str, source_name: str) -> list[Document
         current_section: str | None = None
         for page_index, page in enumerate(pdf.pages, start=1):
             text = page.extract_text() or ""
+            metadata = {"original_path": str(path)}
+            for label, key, pattern in [("Company", "entity", r"[^\n]+"), ("Period", "period", r"20\d{2}"), ("Currency", "currency", r"[A-Z]{3}"), ("Units", "units", r"million|billion|thousand")]:
+                match = re.search(rf"{label}\s*:\s*({pattern})", text, re.I)
+                if match:
+                    metadata[key] = int(match.group(1)) if key == "period" else match.group(1).strip()
             current_section = detect_section(text, current_section)
 
             for text_chunk in chunk_text(text):
@@ -75,6 +82,7 @@ def _ingest_pdf(path: Path, document_id: str, source_name: str) -> list[Document
                         content=text_chunk,
                         page=page_index,
                         section=current_section,
+                        metadata=metadata,
                     )
                 )
 
@@ -92,7 +100,7 @@ def _ingest_pdf(path: Path, document_id: str, source_name: str) -> list[Document
                         content=table_text,
                         page=page_index,
                         section=current_section,
-                        metadata={"table_index": table_index, "rows": table},
+                        metadata={**metadata, "table_index": table_index, "rows": table},
                     )
                 )
 
@@ -101,6 +109,8 @@ def _ingest_pdf(path: Path, document_id: str, source_name: str) -> list[Document
 
 
 def _ingest_image(path: Path, document_id: str, source_name: str) -> list[DocumentChunk]:
+    with Image.open(path) as image:
+        image.verify()
     return [
         DocumentChunk(
             id=_chunk_id(document_id, "image", None, 1),
@@ -117,6 +127,10 @@ def _ingest_image(path: Path, document_id: str, source_name: str) -> list[Docume
 
 def ingest_file(path: str | Path, source_name: str | None = None) -> list[DocumentChunk]:
     file_path = Path(path)
+    if not file_path.is_file():
+        raise ValueError("Input file is missing")
+    if file_path.stat().st_size > 20 * 1024 * 1024:
+        raise ValueError("Input file exceeds the 20 MB local demonstration limit")
     source = source_name or file_path.name
     document_id = _file_sha256(file_path)
     suffix = file_path.suffix.lower()
@@ -126,3 +140,20 @@ def ingest_file(path: str | Path, source_name: str | None = None) -> list[Docume
     if suffix in {".png", ".jpg", ".jpeg"}:
         return _ingest_image(file_path, document_id, source)
     raise ValueError(f"Unsupported file type: {suffix}")
+
+
+def render_pdf_pages(path: str | Path, pages: list[int], output_dir: str | Path) -> list[DocumentChunk]:
+    """Render only requested pages, including vector charts, with stable evidence IDs."""
+    path = Path(path)
+    document_id = _file_sha256(path)
+    directory = Path(output_dir) / document_id
+    directory.mkdir(parents=True, exist_ok=True)
+    chunks = []
+    with fitz.open(path) as doc:
+        for number in sorted(set(pages)):
+            if not 1 <= number <= len(doc):
+                raise ValueError("Requested PDF page is outside the document")
+            image_path = directory / f"page-{number}.png"
+            doc[number-1].get_pixmap(matrix=fitz.Matrix(1.5, 1.5)).save(str(image_path))
+            chunks.append(DocumentChunk(id=_chunk_id(document_id, "rendered-page", number, 1), document_id=document_id, source_name=path.name, type=ChunkType.IMAGE, content=f"Rendered PDF page {number}; visual reading is experimental.", page=number, metadata={"image_path": str(image_path), "experimental": True, "visual_numbers_verified": False}))
+    return chunks
