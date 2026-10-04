@@ -1,0 +1,50 @@
+{
+  "benchmark": "finsight-application-v2",
+  "dataset_version": "2.0.0",
+  "metadata": {
+    "generated_at": "2026-10-04T21:34:09.112866+00:00",
+    "revision": "6009ee268e1ed582107dccfa8e07947d561c57ac",
+    "dirty_worktree": true,
+    "code_digest": "ece3c865dcdb180f45f7ed321429e770907a254749766fc5ff13326bcd0e3a2c",
+    "dataset_sha256": "6dc4179842b92e2017a19f880edb3596b322a977e5edbfeba4ca0f3a3e4b857f",
+    "python": "3.13.9",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "dependencies": {
+      "pydantic": "2.13.3",
+      "qdrant-client": "1.17.1",
+      "rank-bm25": "0.2.2",
+      "google-genai": "1.74.0",
+      "pdfplumber": "0.11.9",
+      "PyMuPDF": "1.27.2.3",
+      "streamlit": "1.57.0",
+      "numpy": "2.4.4"
+    },
+    "embedding_provider": "gemini",
+    "embedding_model": "gemini-embedding-001",
+    "dimensions": 768,
+    "text_model": "gemini-3-flash-preview",
+    "prompt_version": "claims-authoritative-v2",
+    "ingestion_version": "financial-lines-v2",
+    "cost_usd": null,
+    "cost_reason": "Provider invoices/prices are not inferred; token usage is reported where available.",
+    "label_review": "agent-authored; not independently human-reviewed"
+  },
+  "live_generation": false,
+  "repeats": 1,
+  "split": "all",
+  "records": [],
+  "failures": [
+    {
+      "type": "ClientError",
+      "reason": "Provider quota exhausted; retry later or use offline document facts/calculators."
+    }
+  ],
+  "planned_cases": 360,
+  "summary": {
+    "bm25": {},
+    "dense": {},
+    "hybrid": {}
+  },
+  "completed_cases": 0,
+  "complete": false
+}

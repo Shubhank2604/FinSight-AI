@@ -1,0 +1,91 @@
+{
+  "scope": "experimental adapter probes; excluded from verified performance",
+  "live": true,
+  "models": {
+    "text": "gemini-3-flash-preview",
+    "web": "gemini-2.5-flash"
+  },
+  "visual": [
+    {
+      "fixture": "screenshot.png",
+      "sha256": "12449939e4fdb78315f546701ecf3acedab3d7fe888ee0768c65f1b86bb9c0f2",
+      "evidence_id": "visual-12449939e4fdb783",
+      "expected_revenue_million": 120,
+      "status": "blocked",
+      "reason": "Provider quota exhausted; retry later or use offline document facts/calculators."
+    },
+    {
+      "fixture": "chart.png",
+      "sha256": "1750896769fdf21a882964c4fc82ca12f592e8c45c699ad6f2d36ae3d66e3864",
+      "evidence_id": "visual-1750896769fdf21a",
+      "expected_revenue_million": 120,
+      "status": "blocked",
+      "reason": "Provider quota exhausted; retry later or use offline document facts/calculators."
+    },
+    {
+      "fixture": "table.png",
+      "sha256": "3b83e873bd0d661e009b281fa51666685f7ce26baf6aba68a43a94f1b258d788",
+      "evidence_id": "visual-3b83e873bd0d661e",
+      "expected_revenue_million": 120,
+      "status": "provider_returned_output",
+      "raw_output": {
+        "answer": "Acme's revenue for the 2025 period was 120 USD million [visual-3b83e873bd0d661e].",
+        "used_citation_ids": [
+          "visual-3b83e873bd0d661e"
+        ],
+        "claims": [
+          {
+            "text": "The synthetic table for Acme is for the period 2025.",
+            "citation_ids": [
+              "visual-3b83e873bd0d661e"
+            ]
+          },
+          {
+            "text": "The units for the table are USD million.",
+            "citation_ids": [
+              "visual-3b83e873bd0d661e"
+            ]
+          },
+          {
+            "text": "The revenue reported in the table is 120.",
+            "citation_ids": [
+              "visual-3b83e873bd0d661e"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "confidence": 1.0,
+        "needs_more_data": false
+      },
+      "usage": {
+        "cache_tokens_details": null,
+        "cached_content_token_count": null,
+        "candidates_token_count": 197,
+        "candidates_tokens_details": null,
+        "prompt_token_count": 1428,
+        "prompt_tokens_details": [
+          {
+            "modality": "TEXT",
+            "token_count": 355
+          },
+          {
+            "modality": "IMAGE",
+            "token_count": 1073
+          }
+        ],
+        "thoughts_token_count": 282,
+        "tool_use_prompt_token_count": null,
+        "tool_use_prompt_tokens_details": null,
+        "total_token_count": 1907,
+        "traffic_type": null
+      },
+      "semantic_support_verified": false
+    }
+  ],
+  "web": {
+    "status": "blocked",
+    "reason": "Provider request failed; check credentials, connectivity and model settings, then retry.",
+    "freshness_verified": false
+  },
+  "freshness_verified": false
+}

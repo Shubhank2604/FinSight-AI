@@ -4,7 +4,7 @@ FinSight separates retrieval evaluation from answer-generation evaluation. This 
 
 ## Benchmark design
 
-`evals/retrieval_benchmark.json` contains 18 synthetic financial passages and 18 human-authored query/relevance labels. The cases span:
+`evals/retrieval_benchmark.json` contains 18 synthetic financial passages and 18 query/relevance labels (independent human review is not established by the retained manifest). The cases span:
 
 - company risk factors, segment results, and liquidity;
 - brokerage allocation, fees, and tax lots;
@@ -92,3 +92,25 @@ python eval_citations.py \
 3. Add claim-level entailment scoring and independently reviewed support labels.
 4. Track token usage, provider cost, end-to-end latency, and model/version metadata.
 5. Split benchmark development and held-out test cases before tuning retrieval parameters.
+
+## OpenAI migration evidence
+
+New reports contain `openai` provider identity and the actual response model, prompt version, latency, token usage, schema validation and application validation separately. Files named `application-openai-*`, `experimental-openai-*` and `provider-openai-*` belong to this migration. Existing Gemini live, semantic retrieval, experimental and replay reports remain historical and are not relabeled. Offline SDK transport tests are not live calls.
+
+The application runner checkpoints each finished request before checking provider failure. `missing_requests` lists every unrun case/mode/repeat; `repeat_status` distinguishes complete, partial and not-run repeats. Missing repeat scores are null. `completed_cases` includes finished requests with failures; successful OpenAI calls are counted separately. A missing key produces zero requests, explicit blocked configuration and a nonzero live CLI exit. Provider failure stops the run, retains the failed request and all earlier records, and exits nonzero. No provider failure can silently turn an incomplete run into a successful quality gate.
+
+The production calculation routes use deterministic Python without LLM calls. `evaluation.provider_checks` additionally tests document-backed calculation explanations against immutable tool values; that isolated probe is not evidence that production arithmetic uses a model. See [the migration guide](openai-migration.md) for exact live commands and remaining experimental work.
+
+## Completed application and semantic evaluations (2026-10-04)
+
+The actual PDF application dataset contains 12 agent-authored CC0 fixtures and 120 questions: eight development companies (80 cases), four held-out companies (40 cases), frozen before tuning. Synthetic labels are not independently human-reviewed. Answer correctness checks expected supported currency/value or expected abstention; it does not score general nonnumeric truth.
+
+`application-final-offline.json`: 120 cases in each BM25/hash dense/hybrid mode, all correct, answerable coverage 1.0, unsupported acceptance 0.0. Deterministic typed extraction and calculation bypass generation.
+
+`application-openai-live-verified.json`: 360 requests across three repeats, all completed; 138 schema-valid OpenAI responses, 164,588 reported generation tokens. Correctness 354/360 (98.33%); answerable coverage 306/312 (98.08%); unsupported acceptance 0/48. All 120 held-out repeat slots were correct. Repeat correctness: 96.67%, 100%, 98.33%. Six false abstentions are retained: incomplete units, malformed references, multi-period narrative checks and answer/claim disagreement. Schema-valid output is not automatically financially accepted. Provider response latency p50 1,109.362 ms, empirical p95 1,470.239 ms; mean across all application cases was 450.673 ms, including cheap deterministic routes. Costs remain unknown.
+
+`application-openai-semantic.json`: genuine text-embedding-3-small embeddings, 768 dimensions, same PDFs/questions/source scope, BM25/dense/hybrid comparison. Eight embedding requests, 6,081 reported embedding tokens, 8,389.986 ms total embedding-call wall time. Generation is disabled for this comparison; downstream answers are deterministic. Recall@3: 0.557692/0.834135/0.598558; MRR@3: 0.926282/0.980769/0.995192; nDCG@3: 0.650074/0.869522/0.723012. Dense retrieves more labeled relevant chunks than hybrid on this corpus; fusion is not assumed better. All modes have final required-page context coverage and downstream correctness 1.0. Query vectors are precomputed and cached; reported retrieval/request latency excludes embedding preparation. Context selection uses more than the three ranking positions scored, so final coverage can exceed Recall@3.
+
+Relevance labels treat all text/table chunks on required pages as relevant, including duplicate representations. Page coverage is coarse; it is not claim entailment. The lexical, templated corpus cannot establish ranking gains on arbitrary filings. Independently reviewed support labels and real documents remain outstanding.
+
+Reports record dataset/code digests, revisions, dependencies, provider/model/index/prompt identity, raw generation output, traces and decisions. The live report precedes the optional semantic adapter addition; its own code digest identifies the tested state. Historical Gemini quota runs and missing-key OpenAI reports are retained as historical failures rather than overwritten.

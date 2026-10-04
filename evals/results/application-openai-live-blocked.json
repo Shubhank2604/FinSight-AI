@@ -1,0 +1,5143 @@
+{
+  "benchmark": "finsight-application-openai-v1",
+  "dataset_version": "2.0.0",
+  "metadata": {
+    "generated_at": "2026-10-04T21:56:17.649970+00:00",
+    "revision": "6009ee268e1ed582107dccfa8e07947d561c57ac",
+    "dirty_worktree": true,
+    "code_digest": "8ddaddd57b59e98bb8e677b427445914802da6434d51c42a6a821dc30972063a",
+    "dataset_sha256": "6dc4179842b92e2017a19f880edb3596b322a977e5edbfeba4ca0f3a3e4b857f",
+    "python": "3.13.9",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "dependencies": {
+      "pydantic": "2.13.3",
+      "qdrant-client": "1.17.1",
+      "rank-bm25": "0.2.2",
+      "openai": "3.13.0",
+      "pdfplumber": "0.11.9",
+      "PyMuPDF": "1.27.2.3",
+      "streamlit": "1.57.0",
+      "numpy": "2.4.4"
+    },
+    "embedding_provider": "local_hash",
+    "embedding_model": "blake2b-hash-v1",
+    "dimensions": 768,
+    "llm_provider": "openai",
+    "text_model": "gpt-5.4-mini-2026-03-17",
+    "prompt_version": "claims-authoritative-openai-v1",
+    "ingestion_version": "financial-lines-v2",
+    "cost_usd": null,
+    "cost_reason": "Provider invoices/prices are not inferred; token usage is reported where available.",
+    "label_review": "agent-authored; not independently human-reviewed"
+  },
+  "live_generation": true,
+  "repeats": 3,
+  "split": "all",
+  "records": [],
+  "failures": [
+    {
+      "type": "Configuration",
+      "reason": "OPENAI_API_KEY is unavailable; no live OpenAI requests were made."
+    }
+  ],
+  "planned_requests": [
+    {
+      "id": "cedar-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "cedar-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "harbor-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "quartz-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "maple-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "juniper-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "beacon-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "willow-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "pine-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development"
+    },
+    {
+      "id": "orchid-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out"
+    },
+    {
+      "id": "cedar-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "cedar-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "harbor-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "quartz-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "maple-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "juniper-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "beacon-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "willow-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "pine-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development"
+    },
+    {
+      "id": "orchid-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out"
+    },
+    {
+      "id": "cedar-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "cedar-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "harbor-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "quartz-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "maple-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "juniper-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "beacon-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "willow-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "pine-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development"
+    },
+    {
+      "id": "orchid-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "orchid-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "aspen-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "birch-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    },
+    {
+      "id": "elm-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out"
+    }
+  ],
+  "planned_cases": 360,
+  "missing_requests": [
+    {
+      "id": "cedar-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-01",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-02",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-03",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-04",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-05",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-06",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-07",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-08",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-09",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-10",
+      "mode": "hybrid",
+      "repeat": 0,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-01",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-02",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-03",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-04",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-05",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-06",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-07",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-08",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-09",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-10",
+      "mode": "hybrid",
+      "repeat": 1,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "cedar-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "harbor-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "quartz-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "maple-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "juniper-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "beacon-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "willow-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "pine-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "development",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "orchid-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "aspen-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "birch-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-01",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-02",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-03",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-04",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-05",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-06",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-07",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-08",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-09",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    },
+    {
+      "id": "elm-10",
+      "mode": "hybrid",
+      "repeat": 2,
+      "split": "held_out",
+      "status": "not_run",
+      "reason": "Evaluation stopped before this request."
+    }
+  ],
+  "summary": {
+    "hybrid": {
+      "all": {
+        "cases": 0,
+        "answer_correctness": null,
+        "reason": "No completed requests in this group."
+      },
+      "development": {
+        "cases": 0,
+        "answer_correctness": null,
+        "reason": "No completed requests in this group."
+      },
+      "held_out": {
+        "cases": 0,
+        "answer_correctness": null,
+        "reason": "No completed requests in this group."
+      }
+    }
+  },
+  "completed_cases": 0,
+  "openai_response_count": 0,
+  "successful_openai_calls": 0,
+  "complete": false,
+  "repeat_status": {
+    "hybrid": [
+      {
+        "repeat": 0,
+        "planned": 120,
+        "completed": 0,
+        "status": "not_run",
+        "answer_correctness": null
+      },
+      {
+        "repeat": 1,
+        "planned": 120,
+        "completed": 0,
+        "status": "not_run",
+        "answer_correctness": null
+      },
+      {
+        "repeat": 2,
+        "planned": 120,
+        "completed": 0,
+        "status": "not_run",
+        "answer_correctness": null
+      }
+    ]
+  },
+  "observed_variability": {
+    "hybrid": [
+      null,
+      null,
+      null
+    ]
+  }
+}

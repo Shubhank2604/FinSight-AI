@@ -1,0 +1,254 @@
+{
+  "scope": "experimental adapter probes; excluded from verified performance",
+  "live": true,
+  "provider": "openai",
+  "models": {
+    "text": "gpt-5.4-mini-2026-03-17",
+    "vision": "gpt-5.4-mini-2026-03-17",
+    "web": "gpt-5.4-mini-2026-03-17"
+  },
+  "visual": [
+    {
+      "fixture": "screenshot.png",
+      "sha256": "12449939e4fdb78315f546701ecf3acedab3d7fe888ee0768c65f1b86bb9c0f2",
+      "evidence_id": "visual-12449939e4fdb783",
+      "expected_revenue_million": 120,
+      "status": "provider_returned_output",
+      "raw_output": {
+        "answer": "Revenue is USD 120 million for Acme 2025.",
+        "used_citation_ids": [
+          "visual-12449939e4fdb783"
+        ],
+        "claims": [
+          {
+            "text": "Acme 2025 revenue is USD 120 million.",
+            "citation_ids": [
+              "visual-12449939e4fdb783"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "confidence": 0.99,
+        "needs_more_data": false
+      },
+      "usage": {
+        "input_tokens": 887,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 93,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 980
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_06034fd3c55c5126016ac2cf409b2887d1ad729d0787a655f0",
+        "usage": {
+          "input_tokens": 887,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 93,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 980
+        },
+        "text": "{\"answer\":\"Revenue is USD 120 million for Acme 2025.\",\"used_citation_ids\":[\"visual-12449939e4fdb783\"],\"claims\":[{\"text\":\"Acme 2025 revenue is USD 120 million.\",\"citation_ids\":[\"visual-12449939e4fdb783\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_06034fd3c55c5126016ac2cf4197b887d1a5649eb775cb367f",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"Revenue is USD 120 million for Acme 2025.\",\"used_citation_ids\":[\"visual-12449939e4fdb783\"],\"claims\":[{\"text\":\"Acme 2025 revenue is USD 120 million.\",\"citation_ids\":[\"visual-12449939e4fdb783\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 2649.931
+      },
+      "semantic_support_verified": false
+    },
+    {
+      "fixture": "chart.png",
+      "sha256": "1750896769fdf21a882964c4fc82ca12f592e8c45c699ad6f2d36ae3d66e3864",
+      "evidence_id": "visual-1750896769fdf21a",
+      "expected_revenue_million": 120,
+      "status": "provider_returned_output",
+      "raw_output": {
+        "answer": "Visible revenue is 2025: 120 USD million, according to the chart titled \u201cSynthetic chart: Acme 2025 (USD million)\u201d.",
+        "used_citation_ids": [
+          "visual-1750896769fdf21a"
+        ],
+        "claims": [
+          {
+            "text": "Acme 2025 visible revenue is 120 USD million for 2025.",
+            "citation_ids": [
+              "visual-1750896769fdf21a"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "confidence": 0.99,
+        "needs_more_data": false
+      },
+      "usage": {
+        "input_tokens": 887,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1004
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_014cec734c189864016ac2cf42751087d18cbe1f99a0fb18dc",
+        "usage": {
+          "input_tokens": 887,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 117,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1004
+        },
+        "text": "{\"answer\":\"Visible revenue is 2025: 120 USD million, according to the chart titled \u201cSynthetic chart: Acme 2025 (USD million)\u201d.\",\"used_citation_ids\":[\"visual-1750896769fdf21a\"],\"claims\":[{\"text\":\"Acme 2025 visible revenue is 120 USD million for 2025.\",\"citation_ids\":[\"visual-1750896769fdf21a\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_014cec734c189864016ac2cf42d4c887d1a6a96d92ecf9c996",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"Visible revenue is 2025: 120 USD million, according to the chart titled \u201cSynthetic chart: Acme 2025 (USD million)\u201d.\",\"used_citation_ids\":[\"visual-1750896769fdf21a\"],\"claims\":[{\"text\":\"Acme 2025 visible revenue is 120 USD million for 2025.\",\"citation_ids\":[\"visual-1750896769fdf21a\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 1061.745
+      },
+      "semantic_support_verified": false
+    },
+    {
+      "fixture": "table.png",
+      "sha256": "3b83e873bd0d661e009b281fa51666685f7ce26baf6aba68a43a94f1b258d788",
+      "evidence_id": "visual-3b83e873bd0d661e",
+      "expected_revenue_million": 120,
+      "status": "provider_returned_output",
+      "raw_output": {
+        "answer": "The visible revenue is 120 USD million for Acme 2025.",
+        "used_citation_ids": [
+          "visual-3b83e873bd0d661e"
+        ],
+        "claims": [
+          {
+            "text": "Acme 2025 revenue is 120 USD million.",
+            "citation_ids": [
+              "visual-3b83e873bd0d661e"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "confidence": 0.99,
+        "needs_more_data": false
+      },
+      "usage": {
+        "input_tokens": 888,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 99,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 987
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_0e7664b460549087016ac2cf43826887d1976043f1951a11bd",
+        "usage": {
+          "input_tokens": 888,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 99,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 987
+        },
+        "text": "{\"answer\":\"The visible revenue is 120 USD million for Acme 2025.\",\"used_citation_ids\":[\"visual-3b83e873bd0d661e\"],\"claims\":[{\"text\":\"Acme 2025 revenue is 120 USD million.\",\"citation_ids\":[\"visual-3b83e873bd0d661e\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_0e7664b460549087016ac2cf43e9e887d18f93d0137a939ef6",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"The visible revenue is 120 USD million for Acme 2025.\",\"used_citation_ids\":[\"visual-3b83e873bd0d661e\"],\"claims\":[{\"text\":\"Acme 2025 revenue is 120 USD million.\",\"citation_ids\":[\"visual-3b83e873bd0d661e\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 966.006
+      },
+      "semantic_support_verified": false
+    }
+  ],
+  "web": {
+    "status": "not_run",
+    "reason": "Use --live --web and OPENAI_WEB_ENABLED=true for a live web check."
+  },
+  "freshness_verified": false
+}

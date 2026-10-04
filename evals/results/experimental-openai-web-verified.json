@@ -1,0 +1,529 @@
+{
+  "scope": "experimental adapter probes; excluded from verified performance",
+  "live": true,
+  "provider": "openai",
+  "models": {
+    "text": "gpt-5.4-mini-2026-03-17",
+    "vision": "gpt-5.4-mini-2026-03-17",
+    "web": "gpt-5.4-mini-2026-03-17"
+  },
+  "visual": [
+    {
+      "fixture": "screenshot.png",
+      "sha256": "12449939e4fdb78315f546701ecf3acedab3d7fe888ee0768c65f1b86bb9c0f2",
+      "evidence_id": "visual-12449939e4fdb783",
+      "expected_revenue_million": 120,
+      "status": "provider_returned_output",
+      "raw_output": {
+        "answer": "Revenue is USD 120 million for Acme 2025.",
+        "used_citation_ids": [
+          "visual-12449939e4fdb783"
+        ],
+        "claims": [
+          {
+            "text": "Acme 2025 revenue is USD 120 million.",
+            "citation_ids": [
+              "visual-12449939e4fdb783"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "confidence": 0.99,
+        "needs_more_data": false
+      },
+      "usage": {
+        "input_tokens": 887,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 93,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 980
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_0a9e629e8e4250ac016ac2cf79915887d196e30c01f121925b",
+        "usage": {
+          "input_tokens": 887,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 93,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 980
+        },
+        "text": "{\"answer\":\"Revenue is USD 120 million for Acme 2025.\",\"used_citation_ids\":[\"visual-12449939e4fdb783\"],\"claims\":[{\"text\":\"Acme 2025 revenue is USD 120 million.\",\"citation_ids\":[\"visual-12449939e4fdb783\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_0a9e629e8e4250ac016ac2cf79ef7887d1ac50d00f0fab4d18",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"Revenue is USD 120 million for Acme 2025.\",\"used_citation_ids\":[\"visual-12449939e4fdb783\"],\"claims\":[{\"text\":\"Acme 2025 revenue is USD 120 million.\",\"citation_ids\":[\"visual-12449939e4fdb783\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 1773.742
+      },
+      "semantic_support_verified": false
+    },
+    {
+      "fixture": "chart.png",
+      "sha256": "1750896769fdf21a882964c4fc82ca12f592e8c45c699ad6f2d36ae3d66e3864",
+      "evidence_id": "visual-1750896769fdf21a",
+      "expected_revenue_million": 120,
+      "status": "provider_returned_output",
+      "raw_output": {
+        "answer": "The visible revenue for Acme is 2025: 120 USD million.",
+        "used_citation_ids": [
+          "visual-1750896769fdf21a"
+        ],
+        "claims": [
+          {
+            "text": "Acme's visible revenue is 2025: 120 USD million.",
+            "citation_ids": [
+              "visual-1750896769fdf21a"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "confidence": 0.98,
+        "needs_more_data": false
+      },
+      "usage": {
+        "input_tokens": 887,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 99,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 986
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_07240d082bb029bb016ac2cf7a9ddc87d19377af1ee7783e56",
+        "usage": {
+          "input_tokens": 887,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 99,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 986
+        },
+        "text": "{\"answer\":\"The visible revenue for Acme is 2025: 120 USD million.\",\"used_citation_ids\":[\"visual-1750896769fdf21a\"],\"claims\":[{\"text\":\"Acme's visible revenue is 2025: 120 USD million.\",\"citation_ids\":[\"visual-1750896769fdf21a\"]}],\"assumptions\":[],\"confidence\":0.98,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_07240d082bb029bb016ac2cf7b130087d19bbf8d13f027127b",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"The visible revenue for Acme is 2025: 120 USD million.\",\"used_citation_ids\":[\"visual-1750896769fdf21a\"],\"claims\":[{\"text\":\"Acme's visible revenue is 2025: 120 USD million.\",\"citation_ids\":[\"visual-1750896769fdf21a\"]}],\"assumptions\":[],\"confidence\":0.98,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 1033.679
+      },
+      "semantic_support_verified": false
+    },
+    {
+      "fixture": "table.png",
+      "sha256": "3b83e873bd0d661e009b281fa51666685f7ce26baf6aba68a43a94f1b258d788",
+      "evidence_id": "visual-3b83e873bd0d661e",
+      "expected_revenue_million": 120,
+      "status": "provider_returned_output",
+      "raw_output": {
+        "answer": "The visible revenue is 120 USD million for Acme 2025.",
+        "used_citation_ids": [
+          "visual-3b83e873bd0d661e"
+        ],
+        "claims": [
+          {
+            "text": "Acme 2025 revenue is 120 USD million.",
+            "citation_ids": [
+              "visual-3b83e873bd0d661e"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "confidence": 0.99,
+        "needs_more_data": false
+      },
+      "usage": {
+        "input_tokens": 888,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 99,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 987
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_0e096706f6237b67016ac2cf7ba64c87d1b1331ad90220075c",
+        "usage": {
+          "input_tokens": 888,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 99,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 987
+        },
+        "text": "{\"answer\":\"The visible revenue is 120 USD million for Acme 2025.\",\"used_citation_ids\":[\"visual-3b83e873bd0d661e\"],\"claims\":[{\"text\":\"Acme 2025 revenue is 120 USD million.\",\"citation_ids\":[\"visual-3b83e873bd0d661e\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_0e096706f6237b67016ac2cf7bff5487d1948bbfb6f0c3448a",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"The visible revenue is 120 USD million for Acme 2025.\",\"used_citation_ids\":[\"visual-3b83e873bd0d661e\"],\"claims\":[{\"text\":\"Acme 2025 revenue is 120 USD million.\",\"citation_ids\":[\"visual-3b83e873bd0d661e\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 886.49
+      },
+      "semantic_support_verified": false
+    }
+  ],
+  "web": {
+    "status": "provider_returned_output",
+    "raw_output": {
+      "answer": "The **most recent U.S. Federal Reserve target range for the federal funds rate** is **3.75% to 4.00%**. The Federal Reserve announced this in its **FOMC statement dated September 16, 2026**, where it said it would **raise the target range by 1/4 percentage point to 3-3/4 to 4 percent**. ([federalreserve.gov](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai))\n\n**Source publication date:** September 16, 2026.  \n**Today\u2019s date:** October 4, 2026. So the source was published **18 days ago**. ([federalreserve.gov](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai))\n\nIf you want, I can also point you to the Fed\u2019s implementation note or the most recent FOMC minutes, but the statement above is the primary source for the target rate.",
+      "used_citation_ids": [
+        "web-1"
+      ],
+      "claims": [],
+      "assumptions": [
+        "Experimental OpenAI web search; citation annotations do not establish factual correctness or source freshness."
+      ],
+      "confidence": 0.0,
+      "needs_more_data": false
+    },
+    "citations": [
+      {
+        "chunk_id": "web-1",
+        "source_name": "Federal Reserve Board - Federal Reserve issues FOMC statement",
+        "page": null,
+        "section": null,
+        "snippet": "Federal Reserve Board - Federal Reserve issues FOMC statement",
+        "source_type": "web",
+        "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai",
+        "metadata": {
+          "retrieved_at": "2026-10-04T22:13:19.330781+00:00",
+          "published_at": null,
+          "freshness_verified": false,
+          "annotations": [
+            {
+              "end_index": 605,
+              "start_index": 288,
+              "title": "Federal Reserve Board - Federal Reserve issues FOMC statement",
+              "type": "url_citation",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai"
+            },
+            {
+              "end_index": 1055,
+              "start_index": 738,
+              "title": "Federal Reserve Board - Federal Reserve issues FOMC statement",
+              "type": "url_citation",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai"
+            }
+          ],
+          "consulted_sources": [
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260429a.htm"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm?embed=true"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a1.htm"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-summary.htm"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-part2.htm"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a1.htm?trk=article-ssr-frontend-pulse_little-text-block"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260617a1.pdf"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm?gsid=f94a5e4d-5478-427a-8db8-a2c868f6d224"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/FOMC/fundsrate.htm"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20251029a.htm"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260429a1.pdf?ftag=MSFd61514f"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260318a1.pdf"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260128a1.pdf"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20250917a1.pdf"
+            },
+            {
+              "type": "url",
+              "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "input_tokens": 8541,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 261,
+      "output_tokens_details": {
+        "reasoning_tokens": 63
+      },
+      "total_tokens": 8802
+    },
+    "provider_request": {
+      "provider": "openai",
+      "requested_model": "gpt-5.4-mini-2026-03-17",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "prompt_version": "claims-authoritative-openai-v1",
+      "status": "completed",
+      "attempts": 1,
+      "validation": "annotations_preserved_not_fact_verified",
+      "response_id": "resp_077bcd0073878790016ac2cf7c8e9887d1af8ed3ff7de2887f",
+      "usage": {
+        "input_tokens": 8541,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 261,
+        "output_tokens_details": {
+          "reasoning_tokens": 63
+        },
+        "total_tokens": 8802
+      },
+      "text": "The **most recent U.S. Federal Reserve target range for the federal funds rate** is **3.75% to 4.00%**. The Federal Reserve announced this in its **FOMC statement dated September 16, 2026**, where it said it would **raise the target range by 1/4 percentage point to 3-3/4 to 4 percent**. ([federalreserve.gov](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai))\n\n**Source publication date:** September 16, 2026.  \n**Today\u2019s date:** October 4, 2026. So the source was published **18 days ago**. ([federalreserve.gov](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai))\n\nIf you want, I can also point you to the Fed\u2019s implementation note or the most recent FOMC minutes, but the statement above is the primary source for the target rate.",
+      "output": [
+        {
+          "id": "ws_077bcd0073878790016ac2cf7d1f8887d18bba6cb81fb9332b",
+          "action": {
+            "type": "search",
+            "queries": [
+              "site:federalreserve.gov Federal Reserve target range September 2026 FOMC statement federal funds rate",
+              "site:federalreserve.gov FOMC statement target range federal funds rate 2026"
+            ],
+            "query": "site:federalreserve.gov Federal Reserve target range September 2026 FOMC statement federal funds rate",
+            "sources": [
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260429a.htm"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm?embed=true"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a1.htm"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-summary.htm"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-part2.htm"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a1.htm?trk=article-ssr-frontend-pulse_little-text-block"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260617a1.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm?gsid=f94a5e4d-5478-427a-8db8-a2c868f6d224"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/FOMC/fundsrate.htm"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20251029a.htm"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260429a1.pdf?ftag=MSFd61514f"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260318a1.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260128a1.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/monetarypolicy/files/monetary20250917a1.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai"
+              }
+            ]
+          },
+          "status": "completed",
+          "type": "web_search_call"
+        },
+        {
+          "id": "msg_077bcd0073878790016ac2cf7ef6ec87d1979fb5ab21f484cb",
+          "content": [
+            {
+              "annotations": [
+                {
+                  "end_index": 605,
+                  "start_index": 288,
+                  "title": "Federal Reserve Board - Federal Reserve issues FOMC statement",
+                  "type": "url_citation",
+                  "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai"
+                },
+                {
+                  "end_index": 1055,
+                  "start_index": 738,
+                  "title": "Federal Reserve Board - Federal Reserve issues FOMC statement",
+                  "type": "url_citation",
+                  "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai"
+                }
+              ],
+              "text": "The **most recent U.S. Federal Reserve target range for the federal funds rate** is **3.75% to 4.00%**. The Federal Reserve announced this in its **FOMC statement dated September 16, 2026**, where it said it would **raise the target range by 1/4 percentage point to 3-3/4 to 4 percent**. ([federalreserve.gov](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai))\n\n**Source publication date:** September 16, 2026.  \n**Today\u2019s date:** October 4, 2026. So the source was published **18 days ago**. ([federalreserve.gov](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm?hss_meta=eyJvcmdhbml6YXRpb25faWQiOiAyMjUsICJncm91cF9pZCI6IDE5MTE2NjgsICJhc3NldF9pZCI6IDI1NjYyMzksICJncm91cF9jb250ZW50X2lkIjogMTY0NDk0MjIzLCAiZ3JvdXBfbmV0d29ya19jb250ZW50X2lkIjogMjQzNTQ1NDY0fQ%3D%3D&utm_source=openai))\n\nIf you want, I can also point you to the Fed\u2019s implementation note or the most recent FOMC minutes, but the statement above is the primary source for the target rate.",
+              "type": "output_text",
+              "logprobs": []
+            }
+          ],
+          "role": "assistant",
+          "status": "completed",
+          "type": "message",
+          "phase": "final_answer"
+        }
+      ],
+      "incomplete_details": null,
+      "latency_ms": 3157.427
+    },
+    "support_mappings_preserved": true,
+    "freshness_verified": false
+  },
+  "freshness_verified": false
+}

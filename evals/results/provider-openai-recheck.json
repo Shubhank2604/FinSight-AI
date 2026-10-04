@@ -1,0 +1,742 @@
+{
+  "scope": "OpenAI live acceptance probes, separate from historical Gemini results",
+  "live_requested": true,
+  "metadata": {
+    "generated_at": "2026-10-04T22:07:15.397981+00:00",
+    "revision": "6009ee268e1ed582107dccfa8e07947d561c57ac",
+    "dirty_worktree": true,
+    "code_digest": "9c5a04b882317ccb2105212c7d83864e3bfa285aaaec991f53fff212fc76f196",
+    "dataset_sha256": "6dc4179842b92e2017a19f880edb3596b322a977e5edbfeba4ca0f3a3e4b857f",
+    "python": "3.13.9",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "dependencies": {
+      "pydantic": "2.13.3",
+      "qdrant-client": "1.17.1",
+      "rank-bm25": "0.2.2",
+      "openai": "3.13.0",
+      "pdfplumber": "0.11.9",
+      "PyMuPDF": "1.27.2.3",
+      "streamlit": "1.57.0",
+      "numpy": "2.4.4"
+    },
+    "embedding_provider": "local_hash",
+    "embedding_model": "blake2b-hash-v1",
+    "dimensions": 768,
+    "llm_provider": "openai",
+    "text_model": "gpt-5.4-mini-2026-03-17",
+    "prompt_version": "claims-authoritative-openai-v1",
+    "ingestion_version": "financial-lines-v2",
+    "cost_usd": null,
+    "cost_reason": "Provider invoices/prices are not inferred; token usage is reported where available.",
+    "label_review": "agent-authored; not independently human-reviewed"
+  },
+  "records": [
+    {
+      "check": "grounded_document_answer",
+      "status": "passed",
+      "validation_passed": true,
+      "response": {
+        "answer": "Cedar\u2019s 2025 revenue is USD 120.0 million. [358ece6c-35a7-5a08-bc48-1a451c913bf8] [682d007a-ede2-5a3d-8249-95c0c439630d]",
+        "citations": [
+          {
+            "chunk_id": "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+            "source_name": "Cedar.pdf",
+            "page": 2,
+            "section": null,
+            "snippet": "Company: Cedar\nPeriod: 2025\nCurrency: USD\nUnits: million\nRevenue 120.0\nNet income 24.0\nOperating income 30.0\nCurrent assets 60.0\nCurrent liabilities 30.0\nDebt 40.0\nEquity 80.0\nSupply risk: component shortages can delay orders.\nEarly repayment is permitted without a penalty.",
+            "source_type": "document",
+            "url": null,
+            "metadata": {}
+          },
+          {
+            "chunk_id": "682d007a-ede2-5a3d-8249-95c0c439630d",
+            "source_name": "Cedar.pdf",
+            "page": 2,
+            "section": null,
+            "snippet": "Revenue | 120.0\nNet income | 24.0\nOperating income | 30.0\nCurrent assets | 60.0\nCurrent liabilities | 30.0\nDebt | 40.0\nEquity | 80.0",
+            "source_type": "document",
+            "url": null,
+            "metadata": {}
+          }
+        ],
+        "calculations": [],
+        "assumptions": [],
+        "confidence": 1.0,
+        "claims": [
+          {
+            "text": "Cedar\u2019s 2025 revenue is USD 120.0 million.",
+            "citation_ids": [
+              "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+              "682d007a-ede2-5a3d-8249-95c0c439630d"
+            ]
+          }
+        ],
+        "status": "ok",
+        "reasons": [],
+        "diagnostics": {
+          "mandatory_checks_passed": true,
+          "semantic_entailment_proven": false,
+          "route": {
+            "route": "retrieve_then_answer",
+            "required_tools": [],
+            "required_retrieval": true,
+            "required_modalities": [],
+            "missing_inputs": [],
+            "risk_level": "low",
+            "reason": "Document facts require selected document evidence.",
+            "action": "answer",
+            "evidence_source": "document"
+          },
+          "stages_ms": {
+            "retrieval_ms": 2.596599981188774,
+            "generation_ms": 4017.9691999801435
+          },
+          "total_ms": 4027.2149000084028,
+          "retrieval_candidate_ids": [
+            "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+            "3144ebee-e7ff-53ca-97bd-b40cfdb05ffe",
+            "e19b0fe4-3f49-5319-aa8a-832863d1f002",
+            "682d007a-ede2-5a3d-8249-95c0c439630d",
+            "e06ea5aa-af71-598f-836c-5104e27acd7c"
+          ],
+          "selected_chunk_ids": [
+            "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+            "3144ebee-e7ff-53ca-97bd-b40cfdb05ffe",
+            "682d007a-ede2-5a3d-8249-95c0c439630d",
+            "e06ea5aa-af71-598f-836c-5104e27acd7c",
+            "e19b0fe4-3f49-5319-aa8a-832863d1f002"
+          ],
+          "evidence": [
+            {
+              "chunk": {
+                "id": "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "text",
+                "content": "Company: Cedar\nPeriod: 2025\nCurrency: USD\nUnits: million\nRevenue 120.0\nNet income 24.0\nOperating income 30.0\nCurrent assets 60.0\nCurrent liabilities 30.0\nDebt 40.0\nEquity 80.0\nSupply risk: component shortages can delay orders.\nEarly repayment is permitted without a penalty.",
+                "page": 2,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar",
+                  "period": 2025,
+                  "currency": "USD",
+                  "units": "million"
+                }
+              },
+              "score": 1.0,
+              "source": "hybrid"
+            },
+            {
+              "chunk": {
+                "id": "3144ebee-e7ff-53ca-97bd-b40cfdb05ffe",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "text",
+                "content": "Company: Cedar\nPeriod: 2024\nCurrency: USD\nUnits: million\nRevenue 100.0\nNet income 24.0\nOperating income 30.0\nCurrent assets 60.0\nCurrent liabilities 30.0\nDebt 40.0\nEquity 80.0\nSupply risk: component shortages can delay orders.\nEarly repayment is permitted without a penalty.",
+                "page": 1,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar",
+                  "period": 2024,
+                  "currency": "USD",
+                  "units": "million"
+                }
+              },
+              "score": 0.9839,
+              "source": "hybrid"
+            },
+            {
+              "chunk": {
+                "id": "682d007a-ede2-5a3d-8249-95c0c439630d",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "table",
+                "content": "Revenue | 120.0\nNet income | 24.0\nOperating income | 30.0\nCurrent assets | 60.0\nCurrent liabilities | 30.0\nDebt | 40.0\nEquity | 80.0",
+                "page": 2,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar",
+                  "period": 2025,
+                  "currency": "USD",
+                  "units": "million",
+                  "table_index": 1,
+                  "rows": [
+                    [
+                      "Revenue",
+                      "120.0"
+                    ],
+                    [
+                      "Net income",
+                      "24.0"
+                    ],
+                    [
+                      "Operating income",
+                      "30.0"
+                    ],
+                    [
+                      "Current assets",
+                      "60.0"
+                    ],
+                    [
+                      "Current liabilities",
+                      "30.0"
+                    ],
+                    [
+                      "Debt",
+                      "40.0"
+                    ],
+                    [
+                      "Equity",
+                      "80.0"
+                    ]
+                  ]
+                }
+              },
+              "score": 0.9531,
+              "source": "hybrid"
+            },
+            {
+              "chunk": {
+                "id": "e06ea5aa-af71-598f-836c-5104e27acd7c",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "table",
+                "content": "Revenue | 100.0\nNet income | 24.0\nOperating income | 30.0\nCurrent assets | 60.0\nCurrent liabilities | 30.0\nDebt | 40.0\nEquity | 80.0",
+                "page": 1,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar",
+                  "period": 2024,
+                  "currency": "USD",
+                  "units": "million",
+                  "table_index": 1,
+                  "rows": [
+                    [
+                      "Revenue",
+                      "100.0"
+                    ],
+                    [
+                      "Net income",
+                      "24.0"
+                    ],
+                    [
+                      "Operating income",
+                      "30.0"
+                    ],
+                    [
+                      "Current assets",
+                      "60.0"
+                    ],
+                    [
+                      "Current liabilities",
+                      "30.0"
+                    ],
+                    [
+                      "Debt",
+                      "40.0"
+                    ],
+                    [
+                      "Equity",
+                      "80.0"
+                    ]
+                  ]
+                }
+              },
+              "score": 0.9385,
+              "source": "hybrid"
+            },
+            {
+              "chunk": {
+                "id": "e19b0fe4-3f49-5319-aa8a-832863d1f002",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "text",
+                "content": "Company: Cedar\nLoan principal: USD 500000\nAnnual interest rate: 8%\nDuration: 20 years",
+                "page": 3,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar"
+                }
+              },
+              "score": 0.9683,
+              "source": "hybrid"
+            }
+          ],
+          "query_scope": [
+            "Cedar.pdf"
+          ],
+          "independent_query": true,
+          "provider_used": true,
+          "provider_usage": {
+            "input_tokens": 1011,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 171,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1182
+          },
+          "provider_request": {
+            "provider": "openai",
+            "requested_model": "gpt-5.4-mini-2026-03-17",
+            "model": "gpt-5.4-mini-2026-03-17",
+            "prompt_version": "claims-authoritative-openai-v1",
+            "status": "completed",
+            "attempts": 1,
+            "validation": "schema_valid",
+            "response_id": "resp_0d5f0f4a3fb52219016ac2ce15ca5087d1b7770a434f7e13d5",
+            "usage": {
+              "input_tokens": 1011,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 171,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 1182
+            },
+            "incomplete_details": null,
+            "latency_ms": 4012.328
+          }
+        }
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_0d5f0f4a3fb52219016ac2ce15ca5087d1b7770a434f7e13d5",
+        "usage": {
+          "input_tokens": 1011,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 171,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1182
+        },
+        "text": "{\"answer\":\"Cedar\u2019s revenue for 2025 is USD 120.0 million.\",\"used_citation_ids\":[\"358ece6c-35a7-5a08-bc48-1a451c913bf8\",\"682d007a-ede2-5a3d-8249-95c0c439630d\"],\"claims\":[{\"text\":\"Cedar\u2019s 2025 revenue is USD 120.0 million.\",\"citation_ids\":[\"358ece6c-35a7-5a08-bc48-1a451c913bf8\",\"682d007a-ede2-5a3d-8249-95c0c439630d\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_0d5f0f4a3fb52219016ac2ce16cbac87d1a7a8e46669cb6159",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"Cedar\u2019s revenue for 2025 is USD 120.0 million.\",\"used_citation_ids\":[\"358ece6c-35a7-5a08-bc48-1a451c913bf8\",\"682d007a-ede2-5a3d-8249-95c0c439630d\"],\"claims\":[{\"text\":\"Cedar\u2019s 2025 revenue is USD 120.0 million.\",\"citation_ids\":[\"358ece6c-35a7-5a08-bc48-1a451c913bf8\",\"682d007a-ede2-5a3d-8249-95c0c439630d\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 4012.328
+      }
+    },
+    {
+      "check": "structured_extraction",
+      "status": "passed",
+      "validation_passed": true,
+      "response": {
+        "answer": "Cedar revenue for 2025 was USD 120.0 million. [358ece6c-35a7-5a08-bc48-1a451c913bf8] [682d007a-ede2-5a3d-8249-95c0c439630d]",
+        "citations": [
+          {
+            "chunk_id": "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+            "source_name": "Cedar.pdf",
+            "page": 2,
+            "section": null,
+            "snippet": "Company: Cedar\nPeriod: 2025\nCurrency: USD\nUnits: million\nRevenue 120.0\nNet income 24.0\nOperating income 30.0\nCurrent assets 60.0\nCurrent liabilities 30.0\nDebt 40.0\nEquity 80.0\nSupply risk: component shortages can delay orders.\nEarly repayment is permitted without a penalty.",
+            "source_type": "document",
+            "url": null,
+            "metadata": {}
+          },
+          {
+            "chunk_id": "682d007a-ede2-5a3d-8249-95c0c439630d",
+            "source_name": "Cedar.pdf",
+            "page": 2,
+            "section": null,
+            "snippet": "Revenue | 120.0\nNet income | 24.0\nOperating income | 30.0\nCurrent assets | 60.0\nCurrent liabilities | 30.0\nDebt | 40.0\nEquity | 80.0",
+            "source_type": "document",
+            "url": null,
+            "metadata": {}
+          }
+        ],
+        "calculations": [],
+        "assumptions": [],
+        "confidence": 1.0,
+        "claims": [
+          {
+            "text": "Cedar revenue for 2025 was USD 120.0 million.",
+            "citation_ids": [
+              "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+              "682d007a-ede2-5a3d-8249-95c0c439630d"
+            ]
+          }
+        ],
+        "status": "ok",
+        "reasons": [],
+        "diagnostics": {
+          "mandatory_checks_passed": true,
+          "semantic_entailment_proven": false,
+          "route": {
+            "route": "retrieve_then_answer",
+            "required_tools": [],
+            "required_retrieval": true,
+            "required_modalities": [],
+            "missing_inputs": [],
+            "risk_level": "low",
+            "reason": "Document facts require selected document evidence.",
+            "action": "answer",
+            "evidence_source": "document"
+          },
+          "stages_ms": {
+            "retrieval_ms": 3.1142000225372612,
+            "generation_ms": 1890.8749999827705
+          },
+          "total_ms": 1896.0482999682426,
+          "retrieval_candidate_ids": [
+            "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+            "3144ebee-e7ff-53ca-97bd-b40cfdb05ffe",
+            "e19b0fe4-3f49-5319-aa8a-832863d1f002",
+            "682d007a-ede2-5a3d-8249-95c0c439630d",
+            "e06ea5aa-af71-598f-836c-5104e27acd7c"
+          ],
+          "selected_chunk_ids": [
+            "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+            "3144ebee-e7ff-53ca-97bd-b40cfdb05ffe",
+            "682d007a-ede2-5a3d-8249-95c0c439630d",
+            "e06ea5aa-af71-598f-836c-5104e27acd7c",
+            "e19b0fe4-3f49-5319-aa8a-832863d1f002"
+          ],
+          "evidence": [
+            {
+              "chunk": {
+                "id": "358ece6c-35a7-5a08-bc48-1a451c913bf8",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "text",
+                "content": "Company: Cedar\nPeriod: 2025\nCurrency: USD\nUnits: million\nRevenue 120.0\nNet income 24.0\nOperating income 30.0\nCurrent assets 60.0\nCurrent liabilities 30.0\nDebt 40.0\nEquity 80.0\nSupply risk: component shortages can delay orders.\nEarly repayment is permitted without a penalty.",
+                "page": 2,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar",
+                  "period": 2025,
+                  "currency": "USD",
+                  "units": "million"
+                }
+              },
+              "score": 1.0,
+              "source": "hybrid"
+            },
+            {
+              "chunk": {
+                "id": "3144ebee-e7ff-53ca-97bd-b40cfdb05ffe",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "text",
+                "content": "Company: Cedar\nPeriod: 2024\nCurrency: USD\nUnits: million\nRevenue 100.0\nNet income 24.0\nOperating income 30.0\nCurrent assets 60.0\nCurrent liabilities 30.0\nDebt 40.0\nEquity 80.0\nSupply risk: component shortages can delay orders.\nEarly repayment is permitted without a penalty.",
+                "page": 1,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar",
+                  "period": 2024,
+                  "currency": "USD",
+                  "units": "million"
+                }
+              },
+              "score": 0.9839,
+              "source": "hybrid"
+            },
+            {
+              "chunk": {
+                "id": "682d007a-ede2-5a3d-8249-95c0c439630d",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "table",
+                "content": "Revenue | 120.0\nNet income | 24.0\nOperating income | 30.0\nCurrent assets | 60.0\nCurrent liabilities | 30.0\nDebt | 40.0\nEquity | 80.0",
+                "page": 2,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar",
+                  "period": 2025,
+                  "currency": "USD",
+                  "units": "million",
+                  "table_index": 1,
+                  "rows": [
+                    [
+                      "Revenue",
+                      "120.0"
+                    ],
+                    [
+                      "Net income",
+                      "24.0"
+                    ],
+                    [
+                      "Operating income",
+                      "30.0"
+                    ],
+                    [
+                      "Current assets",
+                      "60.0"
+                    ],
+                    [
+                      "Current liabilities",
+                      "30.0"
+                    ],
+                    [
+                      "Debt",
+                      "40.0"
+                    ],
+                    [
+                      "Equity",
+                      "80.0"
+                    ]
+                  ]
+                }
+              },
+              "score": 0.9531,
+              "source": "hybrid"
+            },
+            {
+              "chunk": {
+                "id": "e06ea5aa-af71-598f-836c-5104e27acd7c",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "table",
+                "content": "Revenue | 100.0\nNet income | 24.0\nOperating income | 30.0\nCurrent assets | 60.0\nCurrent liabilities | 30.0\nDebt | 40.0\nEquity | 80.0",
+                "page": 1,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar",
+                  "period": 2024,
+                  "currency": "USD",
+                  "units": "million",
+                  "table_index": 1,
+                  "rows": [
+                    [
+                      "Revenue",
+                      "100.0"
+                    ],
+                    [
+                      "Net income",
+                      "24.0"
+                    ],
+                    [
+                      "Operating income",
+                      "30.0"
+                    ],
+                    [
+                      "Current assets",
+                      "60.0"
+                    ],
+                    [
+                      "Current liabilities",
+                      "30.0"
+                    ],
+                    [
+                      "Debt",
+                      "40.0"
+                    ],
+                    [
+                      "Equity",
+                      "80.0"
+                    ]
+                  ]
+                }
+              },
+              "score": 0.9385,
+              "source": "hybrid"
+            },
+            {
+              "chunk": {
+                "id": "e19b0fe4-3f49-5319-aa8a-832863d1f002",
+                "document_id": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+                "source_name": "Cedar.pdf",
+                "type": "text",
+                "content": "Company: Cedar\nLoan principal: USD 500000\nAnnual interest rate: 8%\nDuration: 20 years",
+                "page": 3,
+                "section": null,
+                "metadata": {
+                  "original_path": "D:\\FinSight AI\\evals\\fixtures\\Cedar.pdf",
+                  "entity": "Cedar"
+                }
+              },
+              "score": 0.9683,
+              "source": "hybrid"
+            }
+          ],
+          "query_scope": [
+            "Cedar.pdf"
+          ],
+          "independent_query": true,
+          "provider_used": true,
+          "provider_usage": {
+            "input_tokens": 1027,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 170,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1197
+          },
+          "provider_request": {
+            "provider": "openai",
+            "requested_model": "gpt-5.4-mini-2026-03-17",
+            "model": "gpt-5.4-mini-2026-03-17",
+            "prompt_version": "claims-authoritative-openai-v1",
+            "status": "completed",
+            "attempts": 1,
+            "validation": "schema_valid",
+            "response_id": "resp_09ba4d1bc25feb8a016ac2ce1819b487d19beb051319a4cd7e",
+            "usage": {
+              "input_tokens": 1027,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 170,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 1197
+            },
+            "incomplete_details": null,
+            "latency_ms": 1888.13
+          }
+        }
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_09ba4d1bc25feb8a016ac2ce1819b487d19beb051319a4cd7e",
+        "usage": {
+          "input_tokens": 1027,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 170,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1197
+        },
+        "text": "{\"answer\":\"Cedar revenue for 2025 was USD 120.0 million.\",\"used_citation_ids\":[\"358ece6c-35a7-5a08-bc48-1a451c913bf8\",\"682d007a-ede2-5a3d-8249-95c0c439630d\"],\"claims\":[{\"text\":\"Cedar revenue for 2025 was USD 120.0 million.\",\"citation_ids\":[\"358ece6c-35a7-5a08-bc48-1a451c913bf8\",\"682d007a-ede2-5a3d-8249-95c0c439630d\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_09ba4d1bc25feb8a016ac2ce190b5487d18ba47391bfee9cfe",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"Cedar revenue for 2025 was USD 120.0 million.\",\"used_citation_ids\":[\"358ece6c-35a7-5a08-bc48-1a451c913bf8\",\"682d007a-ede2-5a3d-8249-95c0c439630d\"],\"claims\":[{\"text\":\"Cedar revenue for 2025 was USD 120.0 million.\",\"citation_ids\":[\"358ece6c-35a7-5a08-bc48-1a451c913bf8\",\"682d007a-ede2-5a3d-8249-95c0c439630d\"]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 1888.13
+      }
+    },
+    {
+      "check": "document_calculation_explanation",
+      "status": "failed",
+      "validation_passed": false,
+      "response": {
+        "answer": "Insufficient data to answer reliably.",
+        "citations": [],
+        "calculations": [],
+        "assumptions": [],
+        "confidence": 0.0,
+        "claims": [],
+        "status": "abstained",
+        "reasons": [
+          "Generated numerical results disagree with authoritative tool outputs (rounding: four decimals)."
+        ],
+        "diagnostics": {
+          "mandatory_checks_passed": false
+        }
+      },
+      "provider_request": {
+        "provider": "openai",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "prompt_version": "claims-authoritative-openai-v1",
+        "status": "completed",
+        "attempts": 1,
+        "validation": "schema_valid",
+        "response_id": "resp_0cc827f4355894de016ac2ce1a01f087d19e5e87f385618bbd",
+        "usage": {
+          "input_tokens": 1076,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 78,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1154
+        },
+        "text": "{\"answer\":\"Cedar\u2019s current ratio for 2025 is 2.0x.\",\"used_citation_ids\":[],\"claims\":[{\"text\":\"Cedar\u2019s current ratio for 2025 is 2.0x.\",\"citation_ids\":[]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+        "output": [
+          {
+            "id": "msg_0cc827f4355894de016ac2ce1b0bb487d19fef91e29a8815c0",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"answer\":\"Cedar\u2019s current ratio for 2025 is 2.0x.\",\"used_citation_ids\":[],\"claims\":[{\"text\":\"Cedar\u2019s current ratio for 2025 is 2.0x.\",\"citation_ids\":[]}],\"assumptions\":[],\"confidence\":0.99,\"needs_more_data\":false}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "incomplete_details": null,
+        "latency_ms": 1646.728
+      }
+    }
+  ],
+  "complete": false
+}

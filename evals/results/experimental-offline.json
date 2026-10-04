@@ -1,0 +1,39 @@
+{
+  "scope": "experimental adapter probes; excluded from verified performance",
+  "live": false,
+  "models": {
+    "text": "gemini-3-flash-preview",
+    "web": "gemini-2.5-flash"
+  },
+  "visual": [
+    {
+      "fixture": "screenshot.png",
+      "sha256": "12449939e4fdb78315f546701ecf3acedab3d7fe888ee0768c65f1b86bb9c0f2",
+      "evidence_id": "visual-12449939e4fdb783",
+      "expected_revenue_million": 120,
+      "status": "offline_image_parts_validated",
+      "image_parts": 2,
+      "semantic_support_verified": false
+    },
+    {
+      "fixture": "chart.png",
+      "sha256": "1750896769fdf21a882964c4fc82ca12f592e8c45c699ad6f2d36ae3d66e3864",
+      "evidence_id": "visual-1750896769fdf21a",
+      "expected_revenue_million": 120,
+      "status": "offline_image_parts_validated",
+      "image_parts": 2,
+      "semantic_support_verified": false
+    },
+    {
+      "fixture": "table.png",
+      "sha256": "3b83e873bd0d661e009b281fa51666685f7ce26baf6aba68a43a94f1b258d788",
+      "evidence_id": "visual-3b83e873bd0d661e",
+      "expected_revenue_million": 120,
+      "status": "offline_image_parts_validated",
+      "image_parts": 2,
+      "semantic_support_verified": false
+    }
+  ],
+  "web": {},
+  "freshness_verified": false
+}
