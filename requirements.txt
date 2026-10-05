@@ -1,5 +1,5 @@
 streamlit
-google-genai
+openai==3.13.0
 python-dotenv
 
 qdrant-client
@@ -10,10 +10,8 @@ PyMuPDF
 Pillow
 
 numpy
-pandas
 numpy-financial
-scipy
-py-vollib
 
 pydantic
+jsonschema
 pytest

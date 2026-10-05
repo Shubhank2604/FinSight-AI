@@ -1,9 +1,18 @@
+"""Mandatory validation precedes diagnostic scores; claims/tools are authoritative."""
+
 from __future__ import annotations
 
 import re
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal
 
+from financial_evidence import (
+    extract_facts,
+    records_from_text,
+    quantities,
+    supported_claim,
+)
 from schemas import (
+    AnswerClaim,
     Citation,
     RetrievalHit,
     Route,
@@ -14,61 +23,52 @@ from schemas import (
 )
 
 
-def build_citations(hits: list[RetrievalHit], limit: int = 5) -> list[Citation]:
-    citations = []
-    for hit in hits[:limit]:
-        chunk = hit.chunk
-        citations.append(
-            Citation(
-                chunk_id=chunk.id,
-                source_name=chunk.source_name,
-                page=chunk.page,
-                section=chunk.section,
-                snippet=chunk.content[:350].strip(),
-            )
+def build_citations(
+    hits: list[RetrievalHit], limit: int | None = None
+) -> list[Citation]:
+    return [
+        Citation(
+            chunk_id=h.chunk.id,
+            source_name=h.chunk.source_name,
+            page=h.chunk.page,
+            section=h.chunk.section,
+            snippet=h.chunk.content[:350].strip(),
+            metadata={
+                k: v
+                for k, v in h.chunk.metadata.items()
+                if k
+                in {
+                    "units",
+                    "currency",
+                    "entity",
+                    "period",
+                    "source_url",
+                    "original_page",
+                    "original_sha256",
+                }
+            },
         )
-    return citations
+        for h in (hits if limit is None else hits[:limit])
+    ]
 
 
-def _retrieval_confidence(hits: list[RetrievalHit]) -> float:
-    if not hits:
-        return 0.0
-    top_scores = [max(min(hit.score, 1.0), 0.0) for hit in hits[:5]]
-    return sum(top_scores) / len(top_scores)
-
-
-def _tool_confidence(tool_results: list[ToolResult]) -> float:
-    if not tool_results:
-        return 1.0
-    successes = [result for result in tool_results if result.success and result.calculation]
-    if not successes:
-        return 0.0
-    return sum(result.calculation.confidence for result in successes if result.calculation) / len(
-        tool_results
-    )
-
-
-def _numbers(text: str) -> set[Decimal]:
-    values = set()
-    for match in re.findall(r"(?<![\w])[-+]?\$?\d[\d,]*(?:\.\d+)?%?", text):
-        normalized = match.replace("$", "").replace(",", "").replace("%", "")
-        try:
-            values.add(Decimal(normalized))
-        except InvalidOperation:
-            continue
-    return values
-
-
-def claim_has_unsupported_numbers(claim, evidence_by_id: dict[str, str]) -> bool:
-    claim_numbers = _numbers(claim.text)
-    if not claim_numbers:
-        return False
-    evidence = " ".join(
-        evidence_by_id[citation_id]
-        for citation_id in claim.citation_ids
-        if citation_id in evidence_by_id
-    )
-    return not claim_numbers.issubset(_numbers(evidence))
+def render_calculations(calculations) -> str:
+    blocks = []
+    for c in calculations:
+        refs = sorted(
+            {
+                p["chunk_id"]
+                for p in c.provenance.values()
+                if isinstance(p, dict) and p.get("chunk_id")
+            }
+        )
+        suffix = " " + " ".join(f"[{i}]" for i in refs) if refs else ""
+        lines = [f"{c.tool_name.replace('_', ' ').capitalize()}{suffix}"]
+        for key, value in c.result.items():
+            if not isinstance(value, (dict, list)):
+                lines.append(f"{key.replace('_', ' ')}: {value}")
+        blocks.append("\n".join(lines))
+    return "\n\n".join(blocks)
 
 
 def verify_response(
@@ -78,103 +78,300 @@ def verify_response(
     tool_results: list[ToolResult] | None = None,
     structured_answer: StructuredLLMAnswer | None = None,
     web_citations: list[Citation] | None = None,
-    threshold: float = 0.45,
+    expected_claims: list[AnswerClaim] | None = None,
 ) -> VerifiedResponse:
-    retrieval_hits = retrieval_hits or []
-    tool_results = tool_results or []
-    citations = build_citations(retrieval_hits)
-    citations.extend(web_citations or [])
-    calculations = [
-        result.calculation
-        for result in tool_results
-        if result.success and result.calculation is not None
-    ]
-    assumptions = []
-    for calculation in calculations:
-        assumptions.extend(calculation.assumptions)
-    if structured_answer:
-        assumptions.extend(structured_answer.assumptions)
-
-    needs_citations = decision.route in {
-        Route.RETRIEVE_THEN_ANSWER,
-        Route.RETRIEVE_THEN_COMPUTE_THEN_ANSWER,
-        Route.MULTIMODAL_REASONING,
-        Route.WEB_GROUNDED_ANSWER,
-    }
-    needs_tools = decision.route in {
+    hits, results = retrieval_hits or [], tool_results or []
+    citations = build_citations(hits) + (web_citations or [])
+    available = {c.chunk_id for c in citations if c.chunk_id}
+    evidence = {h.chunk.id: h.chunk.content for h in hits}
+    hit_by_id = {h.chunk.id: h for h in hits}
+    # Web snippets cannot overwrite full document evidence.
+    evidence.update(
+        {
+            c.chunk_id: c.snippet
+            for c in (web_citations or [])
+            if c.chunk_id and c.chunk_id not in evidence
+        }
+    )
+    for f in extract_facts(hits):
+        evidence[f.chunk_id] += (
+            f"\n{f.entity} {f.period} {f.metric.replace('_', ' ')}: {f.currency} {f.value}."
+        )
+    calculations = [r.calculation for r in results if r.success and r.calculation]
+    needs_evidence = (
+        decision.required_retrieval
+        or decision.evidence_source != "none"
+        or decision.route
+        in {
+            Route.RETRIEVE_THEN_ANSWER,
+            Route.RETRIEVE_THEN_COMPUTE_THEN_ANSWER,
+            Route.MULTIMODAL_REASONING,
+            Route.WEB_GROUNDED_ANSWER,
+        }
+    )
+    needs_tools = bool(decision.required_tools) or decision.route in {
         Route.COMPUTE_ONLY,
         Route.RETRIEVE_THEN_COMPUTE_THEN_ANSWER,
     }
-
-    retrieval_score = _retrieval_confidence(retrieval_hits)
-    tool_score = _tool_confidence(tool_results)
-    citation_score = 1.0 if not needs_citations or citations else 0.0
-    completeness_score = 0.0 if decision.missing_inputs else 1.0
-    tool_presence_score = 1.0 if not needs_tools or calculations else 0.0
-    llm_score = structured_answer.confidence if structured_answer else 1.0
-
-    available_citation_ids = {hit.chunk.id for hit in retrieval_hits}
-    available_citation_ids.update(
-        citation.chunk_id for citation in citations if citation.chunk_id
-    )
-    used_citation_ids = set(structured_answer.used_citation_ids) if structured_answer else set()
-    unsupported_citation_ids = used_citation_ids - available_citation_ids
-    cited_claims = structured_answer.claims if structured_answer else []
-    evidence_by_id = {hit.chunk.id: hit.chunk.content for hit in retrieval_hits}
-    evidence_by_id.update(
-        {citation.chunk_id: citation.snippet for citation in citations if citation.chunk_id}
-    )
-    unsupported_claims = [
-        claim
-        for claim in cited_claims
-        if needs_citations and (
-            not set(claim.citation_ids).intersection(available_citation_ids)
-            or (not needs_tools and claim_has_unsupported_numbers(claim, evidence_by_id))
-        )
-    ]
-
-    if structured_answer and needs_citations:
-        if used_citation_ids and not unsupported_citation_ids:
-            citation_score = 1.0
-        else:
-            citation_score = 0.0
-    if structured_answer and structured_answer.needs_more_data:
-        completeness_score = 0.0
-
-    confidence = (
-        0.25 * retrieval_score
-        + 0.25 * tool_score
-        + 0.20 * citation_score
-        + 0.15 * completeness_score
-        + 0.10 * tool_presence_score
-        + 0.05 * llm_score
-    )
-
-    if needs_citations and not citations:
-        confidence = min(confidence, 0.35)
-    if needs_tools and not calculations:
-        confidence = min(confidence, 0.35)
-    if unsupported_citation_ids or unsupported_claims:
-        confidence = min(confidence, 0.35)
-    if structured_answer and structured_answer.needs_more_data:
-        confidence = min(confidence, 0.35)
+    reasons = []
+    status = "abstained"
+    if decision.missing_inputs:
+        reasons.append("Missing required inputs: " + ", ".join(decision.missing_inputs))
+        status = "clarification"
     if decision.route == Route.ABSTAIN:
-        confidence = 0.0
-
-    confidence = round(max(min(confidence, 1.0), 0.0), 3)
-
-    if confidence < threshold:
-        answer = "Insufficient data to answer reliably."
-    elif structured_answer:
-        answer = structured_answer.answer.strip()
+        reasons.append(decision.reason)
+        if decision.action == "unsupported":
+            status = "unsupported"
+    if needs_evidence and not citations:
+        reasons.append("Required evidence is missing.")
+    by_tool = {c.tool_name: c for c in calculations}
+    if needs_tools:
+        if not decision.required_tools:
+            reasons.append("Requested operation has no explicit tool contract.")
+        for name in decision.required_tools:
+            matching = [
+                r for r in results if r.calculation and r.calculation.tool_name == name
+            ]
+            if len(matching) != 1 or not matching[0].success:
+                reasons.append(f"Required tool {name} did not succeed exactly once.")
+        if any(not r.success for r in results):
+            reasons.append("A required tool failed.")
+        if set(by_tool) != set(decision.required_tools):
+            reasons.append("Executed tools do not match the requested operations.")
+        for requested in decision.operations:
+            c = by_tool.get(requested.tool)
+            if (
+                c
+                and requested.evidence_source == "document"
+                and requested.tool
+                not in {"emi_calculator", "portfolio_growth_simulator"}
+            ):
+                actual = c.operation
+                if (
+                    actual is None
+                    or actual.metric != requested.metric
+                    or (
+                        requested.entity
+                        and actual.entity.casefold() != requested.entity.casefold()
+                    )
+                    or (
+                        requested.periods
+                        and (
+                            actual.periods[-len(requested.periods) :]
+                            != requested.periods
+                        )
+                    )
+                ):
+                    reasons.append(
+                        "Calculated metric, entity or period does not match the user operation."
+                    )
+        for c in calculations:
+            if needs_evidence and not c.provenance:
+                reasons.append("Document calculation lacks input provenance.")
+            for p in c.provenance.values():
+                if (
+                    isinstance(p, dict)
+                    and p.get("source") == "document"
+                    and p.get("chunk_id") not in available
+                ):
+                    reasons.append(
+                        "Calculation input references missing document evidence."
+                    )
+            for key, p in c.provenance.items():
+                if isinstance(p, dict) and p.get('source') == 'document' and not p.get('metric'):
+                    h = hit_by_id.get(p.get('chunk_id'))
+                    start, end = p.get('start'), p.get('end')
+                    if h is None or not isinstance(start, int) or not isinstance(end, int) or not 0 <= start < end <= len(h.chunk.content) or h.chunk.content[start:end] != p.get('text'):
+                        reasons.append('Calculation input span does not resolve to its selected evidence.')
+                    normalized = p.get('normalized_value')
+                    actual = c.inputs.get(key)
+                    if key == 'years' and actual is not None and p.get('unit') == 'months':
+                        actual *= 12
+                    if normalized is None or actual is None or abs(Decimal(str(actual)) - Decimal(str(normalized))) > Decimal('.000001'):
+                        reasons.append('Calculation input value disagrees with its normalized provenance.')
+                if isinstance(p, dict) and p.get("metric"):
+                    facts = [
+                        f
+                        for f in extract_facts(hits)
+                        if f.chunk_id == p.get("chunk_id")
+                        and f.metric == p["metric"]
+                        and f.period == p.get("period")
+                        and f.entity == p.get("entity")
+                        and f.currency == p.get("unit")
+                    ]
+                    if not facts or not all(
+                        abs(f.value - Decimal(str(c.inputs.get(key))))
+                        <= Decimal(".000001")
+                        for f in facts
+                    ):
+                        reasons.append(
+                            "Calculation input value does not resolve to its bound evidence record."
+                        )
+    claims = structured_answer.claims if structured_answer else []
+    if structured_answer and expected_claims is not None and not needs_tools:
+        # These come from query-scoped evidence selection, never evaluation labels.
+        # Support alone does not mean a true fact answers the requested question.
+        requested = [f for c in expected_claims for f in records_from_text(c.text)]
+        returned = [f for c in claims for f in records_from_text(c.text)]
+        unmatched = list(requested)
+        for fact in returned:
+            match = next((f for f in unmatched if
+                f.entity.casefold() == fact.entity.casefold()
+                and f.metric == fact.metric and f.period == fact.period
+                and f.currency == fact.currency
+                and abs(f.value - fact.value) <= Decimal('.005')), None)
+            if match is None:
+                reasons.append('Returned facts do not match the requested entity, metric and periods.')
+            else:
+                unmatched.remove(match)
+        if unmatched or len(claims) != len(expected_claims):
+            reasons.append('The answer omits requested facts or adds unrelated claims.')
+    used = set()
+    if needs_evidence and not needs_tools and structured_answer is None:
+        reasons.append("Evidence-dependent output requires valid structured claims.")
+    if structured_answer:
+        displayed_refs = set(re.findall(r"\[([^\[\]]+)\]", structured_answer.answer))
+        all_refs = displayed_refs | set(structured_answer.used_citation_ids)
+        all_refs.update(i for claim in claims for i in claim.citation_ids)
+        all_refs.update(
+            i for claim in claims for i in re.findall(r"\[([^\[\]]+)\]", claim.text)
+        )
+        if all_refs - available:
+            reasons.append("An answer or claim references unknown citation IDs.")
+        if structured_answer.needs_more_data:
+            reasons.append("The generated response requests more evidence.")
+        if needs_evidence and not needs_tools:
+            if not claims:
+                reasons.append("Factual output has no claim coverage.")
+            for claim in claims:
+                claimed_pages = {
+                    int(p) for p in re.findall(r"\bpage\s+(\d+)", claim.text, re.I)
+                }
+                actual_pages = {
+                    c.page for c in citations if c.chunk_id in claim.citation_ids
+                }
+                if claimed_pages - actual_pages:
+                    reasons.append(
+                        "Claim page references disagree with source metadata."
+                    )
+                if not claim.text.strip() or not claim.citation_ids:
+                    reasons.append("Every factual claim requires supporting evidence.")
+                elif not supported_claim(claim, hits):
+                    reasons.append(
+                        "Claim numbers, units, metric, period or direction disagree with evidence."
+                    )
+                used.update(claim.citation_ids)
+            answer_without_refs = re.sub(r"\[[^\[\]]+\]", "", structured_answer.answer)
+            claim_quantities = [n for c in claims for n in quantities(c.text)]
+            if any(
+                not any(
+                    n.unit == a.unit and abs(n.value - a.value) <= n.tolerance
+                    for a in claim_quantities
+                )
+                for n in quantities(answer_without_refs)
+            ):
+                reasons.append(
+                    "Generated answer numbers disagree with authoritative claims."
+                )
+        if needs_tools:
+            authoritative = []
+            periods = set()
+            for c in calculations:
+                periods.update(
+                    Decimal(str(v))
+                    for v in c.result.get("periods", [])
+                    if isinstance(v, int)
+                )
+                # Document-derived monetary inputs may be quoted in an explanation;
+                # their units come from the extraction provenance, not the model.
+                for key, value in c.inputs.items():
+                    origin = c.provenance.get(key, {})
+                    if (
+                        isinstance(value, (int, float))
+                        and not isinstance(value, bool)
+                        and isinstance(origin, dict)
+                        and origin.get("unit")
+                        in {"USD", "CAD", "AUD", "EUR", "GBP", "INR"}
+                    ):
+                        authoritative.append((Decimal(str(value)), origin["unit"]))
+                for key, value in c.result.items():
+                    if isinstance(value, (int, float)) and not isinstance(value, bool):
+                        amount = Decimal(str(value))
+                        authoritative.append((amount, "number"))
+                        if key.endswith("_pct"):
+                            authoritative.append((amount / 100, "fraction"))
+            prose = re.sub(
+                r"\[[^\[\]]+\]",
+                "",
+                structured_answer.answer + "\n" + "\n".join(c.text for c in claims),
+            )
+            # Ratio suffixes must be parsed, and years must match the tool's
+            # reporting periods rather than being compared to its arithmetic.
+            prose = re.sub(r"(?<=\d)x\b", " ", prose, flags=re.I)
+            if any(
+                not (n.unit == "number" and n.value in periods)
+                and not any(
+                    n.unit == unit and abs(n.value - a) <= Decimal("0.00005")
+                    for a, unit in authoritative
+                )
+                for n in quantities(prose)
+            ):
+                reasons.append(
+                    "Generated numerical results disagree with authoritative tool outputs (rounding: four decimals)."
+                )
+    if needs_tools:
+        used.update(
+            p["chunk_id"]
+            for c in calculations
+            for p in c.provenance.values()
+            if isinstance(p, dict) and p.get("chunk_id")
+        )
+    if reasons:
+        return VerifiedResponse(
+            answer="Insufficient data to answer reliably.",
+            status=status,
+            reasons=list(dict.fromkeys(reasons)),
+            confidence=0.0,
+            diagnostics={"mandatory_checks_passed": False},
+        )
+    if needs_tools:
+        answer = render_calculations(calculations)
+    elif needs_evidence:
+        # Never display unchecked narrative. The validated claim list is the output contract.
+        answer = "\n".join(
+            c.text.strip()
+            + " "
+            + " ".join(f"[{i}]" for i in dict.fromkeys(c.citation_ids))
+            for c in claims
+        )
     else:
-        answer = draft_answer.strip()
-
+        answer = (
+            structured_answer.answer.strip()
+            if structured_answer
+            else draft_answer.strip()
+        )
+    if not answer:
+        return VerifiedResponse(
+            answer="Insufficient data to answer reliably.",
+            status="abstained",
+            reasons=["Empty output."],
+            confidence=0.0,
+        )
     return VerifiedResponse(
         answer=answer,
-        citations=citations,
+        status="ok",
+        citations=[c for c in citations if c.chunk_id in used],
         calculations=calculations,
-        assumptions=sorted(set(assumptions)),
-        confidence=confidence,
-        claims=cited_claims,
+        claims=claims,
+        assumptions=sorted(
+            {a for c in calculations for a in c.assumptions}
+            | set(structured_answer.assumptions if structured_answer else [])
+        ),
+        confidence=1.0,
+        diagnostics={
+            "mandatory_checks_passed": True,
+            "confidence_meaning": "Binary mandatory-check indicator; not calibrated accuracy.",
+            "support_contract": "canonical bound financial records or faithful source excerpts",
+            "semantic_entailment_proven": False,
+        },
     )

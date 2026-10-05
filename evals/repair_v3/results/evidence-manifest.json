@@ -1,0 +1,236 @@
+{
+  "measured_revision": "02d6ea415c9351879c9d7c18fb84027907b4b7fd",
+  "code_digest": "d2f24a7bfa51e8c34cdc567446a7e409582ab587727993e2bf31e039d6ad48b0",
+  "dataset_canonical_sha256": "510151d78ba36501b767ab2a79c6711754a8489ba87bcc6f11d11336a1c60803",
+  "scorer_version": "bound-label-scorer-v3",
+  "final_results": {
+    "offline_correct": 390,
+    "offline_outcomes": 390,
+    "live_correct": 381,
+    "live_outcomes": 390,
+    "live_generation_responses": 120,
+    "live_embedding_requests": 8
+  },
+  "all_new_paid_attempt_reservations": 289,
+  "estimated_accounted_usd": 0.3558943,
+  "cost_scope": "All acceptance runs, both repeated live runs and all three semantic comparisons in this repair session. Conservative list-price estimate plus bounded embedding retry allowance; not invoice cost.",
+  "limitations": [
+    "Eight final false abstentions; one financially correct net-sales alias fails strict canonical-metric scoring. Scorer unchanged after measurement.",
+    "Agent-authored labels, not human-reviewed; internal held-out split exposed during engineering feedback, not blind evaluation.",
+    "Two real government CFO pages from one issuer; no arbitrary-PDF or complete-prose entailment claim.",
+    "Rebuild is not all-batches atomic; tax disabled; vision/web experimental."
+  ],
+  "incorrect_final_slots": [
+    {
+      "id": "juniper-03",
+      "repeat": 0,
+      "status": "abstained",
+      "reasons": [
+        "Returned facts do not match the requested entity, metric and periods.",
+        "The answer omits requested facts or adds unrelated claims.",
+        "Claim numbers, units, metric, period or direction disagree with evidence."
+      ],
+      "answer": "Insufficient data to answer reliably."
+    },
+    {
+      "id": "pine-03",
+      "repeat": 0,
+      "status": "abstained",
+      "reasons": [
+        "Returned facts do not match the requested entity, metric and periods.",
+        "The answer omits requested facts or adds unrelated claims.",
+        "Claim numbers, units, metric, period or direction disagree with evidence."
+      ],
+      "answer": "Insufficient data to answer reliably."
+    },
+    {
+      "id": "harbor-10",
+      "repeat": 1,
+      "status": "abstained",
+      "reasons": [
+        "Returned facts do not match the requested entity, metric and periods.",
+        "The answer omits requested facts or adds unrelated claims."
+      ],
+      "answer": "Insufficient data to answer reliably."
+    },
+    {
+      "id": "pine-03",
+      "repeat": 1,
+      "status": "abstained",
+      "reasons": [
+        "Returned facts do not match the requested entity, metric and periods.",
+        "The answer omits requested facts or adds unrelated claims.",
+        "Claim numbers, units, metric, period or direction disagree with evidence."
+      ],
+      "answer": "Insufficient data to answer reliably."
+    },
+    {
+      "id": "harbor-10",
+      "repeat": 2,
+      "status": "ok",
+      "reasons": [],
+      "answer": "Harbor 2024 net sales: CAD 113000 thousand. [89d5259f-323d-5184-baf4-fa7cc0aed37c]\nHarbor 2025 net sales: CAD 139000 thousand. [a85c55f9-a0b6-59c7-8cbd-765eb623d959]"
+    },
+    {
+      "id": "maple-10",
+      "repeat": 2,
+      "status": "abstained",
+      "reasons": [
+        "Returned facts do not match the requested entity, metric and periods.",
+        "The answer omits requested facts or adds unrelated claims.",
+        "Claim numbers, units, metric, period or direction disagree with evidence."
+      ],
+      "answer": "Insufficient data to answer reliably."
+    },
+    {
+      "id": "juniper-02",
+      "repeat": 2,
+      "status": "abstained",
+      "reasons": [
+        "Returned facts do not match the requested entity, metric and periods.",
+        "The answer omits requested facts or adds unrelated claims.",
+        "Claim numbers, units, metric, period or direction disagree with evidence."
+      ],
+      "answer": "Insufficient data to answer reliably."
+    },
+    {
+      "id": "juniper-03",
+      "repeat": 2,
+      "status": "abstained",
+      "reasons": [
+        "Returned facts do not match the requested entity, metric and periods.",
+        "The answer omits requested facts or adds unrelated claims.",
+        "Claim numbers, units, metric, period or direction disagree with evidence."
+      ],
+      "answer": "Insufficient data to answer reliably."
+    },
+    {
+      "id": "pine-03",
+      "repeat": 2,
+      "status": "abstained",
+      "reasons": [
+        "Returned facts do not match the requested entity, metric and periods.",
+        "The answer omits requested facts or adds unrelated claims.",
+        "Claim numbers, units, metric, period or direction disagree with evidence."
+      ],
+      "answer": "Insufficient data to answer reliably."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "evals/repair_v3/results/acceptance-before-prompt-fix.json.gz",
+      "sha256": "8918ad01f69f5a6c307f0a0e4895602624912506fe6fe90ca611563b5e0fc905",
+      "bytes": 3428
+    },
+    {
+      "path": "evals/repair_v3/results/acceptance-prompt-v3.json.gz",
+      "sha256": "349dc30faafb793f78a75cfdfa513f3f8ec021e785aa480007e36297e58481dd",
+      "bytes": 3606
+    },
+    {
+      "path": "evals/repair_v3/results/acceptance.json.gz",
+      "sha256": "ba78c5fdc620cb99899aeaa0f40b8f6e3c263f35da17b401bc31fb0f67eb40a7",
+      "bytes": 3597
+    },
+    {
+      "path": "evals/repair_v3/results/application-live-prompt-v3.json.gz",
+      "sha256": "b71ef8a9fb0c92a09be8f09352d4f8cc7583c48eadfa6316be3ff57d528bec28",
+      "bytes": 183177
+    },
+    {
+      "path": "evals/repair_v3/results/application-live.json.gz",
+      "sha256": "494e902d43e718bb25fbf9ed51e78e792c65a481dbf87c6f82b9c579fcad0bae",
+      "bytes": 183011
+    },
+    {
+      "path": "evals/repair_v3/results/application-offline.json.gz",
+      "sha256": "974757e066ac98789044155669d6e22e69873dcfb22360600bb7da935fd7a09e",
+      "bytes": 145726
+    },
+    {
+      "path": "evals/repair_v3/results/baseline-application.json.gz",
+      "sha256": "0b43ffa3c5e59e6efa93191faaa61b8fe591aa076dc1df9fa2ca7ed2b588800f",
+      "bytes": 147394
+    },
+    {
+      "path": "evals/repair_v3/results/baseline-citations.json.gz",
+      "sha256": "398c55d54573d1aab0c9334c488c74f3ccb116e67570e1017ab806c2667fb7c9",
+      "bytes": 325
+    },
+    {
+      "path": "evals/repair_v3/results/baseline-reproduction.json",
+      "sha256": "9c3ccd33a53a7e4d1aff9625e281bed8fb4ca0266eacb2b030d0919994f2397e",
+      "bytes": 1392
+    },
+    {
+      "path": "evals/repair_v3/results/baseline-retrieval.json.gz",
+      "sha256": "ca78ce4a8801b00209306724bee0a2f8151109ecf4801e0d4cf896b06aeb2d1b",
+      "bytes": 2267
+    },
+    {
+      "path": "evals/repair_v3/results/baseline-router.json.gz",
+      "sha256": "57e21bb1505009e3219f2a955b80f6f98880916684e9d149d16f07f21e4f5251",
+      "bytes": 2286
+    },
+    {
+      "path": "evals/repair_v3/results/baseline-tests.xml",
+      "sha256": "5c351276d2a51c22472149576469819c01850213d159bda98aaaa8c4840792c9",
+      "bytes": 19515
+    },
+    {
+      "path": "evals/repair_v3/results/budget-ledger.json",
+      "sha256": "3cf00389314537d219a09cf85a057281b73c6bc686a6f7498a34d3064768fcfb",
+      "bytes": 146784
+    },
+    {
+      "path": "evals/repair_v3/results/citation-guard.json.gz",
+      "sha256": "4840639b01142e0d16c11b172e76b3667e571d260237749e1767279965c888ae",
+      "bytes": 314
+    },
+    {
+      "path": "evals/repair_v3/results/demo.json.gz",
+      "sha256": "7ef4187c38cf4ffc4839396c2f1110e1b2f16599123789a69b8586f410640cdc",
+      "bytes": 6081
+    },
+    {
+      "path": "evals/repair_v3/results/fresh-tests.xml",
+      "sha256": "d5e8975e2e43120bb476eec32f5789c5ff75dff8aa1e4154fc40efd522d3f652",
+      "bytes": 29412
+    },
+    {
+      "path": "evals/repair_v3/results/historical-rescore.json.gz",
+      "sha256": "3ace4b9a8fbc152a943e9b20e6f46bdaa090d45cc42df22f057c7083875aa585",
+      "bytes": 2194
+    },
+    {
+      "path": "evals/repair_v3/results/remote-ci.json",
+      "sha256": "7845da3bfdc296afd90b2f3449974b18c191831c4e24555015903dc9f2bae985",
+      "bytes": 3012
+    },
+    {
+      "path": "evals/repair_v3/results/retrieval-guard.json.gz",
+      "sha256": "6feba3e2bc1cb74800bfba8ee14d859e65632c0828cabfcd1cfbb17ad49afdab",
+      "bytes": 2239
+    },
+    {
+      "path": "evals/repair_v3/results/router.json.gz",
+      "sha256": "beb067d0c62e3b5bc948a837471865683f133d016b1d835370c4762e784993c2",
+      "bytes": 2684
+    },
+    {
+      "path": "evals/repair_v3/results/semantic-before-tool-prompt-fix.json.gz",
+      "sha256": "92958b8c1ec4a17b1951f3179abf658da83de941ea5ffa07026dd8d1ca97c89f",
+      "bytes": 145827
+    },
+    {
+      "path": "evals/repair_v3/results/semantic-comparison.json.gz",
+      "sha256": "07717056bf2f928808bd8d27126f678ed2e687eabac57ffd26c3adc357619922",
+      "bytes": 145759
+    },
+    {
+      "path": "evals/repair_v3/results/semantic-prompt-v3.json.gz",
+      "sha256": "baad429c6317c3c9f8e6ce695d529100dcb7933af37b1a6a9a18130226b12f2d",
+      "bytes": 145633
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "scope": "Reproduction from a git archive of baseline code, not a detached Git checkout. Archived runner provenance discovers the parent repository and is not the baseline source identity. This wrapper records the actual archive source.",
+  "source_revision": "91d6f459ba5f2db01ee76087822a7008b2e9dc39",
+  "archive_sha256": "605ca7e2abd9a5f8dd43eebf98a690b19bd0763608ad5ef33b83db08105d1058",
+  "test_result": {
+    "tests": 148,
+    "failures": 0,
+    "errors": 0
+  },
+  "gates": {
+    "retrieval": {
+      "exit_code": 0,
+      "artifact": "baseline-retrieval.json.gz",
+      "raw_sha256": "f15ebe92f140edd3d7b58b77c88c76e945147e5117cdd4c7b565226f2504b1ac"
+    },
+    "citations": {
+      "exit_code": 0,
+      "artifact": "baseline-citations.json.gz",
+      "raw_sha256": "e46b3816dd14a40f3d9c3c9982c5682585734abe62ad10c1fa5bab47081d4a98"
+    },
+    "router": {
+      "exit_code": 0,
+      "artifact": "baseline-router.json.gz",
+      "raw_sha256": "cfbd413ddab8a5ccbbcc24a298d8aa1a30310fb92c6460f5272543a8149a6801",
+      "cases": 100,
+      "accuracy": 1.0
+    },
+    "application": {
+      "exit_code": 0,
+      "artifact": "baseline-application.json.gz",
+      "raw_sha256": "d9d50fae7cdb726e16125d753e9936c3e3e65ad69d5cf41b6cf3b22d0a4bbe96",
+      "completed_cases": 360,
+      "correct": 360,
+      "ambient_runner_revision": "0fb98d51c84627b128f6f0f6e876495728d90fd4"
+    }
+  }
+}

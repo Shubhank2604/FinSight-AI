@@ -1,0 +1,5466 @@
+{
+  "limit_usd": 2.0,
+  "basis": "2026-10-05 standard list prices; estimated, not invoice cost",
+  "entries": [
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00907725,
+      "accounted_usd": 0.001362,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1102,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 119,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1221
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0091425,
+      "accounted_usd": 0.0013695,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1118,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1236
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0092475,
+      "accounted_usd": 0.0023115,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1174,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 318,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1492
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00039906000000000007,
+      "accounted_usd": 0.0002999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1693,
+        "total_tokens": 1693
+      },
+      "unobserved_retry_allowance_usd": 0.00026604000000000005
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.0005293199999999999,
+      "accounted_usd": 0.0003915599999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1934,
+        "total_tokens": 1934
+      },
+      "unobserved_retry_allowance_usd": 0.0003528799999999999
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00015131999999999998,
+      "accounted_usd": 0.00010795999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 0.00010087999999999998
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014916,
+      "accounted_usd": 0.00010627999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.944e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014844,
+      "accounted_usd": 0.00010604000000000001,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 9.896e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 8.01e-05,
+      "accounted_usd": 5.48e-05,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 70,
+        "total_tokens": 70
+      },
+      "unobserved_retry_allowance_usd": 5.34e-05
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0091485,
+      "accounted_usd": 0.00137025,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1119,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1237
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00921375,
+      "accounted_usd": 0.00138225,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1135,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1253
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0096165,
+      "accounted_usd": 0.0012,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1270,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 55,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1325
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00039906000000000007,
+      "accounted_usd": 0.0002999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1693,
+        "total_tokens": 1693
+      },
+      "unobserved_retry_allowance_usd": 0.00026604000000000005
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.0005293199999999999,
+      "accounted_usd": 0.0003915599999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1934,
+        "total_tokens": 1934
+      },
+      "unobserved_retry_allowance_usd": 0.0003528799999999999
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00015131999999999998,
+      "accounted_usd": 0.00010795999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 0.00010087999999999998
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014916,
+      "accounted_usd": 0.00010627999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.944e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014844,
+      "accounted_usd": 0.00010604000000000001,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 9.896e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 8.01e-05,
+      "accounted_usd": 5.48e-05,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 70,
+        "total_tokens": 70
+      },
+      "unobserved_retry_allowance_usd": 5.34e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00039906000000000007,
+      "accounted_usd": 0.0002999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1693,
+        "total_tokens": 1693
+      },
+      "unobserved_retry_allowance_usd": 0.00026604000000000005
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.0005293199999999999,
+      "accounted_usd": 0.0003915599999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1934,
+        "total_tokens": 1934
+      },
+      "unobserved_retry_allowance_usd": 0.0003528799999999999
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00015131999999999998,
+      "accounted_usd": 0.00010795999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 0.00010087999999999998
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014916,
+      "accounted_usd": 0.00010627999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.944e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014844,
+      "accounted_usd": 0.00010604000000000001,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 9.896e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 8.01e-05,
+      "accounted_usd": 5.48e-05,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 70,
+        "total_tokens": 70
+      },
+      "unobserved_retry_allowance_usd": 5.34e-05
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873375,
+      "accounted_usd": 0.001191,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 910,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1023
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008736,
+      "accounted_usd": 0.00120525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1027
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008739,
+      "accounted_usd": 0.00120525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1027
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873225,
+      "accounted_usd": 0.00152925,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1099
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088065,
+      "accounted_usd": 0.00139275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 153,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1092
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880875,
+      "accounted_usd": 0.0012765,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1067
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00881175,
+      "accounted_usd": 0.0012765,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1067
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008805,
+      "accounted_usd": 0.001839,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 252,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1192
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088365,
+      "accounted_usd": 0.00126825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 983,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1101
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00883875,
+      "accounted_usd": 0.0012825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1105
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00884175,
+      "accounted_usd": 0.0012825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1105
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008835,
+      "accounted_usd": 0.001629,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 198,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1182
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00877125,
+      "accounted_usd": 0.00122025,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 925,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1042
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087735,
+      "accounted_usd": 0.0012345,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1046
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087765,
+      "accounted_usd": 0.0012345,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1046
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00876975,
+      "accounted_usd": 0.0016305,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 208,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1134
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087795,
+      "accounted_usd": 0.00121425,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 935,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1049
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00878175,
+      "accounted_usd": 0.0012375,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 119,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1055
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00878475,
+      "accounted_usd": 0.001233,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1054
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008778,
+      "accounted_usd": 0.0017595,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 235,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1171
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088035,
+      "accounted_usd": 0.001254,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 952,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1072
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880575,
+      "accounted_usd": 0.00126375,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1075
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880875,
+      "accounted_usd": 0.00126375,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1075
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008802,
+      "accounted_usd": 0.00161925,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 201,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1154
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00874125,
+      "accounted_usd": 0.00118425,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 913,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 111,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1024
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087435,
+      "accounted_usd": 0.0011985,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1028
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087465,
+      "accounted_usd": 0.0011985,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1028
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873975,
+      "accounted_usd": 0.0015315,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1102
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00879825,
+      "accounted_usd": 0.001491,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 938,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 175,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1113
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088005,
+      "accounted_usd": 0.00123075,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1056
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088035,
+      "accounted_usd": 0.00125325,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1061
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00879675,
+      "accounted_usd": 0.00164925,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 210,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1149
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008766,
+      "accounted_usd": 0.00127725,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 947,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 126,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1073
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00876825,
+      "accounted_usd": 0.0012825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1075
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00877125,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 128,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1076
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087645,
+      "accounted_usd": 0.001656,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 210,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1158
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00887475,
+      "accounted_usd": 0.0012735,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 990,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1108
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00887775,
+      "accounted_usd": 0.0012645,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 990,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1106
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.011142,
+      "accounted_usd": 0.00175275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1563,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 129,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1692
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0097005,
+      "accounted_usd": 0.00143925,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1121,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1254
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873375,
+      "accounted_usd": 0.001191,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 910,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1023
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008736,
+      "accounted_usd": 0.00120525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1027
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008739,
+      "accounted_usd": 0.00120525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1027
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873225,
+      "accounted_usd": 0.00152475,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 187,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1098
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088065,
+      "accounted_usd": 0.00146475,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 169,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1108
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880875,
+      "accounted_usd": 0.001299,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 132,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1072
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00881175,
+      "accounted_usd": 0.001371,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 148,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1088
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008805,
+      "accounted_usd": 0.001713,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 224,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1164
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088365,
+      "accounted_usd": 0.00126825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 983,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1101
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00883875,
+      "accounted_usd": 0.0014085,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 149,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1133
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00884175,
+      "accounted_usd": 0.0013095,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1111
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008835,
+      "accounted_usd": 0.001629,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 198,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1182
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00877125,
+      "accounted_usd": 0.00122025,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 925,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1042
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087735,
+      "accounted_usd": 0.0012345,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1046
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087765,
+      "accounted_usd": 0.0012345,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1046
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00876975,
+      "accounted_usd": 0.0015405,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1114
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087795,
+      "accounted_usd": 0.00147075,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 935,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 171,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1106
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00878175,
+      "accounted_usd": 0.001359,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 146,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1082
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00878475,
+      "accounted_usd": 0.001233,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1054
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008778,
+      "accounted_usd": 0.0018495,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 255,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1191
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088035,
+      "accounted_usd": 0.0012585,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 952,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1073
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880575,
+      "accounted_usd": 0.00126375,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1075
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880875,
+      "accounted_usd": 0.00126375,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1075
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008802,
+      "accounted_usd": 0.00163725,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 205,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1158
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00874125,
+      "accounted_usd": 0.00118425,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 913,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 111,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1024
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087435,
+      "accounted_usd": 0.001194,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1027
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087465,
+      "accounted_usd": 0.0011985,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1028
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873975,
+      "accounted_usd": 0.0015315,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1102
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00879825,
+      "accounted_usd": 0.001302,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 938,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1071
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088005,
+      "accounted_usd": 0.00124875,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1060
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088035,
+      "accounted_usd": 0.00123525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1057
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00879675,
+      "accounted_usd": 0.00169425,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 220,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1159
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008766,
+      "accounted_usd": 0.00127275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 947,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 125,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1072
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00876825,
+      "accounted_usd": 0.0012825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1075
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00877125,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 128,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1076
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087645,
+      "accounted_usd": 0.001719,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 224,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1172
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00887475,
+      "accounted_usd": 0.001269,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 990,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1107
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00887775,
+      "accounted_usd": 0.0012645,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 990,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1106
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.011142,
+      "accounted_usd": 0.00175275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1563,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1280
+        },
+        "output_tokens": 129,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1692
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0097005,
+      "accounted_usd": 0.00143925,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1121,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1254
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873375,
+      "accounted_usd": 0.001191,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 910,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1023
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008736,
+      "accounted_usd": 0.00120525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1027
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008739,
+      "accounted_usd": 0.00120525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1027
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873225,
+      "accounted_usd": 0.00152925,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 911,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1099
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088065,
+      "accounted_usd": 0.00137025,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 148,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1087
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880875,
+      "accounted_usd": 0.0014025,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 155,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1095
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00881175,
+      "accounted_usd": 0.0012765,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1067
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008805,
+      "accounted_usd": 0.001605,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 940,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 200,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1140
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088365,
+      "accounted_usd": 0.00126825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 983,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1101
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00883875,
+      "accounted_usd": 0.0012825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1105
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00884175,
+      "accounted_usd": 0.0012825,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1105
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008835,
+      "accounted_usd": 0.001629,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 198,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1182
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00877125,
+      "accounted_usd": 0.00122025,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 925,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1042
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087735,
+      "accounted_usd": 0.0012345,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1046
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087765,
+      "accounted_usd": 0.0012345,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1046
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00876975,
+      "accounted_usd": 0.0015405,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 926,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1114
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087795,
+      "accounted_usd": 0.00167325,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 935,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 216,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1151
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00878175,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 130,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1066
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00878475,
+      "accounted_usd": 0.001233,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1054
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008778,
+      "accounted_usd": 0.0017415,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 936,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 231,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1167
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088035,
+      "accounted_usd": 0.0012585,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 952,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1073
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880575,
+      "accounted_usd": 0.00126375,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1075
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00880875,
+      "accounted_usd": 0.00126375,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1075
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008802,
+      "accounted_usd": 0.00161475,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 953,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 200,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1153
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00874125,
+      "accounted_usd": 0.00118425,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 913,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 111,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1024
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087435,
+      "accounted_usd": 0.0011985,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1028
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087465,
+      "accounted_usd": 0.0011985,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1028
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00873975,
+      "accounted_usd": 0.0015315,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 914,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1102
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00879825,
+      "accounted_usd": 0.0013425,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 938,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 142,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1080
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088005,
+      "accounted_usd": 0.00124425,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1059
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0088035,
+      "accounted_usd": 0.00123525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1057
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00879675,
+      "accounted_usd": 0.00167625,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 939,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 216,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1155
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008766,
+      "accounted_usd": 0.00127275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 947,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 125,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1072
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00876825,
+      "accounted_usd": 0.0013095,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1081
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00877125,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 128,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1076
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0087645,
+      "accounted_usd": 0.00171,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 222,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1170
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00887475,
+      "accounted_usd": 0.0012735,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 990,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1108
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00887775,
+      "accounted_usd": 0.0012645,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 990,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1106
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.011142,
+      "accounted_usd": 0.00175275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1563,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1280
+        },
+        "output_tokens": 129,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1692
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0097005,
+      "accounted_usd": 0.00143925,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1121,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1254
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0093975,
+      "accounted_usd": 0.00142275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1189,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1307
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00946275,
+      "accounted_usd": 0.00143475,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1205,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1323
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0098655,
+      "accounted_usd": 0.0012525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1340,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 55,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1395
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00039906000000000007,
+      "accounted_usd": 0.0002999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1693,
+        "total_tokens": 1693
+      },
+      "unobserved_retry_allowance_usd": 0.00026604000000000005
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.0005293199999999999,
+      "accounted_usd": 0.0003915599999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1934,
+        "total_tokens": 1934
+      },
+      "unobserved_retry_allowance_usd": 0.0003528799999999999
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00015131999999999998,
+      "accounted_usd": 0.00010795999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 0.00010087999999999998
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014916,
+      "accounted_usd": 0.00010627999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.944e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014844,
+      "accounted_usd": 0.00010604000000000001,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 9.896e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 8.01e-05,
+      "accounted_usd": 5.48e-05,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 70,
+        "total_tokens": 70
+      },
+      "unobserved_retry_allowance_usd": 5.34e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00039906000000000007,
+      "accounted_usd": 0.0002999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1693,
+        "total_tokens": 1693
+      },
+      "unobserved_retry_allowance_usd": 0.00026604000000000005
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.0005293199999999999,
+      "accounted_usd": 0.0003915599999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 1934,
+        "total_tokens": 1934
+      },
+      "unobserved_retry_allowance_usd": 0.0003528799999999999
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014988,
+      "accounted_usd": 0.00010675999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.991999999999999e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00015131999999999998,
+      "accounted_usd": 0.00010795999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 0.00010087999999999998
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014916,
+      "accounted_usd": 0.00010627999999999999,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 342,
+        "total_tokens": 342
+      },
+      "unobserved_retry_allowance_usd": 9.944e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 0.00014844,
+      "accounted_usd": 0.00010604000000000001,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 354,
+        "total_tokens": 354
+      },
+      "unobserved_retry_allowance_usd": 9.896e-05
+    },
+    {
+      "model": "text-embedding-3-small",
+      "upper_bound_usd": 8.01e-05,
+      "accounted_usd": 5.48e-05,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 3,
+      "usage": {
+        "prompt_tokens": 70,
+        "total_tokens": 70
+      },
+      "unobserved_retry_allowance_usd": 5.34e-05
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898275,
+      "accounted_usd": 0.001248,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 980,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1094
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008985,
+      "accounted_usd": 0.00125775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1097
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008988,
+      "accounted_usd": 0.00127575,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1101
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898125,
+      "accounted_usd": 0.00158175,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1169
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090555,
+      "accounted_usd": 0.00137775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 138,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1147
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905775,
+      "accounted_usd": 0.001329,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1137
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00906075,
+      "accounted_usd": 0.001329,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1137
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009054,
+      "accounted_usd": 0.00177,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 225,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1235
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090855,
+      "accounted_usd": 0.00132525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1053,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 119,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1172
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00908775,
+      "accounted_usd": 0.001335,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1175
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00909075,
+      "accounted_usd": 0.0013395,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1176
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009084,
+      "accounted_usd": 0.0020775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 286,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1340
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00902025,
+      "accounted_usd": 0.00127275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 995,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1112
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090225,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1116
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090255,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1116
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00901875,
+      "accounted_usd": 0.0016515,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 201,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1197
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090285,
+      "accounted_usd": 0.00127125,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1005,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 115,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1120
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00903075,
+      "accounted_usd": 0.00129,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 119,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1125
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00903375,
+      "accounted_usd": 0.0012855,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1124
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009027,
+      "accounted_usd": 0.00183,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 239,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1245
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090525,
+      "accounted_usd": 0.0013065,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1022,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1142
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905475,
+      "accounted_usd": 0.00132525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 124,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1147
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905775,
+      "accounted_usd": 0.00131625,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1145
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009051,
+      "accounted_usd": 0.00167175,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 201,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1224
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00899025,
+      "accounted_usd": 0.00123675,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 983,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 111,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1094
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0089925,
+      "accounted_usd": 0.001251,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1098
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0089955,
+      "accounted_usd": 0.001251,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1098
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898875,
+      "accounted_usd": 0.0016875,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 211,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1195
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00904725,
+      "accounted_usd": 0.001413,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1008,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 146,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1154
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090495,
+      "accounted_usd": 0.00130125,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1130
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090525,
+      "accounted_usd": 0.00128775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1127
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00904575,
+      "accounted_usd": 0.00173775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 218,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1227
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009015,
+      "accounted_usd": 0.00132975,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 126,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1143
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00901725,
+      "accounted_usd": 0.0013395,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 128,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1146
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00902025,
+      "accounted_usd": 0.0013395,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 128,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1146
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090135,
+      "accounted_usd": 0.001947,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 263,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1281
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00912375,
+      "accounted_usd": 0.0013215,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1060,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1177
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00912675,
+      "accounted_usd": 0.001317,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1060,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1176
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.011391,
+      "accounted_usd": 0.00180525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1633,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 129,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1762
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0099495,
+      "accounted_usd": 0.00151875,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1191,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 139,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1330
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898275,
+      "accounted_usd": 0.0012435,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 980,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1093
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008985,
+      "accounted_usd": 0.00125775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1097
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008988,
+      "accounted_usd": 0.00125775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1097
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898125,
+      "accounted_usd": 0.00158625,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 189,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1170
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090555,
+      "accounted_usd": 0.00153975,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 174,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1183
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905775,
+      "accounted_usd": 0.001329,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1137
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00906075,
+      "accounted_usd": 0.001329,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1137
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009054,
+      "accounted_usd": 0.002247,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 331,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1341
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090855,
+      "accounted_usd": 0.00132075,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1053,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1171
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00908775,
+      "accounted_usd": 0.001335,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1175
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00909075,
+      "accounted_usd": 0.0013395,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1176
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009084,
+      "accounted_usd": 0.001803,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 225,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1279
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00902025,
+      "accounted_usd": 0.00127275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 995,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1112
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090225,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1116
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090255,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1116
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00901875,
+      "accounted_usd": 0.001665,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 204,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1200
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090285,
+      "accounted_usd": 0.00135675,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1005,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 134,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1139
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00903075,
+      "accounted_usd": 0.001299,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1127
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00903375,
+      "accounted_usd": 0.001299,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1127
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009027,
+      "accounted_usd": 0.00174,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 219,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1225
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090525,
+      "accounted_usd": 0.0013065,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1022,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1142
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905475,
+      "accounted_usd": 0.00138375,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 137,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1160
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905775,
+      "accounted_usd": 0.00131625,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1145
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009051,
+      "accounted_usd": 0.00167175,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 201,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1224
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00899025,
+      "accounted_usd": 0.00123675,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 983,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 111,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1094
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0089925,
+      "accounted_usd": 0.001251,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1098
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0089955,
+      "accounted_usd": 0.001251,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1098
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898875,
+      "accounted_usd": 0.0016335,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 199,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1183
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00904725,
+      "accounted_usd": 0.001404,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1008,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 144,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1152
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090495,
+      "accounted_usd": 0.00130125,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1130
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090525,
+      "accounted_usd": 0.00128775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1127
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00904575,
+      "accounted_usd": 0.00183675,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 240,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1249
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009015,
+      "accounted_usd": 0.00132975,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 126,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1143
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00901725,
+      "accounted_usd": 0.0013395,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 128,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1146
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00902025,
+      "accounted_usd": 0.0013395,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 128,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1146
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090135,
+      "accounted_usd": 0.001947,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 263,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1281
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00912375,
+      "accounted_usd": 0.0013215,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1060,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1177
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00912675,
+      "accounted_usd": 0.001317,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1060,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1176
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.011391,
+      "accounted_usd": 0.00180525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1633,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1280
+        },
+        "output_tokens": 129,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1762
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0099495,
+      "accounted_usd": 0.00149175,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1191,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1324
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898275,
+      "accounted_usd": 0.0012435,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 980,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 113,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1093
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008985,
+      "accounted_usd": 0.00125775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1097
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.008988,
+      "accounted_usd": 0.00125775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1097
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898125,
+      "accounted_usd": 0.00158625,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 981,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 189,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1170
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090555,
+      "accounted_usd": 0.00138675,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 140,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1149
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905775,
+      "accounted_usd": 0.001329,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1137
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00906075,
+      "accounted_usd": 0.001329,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1137
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009054,
+      "accounted_usd": 0.0017115,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 212,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1222
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090855,
+      "accounted_usd": 0.00132075,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1053,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1171
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00908775,
+      "accounted_usd": 0.001389,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1187
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00909075,
+      "accounted_usd": 0.0013395,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1176
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009084,
+      "accounted_usd": 0.0016815,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1054,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 198,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1252
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00902025,
+      "accounted_usd": 0.00127275,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 995,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1112
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090225,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1116
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090255,
+      "accounted_usd": 0.001287,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1116
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00901875,
+      "accounted_usd": 0.002331,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 352,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1348
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090285,
+      "accounted_usd": 0.00137925,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1005,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 139,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1144
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00903075,
+      "accounted_usd": 0.0012765,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1122
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00903375,
+      "accounted_usd": 0.0012855,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1124
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009027,
+      "accounted_usd": 0.001983,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1006,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 273,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1279
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090525,
+      "accounted_usd": 0.0013065,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1022,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 120,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1142
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905475,
+      "accounted_usd": 0.00132075,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 123,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1146
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00905775,
+      "accounted_usd": 0.00134775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 129,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1152
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009051,
+      "accounted_usd": 0.00166725,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 200,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1223
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00899025,
+      "accounted_usd": 0.00123675,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 983,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 111,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1094
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0089925,
+      "accounted_usd": 0.001251,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1098
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0089955,
+      "accounted_usd": 0.001251,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1098
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00898875,
+      "accounted_usd": 0.0017145,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 984,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 217,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1201
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00904725,
+      "accounted_usd": 0.001368,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1008,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 136,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1144
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090495,
+      "accounted_usd": 0.00130125,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 121,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1130
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090525,
+      "accounted_usd": 0.00128775,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1127
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00904575,
+      "accounted_usd": 0.00178725,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 229,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1238
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.009015,
+      "accounted_usd": 0.00132975,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 126,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1143
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00901725,
+      "accounted_usd": 0.001335,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 127,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1145
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00902025,
+      "accounted_usd": 0.0013395,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 128,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1146
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0090135,
+      "accounted_usd": 0.0017085,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 210,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1228
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00912375,
+      "accounted_usd": 0.001317,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1060,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1176
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.00912675,
+      "accounted_usd": 0.001326,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1060,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1178
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.011391,
+      "accounted_usd": 0.00180525,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1633,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1280
+        },
+        "output_tokens": 129,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1762
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    },
+    {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "upper_bound_usd": 0.0099495,
+      "accounted_usd": 0.00148725,
+      "state": "reported_usage",
+      "sdk_attempt_bound": 1,
+      "usage": {
+        "input_tokens": 1191,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 132,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1323
+      },
+      "unobserved_retry_allowance_usd": 0.0
+    }
+  ]
+}

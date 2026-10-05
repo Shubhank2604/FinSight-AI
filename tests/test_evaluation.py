@@ -8,7 +8,7 @@ import pytest
 from config import Settings
 from evaluation.benchmark import load_dataset, run_benchmark
 from evaluation.metrics import aggregate_metrics, evaluate_ranking, percentile
-from gemini_client import GeminiClient
+from openai_client import OpenAIClient
 from index_uploads import index_folder
 
 
@@ -88,15 +88,13 @@ def test_checked_in_benchmark_runs_without_network_or_api_key() -> None:
 def test_local_hash_embeddings_do_not_require_gemini_key() -> None:
     settings = Settings(
         gemini_api_key="",
-        gemini_text_model="gemini-test",
         gemini_embedding_model="gemini-embedding-test",
-        gemini_web_grounding_model="gemini-web-test",
         embedding_provider="local_hash",
         qdrant_collection="test",
         qdrant_path="unused",
     )
 
-    client = GeminiClient(settings, embedding_dimensions=16)
+    client = OpenAIClient(settings, embedding_dimensions=16)
 
     assert len(client.embed_query("retirement inflation")) == 16
     with pytest.raises(ValueError, match="generative operations"):
@@ -112,3 +110,20 @@ def test_local_hash_indexing_accepts_empty_folder_without_key(
     monkeypatch.setenv("QDRANT_PATH", str(tmp_path / "qdrant"))
 
     assert index_folder(uploads, embedding_provider="local_hash") == (0, 0, 0)
+
+
+def test_malformed_pdf_indexing_releases_storage(tmp_path, monkeypatch):
+    from embeddings import EmbeddingClient
+    from retrieval import HybridRetriever
+    uploads = tmp_path / 'uploads'
+    uploads.mkdir()
+    (uploads / 'bad.pdf').write_bytes(b'not a PDF')
+    settings = Settings(qdrant_path=str(tmp_path / 'qdrant'))
+    monkeypatch.setattr('index_uploads.load_settings', lambda: settings)
+    with pytest.raises(Exception):
+        index_folder(uploads, embedding_provider='local_hash')
+    restarted = HybridRetriever(settings.qdrant_collection, settings.qdrant_path, EmbeddingClient(settings))
+    try:
+        assert restarted.chunks == []
+    finally:
+        restarted.close()

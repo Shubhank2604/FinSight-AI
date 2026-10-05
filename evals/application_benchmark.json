@@ -1,0 +1,2455 @@
+{
+  "version": "2.0.0",
+  "created_on": "2026-10-04",
+  "split_policy": "company-level split frozen before implementation tuning: first 8 development, final 4 held out",
+  "label_provenance": "agent-authored, not independently human-reviewed",
+  "documents": [
+    {
+      "source_name": "Cedar.pdf",
+      "path": "evals/fixtures/Cedar.pdf",
+      "company": "Cedar",
+      "split": "development",
+      "sha256": "754bd82a1860a6c5f3772046ba842c3bd6be241a4ebed06da93b4f5f1c6b6b8f",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Harbor.pdf",
+      "path": "evals/fixtures/Harbor.pdf",
+      "company": "Harbor",
+      "split": "development",
+      "sha256": "32c94e09762aecb4899b81dcc873c6433404e568c74fbc81f3d5e8abe8e00b90",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Quartz.pdf",
+      "path": "evals/fixtures/Quartz.pdf",
+      "company": "Quartz",
+      "split": "development",
+      "sha256": "fc4e314caca47619a5df588dfba949d9c82a0ea4f076cc57d5bc62670048abc2",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Maple.pdf",
+      "path": "evals/fixtures/Maple.pdf",
+      "company": "Maple",
+      "split": "development",
+      "sha256": "49ffa8b3a8fc6dc3511619dbd3057c320f0c21582c380428c3792f0a1639df90",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Juniper.pdf",
+      "path": "evals/fixtures/Juniper.pdf",
+      "company": "Juniper",
+      "split": "development",
+      "sha256": "2baa8481268d4d2c20e352d9fd9fd1ce8269968ea6ec7a06f03c200c02bac2bc",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Beacon.pdf",
+      "path": "evals/fixtures/Beacon.pdf",
+      "company": "Beacon",
+      "split": "development",
+      "sha256": "ecde099d2c2fa991bd6a73e7bb07718fe1db7b38693eedc59164debb5e8d80a3",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Willow.pdf",
+      "path": "evals/fixtures/Willow.pdf",
+      "company": "Willow",
+      "split": "development",
+      "sha256": "3e614ea0966e0a4dca1eb5b162c377c468c165fa5c84dfa40c21ae0b0f26ade2",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Pine.pdf",
+      "path": "evals/fixtures/Pine.pdf",
+      "company": "Pine",
+      "split": "development",
+      "sha256": "6987fa0b6829ff36c65d093f63fc10045a0d682fcbf2b8b2bd18c28cde7facd6",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Orchid.pdf",
+      "path": "evals/fixtures/Orchid.pdf",
+      "company": "Orchid",
+      "split": "held_out",
+      "sha256": "1f36b8fc79b8881d1b008e9b6d902ca1804afe31bdba5479a5a3f4ab31fcdb0a",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Aspen.pdf",
+      "path": "evals/fixtures/Aspen.pdf",
+      "company": "Aspen",
+      "split": "held_out",
+      "sha256": "8b902f1e033be1d4a8a83109d99969af2d767b0798bdf6cf1b1996515418e000",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Birch.pdf",
+      "path": "evals/fixtures/Birch.pdf",
+      "company": "Birch",
+      "split": "held_out",
+      "sha256": "90c0e5a0f48abc48fcce09c9ad1aa02e7610b1171055830bd0a0ff9a4a6d837b",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    },
+    {
+      "source_name": "Elm.pdf",
+      "path": "evals/fixtures/Elm.pdf",
+      "company": "Elm",
+      "split": "held_out",
+      "sha256": "1b56feadcad98ea1767ca026de108190649073e431fb080fc980a1d6b67a7b18",
+      "license": "CC0-1.0",
+      "label_provenance": "agent-authored, arithmetic labels generated from fixture parameters; no independent human review"
+    }
+  ],
+  "cases": [
+    {
+      "id": "cedar-01",
+      "query": "What is revenue for Cedar in the report for 2025?",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 120000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "cedar-02",
+      "query": "According to the report, what is net income for Cedar in 2025?",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 24000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "cedar-03",
+      "query": "What are current assets for Cedar in the document for 2025?",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 60000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "cedar-04",
+      "query": "Calculate current ratio for Cedar in the report for 2025",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "cedar-05",
+      "query": "Compute net margin for Cedar in the report for 2025",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "cedar-06",
+      "query": "Calculate debt-to-equity for Cedar in the report for 2025",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "cedar-07",
+      "query": "Compute year-over-year revenue growth for Cedar in the report for 2025",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "cedar-08",
+      "query": "Compare revenue for Cedar in the report for 2024 and 2025",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        100000000.0,
+        120000000.0
+      ],
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "cedar-09",
+      "query": "What is revenue for Cedar in the report for 2028?",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "cedar-10",
+      "query": "Calculate EMI using the loan in the report for Cedar",
+      "sources": [
+        "Cedar.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-01",
+      "query": "What is revenue for Harbor in the report for 2025?",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 132000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-02",
+      "query": "According to the report, what is net income for Harbor in 2025?",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 26400000.000000004,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-03",
+      "query": "What are current assets for Harbor in the document for 2025?",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 62000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-04",
+      "query": "Calculate current ratio for Harbor in the report for 2025",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-05",
+      "query": "Compute net margin for Harbor in the report for 2025",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-06",
+      "query": "Calculate debt-to-equity for Harbor in the report for 2025",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-07",
+      "query": "Compute year-over-year revenue growth for Harbor in the report for 2025",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-08",
+      "query": "Compare revenue for Harbor in the report for 2024 and 2025",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        110000000.0,
+        132000000.0
+      ],
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "harbor-09",
+      "query": "What is revenue for Harbor in the report for 2028?",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "harbor-10",
+      "query": "Calculate EMI using the loan in the report for Harbor",
+      "sources": [
+        "Harbor.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-01",
+      "query": "What is revenue for Quartz in the report for 2025?",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 144000000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-02",
+      "query": "According to the report, what is net income for Quartz in 2025?",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 28800000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-03",
+      "query": "What are current assets for Quartz in the document for 2025?",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 64000000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-04",
+      "query": "Calculate current ratio for Quartz in the report for 2025",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-05",
+      "query": "Compute net margin for Quartz in the report for 2025",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-06",
+      "query": "Calculate debt-to-equity for Quartz in the report for 2025",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-07",
+      "query": "Compute year-over-year revenue growth for Quartz in the report for 2025",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-08",
+      "query": "Compare revenue for Quartz in the report for 2024 and 2025",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        120000000.0,
+        144000000.0
+      ],
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "quartz-09",
+      "query": "What is revenue for Quartz in the report for 2028?",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "quartz-10",
+      "query": "Calculate EMI using the loan in the report for Quartz",
+      "sources": [
+        "Quartz.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-01",
+      "query": "What is revenue for Maple in the report for 2025?",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 156000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-02",
+      "query": "According to the report, what is net income for Maple in 2025?",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 31200000.000000004,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-03",
+      "query": "What are current assets for Maple in the document for 2025?",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 66000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-04",
+      "query": "Calculate current ratio for Maple in the report for 2025",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-05",
+      "query": "Compute net margin for Maple in the report for 2025",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-06",
+      "query": "Calculate debt-to-equity for Maple in the report for 2025",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-07",
+      "query": "Compute year-over-year revenue growth for Maple in the report for 2025",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-08",
+      "query": "Compare revenue for Maple in the report for 2024 and 2025",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        130000000.0,
+        156000000.0
+      ],
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "maple-09",
+      "query": "What is revenue for Maple in the report for 2028?",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "maple-10",
+      "query": "Calculate EMI using the loan in the report for Maple",
+      "sources": [
+        "Maple.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-01",
+      "query": "What is revenue for Juniper in the report for 2025?",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 168000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-02",
+      "query": "According to the report, what is net income for Juniper in 2025?",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 33600000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-03",
+      "query": "What are current assets for Juniper in the document for 2025?",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 68000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-04",
+      "query": "Calculate current ratio for Juniper in the report for 2025",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-05",
+      "query": "Compute net margin for Juniper in the report for 2025",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-06",
+      "query": "Calculate debt-to-equity for Juniper in the report for 2025",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-07",
+      "query": "Compute year-over-year revenue growth for Juniper in the report for 2025",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-08",
+      "query": "Compare revenue for Juniper in the report for 2024 and 2025",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        140000000.0,
+        168000000.0
+      ],
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "juniper-09",
+      "query": "What is revenue for Juniper in the report for 2028?",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "juniper-10",
+      "query": "Calculate EMI using the loan in the report for Juniper",
+      "sources": [
+        "Juniper.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-01",
+      "query": "What is revenue for Beacon in the report for 2025?",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 180000000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-02",
+      "query": "According to the report, what is net income for Beacon in 2025?",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 36000000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-03",
+      "query": "What are current assets for Beacon in the document for 2025?",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 70000000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-04",
+      "query": "Calculate current ratio for Beacon in the report for 2025",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-05",
+      "query": "Compute net margin for Beacon in the report for 2025",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-06",
+      "query": "Calculate debt-to-equity for Beacon in the report for 2025",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-07",
+      "query": "Compute year-over-year revenue growth for Beacon in the report for 2025",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-08",
+      "query": "Compare revenue for Beacon in the report for 2024 and 2025",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        150000000.0,
+        180000000.0
+      ],
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "beacon-09",
+      "query": "What is revenue for Beacon in the report for 2028?",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "beacon-10",
+      "query": "Calculate EMI using the loan in the report for Beacon",
+      "sources": [
+        "Beacon.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-01",
+      "query": "What is revenue for Willow in the report for 2025?",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 192000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-02",
+      "query": "According to the report, what is net income for Willow in 2025?",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 38400000.00000001,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-03",
+      "query": "What are current assets for Willow in the document for 2025?",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 72000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-04",
+      "query": "Calculate current ratio for Willow in the report for 2025",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-05",
+      "query": "Compute net margin for Willow in the report for 2025",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-06",
+      "query": "Calculate debt-to-equity for Willow in the report for 2025",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-07",
+      "query": "Compute year-over-year revenue growth for Willow in the report for 2025",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-08",
+      "query": "Compare revenue for Willow in the report for 2024 and 2025",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        160000000.0,
+        192000000.0
+      ],
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "willow-09",
+      "query": "What is revenue for Willow in the report for 2028?",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "willow-10",
+      "query": "Calculate EMI using the loan in the report for Willow",
+      "sources": [
+        "Willow.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-01",
+      "query": "What is revenue for Pine in the report for 2025?",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 204000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-02",
+      "query": "According to the report, what is net income for Pine in 2025?",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 40800000.00000001,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-03",
+      "query": "What are current assets for Pine in the document for 2025?",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 74000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-04",
+      "query": "Calculate current ratio for Pine in the report for 2025",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-05",
+      "query": "Compute net margin for Pine in the report for 2025",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-06",
+      "query": "Calculate debt-to-equity for Pine in the report for 2025",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-07",
+      "query": "Compute year-over-year revenue growth for Pine in the report for 2025",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-08",
+      "query": "Compare revenue for Pine in the report for 2024 and 2025",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        170000000.0,
+        204000000.0
+      ],
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "pine-09",
+      "query": "What is revenue for Pine in the report for 2028?",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "pine-10",
+      "query": "Calculate EMI using the loan in the report for Pine",
+      "sources": [
+        "Pine.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-01",
+      "query": "What is revenue for Orchid in the report for 2025?",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 216000000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-02",
+      "query": "According to the report, what is net income for Orchid in 2025?",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 43200000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-03",
+      "query": "What are current assets for Orchid in the document for 2025?",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 76000000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-04",
+      "query": "Calculate current ratio for Orchid in the report for 2025",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-05",
+      "query": "Compute net margin for Orchid in the report for 2025",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-06",
+      "query": "Calculate debt-to-equity for Orchid in the report for 2025",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-07",
+      "query": "Compute year-over-year revenue growth for Orchid in the report for 2025",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-08",
+      "query": "Compare revenue for Orchid in the report for 2024 and 2025",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        180000000.0,
+        216000000.0
+      ],
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "orchid-09",
+      "query": "What is revenue for Orchid in the report for 2028?",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "orchid-10",
+      "query": "Calculate EMI using the loan in the report for Orchid",
+      "sources": [
+        "Orchid.pdf"
+      ],
+      "split": "held_out",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-01",
+      "query": "What is revenue for Aspen in the report for 2025?",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 228000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-02",
+      "query": "According to the report, what is net income for Aspen in 2025?",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 45600000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-03",
+      "query": "What are current assets for Aspen in the document for 2025?",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 78000000.0,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-04",
+      "query": "Calculate current ratio for Aspen in the report for 2025",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-05",
+      "query": "Compute net margin for Aspen in the report for 2025",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-06",
+      "query": "Calculate debt-to-equity for Aspen in the report for 2025",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-07",
+      "query": "Compute year-over-year revenue growth for Aspen in the report for 2025",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-08",
+      "query": "Compare revenue for Aspen in the report for 2024 and 2025",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        190000000.0,
+        228000000.0
+      ],
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "aspen-09",
+      "query": "What is revenue for Aspen in the report for 2028?",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "aspen-10",
+      "query": "Calculate EMI using the loan in the report for Aspen",
+      "sources": [
+        "Aspen.pdf"
+      ],
+      "split": "held_out",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "USD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-01",
+      "query": "What is revenue for Birch in the report for 2025?",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "revenue",
+      "expected_status": "ok",
+      "expected_value": 240000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-02",
+      "query": "According to the report, what is net income for Birch in 2025?",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 48000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-03",
+      "query": "What are current assets for Birch in the document for 2025?",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 80000000.0,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-04",
+      "query": "Calculate current ratio for Birch in the report for 2025",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-05",
+      "query": "Compute net margin for Birch in the report for 2025",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "margin",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-06",
+      "query": "Calculate debt-to-equity for Birch in the report for 2025",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-07",
+      "query": "Compute year-over-year revenue growth for Birch in the report for 2025",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_status": "ok",
+      "expected_value": 20,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-08",
+      "query": "Compare revenue for Birch in the report for 2024 and 2025",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "comparison",
+      "expected_status": "ok",
+      "expected_value": [
+        200000000.0,
+        240000000.0
+      ],
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "birch-09",
+      "query": "What is revenue for Birch in the report for 2028?",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "birch-10",
+      "query": "Calculate EMI using the loan in the report for Birch",
+      "sources": [
+        "Birch.pdf"
+      ],
+      "split": "held_out",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "CAD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "elm-01",
+      "query": "What is revenue for Elm in the report for 2025?",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "revenue",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "conflict"
+      ]
+    },
+    {
+      "id": "elm-02",
+      "query": "According to the report, what is net income for Elm in 2025?",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "net_income",
+      "expected_status": "ok",
+      "expected_value": 50400000.00000001,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "elm-03",
+      "query": "What are current assets for Elm in the document for 2025?",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_assets",
+      "expected_status": "ok",
+      "expected_value": 82000000.0,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "elm-04",
+      "query": "Calculate current ratio for Elm in the report for 2025",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_ratio",
+      "expected_status": "ok",
+      "expected_value": 2,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "elm-05",
+      "query": "Compute net margin for Elm in the report for 2025",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "margin",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "conflict"
+      ]
+    },
+    {
+      "id": "elm-06",
+      "query": "Calculate debt-to-equity for Elm in the report for 2025",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "debt_to_equity",
+      "expected_status": "ok",
+      "expected_value": 0.5,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "answerable"
+      ]
+    },
+    {
+      "id": "elm-07",
+      "query": "Compute year-over-year revenue growth for Elm in the report for 2025",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "conflict"
+      ]
+    },
+    {
+      "id": "elm-08",
+      "query": "Compare revenue for Elm in the report for 2024 and 2025",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "comparison",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "conflict"
+      ]
+    },
+    {
+      "id": "elm-09",
+      "query": "What is revenue for Elm in the report for 2028?",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "absent",
+      "expected_status": "abstained",
+      "expected_value": null,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "elm-10",
+      "query": "Calculate EMI using the loan in the report for Elm",
+      "sources": [
+        "Elm.pdf"
+      ],
+      "split": "held_out",
+      "operation": "emi_calculator",
+      "expected_status": "ok",
+      "expected_value": 4182.2,
+      "expected_currency": "AUD",
+      "expected_period": 2025,
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "answerable"
+      ]
+    }
+  ]
+}

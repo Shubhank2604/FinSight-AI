@@ -1,0 +1,105 @@
+{
+  "measured_revision": "02d6ea415c9351879c9d7c18fb84027907b4b7fd",
+  "url": "https://github.com/Shubhank2604/FinSight-AI/actions/runs/37265605624",
+  "runs": {
+    "workflow_runs": [
+      {
+        "id": 37265605624,
+        "name": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 20,
+        "jobs_url": "https://api.github.com/repos/Shubhank2604/FinSight-AI/actions/runs/37265605624/jobs",
+        "logs_url": "https://api.github.com/repos/Shubhank2604/FinSight-AI/actions/runs/37265605624/logs",
+        "workflow_id": 344837293
+      }
+    ]
+  },
+  "jobs": {
+    "jobs": [
+      {
+        "id": 111621662972,
+        "name": "test-and-evaluate",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 37265605624,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Check out repository",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run unit tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Enforce retrieval quality gate",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Enforce citation and abstention gate",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Enforce router and useful-answer application gates",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Publish offline evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Check out repository",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          }
+        ]
+      }
+    ]
+  },
+  "observed_unit_tests": "223 passed in 7.32s in the job log; Ubuntu Python 3.13; all four gates and artifact publication passed"
+}

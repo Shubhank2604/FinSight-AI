@@ -1,0 +1,7 @@
+*.pdf binary
+*.gz binary
+evals/repair_v3/application.json text eol=lf
+evals/repair_v3/router.json text eol=lf
+evals/repair_v3/results/*.json -text
+evals/repair_v3/results/*.xml -text
+evals/results/evidence-index.json text eol=lf

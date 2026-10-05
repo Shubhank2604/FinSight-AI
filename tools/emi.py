@@ -6,6 +6,7 @@ from typing import Any
 import numpy_financial as npf
 
 from schemas import ToolCalculation, ToolResult
+from tools.validation import finite_values, valid_currency
 
 
 def _normalise_prepayments(
@@ -13,8 +14,12 @@ def _normalise_prepayments(
 ) -> dict[int, float]:
     normalised: dict[int, float] = {}
     for item in prepayments or []:
-        month = int(item.get("month", 0))
-        amount = float(item.get("amount", 0))
+        month = item.get("month", 0)
+        amount = item.get("amount", 0)
+        finite_values(month=month, amount=amount)
+        if month != int(month) or month <= 0 or amount <= 0:
+            raise ValueError("Prepayment month must be a positive integer and amount positive")
+        month = int(month)
         if month > 0 and amount > 0:
             normalised[month] = normalised.get(month, 0.0) + amount
     return normalised
@@ -76,7 +81,7 @@ def calculate_emi(
     principal: float,
     annual_rate_pct: float,
     tenure_months: int,
-    currency: str = "INR",
+    currency: str = "USD",
     prepayments: Iterable[dict[str, Any]] | None = None,
 ) -> ToolResult:
     inputs = {
@@ -88,6 +93,8 @@ def calculate_emi(
     }
 
     try:
+        finite_values(principal=principal, annual_rate_pct=annual_rate_pct, tenure_months=tenure_months)
+        valid_currency(currency)
         if principal <= 0:
             raise ValueError("principal must be positive")
         if annual_rate_pct < 0:
@@ -95,7 +102,12 @@ def calculate_emi(
         if tenure_months <= 0:
             raise ValueError("tenure_months must be positive")
 
-        normalised_prepayments = _normalise_prepayments(prepayments)
+        if int(tenure_months) != tenure_months or tenure_months > 1200 or annual_rate_pct > 100:
+            raise ValueError("Require whole months <=1200 and annual rate <=100%")
+        tenure_months = int(tenure_months)
+        normalised_prepayments = _normalise_prepayments(inputs["prepayments"])
+        if any(month > tenure_months for month in normalised_prepayments):
+            raise ValueError("Prepayment month exceeds loan duration")
         base = _amortise(principal, annual_rate_pct, tenure_months)
         with_prepayments = _amortise(
             principal, annual_rate_pct, tenure_months, normalised_prepayments
@@ -111,6 +123,7 @@ def calculate_emi(
             "interest_saved_vs_no_prepayment": round(max(interest_saved, 0), 2),
             "schedule_preview": with_prepayments["schedule_preview"],
         }
+        finite_values(**{key: value for key, value in result.items() if isinstance(value, (float, int))})
 
         calculation = ToolCalculation(
             tool_name="emi_calculator",

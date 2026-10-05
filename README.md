@@ -1,172 +1,136 @@
 # FinSight AI
 
-[![CI](https://github.com/Shubhank2604/FinSight-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/Shubhank2604/FinSight-AI/actions/workflows/ci.yml)
-[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
+FinSight is a financial document research assistant with explicit evidence
+contracts and deterministic calculations. Select documents, ask an independent
+question, and inspect citations or calculation inputs. The local core runs on CPU.
 
-FinSight is an experimental financial analysis application that routes each request to document retrieval, deterministic finance tools, multimodal analysis, or an explicit abstention path. It combines Qdrant dense retrieval, BM25, reciprocal-rank fusion, structured Gemini output, and deterministic citation checks.
+Supported verified output consists of canonical financial facts binding company,
+metric, year, currency and normalized value; faithful source excerpts; or
+validated deterministic tool results. Arbitrary narrative entailment and arbitrary
+PDF layouts are outside that contract. Unsupported or conflicting inputs cause
+clarification or abstention. Confidence diagnostics are binary gates, not probabilities.
 
-The repository includes credential-free evaluation for retrieval and response validation. It supports analysis and education; it does not execute trades or provide licensed financial advice.
+The application separates Streamlit presentation from a Python orchestration layer.
+Uploads become page-aware chunks in a local Qdrant index. A rule-based router
+selects retrieval, education or typed financial tools; the verifier checks the
+result before display. Optional OpenAI generation sits behind that same verifier.
+See the [architecture](docs/architecture.md) for contracts and recovery behavior.
 
-## What is implemented
+PDF ingestion preserves source/page/company/period/currency/unit metadata. EMI,
+portfolio projection, current ratio, debt/equity, net/operating margin and
+metric-specific year-over-year growth use typed inputs and recorded provenance.
+Complete query inputs override document scenarios; partial overrides clarify.
+Split loan fields must belong to the same document and compatible company/period/
+currency. Conflicts remain visible even when another chunk contains a complete loan.
 
-- PDF text and table ingestion with typed document chunks.
-- Router-first execution across retrieval, calculation, multimodal, web-grounded, educational, and abstention paths.
-- Dense retrieval through Qdrant, sparse retrieval through BM25, and reciprocal-rank fusion.
-- Deterministic EMI, portfolio-growth, tax, and options calculations.
-- Structured model responses with claim-level citation IDs.
-- Validation for missing citations, unknown sources, required tool use, missing inputs, and numerical citation mismatches.
-- Offline tests and versioned evaluation reports that run without Gemini credentials.
+The generation provider is the official OpenAI Responses SDK with configurable
+validated model profiles; the default is `gpt-5.4-mini-2026-03-17`. Generation
+is optional. The UI default retrieval is BM25 with credential-free local hash vectors.
+Optional semantic embeddings use `text-embedding-3-small`, 768 dimensions, in
+separate collections. Legacy Gemini embeddings remain optional; Gemini generation
+is removed. Collection identities include provider/model/dimensions/ingestion version.
+The v3 ingestion change requires re-indexing; preserve existing uploads and `.env`.
 
-## Architecture
+Streamlit shows source evidence, interpreted inputs, authoritative results,
+assumptions and optional diagnostics. USD is the default calculation currency.
+Portfolio timing and rate conventions are selectable. Tax is disabled until reviewed
+rule packs exist. Web and vision are experimental. Queries are independent;
+displayed history is not conversation memory. Index recovery uses a journal and
+Qdrant as authority; duplicate-content aliases are rejected with the existing name.
+A rebuild validates each batch and preserves compatible evidence on failure,
+but is not a globally atomic transaction.
 
-```mermaid
-flowchart TD
-    Q["User query + optional documents"] --> R["Intent router"]
-    R -->|Document facts| H["Hybrid retrieval"]
-    R -->|Financial calculation| T["Deterministic tools"]
-    R -->|Image or chart| M["Multimodal path"]
-    R -->|Current information| W["Web-grounded path"]
-    R -->|Missing evidence| A["Abstain"]
-    H --> G["Structured Gemini response"]
-    T --> G
-    M --> G
-    W --> G
-    G --> V["Citation and confidence validation"]
-    V --> O["Answer or abstention"]
-```
+## Setup
 
-The router decides which evidence and tools are required before generation. Calculation routes use deterministic functions for numerical work; the model explains results but does not replace the calculation.
+Python 3.13 is supported. A fresh locked Windows 3.13.9 environment passed 223 tests
+and dependency consistency checks during repair. Linux CI status and final
+measurements are recorded in [verification](docs/verification.md).
 
-### Retrieval and validation
-
-```mermaid
-flowchart LR
-    D["Document chunks"] --> QD["Qdrant dense index"]
-    D --> BM["BM25 index"]
-    U["Query"] --> QD
-    U --> BM
-    QD --> RRF["Reciprocal-rank fusion"]
-    BM --> RRF
-    RRF --> CP["Deduplicate and pack context"]
-    CP --> SR["Structured response"]
-    SR --> CV["Citation ID checks"]
-    SR --> NV["Numerical evidence checks"]
-    CV --> DEC["Accept or abstain"]
-    NV --> DEC
-```
-
-The validation layer checks grounding mechanics and deterministic numerical consistency. It does **not** prove that every natural-language claim is semantically entailed by its source.
-
-## Reproducible evaluation
-
-### Retrieval baseline
-
-The versioned retrieval benchmark contains 18 labeled queries over 18 synthetic finance chunks. It exercises the production Qdrant, BM25, and fusion paths using deterministic local embeddings.
-
-| Mode | Precision@3 | Recall@3 | MRR@3 | nDCG@3 |
-| --- | ---: | ---: | ---: | ---: |
-| Dense local hash | 0.315 | 0.944 | 0.861 | 0.883 |
-| BM25 | 0.333 | 1.000 | 0.972 | 0.979 |
-| Hybrid RRF | 0.315 | 0.944 | 0.889 | 0.903 |
-
-BM25 wins on this small, deliberately lexical corpus. That result is retained because the benchmark is intended to expose trade-offs, not assert that hybrid retrieval is always superior.
-
-### Citation and abstention baseline
-
-The versioned validation benchmark contains 11 structured-answer cases.
-
-| Metric | Result |
-| --- | ---: |
-| Citation precision | 0.692 |
-| Citation recall | 0.600 |
-| Abstention precision | 1.000 |
-| Abstention recall | 0.857 |
-| Accept/abstain accuracy | 0.909 |
-
-Missing and unknown citations are rejected, as is a citation with conflicting numerical evidence. A wrong but valid citation for a nonnumeric claim still passes. This known failure is documented rather than presented as semantic verification.
-
-See [the evaluation methodology](docs/evaluation.md) for dataset construction, metric definitions, per-query failures, and limitations.
-
-## Run locally
-
-Requirements: Python 3.11+.
-
-```bash
+```powershell
 python -m venv .venv
-source .venv/bin/activate                 # macOS/Linux
-# .\.venv\Scripts\Activate.ps1          # Windows PowerShell
-python -m pip install -r requirements.txt
-cp .env.example .env                      # macOS/Linux
-# Copy-Item .env.example .env             # Windows PowerShell
-streamlit run app.py
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.lock
+python -m pip check
+# Only if you do not already have a private configuration:
+Copy-Item .env.example .env
+python -m streamlit run app.py
 ```
 
-Gemini-backed application paths require `GEMINI_API_KEY`. Tests and evaluation use deterministic local embeddings and do not require external credentials.
+On Linux/macOS use `source .venv/bin/activate` and `cp`.
+Set `OPENAI_API_KEY` privately for generation or semantic embeddings. The UI
+starts with generation off. Configuration defaults and supported model profiles
+are in [.env.example](.env.example) and the [provider runbook](docs/openai-migration.md).
 
-Index local documents:
+## Upload and index documents
 
-```bash
-python index_uploads.py \
-  --folder data/uploads/originals \
-  --embedding-provider local_hash
+1. Upload PDFs in the sidebar and click **Index uploads**. Each file is limited to 20 MB.
+2. Select the relevant **Active documents**, choose a retrieval method and ask a
+   question in **Document research**. Inspect source pages and calculation inputs.
+3. Use **Calculators** for explicit scenarios. Enable **Use OpenAI for document
+   explanations** only when you want credentialed generation.
+
+For a credential-free walkthrough, use `evals/fixtures/Cedar.pdf`, `Elm.pdf`, and
+`evals/repair_v3/Mint-2024-CFO.pdf` with the [demo queries](docs/demo.md). Images
+can be indexed, but verified visual answers remain unsupported.
+
+For batch indexing, stop the app first because the local index has one owner:
+
+```powershell
+python index_uploads.py --folder evals/fixtures --embedding-provider local_hash
 ```
 
-## Test and evaluate
+Original uploads remain under `data/uploads/originals`; removing indexed documents
+does not delete them. Provider changes create separate index identities and require
+re-indexing. Preserve the old index when changing providers.
 
-```bash
-python -m pytest -q
+## Reproduce the evidence
 
-python eval_retrieval.py \
-  --top-k 3 \
-  --min-hybrid-recall 0.90 \
-  --output evals/results/latest.json
-
-python eval_citations.py \
-  --min-abstention-recall 0.85 \
-  --output evals/results/citation_baseline.json
+```powershell
+python -m pytest -q -p no:cacheprovider --basetemp=.test-tmp/check-unique
+python eval_retrieval.py --min-hybrid-recall 0.90 --output .test-tmp/retrieval.json
+python eval_citations.py --min-abstention-recall 0.85 --output .test-tmp/citations.json
+python -m evaluation.router --quality-gate --output .test-tmp/router.json
+python -m evaluation.application --quality-gate --output .test-tmp/application.json.gz
+python -m evaluation.replay --output .test-tmp/historical-rescore.json.gz
+python demo.py --output .test-tmp/demo.json
 ```
 
-GitHub Actions runs all three checks on every pull request to `master`.
+Demo and rescore commands default to ignored `.test-tmp` reports. Retained results
+are historical evidence, with their measured source revision recorded separately.
+Use a new pytest temporary directory for each run. Paid checks require credentials
+and an explicit authorized cap. Share a persisted ledger between sequential runs;
+do not reset it to bypass the cap. A rerun repeats requests rather than resuming a
+checkpoint. Paid runs are excluded from CI.
 
-## Design decisions
-
-| Decision | Reason | Trade-off |
-| --- | --- | --- |
-| Route before generation | Makes required evidence and tools explicit | Rule-based routing needs maintained intent coverage |
-| Keep deterministic calculators outside the LLM | Prevents the model from performing authoritative arithmetic | Supported calculations must be implemented separately |
-| Combine BM25 and dense retrieval | Preserves exact financial terms while allowing semantic matches | Fusion adds complexity and can underperform BM25 on lexical corpora |
-| Validate before returning an answer | Rejects missing citations, inputs, and numerical mismatches | Current checks cannot establish general semantic entailment |
-| Use synthetic evaluation data | Keeps CI deterministic, redistributable, and credential-free | Results do not establish performance on arbitrary real documents |
-
-## Repository map
-
-```text
-app.py                  Streamlit application and request orchestration
-router/                 Intent and execution-path selection
-ingestion/              PDF extraction and typed chunking
-retrieval/              Qdrant, BM25, RRF, and context selection
-tools/                  Deterministic finance calculators
-verifier/               Citation, input, confidence, and number checks
-evaluation/             Benchmark runners and metric implementations
-evals/                  Versioned datasets and result artifacts
-docs/evaluation.md      Methodology, failures, and limitations
+```powershell
+python -m evaluation.application --embedding-provider openai --budget-usd 2 --output .test-tmp/semantic.json.gz --quality-gate
+python -m evaluation.application --live --embedding-provider openai --mode hybrid --repeats 3 --budget-usd 2 --output .test-tmp/live.json.gz --quality-gate
+python -m evaluation.provider_checks --live --budget-usd 2 --output .test-tmp/provider.json
 ```
 
-## Evaluation scope and safety boundary
+The new frozen [v3 dataset](evals/repair_v3/README.md) has 12 documents and 130
+questions: ten synthetic issuers and two real government CFO excerpts from one
+issuer. There are 84 development and 46 internal held-out questions. Labels are
+agent-authored and not independently human-reviewed. The independent v3 scorer
+checks complete fact tuples, full labeled tool inputs/results, exact rejection
+statuses and the displayed answer. Mutations reject swapped company/year/metric,
+wrong values/units, tiny ratio errors and extra unsupported assertions.
 
-FinSight separates deterministic regression tests from provider-dependent behavior so CI remains reproducible and credential-free.
+Final repair measurements on clean source `02d6ea4`: 223 tests; router 120/120;
+offline application 390/390; combined OpenAI semantic/hybrid retrieval and generation
+381/390 (97.69%) across three repeats. There were 120 generation calls and eight
+embedding requests in that final application run. It had eight false abstentions
+and one valid net-sales alias that fails strict canonical-metric scoring; all 204
+calculations passed and no expected-rejection case was accepted (0/66).
+The semantic comparison and three acceptance probes also passed. Remote Ubuntu
+CI [passed on the measured revision](https://github.com/Shubhank2604/FinSight-AI/actions/runs/37265605624).
+All new paid checks together accounted for an estimated $0.3558943 of the authorized
+$2 cap, including prior attempts and retry allowance; invoice cost is unknown.
 
-| Verified in this repository | Outside the current benchmark |
-| --- | --- |
-| Retrieval ranking over 18 labeled finance queries | Accuracy across arbitrary financial documents |
-| Citation linkage and abstention over 11 structured cases | General nonnumeric claim/source entailment |
-| Numerical consistency between claims and cited evidence | End-to-end correctness of generated financial advice |
-| Router, tool, retrieval, and verifier behavior without network access | Gemini and web-grounded behavior across provider/model changes |
+Historical 354/360 live correctness (98.33%) used weaker labels and hash retrieval;
+it is not the current repaired-system accuracy. Retained raw reports are losslessly
+compressed with original hashes and duplicate mappings in the [evidence index](evals/results/evidence-index.json).
 
-The synthetic corpus and local hash vectors provide a stable regression baseline for the retrieval implementation. They are deliberately reported separately from Gemini-backed semantic retrieval so model changes cannot silently alter the CI result.
-
-FinSight is decision-support software. Calculations are performed by deterministic tools, while generated explanations and external financial information should be independently reviewed before they inform a real financial decision.
-
-## License
-
-MIT
+See [verification](docs/verification.md), [evaluation methodology](docs/evaluation.md),
+[implementation checklist](docs/implementation-checklist.md), [architecture](docs/architecture.md),
+[demo](docs/demo.md), and [interview walkthrough and Q&A](docs/interview-preparation.md).

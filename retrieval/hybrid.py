@@ -1,13 +1,16 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import math
+import os
 import re
 from pathlib import Path
 
 from qdrant_client import QdrantClient, models
 from rank_bm25 import BM25Okapi
 
-from gemini_client import GeminiClient
+from embeddings import EmbeddingClient
 from schemas import ChunkType, DocumentChunk, RetrievalHit
 
 
@@ -42,13 +45,36 @@ class HybridRetriever:
         self,
         collection_name: str,
         qdrant_path: str,
-        gemini: GeminiClient,
+        embedding_client: EmbeddingClient,
         vector_size: int = 768,
+        ingestion_version: str = "financial-lines-v3",
     ) -> None:
-        self.collection_name = collection_name
+        settings = getattr(embedding_client, "settings", None)
+        identity = {
+            "provider": getattr(
+                settings, "embedding_provider", type(embedding_client).__name__
+            ),
+            "model": getattr(settings, "gemini_embedding_model", "test"),
+            "dimensions": vector_size,
+            "ingestion": ingestion_version,
+        }
+        if identity["provider"] == "local_hash":
+            identity["model"] = "blake2b-hash-v1"
+        elif identity["provider"] == "openai":
+            identity["model"] = settings.openai_embedding_model
+        self.index_identity = identity
+        digest = hashlib.sha256(
+            json.dumps(identity, sort_keys=True).encode()
+        ).hexdigest()[:16]
+        self.collection_name = f"{collection_name}_{digest}"
         self.qdrant_path = Path(qdrant_path)
-        self.catalog_path = self.qdrant_path.parent / "chunks.json"
-        self.gemini = gemini
+        self.catalog_path = (
+            self.qdrant_path.parent / f"{self.collection_name}.catalog.json"
+        )
+        self.journal_path = (
+            self.qdrant_path.parent / f"{self.collection_name}.pending.json"
+        )
+        self.embedding_client = embedding_client
         self.vector_size = vector_size
         self.storage_mode = "local"
         self.qdrant_path.mkdir(parents=True, exist_ok=True)
@@ -57,12 +83,18 @@ class HybridRetriever:
         except RuntimeError as exc:
             if "already accessed by another instance" not in str(exc):
                 raise
-            self.storage_mode = "memory"
-            self.client = QdrantClient(location=":memory:")
+            raise RuntimeError(
+                "Index storage is in use. Close the other FinSight process and retry, or use a different QDRANT_PATH."
+            ) from exc
         self.chunks: list[DocumentChunk] = []
         self._bm25: BM25Okapi | None = None
-        self._ensure_collection()
-        self.load_catalog()
+        try:
+            self._ensure_collection()
+            self._recover_transaction()
+            self.load_catalog()
+        except Exception:
+            self.client.close()
+            raise
 
     def _ensure_collection(self) -> None:
         if self.client.collection_exists(self.collection_name):
@@ -76,18 +108,72 @@ class HybridRetriever:
         )
 
     def load_catalog(self) -> None:
-        if not self.catalog_path.exists():
-            self.chunks = []
-            self._bm25 = None
-            return
-        raw = json.loads(self.catalog_path.read_text(encoding="utf-8"))
-        self.chunks = [DocumentChunk.model_validate(item) for item in raw]
+        # Qdrant is authoritative. Reconstruct instead of trusting a stale JSON file.
+        records = []
+        offset = None
+        while True:
+            points, offset = self.client.scroll(
+                collection_name=self.collection_name,
+                offset=offset,
+                limit=256,
+                with_payload=True,
+                with_vectors=False,
+            )
+            records.extend(points)
+            if offset is None:
+                break
+        self.chunks = sorted(
+            [
+                DocumentChunk.model_validate(point.payload)
+                for point in records
+                if point.payload
+            ],
+            key=lambda c: c.id,
+        )
         self._rebuild_bm25()
+        self.save_catalog()
+
+    def _atomic_json(self, path: Path, value) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temp = path.with_suffix(path.suffix + ".tmp")
+        with temp.open("w", encoding="utf-8") as stream:
+            json.dump(value, stream, indent=2)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temp, path)
+
+    def _delete_ids(self, ids: list[str]) -> None:
+        if ids:
+            self.client.delete(
+                collection_name=self.collection_name,
+                points_selector=models.PointIdsList(points=ids),
+                wait=True,
+            )
+
+    def _recover_transaction(self) -> None:
+        if not self.journal_path.exists():
+            return
+        journal = json.loads(self.journal_path.read_text(encoding="utf-8"))
+        if journal.get("phase") not in {"ready", "indexing"} or any(
+            not isinstance(journal.get(k), list)
+            or not all(isinstance(v, str) for v in journal[k])
+            for k in ["old_ids", "new_ids"]
+        ):
+            raise ValueError(
+                "Invalid index recovery journal; existing storage and journal are preserved for inspection."
+            )
+        self._delete_ids(
+            journal["old_ids"] if journal["phase"] == "ready" else journal["new_ids"]
+        )
+        self.journal_path.unlink()
 
     def save_catalog(self) -> None:
         self.catalog_path.parent.mkdir(parents=True, exist_ok=True)
-        payload = [chunk.model_dump(mode="json") for chunk in self.chunks]
-        self.catalog_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        payload = {
+            "identity": self.index_identity,
+            "chunks": [chunk.model_dump(mode="json") for chunk in self.chunks],
+        }
+        self._atomic_json(self.catalog_path, payload)
 
     def _rebuild_bm25(self) -> None:
         corpus = [_tokenize(chunk.content) for chunk in self.chunks]
@@ -99,9 +185,40 @@ class HybridRetriever:
     def _source_allowed(
         self, chunk: DocumentChunk, source_names: list[str] | None
     ) -> bool:
-        return not source_names or chunk.source_name in set(source_names)
+        return source_names is None or chunk.source_name in set(source_names)
 
     def index_chunks(self, chunks: list[DocumentChunk], batch_size: int = 24) -> int:
+        if (
+            isinstance(batch_size, bool)
+            or not isinstance(batch_size, int)
+            or batch_size <= 0
+        ):
+            raise ValueError("batch_size must be a positive integer")
+        ids = [c.id for c in chunks]
+        if len(ids) != len(set(ids)):
+            raise ValueError("Duplicate chunk IDs in upload")
+        for c in chunks:
+            aliases = {
+                old.source_name
+                for old in self.chunks
+                if old.document_id == c.document_id and old.source_name != c.source_name
+            }
+            if aliases:
+                raise ValueError(
+                    "Identical document content is already indexed under "
+                    + ", ".join(sorted(aliases))
+                    + ". Select that source or remove it before renaming."
+                )
+        existing = {c.id: c for c in self.chunks}
+        if any(c.id in existing and c != existing[c.id] for c in chunks):
+            raise ValueError("An existing chunk ID has different content")
+        documents_by_source = {}
+        for c in chunks:
+            documents_by_source.setdefault(c.source_name, set()).add(c.document_id)
+        if any(len(documents) != 1 for documents in documents_by_source.values()):
+            raise ValueError(
+                "One source name cannot represent multiple uploads in the same transaction"
+            )
         if not chunks:
             return 0
 
@@ -110,24 +227,92 @@ class HybridRetriever:
         if not new_chunks:
             return 0
 
-        for start in range(0, len(new_chunks), batch_size):
-            batch = new_chunks[start : start + batch_size]
-            texts = [self._embedding_text(chunk) for chunk in batch]
-            vectors = self.gemini.embed_texts(texts)
-            points = [
-                models.PointStruct(
-                    id=chunk.id,
-                    vector=vector,
-                    payload=chunk.model_dump(mode="json"),
+        old_ids = [
+            c.id
+            for c in self.chunks
+            if c.source_name in documents_by_source
+            and c.document_id not in documents_by_source[c.source_name]
+        ]
+        journal = {
+            "phase": "indexing",
+            "new_ids": [c.id for c in new_chunks],
+            "old_ids": old_ids,
+        }
+        self._atomic_json(self.journal_path, journal)
+        try:
+            for start in range(0, len(new_chunks), batch_size):
+                batch = new_chunks[start : start + batch_size]
+                texts = [self._embedding_text(chunk) for chunk in batch]
+                vectors = self.embedding_client.embed_texts(texts)
+                if len(vectors) != len(batch) or any(
+                    len(vector) != self.vector_size for vector in vectors
+                ):
+                    raise ValueError(
+                        "Embedding dimensions do not match the index identity"
+                    )
+                if any(
+                    not any(vector) or any(not math.isfinite(value) for value in vector)
+                    for vector in vectors
+                ):
+                    raise ValueError("Embedding values must be finite")
+                points = [
+                    models.PointStruct(
+                        id=chunk.id,
+                        vector=vector,
+                        payload=chunk.model_dump(mode="json"),
+                    )
+                    for chunk, vector in zip(batch, vectors, strict=True)
+                ]
+                self.client.upsert(
+                    collection_name=self.collection_name, points=points, wait=True
                 )
-                for chunk, vector in zip(batch, vectors, strict=True)
-            ]
-            self.client.upsert(collection_name=self.collection_name, points=points)
-
-        self.chunks.extend(new_chunks)
-        self._rebuild_bm25()
-        self.save_catalog()
+            journal["phase"] = "ready"
+            self._atomic_json(self.journal_path, journal)
+            self._delete_ids(old_ids)
+            self.load_catalog()
+            self.journal_path.unlink()
+        except Exception:
+            self._recover_transaction()
+            self.load_catalog()
+            raise
         return len(new_chunks)
+
+    def delete_document(self, document_id: str) -> None:
+        ids = [c.id for c in self.chunks if c.document_id == document_id]
+        journal = {"phase": "ready", "new_ids": [], "old_ids": ids}
+        self._atomic_json(self.journal_path, journal)
+        self._recover_transaction()
+        self.load_catalog()
+
+    def rebuild(self) -> int:
+        # Re-embed in place. An embedding failure leaves all prior compatible points intact.
+        chunks = list(self.chunks)
+        for start in range(0, len(chunks), 24):
+            batch = chunks[start : start + 24]
+            vectors = self.embedding_client.embed_texts(
+                [self._embedding_text(c) for c in batch]
+            )
+            if len(vectors) != len(batch) or any(
+                len(v) != self.vector_size
+                or not any(v)
+                or not all(math.isfinite(x) for x in v)
+                for v in vectors
+            ):
+                raise ValueError(
+                    "Rebuild returned incompatible count/dimensions/values; existing points are preserved."
+                )
+            points = [
+                models.PointStruct(id=c.id, vector=v, payload=c.model_dump(mode="json"))
+                for c, v in zip(batch, vectors, strict=True)
+            ]
+            self.client.upsert(
+                collection_name=self.collection_name, points=points, wait=True
+            )
+        self.load_catalog()
+        return len(chunks)
+
+    def close(self) -> None:
+        self.client.close()
 
     def _embedding_text(self, chunk: DocumentChunk) -> str:
         if chunk.type == ChunkType.TABLE:
@@ -150,14 +335,23 @@ class HybridRetriever:
         limit: int = 8,
         source_names: list[str] | None = None,
     ) -> list[RetrievalHit]:
-        if not self.chunks:
+        if not self.chunks or source_names == []:
             return []
 
-        query_vector = self.gemini.embed_query(query)
+        query_vector = self.embedding_client.embed_query(query)
         response = self.client.query_points(
             collection_name=self.collection_name,
             query=query_vector,
-            limit=max(limit, 40) if source_names else limit,
+            limit=limit,
+            query_filter=models.Filter(
+                must=[
+                    models.FieldCondition(
+                        key="source_name", match=models.MatchAny(any=source_names)
+                    )
+                ]
+            )
+            if source_names is not None
+            else None,
             with_payload=True,
         )
         hits = []
@@ -243,7 +437,9 @@ class HybridRetriever:
         ranked = []
         for hit in hits:
             chunk_tokens = set(_tokenize(hit.chunk.content))
-            overlap = len(query_tokens.intersection(chunk_tokens)) / max(len(query_tokens), 1)
+            overlap = len(query_tokens.intersection(chunk_tokens)) / max(
+                len(query_tokens), 1
+            )
             type_boost = 0.0
             if hit.chunk.type == ChunkType.TABLE and wants_tables:
                 type_boost = 0.18
@@ -263,7 +459,7 @@ class HybridRetriever:
             key = (
                 hit.chunk.source_name,
                 hit.chunk.page,
-                hit.chunk.content[:120],
+                hashlib.sha256(hit.chunk.content.encode()).hexdigest(),
             )
             if key in seen_keys:
                 continue

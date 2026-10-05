@@ -5,7 +5,7 @@ from dataclasses import replace
 from pathlib import Path
 
 from config import load_settings
-from gemini_client import GeminiClient
+from embeddings import EmbeddingClient
 from ingestion import ingest_file
 from retrieval import HybridRetriever
 
@@ -17,35 +17,40 @@ def index_folder(folder: Path, embedding_provider: str | None = None) -> tuple[i
     settings = load_settings()
     if embedding_provider:
         settings = replace(settings, embedding_provider=embedding_provider)
-    if not settings.gemini_configured and settings.embedding_provider != "local_hash":
+    if not settings.gemini_api_key and settings.embedding_provider == "gemini":
         raise RuntimeError(
-            "GEMINI_API_KEY is required unless --embedding-provider local_hash is used."
+            "GEMINI_API_KEY is required for --embedding-provider gemini."
         )
+    if settings.embedding_provider == 'openai' and not settings.openai_configured:
+        raise RuntimeError('OPENAI_API_KEY is required for --embedding-provider openai.')
 
-    gemini = GeminiClient(settings)
+    embeddings = EmbeddingClient(settings)
     retriever = HybridRetriever(
         collection_name=settings.qdrant_collection,
         qdrant_path=settings.qdrant_path,
-        gemini=gemini,
+        embedding_client=embeddings,
     )
 
-    files = [
-        path
-        for path in sorted(folder.iterdir())
-        if path.is_file() and path.suffix.lower() in SUPPORTED_SUFFIXES
-    ]
-    extracted_count = 0
-    chunks = []
+    try:
+        files = [
+            path
+            for path in sorted(folder.iterdir())
+            if path.is_file() and path.suffix.lower() in SUPPORTED_SUFFIXES
+        ]
+        extracted_count = 0
+        chunks = []
 
-    for path in files:
-        document_chunks = ingest_file(path, source_name=path.name)
-        extracted_count += len(document_chunks)
-        chunks.extend(document_chunks)
-        print(f"Extracted {len(document_chunks):>4} chunks from {path.name}")
+        for path in files:
+            document_chunks = ingest_file(path, source_name=path.name)
+            extracted_count += len(document_chunks)
+            chunks.extend(document_chunks)
+            print(f"Extracted {len(document_chunks):>4} chunks from {path.name}")
 
-    indexed_count = retriever.index_chunks(chunks)
-    print(f"Catalog now contains {len(retriever.chunks)} chunks")
-    return len(files), extracted_count, indexed_count
+        indexed_count = retriever.index_chunks(chunks)
+        print(f"Catalog now contains {len(retriever.chunks)} chunks")
+        return len(files), extracted_count, indexed_count
+    finally:
+        retriever.close()
 
 
 def main() -> None:
@@ -57,9 +62,9 @@ def main() -> None:
     )
     parser.add_argument(
         "--embedding-provider",
-        choices=["gemini", "local_hash"],
+        choices=["gemini", "local_hash", "openai"],
         default=None,
-        help="Use Gemini embeddings or local deterministic hash embeddings.",
+        help="Use OpenAI/legacy Gemini semantic embeddings or local deterministic hash embeddings.",
     )
     args = parser.parse_args()
 
