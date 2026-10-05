@@ -55,3 +55,9 @@ Currency and scale are inherited independently; explicit local scale takes prece
 Document EMI may join compatible labeled inputs across selected chunks of one document. Original chunk spans remain available. Complete explicit query inputs override document values; partial overrides clarify. Multiple calculation requests clarify. Duplicate content under another filename is rejected with the existing source name; same-filename new content replaces transactionally. Invalid recovery journals are preserved and reported. Rebuild validates each batch before upsert; previous compatible points remain searchable, but rebuild is not an all-batches atomic transaction.
 
 The v3 ingestion identity creates a separate collection: re-index after upgrading. Whitespace chunk lengths are not model tokenizer counts. General PDF extraction, ambiguous restatements, and arbitrary prose entailment remain unsupported.
+
+Numeric document answers also bind the returned fact set to the query-scoped
+entity, metrics and periods. A true but unrequested fact is insufficient.
+Independent scoring uses stricter canonical metric names than the production
+synonym parser: a valid net-sales alias can pass support but fail that format
+contract. This measured mismatch remains explicit; the scorer was not relaxed.

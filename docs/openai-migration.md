@@ -97,8 +97,16 @@ See [evaluation](evaluation.md), [verification summary](verification.md) and [co
 The repair evaluation uses `evals/repair_v3/application.json`, the independent bound-label scorer, and a persisted $2 estimated spend ledger shared by application and acceptance runs. Budgeted calls exclude vision and web. Failed calls retain their conservative reservations; estimates are not provider invoices. See [verification](verification.md) for final measurements. Historical OpenAI results above retain their original scorer and date.
 
 ```powershell
-python -m evaluation.application --live --embedding-provider openai --mode dense --repeats 3 --budget-usd 2 --budget-ledger .test-tmp/openai-repair-budget.json --output .test-tmp/repair-live.json.gz --quality-gate
+python -m evaluation.application --live --embedding-provider openai --mode hybrid --repeats 3 --budget-usd 2 --budget-ledger .test-tmp/openai-repair-budget.json --output .test-tmp/repair-live.json.gz --quality-gate
 python -m evaluation.provider_checks --live --budget-usd 2 --budget-ledger .test-tmp/openai-repair-budget.json --output .test-tmp/repair-provider.json
 ```
 
 Keep the same ledger on restart. A restart reruns requests; it does not resume checkpoints. Inspect missing slots and remaining reservations first. Do not delete/reset the ledger to bypass the authorized cap.
+
+Final repair evidence (2026-10-05): the combined semantic-plus-generation run
+completed 390 slots, with 381 correct under the frozen stronger scorer, 120
+schema-valid generation responses and eight embedding requests. The source was
+clean `02d6ea4`, prompt `bound-records-openai-v4`. Three final acceptance probes
+passed. Earlier probe and repeated-run failures are preserved beside the final
+reports; they are included in the shared $2 ledger. See verification.md for
+exact costs, false abstentions, alias-format failure and CI evidence.

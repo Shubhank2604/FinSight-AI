@@ -37,3 +37,10 @@ evidence: two pages, one issuer, two positive fact questions. It does not measur
 full annual-report extraction, audited table interpretation, or arbitrary PDF
 accuracy. Required-page relevance treats duplicate text/table chunks on a page
 as relevant; ranking and final-context page coverage are different metrics.
+
+Rights basis: these attributed CFO statements were prepared in official government
+duties and are treated as U.S. government works. This is a specific excerpt-based
+assessment, not a claim that every page on a federal website is unrestricted.
+See [USAGov guidance](https://www.usa.gov/government-copyright) and
+[17 USC 105](https://www.copyright.gov/title17/92chap1.html#105).
+No government endorsement is claimed. Third-party auditor content is excluded.
