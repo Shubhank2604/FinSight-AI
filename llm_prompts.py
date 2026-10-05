@@ -2,7 +2,7 @@
 
 from schemas import RetrievalHit, ToolCalculation
 
-PROMPT_VERSION = "bound-records-openai-v2"
+PROMPT_VERSION = "bound-records-openai-v3"
 
 
 class AnswerPrompts:
@@ -50,8 +50,18 @@ class AnswerPrompts:
             if include_visual_instruction
             else ""
         )
+        tool_rule = (
+            "This request already has deterministic tool results. Explain only those results. "
+            "Return claims=[] and used_citation_ids=[]; the application supplies input provenance. "
+            "Ratios are unitless (for example 2.0x), not money. Preserve percentage units, "
+            "reporting years and exact tool values. The document-claim formatting rules below "
+            "apply only when there are no tool results. Do not add document facts.\n"
+            if calculation_text != "No tool calculations."
+            else ""
+        )
         return f"""
 You are FinSight AI, a financial decision-support system.
+{tool_rule}
 
 Rules:
 - Answer the user's question directly in the first paragraph.
@@ -69,7 +79,7 @@ Rules:
 - Cite evidence using the exact chunk IDs provided in square brackets.
 - Put every cited chunk ID in `used_citation_ids`.
 - For each factual claim, include a `claims` item with supporting citation IDs.
-- If the answer is mainly based on tool output, cite no document chunks but keep the tool result unchanged.
+- If deterministic tool results are supplied, use only those results with claims=[] and used_citation_ids=[]; tool provenance is supplied by the application. Never attach currency to a unitless ratio.
 {visual_rule}- Keep the answer concise, structured, and analytical.
 - Avoid generic filler. Use bullets or numbered steps when that makes the answer clearer.
 - End with missing inputs or next steps only if they are genuinely needed.
