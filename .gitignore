@@ -1,7 +1,4 @@
-deep_research_report.md
-.venv/
-.venv-verify/
-.venv-repair/
+.venv*/
 .test-tmp/
 .env
 .env.gemini-embeddings

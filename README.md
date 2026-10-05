@@ -4,6 +4,10 @@ FinSight is a financial document research assistant with explicit evidence
 contracts and deterministic calculations. Select documents, ask an independent
 question, and inspect citations or calculation inputs. The local core runs on CPU.
 
+Use `master` for the supported application. The repair and cleanup work was
+merged through [PR #7](https://github.com/Shubhank2604/FinSight-AI/pull/7).
+Historical reports retain the source revisions on which they were measured.
+
 Supported verified output consists of canonical financial facts binding company,
 metric, year, currency and normalized value; faithful source excerpts; or
 validated deterministic tool results. Arbitrary narrative entailment and arbitrary

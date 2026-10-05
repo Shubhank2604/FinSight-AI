@@ -8,8 +8,9 @@ certification or a perfect-financial-reliability claim.
 
 ## Source and reproducibility
 
-Branch: `engineering/interview-readiness`; draft [PR #7](https://github.com/Shubhank2604/FinSight-AI/pull/7)
-targets the actual default branch `master`. Relevant user work in `0fb98d5` and
+The repair branch `engineering/interview-readiness` was merged through
+[PR #7](https://github.com/Shubhank2604/FinSight-AI/pull/7) into the default branch
+`master`. Relevant user work in `0fb98d5` and
 uncommitted repairs was preserved. Delivery source commits:
 
 - `f48ae5f`: complete typed financial contracts, loan provenance, lifecycle/UI regressions and safe shared API budgets.
@@ -239,6 +240,30 @@ denied. Their exact paths are recorded in the local
 `.test-tmp/cleanup-wrapup/cleanup-result.json`. Removing these directories requires
 Windows administrator access and remains the sole local cleanup blocker.
 
-Tracked cleanup is delivered through `engineering/interview-readiness` and
-draft PR #7. It reaches `master` when that PR is merged; no merge, branch deletion
-or history rewrite is part of this wrap-up.
+The initial cleanup was delivered through `engineering/interview-readiness`
+without merging or deleting branches. The subsequent consolidation below was
+explicitly requested after that delivery.
+
+## Repository consolidation - 2026-10-05
+
+PR #7 was merged with full commit history preserved at
+`28133a40c76bc243b8aa5e77c3be54b633e89cc6`. Its tree exactly matches verified head
+`faea083b041ff96cfb920851be7c1db3852d2b98`; both the PR and push CI runs on that
+head passed. The remote `dev` head `1bba2a3c0978351569c32245a15fb5c6c61335aa`
+was already an ancestor of the old `master`, with no unique commits to integrate.
+`master` is now the supported branch. Historical source SHAs remain reachable;
+no history was rewritten.
+
+The main `.venv` matches all 77 applicable locked dependencies and passed
+`pip check` and all 223 existing tests. The duplicate `.venv-repair` and
+`.venv-verify` environments were removed, freeing 1,018,686,062 bytes. Commands
+above using `.venv-repair` document earlier executions; use `.venv` for new runs.
+The private Gemini backup was intentionally removed by the user. The other 298
+protected files, including the active `.env`, evidence, uploads and indexes,
+retained their hashes. The 18 inaccessible old pytest directories remain the
+same local Windows administrator-access blocker.
+
+The final documentation/configuration cleanup removes the obsolete branch from
+the CI push filter, keeps all existing checks and thresholds, and ignores future
+`.venv*` environments. No application Python, frozen labels, historical reports
+or provider settings changed during consolidation; no paid API calls were made.
