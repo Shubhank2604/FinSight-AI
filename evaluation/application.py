@@ -16,6 +16,7 @@ from config import load_settings
 from llm_prompts import PROMPT_VERSION
 from evaluation.metrics import evaluate_ranking, aggregate_metrics
 from financial_evidence import quantities
+from evaluation.scoring import score_outcome, VERSION as SCORER_VERSION
 from openai_client import OpenAIClient
 from ingestion import ingest_file
 from orchestration import ResearchAssistant, provider_failure_reason
@@ -25,27 +26,17 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def provenance(dataset_path,provider):
-    code_files=sorted(p for p in ROOT.rglob('*.py') if not any(part in {'.venv','.venv-verify','.git','data','__pycache__'} for part in p.relative_to(ROOT).parts))
+    names=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','--','*.py'],cwd=ROOT,text=True).splitlines()
+    code_files=sorted({ROOT/name for name in names if not any(part.startswith('.') or part in {'data','__pycache__'} for part in Path(name).parts)})
     digest=hashlib.sha256()
     for p in code_files:
-        digest.update(str(p.relative_to(ROOT)).encode())
-        digest.update(p.read_bytes())
+        digest.update(p.relative_to(ROOT).as_posix().encode())
+        digest.update(p.read_bytes().replace(b'\r\n',b'\n'))
     return {'generated_at':datetime.now(UTC).isoformat(),'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'dirty_worktree':bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()),'code_digest':digest.hexdigest(),'dataset_sha256':hashlib.sha256(dataset_path.read_bytes()).hexdigest(),'python':platform.python_version(),'platform':platform.platform(),'dependencies':{name:importlib.metadata.version(name) for name in ['pydantic','qdrant-client','rank-bm25','openai','pdfplumber','PyMuPDF','streamlit','numpy']},'embedding_provider':provider.settings.embedding_provider,'embedding_model':provider.embedding_model,'dimensions':provider.embedding_dimensions,'llm_provider':'openai','text_model':provider.settings.openai_model,'prompt_version':PROMPT_VERSION,'ingestion_version':'financial-lines-v2','cost_usd':None,'cost_reason':'Provider invoices/prices are not inferred; token usage is reported where available.','label_review':'agent-authored; not independently human-reviewed'}
 
 
 def answer_correct(case,response):
-    if case['expected_status']!='ok':
-        return response.status in {'abstained','clarification'}
-    if response.status!='ok':
-        return False
-    expected=case['expected_value']
-    expected=expected if isinstance(expected,list) else [expected]
-    if response.calculations:
-        keys={'current_ratio':'ratio','debt_to_equity':'ratio','margin':'margin_pct','yoy_growth':'growth_pct','emi_calculator':'monthly_emi'}
-        actual=[response.calculations[0].result.get(keys.get(case['operation'],''))]
-    else:
-        actual=[float(n.value) for claim in response.claims for n in quantities(claim.text) if n.unit==case['expected_currency']]
-    return all(any(value is not None and abs(value-e)<=max(.01,abs(e)*1e-8) for value in actual) for e in expected)
+    return score_outcome(case,response)
 
 
 def summarize(records):

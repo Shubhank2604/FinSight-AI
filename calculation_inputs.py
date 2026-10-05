@@ -21,6 +21,11 @@ class InputOrigin(BaseModel):
     chunk_id: str | None = None
     page: int | None = None
     unit: str | None = None
+    raw_value: float | None = None
+    normalized_value: float | None = None
+    scale: str | None = None
+    rate_period: str | None = None
+    normalization: str | None = None
 
 
 class EMIInputs(BaseModel):
@@ -45,8 +50,9 @@ class PortfolioInputs(BaseModel):
 
 
 NUMBER = r"[+-]?\d[\d,]*(?:\.\d+)?"
-MONEY = re.compile(rf"(?P<currency>CAD|AUD|USD|INR|EUR|GBP|JPY|SGD|AED|C\$|A\$|US\$|\$|€|£|₹)?\s*(?P<number>{NUMBER})\s*(?P<scale>million|billion|crore|lakh|lac|cr|[kmb])?\b", re.I)
-SCALES = {"k": 1e3, "m": 1e6, "million": 1e6, "b": 1e9, "billion": 1e9, "lakh": 1e5, "lac": 1e5, "cr": 1e7, "crore": 1e7}
+SCALE_PATTERN = r"thousands?|millions?|billions?|crores?|lakhs?|lacs?|cr|[kmb]"
+SCALES = {"k": 1e3, "thousand": 1e3, "thousands": 1e3, "m": 1e6, "million": 1e6, "millions": 1e6, "b": 1e9, "billion": 1e9, "billions": 1e9, "lakh": 1e5, "lakhs": 1e5, "lac": 1e5, "lacs": 1e5, "cr": 1e7, "crore": 1e7, "crores": 1e7}
+MONEY = re.compile(rf"(?P<currency>CAD|AUD|USD|INR|EUR|GBP|JPY|SGD|AED|C\$|A\$|US\$|\$|€|£|₹)?\s*(?P<number>{NUMBER})\s*(?P<scale>{SCALE_PATTERN})?\b", re.I)
 
 
 def currency_from_text(text: str) -> str:
@@ -99,12 +105,28 @@ def extract_calculation_inputs(query: str, tool: str):
             if not initial and not contribution and not re.search(r"(?:invest|contribut)\w*\s*$", before):
                 raise InputIssue("Specify whether each money amount is an initial balance or monthly contribution.")
         value = float(match.group("number").replace(",", "")) * SCALES.get((match.group("scale") or "").lower(), 1)
-        money[field].append((value, InputOrigin(text=match.group(), start=start, end=end, unit=currency)))
+        if re.match(r"\s*(?:hundreds?|trillions?|mn|bn|hundred\w*|thousand\w+|million\w+|billion\w+)\b", after):
+            raise InputIssue(f"Unsupported amount modifier for {field}; use a supported explicit scale.")
+        money[field].append((value, InputOrigin(text=match.group(), start=start, end=end, unit=currency, raw_value=float(match.group("number").replace(",", "")), normalized_value=value, scale=match.group("scale") or "ones")))
     rates = []
     steps = []
     for match in re.finditer(rf"(?P<n>{NUMBER})\s*(?P<u>%|percent|basis points?|bps)", query, re.I):
         value = float(match.group("n").replace(",", "")) / (100 if match.group("u").lower() in {"bps", "basis point", "basis points"} else 1)
-        origin = InputOrigin(text=match.group(), start=match.start(), end=match.end(), unit="percent/year")
+        raw_rate = value
+        suffix = query[match.end():match.end()+35]
+        period_match = re.match(r"\s*(?:(?:per|a|each|/)\s*)?(month(?:ly)?|year(?:ly)?|annum|annual(?:ly)?|day|daily|week|weekly|quarter(?:ly)?)\b", suffix, re.I)
+        period = period_match.group(1).lower() if period_match else "year"
+        nearby_prefix = query[max(0,match.start()-35):match.start()].lower()
+        if period_match is None and re.search(r"monthly\s+(?:interest|return|rate)(?:\s+rate)?\s*[:=]?\s*$", nearby_prefix):
+            period = "month"
+        if period not in {"month", "monthly", "year", "yearly", "annum", "annual", "annually"}:
+            raise InputIssue(f"Unsupported rate period '{period}'; use annual or nominal monthly rates.", "unsupported")
+        if period.startswith("month"):
+            if re.search(r"effective|annual", nearby_prefix) or (tool == "portfolio_growth_simulator" and re.search(r"effective", query, re.I)):
+                raise InputIssue("Effective or conflicting monthly rate conventions are unsupported; specify a nominal monthly or annual rate.", "unsupported")
+            value *= 12
+        rate_end = match.end() + (period_match.end() if period_match else 0)
+        origin = InputOrigin(text=query[match.start():rate_end], start=match.start(), end=rate_end, unit="percent/year", raw_value=raw_rate, normalized_value=value, rate_period="month" if period.startswith("month") else "year", normalization="monthly percentage × 12 = nominal annual percentage" if period.startswith("month") else "annual percentage (assumed nominal unless effective is explicit)")
         nearby = query[max(0,match.start()-25):match.end()+25].lower()
         (steps if re.search(r"step.up|increase contributions", nearby) else rates).append((value, origin))
     duration = []

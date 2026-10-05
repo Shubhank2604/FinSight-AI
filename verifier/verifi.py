@@ -2,7 +2,7 @@
 from __future__ import annotations
 import re
 from decimal import Decimal
-from financial_evidence import extract_facts, quantities, supported_numbers
+from financial_evidence import extract_facts, quantities, supported_numbers, supported_claim
 from schemas import Citation, RetrievalHit, Route, RouterDecision, StructuredLLMAnswer, ToolResult, VerifiedResponse
 
 
@@ -27,7 +27,7 @@ def render_calculations(calculations) -> str:
     return '\n\n'.join(blocks)
 
 
-def verify_response(draft_answer: str, decision: RouterDecision, retrieval_hits: list[RetrievalHit] | None = None, tool_results: list[ToolResult] | None = None, structured_answer: StructuredLLMAnswer | None = None, web_citations: list[Citation] | None = None, threshold: float = 0.45) -> VerifiedResponse:
+def verify_response(draft_answer: str, decision: RouterDecision, retrieval_hits: list[RetrievalHit] | None = None, tool_results: list[ToolResult] | None = None, structured_answer: StructuredLLMAnswer | None = None, web_citations: list[Citation] | None = None) -> VerifiedResponse:
     hits, results = retrieval_hits or [], tool_results or []
     citations = build_citations(hits) + (web_citations or [])
     available = {c.chunk_id for c in citations if c.chunk_id}
@@ -62,12 +62,23 @@ def verify_response(draft_answer: str, decision: RouterDecision, retrieval_hits:
             reasons.append('A required tool failed.')
         if set(by_tool) != set(decision.required_tools):
             reasons.append('Executed tools do not match the requested operations.')
+        for requested in decision.operations:
+            c=by_tool.get(requested.tool)
+            if c and requested.evidence_source=='document' and requested.tool not in {'emi_calculator','portfolio_growth_simulator'}:
+                actual=c.operation
+                if actual is None or actual.metric!=requested.metric or (requested.entity and actual.entity.casefold()!=requested.entity.casefold()) or (requested.periods and (actual.periods[-len(requested.periods):]!=requested.periods)):
+                    reasons.append('Calculated metric, entity or period does not match the user operation.')
         for c in calculations:
             if needs_evidence and not c.provenance:
                 reasons.append('Document calculation lacks input provenance.')
             for p in c.provenance.values():
                 if isinstance(p, dict) and p.get('source') == 'document' and p.get('chunk_id') not in available:
                     reasons.append('Calculation input references missing document evidence.')
+            for key,p in c.provenance.items():
+                if isinstance(p,dict) and p.get('metric'):
+                    facts=[f for f in extract_facts(hits) if f.chunk_id==p.get('chunk_id') and f.metric==p['metric'] and f.period==p.get('period') and f.entity==p.get('entity') and f.currency==p.get('unit')]
+                    if not facts or not all(abs(f.value-Decimal(str(c.inputs.get(key))))<=Decimal('.000001') for f in facts):
+                        reasons.append('Calculation input value does not resolve to its bound evidence record.')
     claims = structured_answer.claims if structured_answer else []
     used = set()
     if needs_evidence and not needs_tools and structured_answer is None:
@@ -91,7 +102,7 @@ def verify_response(draft_answer: str, decision: RouterDecision, retrieval_hits:
                     reasons.append('Claim page references disagree with source metadata.')
                 if not claim.text.strip() or not claim.citation_ids:
                     reasons.append('Every factual claim requires supporting evidence.')
-                elif claim_has_unsupported_numbers(claim, evidence):
+                elif not supported_claim(claim,hits):
                     reasons.append('Claim numbers, units, metric, period or direction disagree with evidence.')
                 used.update(claim.citation_ids)
             answer_without_refs = re.sub(r'\[[^\[\]]+\]', '', structured_answer.answer)
@@ -134,4 +145,4 @@ def verify_response(draft_answer: str, decision: RouterDecision, retrieval_hits:
         answer = structured_answer.answer.strip() if structured_answer else draft_answer.strip()
     if not answer:
         return VerifiedResponse(answer='Insufficient data to answer reliably.', status='abstained', reasons=['Empty output.'], confidence=0.0)
-    return VerifiedResponse(answer=answer, status='ok', citations=[c for c in citations if c.chunk_id in used], calculations=calculations, claims=claims, assumptions=sorted({a for c in calculations for a in c.assumptions}), confidence=1.0, diagnostics={'mandatory_checks_passed': True, 'semantic_entailment_proven': False})
+    return VerifiedResponse(answer=answer, status='ok', citations=[c for c in citations if c.chunk_id in used], calculations=calculations, claims=claims, assumptions=sorted({a for c in calculations for a in c.assumptions}|set(structured_answer.assumptions if structured_answer else [])), confidence=1.0, diagnostics={'mandatory_checks_passed': True, 'confidence_meaning':'Binary mandatory-check indicator; not calibrated accuracy.', 'support_contract':'canonical bound financial records or faithful source excerpts', 'semantic_entailment_proven': False})

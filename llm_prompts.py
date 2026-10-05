@@ -1,7 +1,7 @@
 """Provider-neutral prompts; deterministic outputs and evidence remain authoritative."""
 from schemas import RetrievalHit, ToolCalculation
 
-PROMPT_VERSION = "claims-authoritative-openai-v1"
+PROMPT_VERSION = "bound-records-openai-v2"
 
 
 class AnswerPrompts:
@@ -61,6 +61,8 @@ Rules:
 - If the requested fact is missing, ambiguous, or contradictory, set `needs_more_data` to true.
 - Validated claims are authoritative; the application displays claims, not unchecked narrative. Include every factual statement in claims.
 - Put currency, magnitude, company and reporting period in each numerical financial claim; do not rely on separate unit-only claims.
+- Each numerical document claim MUST use exactly: `Company YYYY metric: CURRENCY amount.` Use an explicit scale word if the amount is scaled. Example: `Cedar 2025 revenue: USD 120 million.` Keep one fact per claim.
+- Other document claims MUST be a complete unchanged sentence or line prefixed `Source excerpt: `. Do not infer insolvency, recommendations or other interpretations. Set needs_more_data when this bounded contract cannot answer.
 - Include only facts requested by the question. Do not add unrelated reporting periods or figures.
 - A comparison may state provided values; do not calculate absolute or percentage changes unless a deterministic tool supplied them.
 - Cite evidence using the exact chunk IDs provided in square brackets.

@@ -55,6 +55,30 @@ def document_tool(query, tool, hits):
             origin.update(source="document", chunk_id=hit.chunk.id, page=hit.chunk.page, source_name=hit.chunk.source_name)
         candidates.append((model, origins))
     if not candidates:
+        groups={}
+        for hit in hits:
+            groups.setdefault((hit.chunk.document_id,hit.chunk.source_name),[]).append(hit)
+        for group in groups.values():
+            # Joining is supported within one document and compatible explicit metadata.
+            if any(len({h.chunk.metadata[k] for h in group if k in h.chunk.metadata})>1 for k in ['entity','period','currency']):
+                continue
+            pieces=[]
+            for h in group:
+                lines=[line for line in h.chunk.content.splitlines() if re.search(r'principal|loan|mortgage|interest rate|annual rate|duration|tenure|monthly (?:investment|contribution)|initial (?:balance|amount)|annual return|step.up',line,re.I)]
+                if lines:pieces.append((h,'\n'.join(lines)))
+            merged='\n'.join(text for _,text in pieces)
+            try:model,origins=extract_calculation_inputs(merged,tool)
+            except InputIssue:continue
+            for origin in origins.values():
+                offset=0
+                for h,text in pieces:
+                    if offset<=origin['start']<offset+len(text):
+                        origin.update(source='document',chunk_id=h.chunk.id,page=h.chunk.page,source_name=h.chunk.source_name,combined_evidence=True)
+                        origin['start']-=offset;origin['end']-=offset
+                        break
+                    offset+=len(text)+1
+            candidates.append((model,origins))
+    if not candidates:
         raise InputIssue("No complete labeled calculation inputs were found in the selected evidence.", "abstained")
     if len({m.model_dump_json() for m, _ in candidates}) != 1:
         raise InputIssue("Conflicting document calculation inputs; select one document/period.", "abstained")
@@ -92,7 +116,7 @@ def document_fact_answer(query, hits):
             for line in hit.chunk.content.splitlines():
                 overlap = keywords.intersection(re.findall(r"\b\w+\b", line.lower()))
                 if keywords and len(overlap) / len(keywords) >= 0.6:
-                    claims.append(AnswerClaim(text=line.strip(), citation_ids=[hit.chunk.id]))
+                    claims.append(AnswerClaim(text='Source excerpt: '+line.strip(), citation_ids=[hit.chunk.id]))
                     break
         if not claims:
             raise InputIssue("The selected evidence does not contain the requested fact.", "abstained")

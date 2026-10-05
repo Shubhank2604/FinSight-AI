@@ -50,6 +50,14 @@ class Citation(BaseModel):
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
+class RequestedOperation(BaseModel):
+    tool: str
+    metric: str | None = None
+    entity: str | None = None
+    periods: list[int] = Field(default_factory=list)
+    evidence_source: Literal["none", "document", "web", "visual"] = "none"
+
+
 class ToolCalculation(BaseModel):
     tool_name: str
     inputs: dict[str, Any]
@@ -58,6 +66,7 @@ class ToolCalculation(BaseModel):
     trace: str
     confidence: float = 1.0
     provenance: dict[str, Any] = Field(default_factory=dict)
+    operation: RequestedOperation | None = None
 
 
 class ToolResult(BaseModel):
@@ -90,6 +99,7 @@ class RouterDecision(BaseModel):
     reason: str
     action: str = "answer"
     evidence_source: Literal["none", "document", "web", "visual"] = "none"
+    operations: list[RequestedOperation] = Field(default_factory=list)
 
 
 class VerifiedResponse(BaseModel):

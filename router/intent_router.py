@@ -1,7 +1,8 @@
 ﻿"""Action and evidence are independent; document references take priority over keywords."""
 from __future__ import annotations
 import re
-from schemas import ChunkType, Route, RouterDecision
+from schemas import ChunkType, Route, RouterDecision, RequestedOperation
+from financial_evidence import METRICS
 
 
 def research_operation(query: str) -> str | None:
@@ -18,6 +19,8 @@ def route_query(query: str, has_documents: bool = False, has_images: bool = Fals
     document = bool(re.search(r"\b(?:uploaded|attached|document|report|statement|filing|pdf|according to)\b", q))
     visual = bool(re.search(r"\b(?:image|screenshot|chart|graph|diagram|picture)\b", q))
     compute = bool(re.search(r"\b(?:calculate|compute|project|simulate|estimate|how much|what is (?:the )?emi)\b", q))
+    if re.search(r"explain|describe|clause", q) and not re.search(r"calculate|compute|simulate|project|payment amount|monthly payment", q):
+        compute = False
     current = bool(re.search(r"\b(?:latest|today|recent|news|online|web|stock price|exchange rate)\b|\bcurrent\b(?!\s+(?:ratio|assets|liabilities))", q))
     if document:
         if current and re.search(r"\b(?:web|online|external|today|stock price|exchange rate)\b", q):
@@ -28,6 +31,9 @@ def route_query(query: str, has_documents: bool = False, has_images: bool = Fals
             return RouterDecision(route=Route.MULTIMODAL_REASONING, required_retrieval=True, evidence_source="visual", required_modalities=[ChunkType.IMAGE, ChunkType.TEXT], reason="Visual document analysis is experimental.")
         tool = None
         if compute:
+            requested = [op for pattern,op in [(r'current ratio','current_ratio'),(r'debt.to.equity','debt_to_equity'),(r'operating margin','operating_margin'),(r'(?:net|profit) margin','margin'),(r'year.over.year|yoy|growth','yoy_growth')] if re.search(pattern,q)]
+            if len(requested)>1 or re.search(r'\b(?:emi|loan|mortgage)\b',q) and requested:
+                return RouterDecision(route=Route.ABSTAIN, missing_inputs=['one_operation'], evidence_source='document', reason='Multiple calculations require separate questions; specify one operation.')
             if re.search(r"\b(?:emi|loan|mortgage)\b", q):
                 tool = "emi_calculator"
             elif re.search(r"portfolio|invest|future value", q):
@@ -36,7 +42,13 @@ def route_query(query: str, has_documents: bool = False, has_images: bool = Fals
                 tool = research_operation(q)
             if not tool:
                 return RouterDecision(route=Route.ABSTAIN, evidence_source="document", action="unsupported", reason="No supported document calculation matches this operation.")
-        return RouterDecision(route=Route.RETRIEVE_THEN_COMPUTE_THEN_ANSWER if tool else Route.RETRIEVE_THEN_ANSWER, required_tools=[tool] if tool else [], required_retrieval=True, evidence_source="document", action="calculate" if tool else "answer", reason="Document facts require selected document evidence.")
+        metrics=[m for m,p in METRICS.items() if re.search(p,q,re.I)]
+        if tool=='yoy_growth' and (len(metrics)!=1):
+            return RouterDecision(route=Route.ABSTAIN, missing_inputs=['growth_metric'], evidence_source='document', reason='Specify exactly one supported growth metric, such as revenue, net income or current assets.')
+        periods=sorted({int(y) for y in re.findall(r'\b(?:19|20)\d{2}\b',q)})
+        named=re.search(r'\bfor\s+([A-Z][A-Za-z &.-]*?)(?=\s+(?:in|for|according)\b|[,?]|$)',query)
+        operations=[RequestedOperation(tool=tool,metric=metrics[0] if tool=='yoy_growth' else tool,entity=named[1].strip() if named else None,periods=periods,evidence_source='document')] if tool else []
+        return RouterDecision(route=Route.RETRIEVE_THEN_COMPUTE_THEN_ANSWER if tool else Route.RETRIEVE_THEN_ANSWER, required_tools=[tool] if tool else [], operations=operations, required_retrieval=True, evidence_source="document", action="calculate" if tool else "answer", reason="Document facts require selected document evidence.")
     if current:
         return RouterDecision(route=Route.WEB_GROUNDED_ANSWER if allow_web else Route.ABSTAIN, evidence_source="web", missing_inputs=[] if allow_web else ["web_grounding_enabled"], reason="Current external information requires the visible web setting.")
     if visual:

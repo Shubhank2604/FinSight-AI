@@ -8,7 +8,7 @@ from evaluation.citations import evaluate_citations
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate claim/citation linkage and abstention.")
-    parser.add_argument("--dataset", default="evals/citation_benchmark.json")
+    parser.add_argument("--dataset", default="evals/citation_benchmark_v2.json")
     parser.add_argument("--output")
     parser.add_argument("--min-abstention-recall", type=float, default=0.80)
     args = parser.parse_args()

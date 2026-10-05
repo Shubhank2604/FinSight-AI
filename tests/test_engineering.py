@@ -135,7 +135,7 @@ def verified(answer, claim_text, evidence, claim_ids=None, extra_ids=None, claim
 def test_answer_claim_disagreement_and_empty_coverage():
     assert verified('Revenue grew 999%.', 'Revenue grew 12%.', 'Revenue grew 12%.').status == 'abstained'
     assert verified('Revenue grew 12%.', '', 'Revenue grew 12%.', claims=False).status == 'abstained'
-    accepted = verified('Unchecked narrative omitted.', 'Revenue grew 12%.', 'Revenue grew 12%.')
+    accepted = verified('Unchecked narrative omitted.', 'Source excerpt: Revenue grew 12%.', 'Revenue grew 12%.')
     assert accepted.status == 'ok' and 'Unchecked' not in accepted.answer
 
 
@@ -166,7 +166,7 @@ def test_financial_evidence_units_and_context(claim,evidence,accepted):
 
 def test_full_evidence_not_display_snippet():
     evidence = 'Context ' * 70 + '\nRevenue grew 12%.'
-    r = verified('Revenue grew 12%.','Revenue grew 12%.',evidence)
+    r = verified('Revenue grew 12%.','Source excerpt: Revenue grew 12%.',evidence)
     assert r.status == 'ok'
     assert '12%' not in r.citations[0].snippet
 

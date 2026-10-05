@@ -196,7 +196,7 @@ def test_verifier_accepts_structured_cited_answer() -> None:
         used_citation_ids=["chunk-1"],
         claims=[
             AnswerClaim(
-                text="Liquidity risk increased.",
+                text="Source excerpt: Liquidity risk increased because short-term obligations rose.",
                 citation_ids=["chunk-1"],
             )
         ],
@@ -210,7 +210,7 @@ def test_verifier_accepts_structured_cited_answer() -> None:
         structured_answer=structured,
     )
 
-    assert verified.answer == "Liquidity risk increased. [chunk-1]"
+    assert verified.answer == "Source excerpt: Liquidity risk increased because short-term obligations rose. [chunk-1]"
     assert verified.confidence >= 0.6
     assert verified.claims
 
