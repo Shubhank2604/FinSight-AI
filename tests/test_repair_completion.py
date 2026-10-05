@@ -131,3 +131,45 @@ def test_bad_usage_cannot_release_budget_reservation(tmp_path, usage):
     reserved = b.data['entries'][token]['accounted_usd']
     b.settle(token, usage)
     assert b.data['entries'][token]['accounted_usd'] == reserved
+
+
+def test_unexpected_request_exception_is_visible_and_pending_clears(tmp_path, monkeypatch):
+    from streamlit.testing.v1 import AppTest
+    monkeypatch.setenv('QDRANT_PATH', str(tmp_path/'qdrant'))
+    monkeypatch.setenv('EMBEDDING_PROVIDER', 'local_hash')
+    app = AppTest.from_file('app.py', default_timeout=20).run()
+    def fail(*args, **kwargs):
+        raise RuntimeError('private diagnostic must not be displayed')
+    monkeypatch.setattr('orchestration.ResearchAssistant.ask', fail)
+    app.text_area(key='query').set_value('What is EMI?')
+    app.button(key='FormSubmitter:query_form-Ask').click().run()
+    assert not app.exception
+    assert app.session_state['pending_request'] is None
+    response = app.session_state['history'][-1]['response']
+    assert response['status'] == 'provider_failure'
+    assert 'private diagnostic' not in response['answer']
+
+
+@pytest.mark.parametrize('response_text', [
+    'Cedar 2025 net income: USD 24.',
+    'Cedar 2024 revenue: USD 100.',
+    'Cedar 2025 revenue: USD 120.\nCedar 2025 net income: USD 24.',
+])
+def test_true_but_unrequested_provider_facts_are_rejected(tmp_path, response_text):
+    from schemas import AnswerClaim, StructuredLLMAnswer
+    from orchestration import ResearchAssistant
+    p = OpenAIClient(Settings())
+    r = HybridRetriever('binding', str(tmp_path/'qdrant'), p)
+    chunk = hit('Company: Cedar\nPeriod: 2025\nCurrency: USD\nRevenue: 120\nNet income: 24\nRevenue 2024: USD 100').chunk
+    r.index_chunks([chunk])
+    class WrongAnswer:
+        last_response = None
+        def generate_grounded_answer(self, *args):
+            claims = [AnswerClaim(text=t, citation_ids=[chunk.id]) for t in response_text.splitlines()]
+            return StructuredLLMAnswer(answer=response_text, claims=claims, used_citation_ids=[chunk.id])
+    try:
+        response = ResearchAssistant(r, WrongAnswer()).ask('What is revenue for Cedar in the report for 2025?', ['loan.pdf'], use_provider=True)
+        assert response.status == 'abstained'
+        assert any('requested' in reason for reason in response.reasons)
+    finally:
+        r.close()

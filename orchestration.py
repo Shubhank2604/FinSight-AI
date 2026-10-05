@@ -335,11 +335,12 @@ class ResearchAssistant:
                     response = verify_response("", decision, hits, tool_results)
                 elif decision.required_retrieval:
                     t = time.perf_counter()
+                    expected_claims = None
                     if any(
                         re.search(pattern, query, re.I) for pattern in METRICS.values()
                     ):
                         # Detect absent/conflicting typed facts before provider generation.
-                        document_fact_answer(query, hits)
+                        expected_claims = document_fact_answer(query, hits).claims
                     structured = (
                         self.provider.generate_grounded_answer(query, hits, [])
                         if use_provider and self.provider
@@ -349,7 +350,7 @@ class ResearchAssistant:
                         raise RuntimeError("Provider credentials missing")
                     stages["generation_ms"] = (time.perf_counter() - t) * 1000
                     response = verify_response(
-                        "", decision, hits, structured_answer=structured
+                        "", decision, hits, structured_answer=structured, expected_claims=expected_claims
                     )
                 else:
                     if use_provider:

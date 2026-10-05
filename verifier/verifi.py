@@ -7,11 +7,13 @@ from decimal import Decimal
 
 from financial_evidence import (
     extract_facts,
+    records_from_text,
     quantities,
     supported_claim,
     supported_numbers,
 )
 from schemas import (
+    AnswerClaim,
     Citation,
     RetrievalHit,
     Route,
@@ -84,6 +86,7 @@ def verify_response(
     tool_results: list[ToolResult] | None = None,
     structured_answer: StructuredLLMAnswer | None = None,
     web_citations: list[Citation] | None = None,
+    expected_claims: list[AnswerClaim] | None = None,
 ) -> VerifiedResponse:
     hits, results = retrieval_hits or [], tool_results or []
     citations = build_citations(hits) + (web_citations or [])
@@ -213,6 +216,24 @@ def verify_response(
                             "Calculation input value does not resolve to its bound evidence record."
                         )
     claims = structured_answer.claims if structured_answer else []
+    if structured_answer and expected_claims is not None and not needs_tools:
+        # These come from query-scoped evidence selection, never evaluation labels.
+        # Support alone does not mean a true fact answers the requested question.
+        requested = [f for c in expected_claims for f in records_from_text(c.text)]
+        returned = [f for c in claims for f in records_from_text(c.text)]
+        unmatched = list(requested)
+        for fact in returned:
+            match = next((f for f in unmatched if
+                f.entity.casefold() == fact.entity.casefold()
+                and f.metric == fact.metric and f.period == fact.period
+                and f.currency == fact.currency
+                and abs(f.value - fact.value) <= Decimal('.005')), None)
+            if match is None:
+                reasons.append('Returned facts do not match the requested entity, metric and periods.')
+            else:
+                unmatched.remove(match)
+        if unmatched or len(claims) != len(expected_claims):
+            reasons.append('The answer omits requested facts or adds unrelated claims.')
     used = set()
     if needs_evidence and not needs_tools and structured_answer is None:
         reasons.append("Evidence-dependent output requires valid structured claims.")

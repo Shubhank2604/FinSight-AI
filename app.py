@@ -9,7 +9,7 @@ import streamlit as st
 from config import load_settings
 from ingestion import ingest_file
 from openai_client import OpenAIClient
-from orchestration import ResearchAssistant
+from orchestration import ResearchAssistant, provider_failure_reason
 from retrieval import HybridRetriever
 from schemas import VerifiedResponse
 from ui_calculators import _render_tool_forms
@@ -184,11 +184,14 @@ def main():
                     ).ask(
                         query, selected, allow_web=allow_web, use_provider=use_provider
                     )
-                st.session_state.setdefault("history", []).append(
-                    {"query": query, "response": response.model_dump(mode="json")}
-                )
+            except Exception as exc:
+                reason = provider_failure_reason(exc)
+                response = VerifiedResponse(answer=reason, status="provider_failure", reasons=[reason], confidence=0.0)
             finally:
                 st.session_state["pending_request"] = None
+            st.session_state.setdefault("history", []).append(
+                    {"query": query, "response": response.model_dump(mode="json")}
+            )
             st.rerun()
     with calculator_tab:
         _render_tool_forms()
