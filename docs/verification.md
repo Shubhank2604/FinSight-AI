@@ -19,7 +19,8 @@ uncommitted repairs was preserved. Delivery source commits:
 
 Final measurements began with clean committed source
 `02d6ea415c9351879c9d7c18fb84027907b4b7fd` and frozen dataset v3.0.0.
-Subsequent report/documentation changes do not alter that measured source.
+Reports delivered in `c4478e4` retain that measured source identity. The later
+cleanup has a separate code digest and offline verification recorded below.
 
 - Canonical Python code SHA-256: `d2f24a7bfa51e8c34cdc567446a7e409582ab587727993e2bf31e039d6ad48b0`.
 - Canonical dataset JSON SHA-256: `510151d78ba36501b767ab2a79c6711754a8489ba87bcc6f11d11336a1c60803`.
@@ -190,3 +191,54 @@ expanding the reliability claim. There is no command that substitutes for that
 review. Re-run the offline commands with a fresh pytest temporary directory after
 any future code change. Paid reruns must share the existing authorized ledger or
 receive a new authorization; checkpoints do not resume skipped slots automatically.
+
+## Final cleanup verification - 2026-10-05
+
+The final cleanup removes four unreferenced helper paths, unused test imports,
+the abandoned sample retrieval list and the completed root repair brief. The
+brief remains available in Git history. Pandas remains a required Streamlit
+dependency in the lock; its redundant direct declaration was removed. Actual
+SDK schema/failure tests, required CI checks and thresholds remain intact.
+
+README setup, architecture, upload/index instructions and the provider runbook
+now describe the supported application. Demo and historical rescore outputs
+default to ignored scratch paths rather than overwriting retained evidence.
+Generation remains OpenAI-only; legacy Gemini embeddings remain optional.
+
+The following checks ran once against the cleaned Python source. Its canonical
+code SHA-256 is `1787fb2ec0fcf2563b96c7d8d642f4717297f5ff3db4b7ba5dcc02c41fb88ee8`.
+The local report records the pre-commit HEAD plus this digest; it is not a new
+live measurement or a relabeling of historical repair results.
+
+| Check | Result |
+|---|---|
+| Locked environment `pip check` | No broken requirements |
+| Existing pytest suite | 223 passed |
+| Retrieval gate | Hybrid recall@3 0.944, required 0.90 |
+| Citation/abstention gate | Abstention recall 1.0, required 0.85; decision accuracy 11/11; diagnostic citation precision 0.6923 and recall 0.6 |
+| Router gate | 120/120 |
+| Offline application gate | 390/390 across BM25, hash dense and hybrid |
+| Streamlit startup | HTTP 200 / `ok`; isolated scratch index, generation disabled |
+| Six-scenario demo | Four supported answers, one conflict abstention, one injected provider failure, all as expected |
+| Historical rescore CLI | 54 complete, 174 partial, 132 unassessable; zero new provider calls |
+
+Reports are retained locally under `.test-tmp/cleanup-wrapup`; the rescore CLI's
+default report is `.test-tmp/historical-rescore.json.gz`. Historical artifact
+hashes/manifests, frozen fixtures, original PDFs, private configuration, the active
+budget ledger, uploads and indexes were preserved. All 299 protected file hashes
+were unchanged, and all 36 historical evidence-index identities passed gzip/hash
+verification. Twenty unique earlier scratch reports were deliberately retained.
+No paid API calls were made for cleanup.
+
+Local cleanup removed 552,403,153 bytes of inspected artifacts, including an
+obsolete task-specific environment, an unpacked archive backed by its retained
+ZIP, caches, 28 exact report copies and four console logs. Root environments
+were preserved. Eighteen earlier pytest directories remain inaccessible because
+of Windows ACLs; elevated execution and ownership recovery both returned access
+denied. Their exact paths are recorded in the local
+`.test-tmp/cleanup-wrapup/cleanup-result.json`. Removing these directories requires
+Windows administrator access and remains the sole local cleanup blocker.
+
+Tracked cleanup is delivered through `engineering/interview-readiness` and
+draft PR #7. It reaches `master` when that PR is merged; no merge, branch deletion
+or history rewrite is part of this wrap-up.

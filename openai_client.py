@@ -302,11 +302,6 @@ class OpenAIClient(EmbeddingClient, AnswerPrompts):
         self.last_response["validation"] = "schema_valid"
         return result
 
-    def _parse_structured_response(self, raw_text):
-        if not raw_text.strip():
-            raise ProviderError("empty_output", "Empty provider JSON response")
-        return StructuredLLMAnswer.model_validate_json(raw_text, strict=True)
-
     def generate_grounded_answer(self, query, hits, calculations=None):
         return self.generate_structured(
             self._structured_prompt(

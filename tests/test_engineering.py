@@ -1,9 +1,7 @@
 from __future__ import annotations
 
-import json
 import math
 import uuid
-from dataclasses import replace
 from pathlib import Path
 
 import pymupdf
@@ -11,7 +9,7 @@ import pytest
 
 from calculation_inputs import InputIssue, currency_from_text, extract_calculation_inputs
 from config import Settings
-from financial_evidence import quantities, supported_numbers
+from financial_evidence import supported_numbers
 from openai_client import OpenAIClient
 from ingestion import ingest_file
 from ingestion.chunker import chunk_text
@@ -366,7 +364,7 @@ def test_malformed_files_and_chunk_limits(tmp_path):
     assert one.parent==two.parent==(tmp_path/'uploads').resolve() and one!=two
 
 
-def test_provider_failure_and_invalid_json(retriever):
+def test_provider_failure_preserves_deterministic_calculations(retriever):
     retriever.index_chunks([chunk(REPORT)])
     class Failure:
         def generate_grounded_answer(self,*args):
@@ -375,6 +373,3 @@ def test_provider_failure_and_invalid_json(retriever):
     failed=service.ask('What is revenue in the report for 2025?',['Acme.pdf'],use_provider=True)
     assert failed.status=='provider_failure' and failed.citations==[]
     assert service.ask('Calculate current ratio in the report for 2025?',['Acme.pdf'],use_provider=True).status=='ok'
-    for raw in ('', 'not json', '{}'):
-        with pytest.raises(Exception):
-            retriever.embedding_client._parse_structured_response(raw)

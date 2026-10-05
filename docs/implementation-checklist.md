@@ -1,6 +1,7 @@
 # Complete repair checklist
 
-Brief: `FinSight_AI_Complete_Repair_Prompt.md`. Initial audit found local `0fb98d5`
+This records the completed repair brief, retained in Git history at `c4478e4`.
+Initial audit found local `0fb98d5`
 and substantial relevant uncommitted work beyond remote `91d6f45`; 202 tests passed.
 That work was preserved and completed. The archived baseline independently passed
 148 tests and four old gates. Final source `02d6ea4` has 223 passing tests.

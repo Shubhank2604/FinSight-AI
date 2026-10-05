@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import json
 from dataclasses import replace
-from pathlib import Path
 
 import httpx2
 import openai
@@ -13,7 +12,7 @@ from pydantic import BaseModel
 
 from config import DEFAULT_MODEL, Settings, load_settings
 from embeddings import EmbeddingClient
-from evaluation.application import finalize_report, run, summarize, write_report
+from evaluation.application import run, summarize
 from openai_client import OpenAIClient, ProviderError
 from orchestration import ResearchAssistant
 from schemas import AnswerClaim, ChunkType, DocumentChunk, RetrievalHit, Route, RouterDecision, StructuredLLMAnswer

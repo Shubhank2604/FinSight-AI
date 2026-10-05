@@ -1,5 +1,6 @@
 """Six reproducible scenarios; failure injection is labeled and credential-free."""
 from __future__ import annotations
+import argparse
 import json
 import tempfile
 from dataclasses import replace
@@ -39,9 +40,13 @@ def run_demo():
 
 
 if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output',default='.test-tmp/demo.json',help='Write the six-scenario report without overwriting retained evidence.')
+    args=parser.parse_args()
     results=run_demo()
-    Path('evals/repair_v3/results').mkdir(parents=True,exist_ok=True)
-    Path('evals/repair_v3/results/demo.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
+    output=Path(args.output)
+    output.parent.mkdir(parents=True,exist_ok=True)
+    output.write_text(json.dumps(results,indent=2),encoding='utf-8')
     for case in results:
         response=case['response']
         print(f"\n{case['scenario']} [{response['status']}]\n{response['answer']}")

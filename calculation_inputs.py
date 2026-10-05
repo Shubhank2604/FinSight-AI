@@ -98,12 +98,6 @@ def currency_from_text(text: str) -> str:
     return next(iter(codes), "USD")
 
 
-def extract_dates(text: str) -> list[str]:
-    return re.findall(
-        r"\b\d{4}-\d{2}-\d{2}\b|\b(?:19|20)\d{2}\b(?!\s*(?:years?|months?))", text
-    )
-
-
 def _single(candidates: list[tuple[float, InputOrigin]], field: str):
     if not candidates:
         raise InputIssue(f"Missing {field}; specify it explicitly.")

@@ -10,7 +10,6 @@ PyMuPDF
 Pillow
 
 numpy
-pandas
 numpy-financial
 
 pydantic

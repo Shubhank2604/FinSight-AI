@@ -1,7 +1,8 @@
 # Reproducible demonstration
 
 Run `python demo.py` from the repository root in the locked environment.
-It creates a temporary index and writes `evals/repair_v3/results/demo.json`.
+It creates a temporary index and writes `.test-tmp/demo.json`. Use `--output`
+to choose another report path. Retained delivery evidence is not overwritten.
 Generation is disabled except for a deliberately injected failure; no API calls occur.
 
 | Scenario | Expected result |

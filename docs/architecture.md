@@ -45,7 +45,7 @@ Query calculation defaults are USD for an unspecified currency, a nominal annual
 
 `openai_client.py` contains the official OpenAI SDK Responses calls, strict Pydantic-compatible schemas, image inputs, web-search annotations and safe failure handling. `llm_prompts.py` keeps prompt versions explicit. Only supported profiles are accepted; there is no Gemini generation fallback. Every response records requested and actual model, response ID, attempts, latency, token usage and schema outcome. Document claims still pass the verifier before display; calculator routes still display deterministic tool values directly. Web output is explicitly experimental and bypasses no verified-answer gate.
 
-`embeddings.py` isolates hash, optional OpenAI and legacy Gemini embedding spaces independently. Generation model changes do not change collection identities or re-embed documents. See [OpenAI migration](openai-migration.md) for configuration, current source links, verification status and the measured semantic comparison and re-indexing instructions.
+`embeddings.py` isolates hash, optional OpenAI and legacy Gemini embedding spaces independently. Generation model changes do not change collection identities or re-embed documents. See the [provider runbook](openai-migration.md) for configuration and re-indexing instructions, and [verification](verification.md) for measured results.
 
 
 ## Repair contracts

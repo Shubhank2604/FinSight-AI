@@ -19,7 +19,7 @@ def index_folder(folder: Path, embedding_provider: str | None = None) -> tuple[i
         settings = replace(settings, embedding_provider=embedding_provider)
     if not settings.gemini_api_key and settings.embedding_provider == "gemini":
         raise RuntimeError(
-            "GEMINI_API_KEY is required unless --embedding-provider local_hash is used."
+            "GEMINI_API_KEY is required for --embedding-provider gemini."
         )
     if settings.embedding_provider == 'openai' and not settings.openai_configured:
         raise RuntimeError('OPENAI_API_KEY is required for --embedding-provider openai.')

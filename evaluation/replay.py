@@ -1,15 +1,13 @@
-"""Revalidate recorded provider responses offline; never counts as new live calls."""
+"""Independently rescore retained historical outputs without new provider calls."""
 from __future__ import annotations
 import argparse
 import gzip
 import hashlib
 import json
 from pathlib import Path
-from evaluation.application import answer_correct
-from schemas import RetrievalHit, RouterDecision, StructuredLLMAnswer, VerifiedResponse
+from schemas import VerifiedResponse
 from evaluation.scoring import VERSION, legacy_labels, parse_fact, score_outcome
 from evaluation.application import write_report
-from verifier.verifi import verify_response
 
 
 def read_historical(path):
@@ -20,24 +18,6 @@ def read_historical(path):
         source_path=Path(match['artifact']) if match else source_path.with_suffix('.json.gz')
     raw=source_path.read_bytes()
     return source_path,json.loads(gzip.decompress(raw) if source_path.suffix=='.gz' else raw)
-
-
-def replay(path='evals/results/application-live.json'):
-    _,source=read_historical(path)
-    dataset=json.loads(Path('evals/application_benchmark.json').read_text())
-    cases={c['id']:c for c in dataset['cases']}
-    records=[]
-    for record in source['records']:
-        raw=record.get('provider_raw_output')
-        if not raw or not raw.get('text'):
-            continue
-        structured=StructuredLLMAnswer.model_validate_json(raw['text'])
-        old=record['response']
-        hits=[RetrievalHit.model_validate(h) for h in old['diagnostics']['evidence']]
-        decision=RouterDecision.model_validate(old['diagnostics']['route'])
-        response=verify_response('',decision,hits,structured_answer=structured)
-        records.append({'id':record['id'],'original_status':old['status'],'new_status':response.status,'correct':answer_correct(cases[record['id']],response),'reasons':response.reasons})
-    return {'scope':'Offline replay of recorded provider outputs; no new provider calls, no full live benchmark claim','source':path,'source_code_digest':source['metadata']['code_digest'],'records':records}
 
 
 def rescore(path='evals/results/application-openai-live-verified.json'):
@@ -63,7 +43,7 @@ def rescore(path='evals/results/application-openai-live-verified.json'):
 if __name__=='__main__':
     p=argparse.ArgumentParser()
     p.add_argument('--source',default='evals/results/application-openai-live-verified.json')
-    p.add_argument('--output',default='evals/repair_v3/results/historical-rescore.json.gz')
+    p.add_argument('--output',default='.test-tmp/historical-rescore.json.gz')
     args=p.parse_args()
     report=rescore(args.source)
     write_report(report,args.output)

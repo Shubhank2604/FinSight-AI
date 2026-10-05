@@ -31,7 +31,7 @@ def local_educational_answer(query: str) -> str:
 
     for term, answer in {
         "current ratio": "Current ratio = current assets / current liabilities, using the same reporting period and currency. A zero denominator makes the ratio undefined.",
-        "margin": "Net margin = net income / revenue * 100, using the same company and reporting period. Operating margin uses operating income instead; FinSight's document calculator supports net margin.",
+        "margin": "Net margin = net income / revenue * 100, using the same company and reporting period. Operating margin uses operating income instead; FinSight's document calculator supports both.",
         "emi": "EMI is a fixed monthly loan payment. FinSight uses a nominal annual rate divided by 12, a principal and a whole-month duration. Fees and floating rates are excluded.",
         "revenue": "Revenue is income from ordinary sales before expenses. Compare the same entity, currency, period and accounting definition.",
         "debt": "Debt-to-equity = total debt / shareholders' equity. Use matching dates and definitions; zero equity makes this ratio undefined.",

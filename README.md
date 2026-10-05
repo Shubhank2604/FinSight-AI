@@ -10,6 +10,12 @@ validated deterministic tool results. Arbitrary narrative entailment and arbitra
 PDF layouts are outside that contract. Unsupported or conflicting inputs cause
 clarification or abstention. Confidence diagnostics are binary gates, not probabilities.
 
+The application separates Streamlit presentation from a Python orchestration layer.
+Uploads become page-aware chunks in a local Qdrant index. A rule-based router
+selects retrieval, education or typed financial tools; the verifier checks the
+result before display. Optional OpenAI generation sits behind that same verifier.
+See the [architecture](docs/architecture.md) for contracts and recovery behavior.
+
 PDF ingestion preserves source/page/company/period/currency/unit metadata. EMI,
 portfolio projection, current ratio, debt/equity, net/operating margin and
 metric-specific year-over-year growth use typed inputs and recorded provenance.
@@ -52,7 +58,30 @@ python -m streamlit run app.py
 
 On Linux/macOS use `source .venv/bin/activate` and `cp`.
 Set `OPENAI_API_KEY` privately for generation or semantic embeddings. The UI
-starts with generation off. Index selected documents after uploading them.
+starts with generation off. Configuration defaults and supported model profiles
+are in [.env.example](.env.example) and the [provider runbook](docs/openai-migration.md).
+
+## Upload and index documents
+
+1. Upload PDFs in the sidebar and click **Index uploads**. Each file is limited to 20 MB.
+2. Select the relevant **Active documents**, choose a retrieval method and ask a
+   question in **Document research**. Inspect source pages and calculation inputs.
+3. Use **Calculators** for explicit scenarios. Enable **Use OpenAI for document
+   explanations** only when you want credentialed generation.
+
+For a credential-free walkthrough, use `evals/fixtures/Cedar.pdf`, `Elm.pdf`, and
+`evals/repair_v3/Mint-2024-CFO.pdf` with the [demo queries](docs/demo.md). Images
+can be indexed, but verified visual answers remain unsupported.
+
+For batch indexing, stop the app first because the local index has one owner:
+
+```powershell
+python index_uploads.py --folder evals/fixtures --embedding-provider local_hash
+```
+
+Original uploads remain under `data/uploads/originals`; removing indexed documents
+does not delete them. Provider changes create separate index identities and require
+re-indexing. Preserve the old index when changing providers.
 
 ## Reproduce the evidence
 
@@ -63,9 +92,11 @@ python eval_citations.py --min-abstention-recall 0.85 --output .test-tmp/citatio
 python -m evaluation.router --quality-gate --output .test-tmp/router.json
 python -m evaluation.application --quality-gate --output .test-tmp/application.json.gz
 python -m evaluation.replay --output .test-tmp/historical-rescore.json.gz
-python demo.py
+python demo.py --output .test-tmp/demo.json
 ```
 
+Demo and rescore commands default to ignored `.test-tmp` reports. Retained results
+are historical evidence, with their measured source revision recorded separately.
 Use a new pytest temporary directory for each run. Paid checks require credentials
 and an explicit authorized cap. Share a persisted ledger between sequential runs;
 do not reset it to bypass the cap. A rerun repeats requests rather than resuming a

@@ -10,7 +10,6 @@ from financial_evidence import (
     records_from_text,
     quantities,
     supported_claim,
-    supported_numbers,
 )
 from schemas import (
     AnswerClaim,
@@ -51,13 +50,6 @@ def build_citations(
         )
         for h in (hits if limit is None else hits[:limit])
     ]
-
-
-def claim_has_unsupported_numbers(claim, evidence_by_id: dict[str, str]) -> bool:
-    return not supported_numbers(
-        claim.text,
-        "\n".join(evidence_by_id[i] for i in claim.citation_ids if i in evidence_by_id),
-    )
 
 
 def render_calculations(calculations) -> str:
