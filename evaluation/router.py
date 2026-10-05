@@ -6,7 +6,7 @@ from pathlib import Path
 from router import route_query
 
 
-def evaluate(path='evals/router_benchmark.json'):
+def evaluate(path='evals/repair_v3/router.json'):
     path=Path(path)
     data=json.loads(path.read_text(encoding='utf-8'))
     records=[]
@@ -25,10 +25,11 @@ def evaluate(path='evals/router_benchmark.json'):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser()
-    p.add_argument('--output',default='evals/results/router-v2.json')
+    p.add_argument('--output',default='evals/repair_v3/results/router.json')
     p.add_argument('--quality-gate',action='store_true')
     args=p.parse_args()
     report=evaluate()
+    Path(args.output).parent.mkdir(parents=True,exist_ok=True)
     Path(args.output).write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps({k:v for k,v in report.items() if k!='records'},indent=2))
     if args.quality_gate and report['accuracy']<.95:

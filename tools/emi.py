@@ -81,7 +81,7 @@ def calculate_emi(
     principal: float,
     annual_rate_pct: float,
     tenure_months: int,
-    currency: str = "INR",
+    currency: str = "USD",
     prepayments: Iterable[dict[str, Any]] | None = None,
 ) -> ToolResult:
     inputs = {

@@ -10,7 +10,7 @@ def simulate_portfolio_growth(
     years: float,
     initial_amount: float = 0.0,
     annual_step_up_pct: float = 0.0,
-    currency: str = "INR",
+    currency: str = "USD",
     contribution_timing: str = "end",
     rate_convention: str = "nominal_annual",
 ) -> ToolResult:

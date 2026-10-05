@@ -1,13 +1,25 @@
 from __future__ import annotations
 
-from app import _extract_currency
+from calculation_inputs import currency_from_text as _extract_currency
 from config import DEFAULT_MODEL, Settings
 from fallback_answers import local_educational_answer
 from ingestion.chunker import chunk_text, table_to_text
 from retrieval import HybridRetriever
 from router import route_query
-from schemas import AnswerClaim, ChunkType, DocumentChunk, RetrievalHit, Route, StructuredLLMAnswer
-from tools import calculate_emi, estimate_tax, price_black_scholes_option, simulate_portfolio_growth
+from schemas import (
+    AnswerClaim,
+    ChunkType,
+    DocumentChunk,
+    RetrievalHit,
+    Route,
+    StructuredLLMAnswer,
+)
+from tools import (
+    calculate_emi,
+    estimate_tax,
+    price_black_scholes_option,
+    simulate_portfolio_growth,
+)
 from verifier import build_citations, verify_response
 
 
@@ -57,7 +69,10 @@ def test_portfolio_tool_returns_future_value() -> None:
 
     assert result.success
     assert result.calculation is not None
-    assert result.calculation.result["future_value"] > result.calculation.result["total_invested"]
+    assert (
+        result.calculation.result["future_value"]
+        > result.calculation.result["total_invested"]
+    )
 
 
 def test_option_tool_returns_price_and_greeks() -> None:
@@ -116,7 +131,9 @@ def test_router_abstains_for_current_query_when_web_disabled() -> None:
 
 
 def test_router_auto_web_when_enabled_by_app() -> None:
-    decision = route_query("What is the current USD to INR exchange rate?", allow_web=True)
+    decision = route_query(
+        "What is the current USD to INR exchange rate?", allow_web=True
+    )
 
     assert decision.route == Route.WEB_GROUNDED_ANSWER
 
@@ -210,7 +227,10 @@ def test_verifier_accepts_structured_cited_answer() -> None:
         structured_answer=structured,
     )
 
-    assert verified.answer == "Source excerpt: Liquidity risk increased because short-term obligations rose. [chunk-1]"
+    assert (
+        verified.answer
+        == "Source excerpt: Liquidity risk increased because short-term obligations rose. [chunk-1]"
+    )
     assert verified.confidence >= 0.6
     assert verified.claims
 

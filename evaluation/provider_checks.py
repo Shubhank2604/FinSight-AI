@@ -12,7 +12,8 @@ from pathlib import Path
 
 from config import load_settings
 from evaluation.application import ROOT, provenance, write_report
-from financial_evidence import quantities
+from evaluation.budget import EvaluationBudget
+from evaluation.scoring import score_outcome
 from ingestion import ingest_file
 from openai_client import OpenAIClient
 from orchestration import ResearchAssistant, provider_failure_reason
@@ -21,11 +22,12 @@ from schemas import RetrievalHit, RouterDecision
 from verifier import verify_response
 
 
-def run(live=False):
+def run(live=False,budget=None):
     settings=replace(load_settings(),embedding_provider='local_hash')
     if settings.openai_eval_model:
         settings=replace(settings,openai_model=settings.openai_eval_model)
-    provider=OpenAIClient(settings)
+    if budget:settings=replace(settings,openai_max_output_tokens=min(settings.openai_max_output_tokens,1024))
+    provider=OpenAIClient(settings,budget=budget)
     report={'scope':'OpenAI live acceptance probes, separate from historical Gemini results',
             'live_requested':live,'metadata':provenance(ROOT/'evals/application_benchmark.json',provider), 'records':[]}
     names=['grounded_document_answer','structured_extraction','document_calculation_explanation']
@@ -61,7 +63,9 @@ def run(live=False):
                         if name=='structured_extraction':
                             query='Extract the revenue for 2025 from the Cedar report as a factual claim, preserving company, currency, units, period and evidence IDs.'
                         response=service.ask(query,['Cedar.pdf'],use_provider=True)
-                        correct=response.status=='ok' and bool(response.citations) and any(n.unit=='USD' and float(n.value)==120000000 for c in response.claims for n in quantities(c.text))
+                        expected={'operation':'revenue','expected_status':'ok','expected_facts':[
+                            {'entity':'Cedar','metric':'revenue','period':2025,'currency':'USD','value':120000000}]}
+                        correct=bool(response.citations) and score_outcome(expected,response)
                     record={'check':name,'status':'passed' if correct else 'failed','validation_passed':correct,
                             'response':response.model_dump(mode='json'),'provider_request':provider.last_response}
                 except Exception as exc:
@@ -80,9 +84,13 @@ def run(live=False):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--live',action='store_true')
+    parser.add_argument('--budget-usd',type=float)
+    parser.add_argument('--budget-ledger',default='.test-tmp/openai-repair-budget.json')
     parser.add_argument('--output',default='evals/results/provider-openai-checks.json')
     args=parser.parse_args()
-    report=run(args.live)
+    if args.live and args.budget_usd is None:parser.error('Live checks require an explicitly authorized --budget-usd cap.')
+    budget=EvaluationBudget(args.budget_usd,args.budget_ledger) if args.budget_usd is not None else None
+    report=run(args.live,budget)
     write_report(report,args.output)
     print(json.dumps({'complete':report['complete'],'checks':[{k:r[k] for k in ('check','status')} for r in report['records']],'output':args.output},indent=2))
     if args.live and not report['complete']:

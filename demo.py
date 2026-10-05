@@ -1,4 +1,4 @@
-"""Five reproducible scenarios; failure injection is labeled and credential-free."""
+"""Six reproducible scenarios; failure injection is labeled and credential-free."""
 from __future__ import annotations
 import json
 import tempfile
@@ -18,9 +18,11 @@ def run_demo():
         try:
             for name in ['Cedar','Elm']:
                 retriever.index_chunks(ingest_file(f'evals/fixtures/{name}.pdf'))
+            retriever.index_chunks(ingest_file('evals/repair_v3/Mint-2024-CFO.pdf'))
             service=ResearchAssistant(retriever)
             scenarios=[
                 ('Document fact','What is revenue in the report for 2025?',['Cedar.pdf']),
+                ('Real public document fact','What is United States Mint revenue for 2024 in the report?',['Mint-2024-CFO.pdf']),
                 ('Document calculation','Calculate EMI using the loan in the report',['Cedar.pdf']),
                 ('Reporting-period comparison','Compare revenue in the report for 2024 and 2025',['Cedar.pdf']),
                 ('Contradictory evidence','What is revenue in the report for 2025?',['Elm.pdf']),
@@ -38,7 +40,8 @@ def run_demo():
 
 if __name__=='__main__':
     results=run_demo()
-    Path('evals/results/demo-v2.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
+    Path('evals/repair_v3/results').mkdir(parents=True,exist_ok=True)
+    Path('evals/repair_v3/results/demo.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
     for case in results:
         response=case['response']
         print(f"\n{case['scenario']} [{response['status']}]\n{response['answer']}")

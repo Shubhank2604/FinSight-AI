@@ -1,6 +1,7 @@
 deep_research_report.md
 .venv/
 .venv-verify/
+.venv-repair/
 .test-tmp/
 .env
 .env.gemini-embeddings
@@ -21,5 +22,6 @@ logs/
 *.tmp
 *.bak
 *.swp
+/2024-annual-report.pdf
 .DS_Store
 Thumbs.db

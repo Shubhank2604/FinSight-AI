@@ -1,17 +1,38 @@
 """Reachable deterministic calculator forms; results share the application response contract."""
+
 import streamlit as st
+
 from schemas import Route, RouterDecision
-from tools import calculate_emi, estimate_tax, price_black_scholes_option, simulate_portfolio_growth
+from tools import (
+    calculate_emi,
+    price_black_scholes_option,
+    simulate_portfolio_growth,
+)
 from verifier.verifi import verify_response
 
 
 def _append_tool_result(query, route, result):
     if not result.success:
         from schemas import VerifiedResponse
-        response = VerifiedResponse(answer=result.error or "Calculation failed", status="clarification", reasons=[result.error or "Calculation failed"])
+
+        response = VerifiedResponse(
+            answer=result.error or "Calculation failed",
+            status="clarification",
+            reasons=[result.error or "Calculation failed"],
+        )
     else:
-        response = verify_response('', RouterDecision(route=route, required_tools=[result.calculation.tool_name], reason="Calculator form"), tool_results=[result])
-    st.session_state.setdefault('history', []).append({'query': query, 'response': response.model_dump(mode='json')})
+        response = verify_response(
+            "",
+            RouterDecision(
+                route=route,
+                required_tools=[result.calculation.tool_name],
+                reason="Calculator form",
+            ),
+            tool_results=[result],
+        )
+    st.session_state.setdefault("history", []).append(
+        {"query": query, "response": response.model_dump(mode="json")}
+    )
 
 
 def _render_tool_forms() -> None:
@@ -63,6 +84,13 @@ def _render_tool_forms() -> None:
             submitted = st.form_submit_button("Calculate EMI", type="primary")
 
         if submitted:
+            from schemas import ToolResult
+            if abs(tenure_years * 12 - round(tenure_years * 12)) > 1e-8:
+                _append_tool_result('EMI calculation', Route.COMPUTE_ONLY, ToolResult(success=False, error='Duration must be a whole number of months; correct the tenure.'))
+                st.rerun()
+            if (prepayment_month > 0) != (prepayment_amount > 0):
+                _append_tool_result('EMI calculation', Route.COMPUTE_ONLY, ToolResult(success=False, error='Specify both the prepayment month and amount, or leave both zero.'))
+                st.rerun()
             prepayments = []
             if prepayment_month > 0 and prepayment_amount > 0:
                 prepayments.append(
@@ -89,7 +117,9 @@ def _render_tool_forms() -> None:
                 ["USD", "INR", "EUR", "GBP", "JPY", "CAD", "AUD", "SGD", "AED"],
                 key="option_currency",
             )
-            option_type = st.selectbox("Option type", ["call", "put"], key="option_type")
+            option_type = st.selectbox(
+                "Option type", ["call", "put"], key="option_type"
+            )
             spot = st.number_input(
                 "Spot price",
                 min_value=0.01,
@@ -145,62 +175,7 @@ def _render_tool_forms() -> None:
             st.rerun()
 
     with tabs[3]:
-        with st.form("tax_tool_form"):
-            currency = st.selectbox(
-                "Currency",
-                ["USD", "INR", "EUR", "GBP", "JPY", "CAD", "AUD", "SGD", "AED"],
-                key="tax_currency",
-            )
-            jurisdiction = st.text_input(
-                "Jurisdiction code",
-                value="US",
-                help="Example: US, IN, UK. Requires a matching non-demo rule pack.",
-                key="tax_jurisdiction",
-            )
-            tax_year = st.number_input(
-                "Tax year",
-                min_value=2000,
-                max_value=2100,
-                value=2026,
-                step=1,
-                key="tax_year",
-            )
-            filing_status = st.selectbox(
-                "Filing status",
-                ["single", "married_joint", "head_of_household"],
-                key="tax_filing_status",
-            )
-            gross_income = st.number_input(
-                "Gross income",
-                min_value=0.0,
-                value=100000.0,
-                step=1000.0,
-                key="tax_income",
-            )
-            deductions = st.number_input(
-                "Deductions",
-                min_value=0.0,
-                value=0.0,
-                step=1000.0,
-                key="tax_deductions",
-            )
-            submitted = st.form_submit_button("Estimate Tax", type="primary")
-
-        if submitted:
-            tool_result = estimate_tax(
-                jurisdiction=jurisdiction,
-                tax_year=int(tax_year),
-                gross_income=gross_income,
-                deductions=deductions,
-                filing_status=filing_status,
-                currency=currency,
-            )
-            query = (
-                f"Estimate {jurisdiction.upper()} {int(tax_year)} tax for "
-                f"{currency} {gross_income:,.2f} gross income"
-            )
-            _append_tool_result(query, Route.COMPUTE_ONLY, tool_result)
-            st.rerun()
+        st.info("Tax estimation is unavailable: no reviewed jurisdiction/year rule pack is bundled. The prototype excludes real tax estimates.")
 
     with tabs[1]:
         with st.form("portfolio_tool_form"):
@@ -243,6 +218,14 @@ def _render_tool_forms() -> None:
                 step=0.5,
                 key="portfolio_step_up",
             )
+            contribution_timing = st.selectbox(
+                "Contribution timing", ["end", "beginning"], key="portfolio_timing"
+            )
+            rate_convention = st.selectbox(
+                "Annual rate convention",
+                ["nominal_annual", "effective_annual"],
+                key="portfolio_rate_convention",
+            )
             submitted = st.form_submit_button("Simulate Portfolio", type="primary")
 
         if submitted:
@@ -253,6 +236,8 @@ def _render_tool_forms() -> None:
                 initial_amount=initial_amount,
                 annual_step_up_pct=annual_step_up_pct,
                 currency=currency,
+                contribution_timing=contribution_timing,
+                rate_convention=rate_convention,
             )
             query = (
                 f"Simulate investing {currency} {monthly_investment:,.2f}/month "
@@ -260,4 +245,3 @@ def _render_tool_forms() -> None:
             )
             _append_tool_result(query, Route.COMPUTE_ONLY, tool_result)
             st.rerun()
-

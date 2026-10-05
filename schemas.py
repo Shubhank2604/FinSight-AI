@@ -109,6 +109,13 @@ class VerifiedResponse(BaseModel):
     assumptions: list[str] = Field(default_factory=list)
     confidence: float = 0.0
     claims: list[AnswerClaim] = Field(default_factory=list)
-    status: Literal["ok", "clarification", "abstained", "unsupported", "provider_failure", "experimental"] = "ok"
+    status: Literal[
+        "ok",
+        "clarification",
+        "abstained",
+        "unsupported",
+        "provider_failure",
+        "experimental",
+    ] = "ok"
     reasons: list[str] = Field(default_factory=list)
     diagnostics: dict[str, Any] = Field(default_factory=dict)

@@ -1,4 +1,5 @@
 """Provider-neutral prompts; deterministic outputs and evidence remain authoritative."""
+
 from schemas import RetrievalHit, ToolCalculation
 
 PROMPT_VERSION = "bound-records-openai-v2"
