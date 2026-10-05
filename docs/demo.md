@@ -1,19 +1,24 @@
-# Reproducible five-scenario demonstration
+# Reproducible demonstration
 
-Run from the repository root with the locked Python 3.13 environment:
+Run `python demo.py` from the repository root in the locked environment.
+It creates a temporary index and writes `evals/repair_v3/results/demo.json`.
+Generation is disabled except for a deliberately injected failure; no API calls occur.
 
-```powershell
-python demo.py
-```
+| Scenario | Expected result |
+|---|---|
+| Cedar document fact | 2025 revenue USD 120 million, page 2 |
+| Real Mint document fact | FY2024 revenue USD 3,385.7 million, excerpt page 1, original PDF page 38 |
+| Document EMI | USD 500,000; nominal annual 8%; 240 months; monthly EMI USD 4,182.20, page 3 provenance |
+| Period comparison | Cedar 2024 revenue USD 100 million and 2025 USD 120 million, both pages |
+| Contradiction | Elm's conflicting 2025 revenue causes abstention |
+| Injected timeout | `provider_failure`, no invented fact; this is not a real timed-out API call |
 
-This creates an isolated temporary index, uses only redistributable fixtures and writes `evals/results/demo-v2.json`. It requires neither a provider key nor a GPU. Expected scenarios:
+For an interactive demo run `python -m streamlit run app.py`, upload
+`evals/fixtures/Cedar.pdf`, `Elm.pdf`, and `evals/repair_v3/Mint-2024-CFO.pdf`,
+index them, select the appropriate source and use the queries in `demo.py`.
+Keep generation and web access off. Show evidence and interpreted inputs before
+advanced diagnostics. Tax has no reachable calculation form. Options are a
+deterministic Black-Scholes model with stated assumptions; web/vision remain experimental.
 
-1. Cedar revenue for 2025: USD 120 million with a citation to page 2.
-2. EMI using the loan in Cedar's report: principal USD 500,000, nominal annual rate 8%, 240 months, monthly EMI USD 4,182.20, provenance on page 3.
-3. Cedar reporting-period comparison: 2024 revenue USD 100 million and 2025 revenue USD 120 million, citing both pages.
-4. Elm revenue has contradictory 2025 values: abstention with an understandable conflict reason.
-5. Injected provider timeout: typed provider failure with no invented factual answer. This is a failure-handling test, not a claim that an actual provider timed out.
-
-For an interactive demonstration, run `python -m streamlit run app.py`, upload `evals/fixtures/Cedar.pdf` and `Elm.pdf`, index them, select the relevant active document and submit the same questions. Leave OpenAI explanations and web access off for a deterministic demo. The Calculators tab exposes EMI, portfolio, option and tax forms. The tax form explains the reviewed rule-pack prerequisite.
-
-Show the readable evidence and Inputs and result panels before the advanced diagnostics. Clarify that questions are independent and that the core's structured-label extraction does not support every arbitrary financial PDF. Original uploads are private local data ignored by Git; removing a document deletes index evidence, while the original remains locally available.
+Original uploads remain private locally when index evidence is removed.
+Document extraction is conservative; this demo does not establish arbitrary-PDF support.

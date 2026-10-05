@@ -13,8 +13,8 @@ Use Python 3.13 and install `requirements.lock`. Copy `.env.example` to `.env` o
 | `OPENAI_VISION_MODEL` | Blank inherits the text model |
 | `OPENAI_EVAL_MODEL` | Blank inherits the text model; evaluation runners honor this override |
 | `OPENAI_TIMEOUT` | 30 seconds per attempt; finite, positive, at most 120 |
-| `OPENAI_MAX_RETRIES` | 2 retries; supported range 0–3 |
-| `OPENAI_MAX_OUTPUT_TOKENS` | 4096; supported range 128–16384 |
+| `OPENAI_MAX_RETRIES` | 2 retries; supported range 0â€“3 |
+| `OPENAI_MAX_OUTPUT_TOKENS` | 4096; supported range 128â€“16384 |
 | `OPENAI_WEB_ENABLED` | `false`; only literal true/false accepted |
 | `EMBEDDING_PROVIDER` | Existing `local_hash` default is preserved |
 
@@ -58,31 +58,23 @@ Offline checks need no API key:
 python -m pip install -r requirements.lock
 python -m pip check
 python -m pytest -q -p no:cacheprovider --basetemp=.test-tmp/openai-check
-python -m evaluation.application --quality-gate --output evals/results/application-openai-offline.json
-python -m evaluation.experimental --output evals/results/experimental-openai-offline.json
+python -m evaluation.application --quality-gate --output evals/results/application-openai-offline.json.gz
+python -m evaluation.experimental --output evals/results/experimental-openai-offline.json.gz
 ```
 
-Configure `OPENAI_API_KEY` privately in your local `.env` before live checks. These commands use redistributable fixtures, unchanged local embeddings and OpenAI generation. The first command makes three text requests when successful; the experimental command makes three image requests and a web request (potentially several search tool calls). The repeated benchmark includes deterministic/calculation/abstention requests that make no provider calls, so case count is not API-call count.
-
-```powershell
-python -m evaluation.provider_checks --live --output evals/results/provider-openai-checks.json
-python -m evaluation.application --live --mode hybrid --repeats 3 --split development --output evals/results/application-openai-development-live.json
-python -m evaluation.application --live --mode hybrid --repeats 3 --split held_out --output evals/results/application-openai-held-out-live.json
-$env:OPENAI_WEB_ENABLED = 'true'
-python -m evaluation.experimental --live --web --output evals/results/experimental-openai-live.json
-```
-
-Live failures produce nonzero exit status and explicit records. Each report records requested/actual models, prompt version, latency, usage and validation. Every completed application request is checkpointed atomically. Missing requests and repeats are explicit, with null scores for unrun repeats. Historical Gemini reports use their original filenames and are never overwritten by default OpenAI outputs.
+Configure `OPENAI_API_KEY` privately. Current bounded live commands and shared-ledger
+rules are in the README. Paid vision/web are outside the repair budget and remain
+experimental. Historical measurements below retain their original scorer and date.
 
 ## Delivery status and live follow-up
 
 The initial migration passed 132 offline tests and recorded missing-key live reports. Those artifacts remain historical. After local credentials became available, the main `.venv` was repaired using the lock and the clean locked environment passed **148 tests** (`evals/results/openai-final-clean-tests.xml`). Both environments pass `pip check`; final router/offline application gates pass. The default verification environment has no Google SDK.
 
-`provider-openai-final.json` records all three live acceptance probes passing. The first probes revealed a local verifier bug: a correct reporting year was compared to numerical tool results, and quoted document inputs were treated as replacement arithmetic. The verifier now recognizes exact tool periods, parses ratio suffixes and permits provenance-backed monetary inputs. Regression tests reject incorrect years, ratios, amounts and currencies. Production tool values remain unchanged.
+`provider-openai-final.json.gz` records all three live acceptance probes passing. The first probes revealed a local verifier bug: a correct reporting year was compared to numerical tool results, and quoted document inputs were treated as replacement arithmetic. The verifier now recognizes exact tool periods, parses ratio suffixes and permits provenance-backed monetary inputs. Regression tests reject incorrect years, ratios, amounts and currencies. Production tool values remain unchanged.
 
-`application-openai-live-verified.json` completed all 360 cases across three repeats: 354 correct (98.33%), 98.08% answerable coverage, zero unsupported acceptance under synthetic labels, six false abstentions, no quota failures. There were 138 schema-valid API responses; remaining routes were deterministic or abstained before generation. Repeats scored 96.67%, 100%, 98.33%. The held-out subset completed 120 repeat slots, all correct. No independent human review or general accuracy claim is implied.
+`application-openai-live-verified.json.gz` completed all 360 cases across three repeats: 354 correct (98.33%), 98.08% answerable coverage, zero unsupported acceptance under synthetic labels, six false abstentions, no quota failures. There were 138 schema-valid API responses; remaining routes were deterministic or abstained before generation. Repeats scored 96.67%, 100%, 98.33%. The held-out subset completed 120 repeat slots, all correct. No independent human review or general accuracy claim is implied.
 
-`experimental-openai-web-verified.json` preserves three actual image responses and an explicitly enabled web response with source annotations. The image fixtures show screenshot/chart/table revenue of USD 120 million in 2025; all returned that amount. These are small adapter probes, not representative financial-PDF validation. The web probe preserves its dated Federal Reserve source; general latest-source coverage, publication-date verification and claim entailment remain unproven. Both paths remain experimental.
+`experimental-openai-web-verified.json.gz` preserves three actual image responses and an explicitly enabled web response with source annotations. The image fixtures show screenshot/chart/table revenue of USD 120 million in 2025; all returned that amount. These are small adapter probes, not representative financial-PDF validation. The web probe preserves its dated Federal Reserve source; general latest-source coverage, publication-date verification and claim entailment remain unproven. Both paths remain experimental.
 
 ## Optional OpenAI semantic embeddings
 
@@ -91,10 +83,22 @@ The follow-up adds `EMBEDDING_PROVIDER=openai` and `OPENAI_EMBEDDING_MODEL=text-
 This provider uses a separate collection identity containing openai/model/dimensions/ingestion version. Re-ingest every document into that collection; never copy old-space vectors. Existing hash and Gemini collections remain for rollback. A generation model change does not change this identity. Embedding calls preserve usage/latency separately from generation, sanitize provider errors and use the SDK's bounded retries; generation retains its own retry policy.
 
 ```powershell
-python -m evaluation.application --embedding-provider openai --quality-gate --output evals/results/application-openai-semantic.json
+python -m evaluation.application --embedding-provider openai --quality-gate --output evals/results/application-openai-semantic.json.gz
 python index_uploads.py --folder evals/fixtures --embedding-provider openai
 ```
 
 The comparison completed 120 questions in each BM25/dense/hybrid mode with deterministic downstream answers: all correct with full final evidence coverage. Recall@3 was 0.558/0.834/0.599. Dense outperformed hybrid on relevant-chunk recall; these results do not justify claiming hybrid always improves retrieval. Eight embedding requests consumed 6,081 reported tokens; no invoice cost is inferred. Default retrieval remains hash until explicitly selected. Full OpenAI generation with semantic embeddings is a separate evaluation configuration; the repeated live report used hash embeddings.
 
 See [evaluation](evaluation.md), [verification summary](verification.md) and [completion checklist](implementation-checklist.md) for exact measurements and remaining independent-review limitations.
+
+
+## Complete-repair verification
+
+The repair evaluation uses `evals/repair_v3/application.json`, the independent bound-label scorer, and a persisted $2 estimated spend ledger shared by application and acceptance runs. Budgeted calls exclude vision and web. Failed calls retain their conservative reservations; estimates are not provider invoices. See [verification](verification.md) for final measurements. Historical OpenAI results above retain their original scorer and date.
+
+```powershell
+python -m evaluation.application --live --embedding-provider openai --mode dense --repeats 3 --budget-usd 2 --budget-ledger .test-tmp/openai-repair-budget.json --output .test-tmp/repair-live.json.gz --quality-gate
+python -m evaluation.provider_checks --live --budget-usd 2 --budget-ledger .test-tmp/openai-repair-budget.json --output .test-tmp/repair-provider.json
+```
+
+Keep the same ledger on restart. A restart reruns requests; it does not resume checkpoints. Inspect missing slots and remaining reservations first. Do not delete/reset the ledger to bypass the authorized cap.

@@ -1,0 +1,5190 @@
+{
+  "version": "3.0.0",
+  "label_provenance": "Agent-authored/transcribed, not independently human-reviewed",
+  "split_policy": "Seven synthetic companies development; final three and both Mint excerpts held out; frozen before benchmark execution",
+  "documents": [
+    {
+      "source_name": "Cedar-v3.pdf",
+      "path": "evals/repair_v3/Cedar-v3.pdf",
+      "company": "Cedar",
+      "split": "development",
+      "sha256": "c6edc815053831569f8d5223117cadb138e31bf36e4dbc6126b4a47114cd5052",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Harbor-v3.pdf",
+      "path": "evals/repair_v3/Harbor-v3.pdf",
+      "company": "Harbor",
+      "split": "development",
+      "sha256": "b50e3f95e9f6ba29d567d1bed59e98af1770e63b7faa93409216752495026842",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Quartz-v3.pdf",
+      "path": "evals/repair_v3/Quartz-v3.pdf",
+      "company": "Quartz",
+      "split": "development",
+      "sha256": "95d958f53c8e3113bbec9c6628237e8dd9b7e7d71dc190995fe5a10dcfc81305",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Maple-v3.pdf",
+      "path": "evals/repair_v3/Maple-v3.pdf",
+      "company": "Maple",
+      "split": "development",
+      "sha256": "85ae9bfce381a0f78c4ffcf0416d105d812c53474b849104c81f809d38176edf",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Juniper-v3.pdf",
+      "path": "evals/repair_v3/Juniper-v3.pdf",
+      "company": "Juniper",
+      "split": "development",
+      "sha256": "ff6d7d195b93ad0be9ebd6d06c51521c77f1fe20b768e9ec071e0e0b29209b6b",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Beacon-v3.pdf",
+      "path": "evals/repair_v3/Beacon-v3.pdf",
+      "company": "Beacon",
+      "split": "development",
+      "sha256": "e009994ccfaf507dc3eb4d31c6707accea6fff5f5667769b5af9544b5b672bda",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Willow-v3.pdf",
+      "path": "evals/repair_v3/Willow-v3.pdf",
+      "company": "Willow",
+      "split": "development",
+      "sha256": "7780a1f513683dc95721927b9c8a31fadf9d34ee0a72d141cf004e12bc819879",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Pine-v3.pdf",
+      "path": "evals/repair_v3/Pine-v3.pdf",
+      "company": "Pine",
+      "split": "held_out",
+      "sha256": "25d4305ed72e43f0ed463c65d986c78729f3c1564f3231af7eeb98b994df6a25",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Orchid-v3.pdf",
+      "path": "evals/repair_v3/Orchid-v3.pdf",
+      "company": "Orchid",
+      "split": "held_out",
+      "sha256": "82681c414a4667e5cebf87cc504803748c66f3309b5ed133c2d91dee75a6aed0",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Elm-v3.pdf",
+      "path": "evals/repair_v3/Elm-v3.pdf",
+      "company": "Elm",
+      "split": "held_out",
+      "sha256": "39e4987483addcdaded7fc4cd141576e19c290d7363db3552a6ad2f20b64ded0",
+      "license": "CC0-1.0",
+      "label_provenance": "Agent-authored parameters and independent formula labels; no human review"
+    },
+    {
+      "source_name": "Mint-2024-CFO.pdf",
+      "path": "evals/repair_v3/Mint-2024-CFO.pdf",
+      "company": "United States Mint",
+      "split": "held_out",
+      "sha256": "274707be70cf59b0d66033a08a77a0f905050250aec583c089aa71ad87fc1cca",
+      "license": "Government-authored CFO page; excludes auditor opinion pages",
+      "source_url": "https://www.usmint.gov/content/dam/usmint/reports/2024-annual-report.pdf",
+      "original_page": 38,
+      "label_provenance": "Agent transcription from CFO sentence, no independent human review"
+    },
+    {
+      "source_name": "Mint-2023-CFO.pdf",
+      "path": "evals/repair_v3/Mint-2023-CFO.pdf",
+      "company": "United States Mint",
+      "split": "held_out",
+      "sha256": "f2abe385b0f42d626177ed04b6aeef10cfb4d5899b2a69e1950ec5782e81c0f2",
+      "license": "Government-authored CFO page; excludes auditor opinion pages",
+      "source_url": "https://oig.treasury.gov/system/files/2024-10/OIG-24-011-web-copy-508.pdf",
+      "original_page": 39,
+      "label_provenance": "Agent transcription from CFO sentence, no independent human review"
+    }
+  ],
+  "cases": [
+    {
+      "id": "cedar-01",
+      "query": "According to the report, what is revenue for Cedar in 2025?",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 120000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Cedar",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 120000000.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "id": "cedar-02",
+      "query": "According to the report, what is net income for Cedar in 2025?",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 19000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Cedar",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 19000000.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "id": "cedar-03",
+      "query": "According to the report, what is current assets for Cedar in 2025?",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 60000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Cedar",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 60000000.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "id": "cedar-04",
+      "query": "Calculate current ratio for Cedar in the report for 2025",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 2.1429,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 60000000.0,
+        "current_liabilities": 28000000.0
+      },
+      "expected_result": {
+        "ratio": 2.1429,
+        "entity": "Cedar",
+        "periods": [
+          2025
+        ],
+        "currency": "USD",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "cedar-05",
+      "query": "Calculate net margin for Cedar in the report for 2025",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 15.8333,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 19000000.0,
+        "revenue": 120000000.0
+      },
+      "expected_result": {
+        "margin_pct": 15.8333,
+        "entity": "Cedar",
+        "periods": [
+          2025
+        ],
+        "currency": "USD",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "cedar-06",
+      "query": "Calculate debt-to-equity for Cedar in the report for 2025",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 0.4353,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 37000000.0,
+        "equity": 85000000.0
+      },
+      "expected_result": {
+        "ratio": 0.4353,
+        "entity": "Cedar",
+        "periods": [
+          2025
+        ],
+        "currency": "USD",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "cedar-07",
+      "query": "Compute year-over-year revenue growth for Cedar in the report for 2025",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 20.0,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 100000000.0,
+        "current_revenue": 120000000.0
+      },
+      "expected_result": {
+        "growth_pct": 20.0,
+        "entity": "Cedar",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "USD",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "cedar-08",
+      "query": "Compute year-over-year net income growth for Cedar in the report for 2025",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": -5.0,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 20000000.0,
+        "current_net_income": 19000000.0
+      },
+      "expected_result": {
+        "growth_pct": -5.0,
+        "entity": "Cedar",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "USD",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "cedar-09",
+      "query": "Compute year-over-year current assets growth for Cedar in the report for 2025",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 50.0,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 40000000.0,
+        "current_current_assets": 60000000.0
+      },
+      "expected_result": {
+        "growth_pct": 50.0,
+        "entity": "Cedar",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "USD",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "cedar-10",
+      "query": "Compare revenue for Cedar in the report for 2024 and 2025",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": [
+        100000000.0,
+        120000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Cedar",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 100000000.0,
+          "currency": "USD"
+        },
+        {
+          "entity": "Cedar",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 120000000.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "id": "cedar-11",
+      "query": "What is revenue for Cedar in the report for 2028?",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "cedar-12",
+      "query": "Calculate EMI using the loan in the report for Cedar",
+      "sources": [
+        "Cedar-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_entity": "Cedar",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "USD",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "USD",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "harbor-01",
+      "query": "According to the report, what is revenue for Harbor in 2025?",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 139000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Harbor",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 139000000.0,
+          "currency": "CAD"
+        }
+      ]
+    },
+    {
+      "id": "harbor-02",
+      "query": "According to the report, what is net income for Harbor in 2025?",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 24000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Harbor",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 24000000.0,
+          "currency": "CAD"
+        }
+      ]
+    },
+    {
+      "id": "harbor-03",
+      "query": "According to the report, what is current assets for Harbor in 2025?",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 71000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Harbor",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 71000000.0,
+          "currency": "CAD"
+        }
+      ]
+    },
+    {
+      "id": "harbor-04",
+      "query": "Calculate current ratio for Harbor in the report for 2025",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 2.2188,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 71000000.0,
+        "current_liabilities": 32000000.0
+      },
+      "expected_result": {
+        "ratio": 2.2188,
+        "entity": "Harbor",
+        "periods": [
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "harbor-05",
+      "query": "Calculate net margin for Harbor in the report for 2025",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 17.2662,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 24000000.0,
+        "revenue": 139000000.0
+      },
+      "expected_result": {
+        "margin_pct": 17.2662,
+        "entity": "Harbor",
+        "periods": [
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "harbor-06",
+      "query": "Calculate debt-to-equity for Harbor in the report for 2025",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 0.4945,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 45000000.0,
+        "equity": 91000000.0
+      },
+      "expected_result": {
+        "ratio": 0.4945,
+        "entity": "Harbor",
+        "periods": [
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "harbor-07",
+      "query": "Compute year-over-year revenue growth for Harbor in the report for 2025",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 23.0088,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 113000000.0,
+        "current_revenue": 139000000.0
+      },
+      "expected_result": {
+        "growth_pct": 23.0088,
+        "entity": "Harbor",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "harbor-08",
+      "query": "Compute year-over-year net income growth for Harbor in the report for 2025",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 4.3478,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 23000000.0,
+        "current_net_income": 24000000.0
+      },
+      "expected_result": {
+        "growth_pct": 4.3478,
+        "entity": "Harbor",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "harbor-09",
+      "query": "Compute year-over-year current assets growth for Harbor in the report for 2025",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 51.0638,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 47000000.0,
+        "current_current_assets": 71000000.0
+      },
+      "expected_result": {
+        "growth_pct": 51.0638,
+        "entity": "Harbor",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "harbor-10",
+      "query": "Compare revenue for Harbor in the report for 2024 and 2025",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": [
+        113000000.0,
+        139000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Harbor",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 113000000.0,
+          "currency": "CAD"
+        },
+        {
+          "entity": "Harbor",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 139000000.0,
+          "currency": "CAD"
+        }
+      ]
+    },
+    {
+      "id": "harbor-11",
+      "query": "What is revenue for Harbor in the report for 2028?",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "harbor-12",
+      "query": "Calculate EMI using the loan in the report for Harbor",
+      "sources": [
+        "Harbor-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_entity": "Harbor",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "CAD",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "CAD",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "quartz-01",
+      "query": "According to the report, what is revenue for Quartz in 2025?",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 158000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Quartz",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 158000000.0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "quartz-02",
+      "query": "According to the report, what is net income for Quartz in 2025?",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 29000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Quartz",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 29000000.0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "quartz-03",
+      "query": "According to the report, what is current assets for Quartz in 2025?",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 82000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Quartz",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 82000000.0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "quartz-04",
+      "query": "Calculate current ratio for Quartz in the report for 2025",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 2.2778,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 82000000.0,
+        "current_liabilities": 36000000.0
+      },
+      "expected_result": {
+        "ratio": 2.2778,
+        "entity": "Quartz",
+        "periods": [
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "quartz-05",
+      "query": "Calculate net margin for Quartz in the report for 2025",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 18.3544,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 29000000.0,
+        "revenue": 158000000.0
+      },
+      "expected_result": {
+        "margin_pct": 18.3544,
+        "entity": "Quartz",
+        "periods": [
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "quartz-06",
+      "query": "Calculate debt-to-equity for Quartz in the report for 2025",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 0.5464,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 53000000.0,
+        "equity": 97000000.0
+      },
+      "expected_result": {
+        "ratio": 0.5464,
+        "entity": "Quartz",
+        "periods": [
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "quartz-07",
+      "query": "Compute year-over-year revenue growth for Quartz in the report for 2025",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 25.3968,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 126000000.0,
+        "current_revenue": 158000000.0
+      },
+      "expected_result": {
+        "growth_pct": 25.3968,
+        "entity": "Quartz",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "quartz-08",
+      "query": "Compute year-over-year net income growth for Quartz in the report for 2025",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 11.5385,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 26000000.0,
+        "current_net_income": 29000000.0
+      },
+      "expected_result": {
+        "growth_pct": 11.5385,
+        "entity": "Quartz",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "quartz-09",
+      "query": "Compute year-over-year current assets growth for Quartz in the report for 2025",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 51.8519,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 54000000.0,
+        "current_current_assets": 82000000.0
+      },
+      "expected_result": {
+        "growth_pct": 51.8519,
+        "entity": "Quartz",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "quartz-10",
+      "query": "Compare revenue for Quartz in the report for 2024 and 2025",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": [
+        126000000.0,
+        158000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Quartz",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 126000000.0,
+          "currency": "EUR"
+        },
+        {
+          "entity": "Quartz",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 158000000.0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "quartz-11",
+      "query": "What is revenue for Quartz in the report for 2028?",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "quartz-12",
+      "query": "Calculate EMI using the loan in the report for Quartz",
+      "sources": [
+        "Quartz-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_entity": "Quartz",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3,
+        4
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "EUR",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "EUR",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "maple-01",
+      "query": "According to the report, what is revenue for Maple in 2025?",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 177000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Maple",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 177000000.0,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "id": "maple-02",
+      "query": "According to the report, what is net income for Maple in 2025?",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 34000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Maple",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 34000000.0,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "id": "maple-03",
+      "query": "According to the report, what is current assets for Maple in 2025?",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 93000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Maple",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 93000000.0,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "id": "maple-04",
+      "query": "Calculate current ratio for Maple in the report for 2025",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 2.325,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 93000000.0,
+        "current_liabilities": 40000000.0
+      },
+      "expected_result": {
+        "ratio": 2.325,
+        "entity": "Maple",
+        "periods": [
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "maple-05",
+      "query": "Calculate net margin for Maple in the report for 2025",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 19.209,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 34000000.0,
+        "revenue": 177000000.0
+      },
+      "expected_result": {
+        "margin_pct": 19.209,
+        "entity": "Maple",
+        "periods": [
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "maple-06",
+      "query": "Calculate debt-to-equity for Maple in the report for 2025",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 0.5922,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 61000000.0,
+        "equity": 103000000.0
+      },
+      "expected_result": {
+        "ratio": 0.5922,
+        "entity": "Maple",
+        "periods": [
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "maple-07",
+      "query": "Compute year-over-year revenue growth for Maple in the report for 2025",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 27.3381,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 139000000.0,
+        "current_revenue": 177000000.0
+      },
+      "expected_result": {
+        "growth_pct": 27.3381,
+        "entity": "Maple",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "maple-08",
+      "query": "Compute year-over-year net income growth for Maple in the report for 2025",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 17.2414,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 29000000.0,
+        "current_net_income": 34000000.0
+      },
+      "expected_result": {
+        "growth_pct": 17.2414,
+        "entity": "Maple",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "maple-09",
+      "query": "Compute year-over-year current assets growth for Maple in the report for 2025",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 52.459,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 61000000.0,
+        "current_current_assets": 93000000.0
+      },
+      "expected_result": {
+        "growth_pct": 52.459,
+        "entity": "Maple",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "maple-10",
+      "query": "Compare revenue for Maple in the report for 2024 and 2025",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": [
+        139000000.0,
+        177000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Maple",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 139000000.0,
+          "currency": "GBP"
+        },
+        {
+          "entity": "Maple",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 177000000.0,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "id": "maple-11",
+      "query": "What is revenue for Maple in the report for 2028?",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "maple-12",
+      "query": "Calculate EMI using the loan in the report for Maple",
+      "sources": [
+        "Maple-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_entity": "Maple",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "GBP",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "GBP",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "juniper-01",
+      "query": "According to the report, what is revenue for Juniper in 2025?",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 196000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Juniper",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 196000000.0,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "id": "juniper-02",
+      "query": "According to the report, what is net income for Juniper in 2025?",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": -13000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Juniper",
+          "metric": "net_income",
+          "period": 2025,
+          "value": -13000000.0,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "id": "juniper-03",
+      "query": "According to the report, what is current assets for Juniper in 2025?",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 104000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Juniper",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 104000000.0,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "id": "juniper-04",
+      "query": "Calculate current ratio for Juniper in the report for 2025",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 2.3636,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 104000000.0,
+        "current_liabilities": 44000000.0
+      },
+      "expected_result": {
+        "ratio": 2.3636,
+        "entity": "Juniper",
+        "periods": [
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "juniper-05",
+      "query": "Calculate net margin for Juniper in the report for 2025",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": -6.6327,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": -13000000.0,
+        "revenue": 196000000.0
+      },
+      "expected_result": {
+        "margin_pct": -6.6327,
+        "entity": "Juniper",
+        "periods": [
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "juniper-06",
+      "query": "Calculate debt-to-equity for Juniper in the report for 2025",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 0.633,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 69000000.0,
+        "equity": 109000000.0
+      },
+      "expected_result": {
+        "ratio": 0.633,
+        "entity": "Juniper",
+        "periods": [
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "juniper-07",
+      "query": "Compute year-over-year revenue growth for Juniper in the report for 2025",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 28.9474,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 152000000.0,
+        "current_revenue": 196000000.0
+      },
+      "expected_result": {
+        "growth_pct": 28.9474,
+        "entity": "Juniper",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "juniper-08",
+      "query": "Compute year-over-year net income growth for Juniper in the report for 2025",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": -140.625,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 32000000.0,
+        "current_net_income": -13000000.0
+      },
+      "expected_result": {
+        "growth_pct": -140.625,
+        "entity": "Juniper",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "juniper-09",
+      "query": "Compute year-over-year current assets growth for Juniper in the report for 2025",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 52.9412,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 68000000.0,
+        "current_current_assets": 104000000.0
+      },
+      "expected_result": {
+        "growth_pct": 52.9412,
+        "entity": "Juniper",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "juniper-10",
+      "query": "Compare revenue for Juniper in the report for 2024 and 2025",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": [
+        152000000.0,
+        196000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Juniper",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 152000000.0,
+          "currency": "AUD"
+        },
+        {
+          "entity": "Juniper",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 196000000.0,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "id": "juniper-11",
+      "query": "What is revenue for Juniper in the report for 2028?",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "juniper-12",
+      "query": "Calculate EMI using the loan in the report for Juniper",
+      "sources": [
+        "Juniper-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_entity": "Juniper",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "AUD",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "AUD",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "beacon-01",
+      "query": "According to the report, what is revenue for Beacon in 2025?",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 215000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Beacon",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 215000000.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "id": "beacon-02",
+      "query": "According to the report, what is net income for Beacon in 2025?",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 44000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Beacon",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 44000000.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "id": "beacon-03",
+      "query": "According to the report, what is current assets for Beacon in 2025?",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 115000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Beacon",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 115000000.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "id": "beacon-04",
+      "query": "Calculate current ratio for Beacon in the report for 2025",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 2.3958,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 115000000.0,
+        "current_liabilities": 48000000.0
+      },
+      "expected_result": {
+        "ratio": 2.3958,
+        "entity": "Beacon",
+        "periods": [
+          2025
+        ],
+        "currency": "USD",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "beacon-05",
+      "query": "Calculate net margin for Beacon in the report for 2025",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 20.4651,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 44000000.0,
+        "revenue": 215000000.0
+      },
+      "expected_result": {
+        "margin_pct": 20.4651,
+        "entity": "Beacon",
+        "periods": [
+          2025
+        ],
+        "currency": "USD",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "beacon-06",
+      "query": "Calculate debt-to-equity for Beacon in the report for 2025",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 0.6696,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 77000000.0,
+        "equity": 115000000.0
+      },
+      "expected_result": {
+        "ratio": 0.6696,
+        "entity": "Beacon",
+        "periods": [
+          2025
+        ],
+        "currency": "USD",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "beacon-07",
+      "query": "Compute year-over-year revenue growth for Beacon in the report for 2025",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 30.303,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 165000000.0,
+        "current_revenue": 215000000.0
+      },
+      "expected_result": {
+        "growth_pct": 30.303,
+        "entity": "Beacon",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "USD",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "beacon-08",
+      "query": "Compute year-over-year net income growth for Beacon in the report for 2025",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 25.7143,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 35000000.0,
+        "current_net_income": 44000000.0
+      },
+      "expected_result": {
+        "growth_pct": 25.7143,
+        "entity": "Beacon",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "USD",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "beacon-09",
+      "query": "Compute year-over-year current assets growth for Beacon in the report for 2025",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 53.3333,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 75000000.0,
+        "current_current_assets": 115000000.0
+      },
+      "expected_result": {
+        "growth_pct": 53.3333,
+        "entity": "Beacon",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "USD",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "beacon-10",
+      "query": "Compare revenue for Beacon in the report for 2024 and 2025",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": [
+        165000000.0,
+        215000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Beacon",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 165000000.0,
+          "currency": "USD"
+        },
+        {
+          "entity": "Beacon",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 215000000.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "id": "beacon-11",
+      "query": "What is revenue for Beacon in the report for 2028?",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "beacon-12",
+      "query": "Calculate EMI using the loan in the report for Beacon",
+      "sources": [
+        "Beacon-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_entity": "Beacon",
+      "expected_period": 2025,
+      "expected_currency": "USD",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "USD",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "USD",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "willow-01",
+      "query": "According to the report, what is revenue for Willow in 2025?",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "revenue",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 234000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Willow",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 234000000.0,
+          "currency": "CAD"
+        }
+      ]
+    },
+    {
+      "id": "willow-02",
+      "query": "According to the report, what is net income for Willow in 2025?",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "net_income",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 49000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Willow",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 49000000.0,
+          "currency": "CAD"
+        }
+      ]
+    },
+    {
+      "id": "willow-03",
+      "query": "According to the report, what is current assets for Willow in 2025?",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_assets",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 126000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Willow",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 126000000.0,
+          "currency": "CAD"
+        }
+      ]
+    },
+    {
+      "id": "willow-04",
+      "query": "Calculate current ratio for Willow in the report for 2025",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "current_ratio",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 2.4231,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 126000000.0,
+        "current_liabilities": 52000000.0
+      },
+      "expected_result": {
+        "ratio": 2.4231,
+        "entity": "Willow",
+        "periods": [
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "willow-05",
+      "query": "Calculate net margin for Willow in the report for 2025",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "margin",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 20.9402,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 49000000.0,
+        "revenue": 234000000.0
+      },
+      "expected_result": {
+        "margin_pct": 20.9402,
+        "entity": "Willow",
+        "periods": [
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "willow-06",
+      "query": "Calculate debt-to-equity for Willow in the report for 2025",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "debt_to_equity",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 0.7025,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 85000000.0,
+        "equity": 121000000.0
+      },
+      "expected_result": {
+        "ratio": 0.7025,
+        "entity": "Willow",
+        "periods": [
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "willow-07",
+      "query": "Compute year-over-year revenue growth for Willow in the report for 2025",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 31.4607,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 178000000.0,
+        "current_revenue": 234000000.0
+      },
+      "expected_result": {
+        "growth_pct": 31.4607,
+        "entity": "Willow",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "willow-08",
+      "query": "Compute year-over-year net income growth for Willow in the report for 2025",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 28.9474,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 38000000.0,
+        "current_net_income": 49000000.0
+      },
+      "expected_result": {
+        "growth_pct": 28.9474,
+        "entity": "Willow",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "willow-09",
+      "query": "Compute year-over-year current assets growth for Willow in the report for 2025",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "yoy_growth",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 53.6585,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 82000000.0,
+        "current_current_assets": 126000000.0
+      },
+      "expected_result": {
+        "growth_pct": 53.6585,
+        "entity": "Willow",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "CAD",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "willow-10",
+      "query": "Compare revenue for Willow in the report for 2024 and 2025",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "comparison",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": [
+        178000000.0,
+        234000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Willow",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 178000000.0,
+          "currency": "CAD"
+        },
+        {
+          "entity": "Willow",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 234000000.0,
+          "currency": "CAD"
+        }
+      ]
+    },
+    {
+      "id": "willow-11",
+      "query": "What is revenue for Willow in the report for 2028?",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "absent",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "willow-12",
+      "query": "Calculate EMI using the loan in the report for Willow",
+      "sources": [
+        "Willow-v3.pdf"
+      ],
+      "split": "development",
+      "operation": "emi_calculator",
+      "expected_entity": "Willow",
+      "expected_period": 2025,
+      "expected_currency": "CAD",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "CAD",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "CAD",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "pine-01",
+      "query": "According to the report, what is revenue for Pine in 2025?",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "revenue",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 253000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Pine",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 253000000.0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "pine-02",
+      "query": "According to the report, what is net income for Pine in 2025?",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "net_income",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 54000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Pine",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 54000000.0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "pine-03",
+      "query": "According to the report, what is current assets for Pine in 2025?",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_assets",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 137000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Pine",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 137000000.0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "pine-04",
+      "query": "Calculate current ratio for Pine in the report for 2025",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_ratio",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 2.4464,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 137000000.0,
+        "current_liabilities": 56000000.0
+      },
+      "expected_result": {
+        "ratio": 2.4464,
+        "entity": "Pine",
+        "periods": [
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "pine-05",
+      "query": "Calculate net margin for Pine in the report for 2025",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "margin",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 21.3439,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 54000000.0,
+        "revenue": 253000000.0
+      },
+      "expected_result": {
+        "margin_pct": 21.3439,
+        "entity": "Pine",
+        "periods": [
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "pine-06",
+      "query": "Calculate debt-to-equity for Pine in the report for 2025",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "debt_to_equity",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 0.7323,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 93000000.0,
+        "equity": 127000000.0
+      },
+      "expected_result": {
+        "ratio": 0.7323,
+        "entity": "Pine",
+        "periods": [
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "pine-07",
+      "query": "Compute year-over-year revenue growth for Pine in the report for 2025",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 32.4607,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 191000000.0,
+        "current_revenue": 253000000.0
+      },
+      "expected_result": {
+        "growth_pct": 32.4607,
+        "entity": "Pine",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "pine-08",
+      "query": "Compute year-over-year net income growth for Pine in the report for 2025",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 31.7073,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 41000000.0,
+        "current_net_income": 54000000.0
+      },
+      "expected_result": {
+        "growth_pct": 31.7073,
+        "entity": "Pine",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "pine-09",
+      "query": "Compute year-over-year current assets growth for Pine in the report for 2025",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 53.9326,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 89000000.0,
+        "current_current_assets": 137000000.0
+      },
+      "expected_result": {
+        "growth_pct": 53.9326,
+        "entity": "Pine",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "EUR",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "pine-10",
+      "query": "Compare revenue for Pine in the report for 2024 and 2025",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "comparison",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": [
+        191000000.0,
+        253000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Pine",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 191000000.0,
+          "currency": "EUR"
+        },
+        {
+          "entity": "Pine",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 253000000.0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "pine-11",
+      "query": "What is revenue for Pine in the report for 2028?",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "absent",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "pine-12",
+      "query": "Calculate EMI using the loan in the report for Pine",
+      "sources": [
+        "Pine-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "emi_calculator",
+      "expected_entity": "Pine",
+      "expected_period": 2025,
+      "expected_currency": "EUR",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "EUR",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "EUR",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "orchid-01",
+      "query": "According to the report, what is revenue for Orchid in 2025?",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "revenue",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 272000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Orchid",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 272000000.0,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "id": "orchid-02",
+      "query": "According to the report, what is net income for Orchid in 2025?",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "net_income",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 59000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Orchid",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 59000000.0,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "id": "orchid-03",
+      "query": "According to the report, what is current assets for Orchid in 2025?",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_assets",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 148000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Orchid",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 148000000.0,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "id": "orchid-04",
+      "query": "Calculate current ratio for Orchid in the report for 2025",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_ratio",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 2.4667,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 148000000.0,
+        "current_liabilities": 60000000.0
+      },
+      "expected_result": {
+        "ratio": 2.4667,
+        "entity": "Orchid",
+        "periods": [
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "orchid-05",
+      "query": "Calculate net margin for Orchid in the report for 2025",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "margin",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 21.6912,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 59000000.0,
+        "revenue": 272000000.0
+      },
+      "expected_result": {
+        "margin_pct": 21.6912,
+        "entity": "Orchid",
+        "periods": [
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "orchid-06",
+      "query": "Calculate debt-to-equity for Orchid in the report for 2025",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "debt_to_equity",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 0.7594,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 101000000.0,
+        "equity": 133000000.0
+      },
+      "expected_result": {
+        "ratio": 0.7594,
+        "entity": "Orchid",
+        "periods": [
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "orchid-07",
+      "query": "Compute year-over-year revenue growth for Orchid in the report for 2025",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 33.3333,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 204000000.0,
+        "current_revenue": 272000000.0
+      },
+      "expected_result": {
+        "growth_pct": 33.3333,
+        "entity": "Orchid",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "orchid-08",
+      "query": "Compute year-over-year net income growth for Orchid in the report for 2025",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 34.0909,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 44000000.0,
+        "current_net_income": 59000000.0
+      },
+      "expected_result": {
+        "growth_pct": 34.0909,
+        "entity": "Orchid",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "orchid-09",
+      "query": "Compute year-over-year current assets growth for Orchid in the report for 2025",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 54.1667,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 96000000.0,
+        "current_current_assets": 148000000.0
+      },
+      "expected_result": {
+        "growth_pct": 54.1667,
+        "entity": "Orchid",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "GBP",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "orchid-10",
+      "query": "Compare revenue for Orchid in the report for 2024 and 2025",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "comparison",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": [
+        204000000.0,
+        272000000.0
+      ],
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Orchid",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 204000000.0,
+          "currency": "GBP"
+        },
+        {
+          "entity": "Orchid",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 272000000.0,
+          "currency": "GBP"
+        }
+      ]
+    },
+    {
+      "id": "orchid-11",
+      "query": "What is revenue for Orchid in the report for 2028?",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "absent",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "orchid-12",
+      "query": "Calculate EMI using the loan in the report for Orchid",
+      "sources": [
+        "Orchid-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "emi_calculator",
+      "expected_entity": "Orchid",
+      "expected_period": 2025,
+      "expected_currency": "GBP",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "GBP",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "GBP",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "elm-01",
+      "query": "According to the report, what is revenue for Elm in 2025?",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "revenue",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 291000000.0,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Elm",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 291000000.0,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "id": "elm-02",
+      "query": "According to the report, what is net income for Elm in 2025?",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "net_income",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 64000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "net_income"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Elm",
+          "metric": "net_income",
+          "period": 2025,
+          "value": 64000000.0,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "id": "elm-03",
+      "query": "According to the report, what is current assets for Elm in 2025?",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_assets",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 159000000.0,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_assets"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Elm",
+          "metric": "current_assets",
+          "period": 2025,
+          "value": 159000000.0,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "id": "elm-04",
+      "query": "Calculate current ratio for Elm in the report for 2025",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "current_ratio",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 2.4844,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "current_ratio"
+      ],
+      "expected_inputs": {
+        "current_assets": 159000000.0,
+        "current_liabilities": 64000000.0
+      },
+      "expected_result": {
+        "ratio": 2.4844,
+        "entity": "Elm",
+        "periods": [
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "current_ratio"
+      }
+    },
+    {
+      "id": "elm-05",
+      "query": "Calculate net margin for Elm in the report for 2025",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "margin",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 21.9931,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "margin"
+      ],
+      "expected_inputs": {
+        "net_income": 64000000.0,
+        "revenue": 291000000.0
+      },
+      "expected_result": {
+        "margin_pct": 21.9931,
+        "entity": "Elm",
+        "periods": [
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "margin"
+      }
+    },
+    {
+      "id": "elm-06",
+      "query": "Calculate debt-to-equity for Elm in the report for 2025",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "debt_to_equity",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 0.7842,
+      "expected_status": "ok",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "debt_to_equity"
+      ],
+      "expected_inputs": {
+        "debt": 109000000.0,
+        "equity": 139000000.0
+      },
+      "expected_result": {
+        "ratio": 0.7842,
+        "entity": "Elm",
+        "periods": [
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "debt_to_equity"
+      }
+    },
+    {
+      "id": "elm-07",
+      "query": "Compute year-over-year revenue growth for Elm in the report for 2025",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 34.1014,
+      "expected_status": "abstained",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_revenue": 217000000.0,
+        "current_revenue": 291000000.0
+      },
+      "expected_result": {
+        "growth_pct": 34.1014,
+        "entity": "Elm",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "revenue"
+      }
+    },
+    {
+      "id": "elm-08",
+      "query": "Compute year-over-year net income growth for Elm in the report for 2025",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 36.1702,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_net_income": 47000000.0,
+        "current_net_income": 64000000.0
+      },
+      "expected_result": {
+        "growth_pct": 36.1702,
+        "entity": "Elm",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "net_income"
+      }
+    },
+    {
+      "id": "elm-09",
+      "query": "Compute year-over-year current assets growth for Elm in the report for 2025",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "yoy_growth",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 54.3689,
+      "expected_status": "ok",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "yoy_growth"
+      ],
+      "expected_inputs": {
+        "prior_current_assets": 103000000.0,
+        "current_current_assets": 159000000.0
+      },
+      "expected_result": {
+        "growth_pct": 54.3689,
+        "entity": "Elm",
+        "periods": [
+          2024,
+          2025
+        ],
+        "currency": "AUD",
+        "metric": "current_assets"
+      }
+    },
+    {
+      "id": "elm-10",
+      "query": "Compare revenue for Elm in the report for 2024 and 2025",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "comparison",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": [
+        217000000.0,
+        291000000.0
+      ],
+      "expected_status": "abstained",
+      "required_pages": [
+        1,
+        2
+      ],
+      "tags": [
+        "comparison"
+      ],
+      "expected_facts": [
+        {
+          "entity": "Elm",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 217000000.0,
+          "currency": "AUD"
+        },
+        {
+          "entity": "Elm",
+          "metric": "revenue",
+          "period": 2025,
+          "value": 291000000.0,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "id": "elm-11",
+      "query": "What is revenue for Elm in the report for 2028?",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "absent",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": null,
+      "expected_status": "abstained",
+      "required_pages": [
+        2
+      ],
+      "tags": [
+        "absent"
+      ]
+    },
+    {
+      "id": "elm-12",
+      "query": "Calculate EMI using the loan in the report for Elm",
+      "sources": [
+        "Elm-v3.pdf"
+      ],
+      "split": "held_out",
+      "operation": "emi_calculator",
+      "expected_entity": "Elm",
+      "expected_period": 2025,
+      "expected_currency": "AUD",
+      "expected_value": 4182.2,
+      "expected_status": "ok",
+      "required_pages": [
+        3
+      ],
+      "tags": [
+        "emi_calculator"
+      ],
+      "expected_inputs": {
+        "principal": 500000,
+        "annual_rate_pct": 8,
+        "tenure_months": 240,
+        "currency": "AUD",
+        "prepayments": []
+      },
+      "expected_result": {
+        "currency": "AUD",
+        "monthly_emi": 4182.2,
+        "months_to_close": 240,
+        "total_interest": 503728.08,
+        "total_prepayment": 0.0,
+        "interest_saved_vs_no_prepayment": 0.0,
+        "schedule_preview": [
+          {
+            "month": 1,
+            "emi": 4182.2,
+            "interest": 3333.33,
+            "principal": 848.87,
+            "prepayment": 0.0,
+            "remaining_balance": 499151.13
+          },
+          {
+            "month": 2,
+            "emi": 4182.2,
+            "interest": 3327.67,
+            "principal": 854.53,
+            "prepayment": 0.0,
+            "remaining_balance": 498296.61
+          },
+          {
+            "month": 3,
+            "emi": 4182.2,
+            "interest": 3321.98,
+            "principal": 860.22,
+            "prepayment": 0.0,
+            "remaining_balance": 497436.38
+          },
+          {
+            "month": 4,
+            "emi": 4182.2,
+            "interest": 3316.24,
+            "principal": 865.96,
+            "prepayment": 0.0,
+            "remaining_balance": 496570.43
+          },
+          {
+            "month": 5,
+            "emi": 4182.2,
+            "interest": 3310.47,
+            "principal": 871.73,
+            "prepayment": 0.0,
+            "remaining_balance": 495698.7
+          },
+          {
+            "month": 6,
+            "emi": 4182.2,
+            "interest": 3304.66,
+            "principal": 877.54,
+            "prepayment": 0.0,
+            "remaining_balance": 494821.15
+          },
+          {
+            "month": 7,
+            "emi": 4182.2,
+            "interest": 3298.81,
+            "principal": 883.39,
+            "prepayment": 0.0,
+            "remaining_balance": 493937.76
+          },
+          {
+            "month": 8,
+            "emi": 4182.2,
+            "interest": 3292.92,
+            "principal": 889.28,
+            "prepayment": 0.0,
+            "remaining_balance": 493048.48
+          },
+          {
+            "month": 9,
+            "emi": 4182.2,
+            "interest": 3286.99,
+            "principal": 895.21,
+            "prepayment": 0.0,
+            "remaining_balance": 492153.27
+          },
+          {
+            "month": 10,
+            "emi": 4182.2,
+            "interest": 3281.02,
+            "principal": 901.18,
+            "prepayment": 0.0,
+            "remaining_balance": 491252.09
+          },
+          {
+            "month": 11,
+            "emi": 4182.2,
+            "interest": 3275.01,
+            "principal": 907.19,
+            "prepayment": 0.0,
+            "remaining_balance": 490344.9
+          },
+          {
+            "month": 12,
+            "emi": 4182.2,
+            "interest": 3268.97,
+            "principal": 913.23,
+            "prepayment": 0.0,
+            "remaining_balance": 489431.67
+          }
+        ]
+      }
+    },
+    {
+      "sources": [
+        "Mint-2024-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2024,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": 3385700000,
+      "id": "mint-2024-1",
+      "operation": "revenue",
+      "query": "What is revenue for United States Mint in the report for 2024?",
+      "expected_status": "ok",
+      "tags": [
+        "real_document",
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "United States Mint",
+          "metric": "revenue",
+          "period": 2024,
+          "value": 3385700000,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2024-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2024,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": null,
+      "id": "mint-2024-2",
+      "operation": "absent",
+      "query": "What is revenue for United States Mint in the report for 2028?",
+      "expected_status": "abstained",
+      "tags": [
+        "real_document",
+        "absent"
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2024-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2024,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": null,
+      "id": "mint-2024-3",
+      "operation": "unsupported",
+      "query": "Compute EBITDA in this report",
+      "expected_status": "unsupported",
+      "tags": [
+        "real_document",
+        "unsupported"
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2024-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2024,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": null,
+      "id": "mint-2024-4",
+      "operation": "emi_calculator",
+      "query": "Calculate EMI using the loan in this report",
+      "expected_status": "abstained",
+      "tags": [
+        "real_document",
+        "emi_calculator"
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2024-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2024,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": null,
+      "id": "mint-2024-5",
+      "operation": "multiple",
+      "query": "Calculate current ratio and net margin in this report",
+      "expected_status": "clarification",
+      "tags": [
+        "real_document",
+        "multiple"
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2023-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2023,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": 4681600000,
+      "id": "mint-2023-1",
+      "operation": "revenue",
+      "query": "What is revenue for United States Mint in the report for 2023?",
+      "expected_status": "ok",
+      "tags": [
+        "real_document",
+        "revenue"
+      ],
+      "expected_facts": [
+        {
+          "entity": "United States Mint",
+          "metric": "revenue",
+          "period": 2023,
+          "value": 4681600000,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2023-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2023,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": null,
+      "id": "mint-2023-2",
+      "operation": "absent",
+      "query": "What is revenue for United States Mint in the report for 2028?",
+      "expected_status": "abstained",
+      "tags": [
+        "real_document",
+        "absent"
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2023-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2023,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": null,
+      "id": "mint-2023-3",
+      "operation": "unsupported",
+      "query": "Compute EBITDA in this report",
+      "expected_status": "unsupported",
+      "tags": [
+        "real_document",
+        "unsupported"
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2023-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2023,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": null,
+      "id": "mint-2023-4",
+      "operation": "emi_calculator",
+      "query": "Calculate EMI using the loan in this report",
+      "expected_status": "abstained",
+      "tags": [
+        "real_document",
+        "emi_calculator"
+      ]
+    },
+    {
+      "sources": [
+        "Mint-2023-CFO.pdf"
+      ],
+      "split": "held_out",
+      "expected_entity": "United States Mint",
+      "expected_period": 2023,
+      "expected_currency": "USD",
+      "required_pages": [
+        1
+      ],
+      "expected_value": null,
+      "id": "mint-2023-5",
+      "operation": "multiple",
+      "query": "Calculate current ratio and net margin in this report",
+      "expected_status": "clarification",
+      "tags": [
+        "real_document",
+        "multiple"
+      ]
+    }
+  ]
+}
