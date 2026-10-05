@@ -234,11 +234,12 @@ No paid API calls were made for cleanup.
 Local cleanup removed 552,403,153 bytes of inspected artifacts, including an
 obsolete task-specific environment, an unpacked archive backed by its retained
 ZIP, caches, 28 exact report copies and four console logs. Root environments
-were preserved. Eighteen earlier pytest directories remain inaccessible because
-of Windows ACLs; elevated execution and ownership recovery both returned access
+were preserved. At that stage, eighteen earlier pytest directories were
+inaccessible because of Windows ACLs; elevated execution and ownership recovery both returned access
 denied. Their exact paths are recorded in the local
-`.test-tmp/cleanup-wrapup/cleanup-result.json`. Removing these directories requires
-Windows administrator access and remains the sole local cleanup blocker.
+`.test-tmp/cleanup-wrapup/cleanup-result.json`. Windows administrator access
+was required to remove them. This blocker was subsequently
+resolved as recorded below.
 
 The initial cleanup was delivered through `engineering/interview-readiness`
 without merging or deleting branches. The subsequent consolidation below was
@@ -260,10 +261,30 @@ The main `.venv` matches all 77 applicable locked dependencies and passed
 above using `.venv-repair` document earlier executions; use `.venv` for new runs.
 The private Gemini backup was intentionally removed by the user. The other 298
 protected files, including the active `.env`, evidence, uploads and indexes,
-retained their hashes. The 18 inaccessible old pytest directories remain the
-same local Windows administrator-access blocker.
+retained their hashes. At consolidation time, the 18 inaccessible old pytest
+directories were the remaining local Windows administrator-access blocker.
 
 The final documentation/configuration cleanup removes the obsolete branch from
 the CI push filter, keeps all existing checks and thresholds, and ignores future
 `.venv*` environments. No application Python, frozen labels, historical reports
 or provider settings changed during consolidation; no paid API calls were made.
+
+## Local permission cleanup resolved - 2026-10-05
+
+Windows UAC administrator approval enabled inspection of all 18 recorded pytest
+directories. Each contained only generated test fixtures under `test_*` paths,
+including temporary Qdrant databases, PDFs/images and mocked report outputs.
+Explicit absolute paths and reparse-point checks bounded the inspection and
+deletion. The inspected inventory was reviewed before deletion.
+
+All 18 directories were removed: 1,777 fixture files and 15,386,997 bytes.
+An independent follow-up check confirmed all recorded paths absent. The active
+`.env`, original PDFs, persistent uploads/indexes, budget ledger and evaluation
+evidence retained their hashes across all 298 protected files. Local cleanup
+records preserve the original failures and now mark them resolved. The evidence
+summary is `.test-tmp/cleanup-wrapup/blocked-directories-resolved.json`.
+
+The one-time administrator helper and deletion signal were removed after it
+finished. No application code, dependencies or provider configuration changed;
+no paid API calls were made. The previously reported local cleanup blocker is
+resolved.
