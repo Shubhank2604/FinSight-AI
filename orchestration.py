@@ -319,7 +319,8 @@ class ResearchAssistant:
                         )
                     else:
                         raw = self.retriever.hybrid_search(
-                            query, limit=16, source_names=source_names
+                            query, limit=48, dense_limit=24, sparse_limit=24,
+                            source_names=source_names
                         )
                     hits = self.retriever.select_context_hits(query, raw, limit=8)
                     stages["retrieval_ms"] = (time.perf_counter() - t) * 1000

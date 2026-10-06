@@ -116,7 +116,7 @@ def extract_calculation_inputs(query: str, tool: str):
     )
     if unsupported:
         raise InputIssue(
-            f"Requested feature '{unsupported.group()}' is unsupported in query calculations. Use a supported form or remove it.",
+            f"Requested feature '{unsupported.group()}' is unsupported in query calculations. Remove this feature from the question.",
             "unsupported",
         )
     currency = currency_from_text(query)

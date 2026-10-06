@@ -11,7 +11,9 @@ from qdrant_client import QdrantClient, models
 from rank_bm25 import BM25Okapi
 
 from embeddings import EmbeddingClient
+from financial_evidence import METRICS
 from schemas import ChunkType, DocumentChunk, RetrievalHit
+from storage_io import atomic_replace
 
 
 def _tokenize(text: str) -> list[str]:
@@ -46,10 +48,12 @@ class HybridRetriever:
         collection_name: str,
         qdrant_path: str,
         embedding_client: EmbeddingClient,
-        vector_size: int = 768,
+        vector_size: int | None = None,
         ingestion_version: str = "financial-lines-v3",
     ) -> None:
         settings = getattr(embedding_client, "settings", None)
+        if vector_size is None:
+            vector_size = getattr(embedding_client, 'embedding_dimensions', 768)
         identity = {
             "provider": getattr(
                 settings, "embedding_provider", type(embedding_client).__name__
@@ -62,6 +66,12 @@ class HybridRetriever:
             identity["model"] = "blake2b-hash-v1"
         elif identity["provider"] == "openai":
             identity["model"] = settings.openai_embedding_model
+        elif identity['provider'] == 'minilm':
+            from minilm_embeddings import MODEL, REVISION, MAX_TOKENS, POOLING
+            if vector_size != 384:
+                raise ValueError('MiniLM requires a separate 384-dimensional collection.')
+            identity.update(model=MODEL, revision=REVISION, max_tokens=MAX_TOKENS,
+                            pooling=POOLING, backend='onnx-cpu')
         self.index_identity = identity
         digest = hashlib.sha256(
             json.dumps(identity, sort_keys=True).encode()
@@ -140,7 +150,7 @@ class HybridRetriever:
             json.dump(value, stream, indent=2)
             stream.flush()
             os.fsync(stream.fileno())
-        os.replace(temp, path)
+        atomic_replace(temp, path)
 
     def _delete_ids(self, ids: list[str]) -> None:
         if ids:
@@ -432,14 +442,30 @@ class HybridRetriever:
         if not hits:
             return []
 
-        query_tokens = set(_tokenize(query))
+        query_tokens = set(_tokenize(query)) - {
+            'what', 'is', 'are', 'the', 'a', 'an', 'in', 'this', 'report',
+            'document', 'uploaded', 'according', 'to', 'of', 'for', 'please',
+            'calculate', 'explain', 'summarize', 'summarise',
+        }
+        periods = set(re.findall(r'\b(?:19|20)\d{2}\b', query))
+        requested_metrics = [pattern for pattern in METRICS.values()
+                             if re.search(pattern, query, re.I)]
         wants_tables = _query_wants_tables(query)
         ranked = []
         for hit in hits:
+            chunk = hit.chunk
             chunk_tokens = set(_tokenize(hit.chunk.content))
             overlap = len(query_tokens.intersection(chunk_tokens)) / max(
                 len(query_tokens), 1
             )
+            # Soft signals only: keep distinct contradictory records for verification.
+            # Metric aliases help lexical ranking without substituting one metric for another.
+            evidence_text = chunk.content + '\n' + str(chunk.metadata.get('period', ''))
+            period_match = (len(periods.intersection(re.findall(r'\b(?:19|20)\d{2}\b', evidence_text)))
+                            / len(periods)) if periods else 0.0
+            metric_match = (sum(bool(re.search(pattern, chunk.content, re.I))
+                                for pattern in requested_metrics)
+                            / len(requested_metrics)) if requested_metrics else 0.0
             type_boost = 0.0
             if hit.chunk.type == ChunkType.TABLE and wants_tables:
                 type_boost = 0.18
@@ -448,7 +474,7 @@ class HybridRetriever:
             elif hit.chunk.type == ChunkType.IMAGE and not include_images:
                 type_boost = -0.35
 
-            score = hit.score + overlap + type_boost
+            score = hit.score + overlap + type_boost + 0.25 * period_match + 0.25 * metric_match
             ranked.append((score, hit))
 
         selected = []

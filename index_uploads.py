@@ -17,12 +17,8 @@ def index_folder(folder: Path, embedding_provider: str | None = None) -> tuple[i
     settings = load_settings()
     if embedding_provider:
         settings = replace(settings, embedding_provider=embedding_provider)
-    if not settings.gemini_api_key and settings.embedding_provider == "gemini":
-        raise RuntimeError(
-            "GEMINI_API_KEY is required for --embedding-provider gemini."
-        )
-    if settings.embedding_provider == 'openai' and not settings.openai_configured:
-        raise RuntimeError('OPENAI_API_KEY is required for --embedding-provider openai.')
+    if settings.embedding_provider not in {'minilm', 'local_hash'}:
+        raise ValueError('Indexing uses local embeddings. Set EMBEDDING_PROVIDER=minilm.')
 
     embeddings = EmbeddingClient(settings)
     retriever = HybridRetriever(
@@ -62,9 +58,9 @@ def main() -> None:
     )
     parser.add_argument(
         "--embedding-provider",
-        choices=["gemini", "local_hash", "openai"],
+        choices=["minilm", "local_hash"],
         default=None,
-        help="Use OpenAI/legacy Gemini semantic embeddings or local deterministic hash embeddings.",
+        help="Local MiniLM semantic embeddings (default) or the offline hash baseline.",
     )
     args = parser.parse_args()
 

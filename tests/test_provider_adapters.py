@@ -128,7 +128,7 @@ def test_connection_failures_are_bounded(error,code):
 
 
 def test_missing_credentials_no_gemini_fallback():
-    provider=OpenAIClient(Settings(gemini_api_key='not-used'))
+    provider=OpenAIClient(Settings(gemini_api_key='not-used', embedding_provider='local_hash'))
     with pytest.raises(ProviderError,match='OPENAI_API_KEY'):
         provider.generate_grounded_answer('Explain',[])
     assert provider.last_response['attempts']==0
@@ -224,7 +224,7 @@ def test_generation_cannot_change_authoritative_tool_values():
 
 
 def test_quota_report_retains_request_and_marks_later_repeats(tmp_path,monkeypatch):
-    monkeypatch.setattr('evaluation.application.load_settings',lambda:Settings(openai_api_key='offline-test'))
+    monkeypatch.setattr('evaluation.application.load_settings',lambda:Settings(openai_api_key='offline-test', embedding_provider='local_hash'))
     def quota(self,*args):
         raise ProviderError('quota','OpenAI quota exhausted.')
     monkeypatch.setattr(OpenAIClient,'generate_grounded_answer',quota)
@@ -239,7 +239,7 @@ def test_quota_report_retains_request_and_marks_later_repeats(tmp_path,monkeypat
 
 
 def test_missing_key_report_is_not_a_live_success(monkeypatch):
-    monkeypatch.setattr('evaluation.application.load_settings',lambda:Settings())
+    monkeypatch.setattr('evaluation.application.load_settings',lambda:Settings(embedding_provider='local_hash'))
     report=run(live=True,repeats=2,limit=1,modes=['hybrid'])
     assert report['successful_openai_calls']==0 and not report['records']
     assert len(report['missing_requests'])==2 and not report['complete']
@@ -264,7 +264,7 @@ def test_experimental_web_route_requires_both_opt_ins():
 
 def test_model_change_keeps_embedding_collection_and_points(tmp_path):
     from retrieval import HybridRetriever
-    settings=Settings(qdrant_path=str(tmp_path/'qdrant'))
+    settings=Settings(qdrant_path=str(tmp_path/'qdrant'), embedding_provider='local_hash')
     original=HybridRetriever('test',settings.qdrant_path,EmbeddingClient(settings))
     chunk=DocumentChunk(id='00000000-0000-0000-0000-000000000001',document_id='doc',source_name='report.pdf',type=ChunkType.TEXT,content='Revenue grew 12%.')
     original.index_chunks([chunk])
@@ -334,7 +334,7 @@ def test_openai_embeddings_reject_incompatible_responses(data):
 
 def test_openai_embedding_index_isolated_from_hash(tmp_path):
     from retrieval import HybridRetriever
-    settings = Settings(qdrant_path=str(tmp_path/'qdrant'))
+    settings = Settings(qdrant_path=str(tmp_path/'qdrant'), embedding_provider='local_hash')
     r = HybridRetriever('test', settings.qdrant_path, EmbeddingClient(settings))
     old = r.collection_name
     r.close()
@@ -351,14 +351,14 @@ def test_openai_embedding_index_isolated_from_hash(tmp_path):
 
 def test_live_acceptance_runner_records_unavailable_credentials(monkeypatch):
     from evaluation.provider_checks import run as checks
-    monkeypatch.setattr('evaluation.provider_checks.load_settings',lambda:Settings())
+    monkeypatch.setattr('evaluation.provider_checks.load_settings',lambda:Settings(embedding_provider='local_hash'))
     report=checks(live=True)
     assert not report['complete'] and len(report['records'])==3
     assert all(r['status']=='not_run' for r in report['records'])
 
 
 def test_report_marks_partial_repeat(tmp_path,monkeypatch):
-    monkeypatch.setattr('evaluation.application.load_settings',lambda:Settings(openai_api_key='offline-test'))
+    monkeypatch.setattr('evaluation.application.load_settings',lambda:Settings(openai_api_key='offline-test', embedding_provider='local_hash'))
     def quota(self,*args):
         raise ProviderError('quota','OpenAI quota exhausted.')
     monkeypatch.setattr(OpenAIClient,'generate_grounded_answer',quota)

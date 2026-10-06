@@ -4,6 +4,9 @@ python-dotenv
 
 qdrant-client
 rank-bm25
+onnxruntime==1.30.0
+tokenizers==0.23.2
+huggingface-hub==1.16.1
 
 pdfplumber
 PyMuPDF

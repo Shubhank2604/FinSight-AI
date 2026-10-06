@@ -2,25 +2,26 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+import hashlib
 
 import streamlit as st
 
 from config import load_settings
-from ingestion import ingest_file
+from embeddings import EmbeddingClient
 from openai_client import OpenAIClient
 from orchestration import ResearchAssistant, provider_failure_reason
 from retrieval import HybridRetriever
 from schemas import VerifiedResponse
-from ui_calculators import _render_tool_forms
-from uploads import save_upload
+from uploads import index_upload, remove_managed_upload
 
 
 @st.cache_resource(show_spinner=False)
 def resources(settings):
+    if settings.embedding_provider not in {'minilm', 'local_hash'}:
+        raise ValueError('The app uses local document embeddings. Set EMBEDDING_PROVIDER=minilm.')
     provider = OpenAIClient(settings)
     retriever = HybridRetriever(
-        settings.qdrant_collection, settings.qdrant_path, provider
+        settings.qdrant_collection, settings.qdrant_path, EmbeddingClient(settings)
     )
     return retriever, provider
 
@@ -87,65 +88,87 @@ def main():
         retriever, provider = resources(settings)
     except Exception as exc:
         st.error(
-            "Index unavailable. Close other processes using this index, verify settings, and retry. Calculators remain available."
+            "Index unavailable. Close other processes using this index, verify settings, and retry."
         )
         with st.expander("Index error"):
             st.write(type(exc).__name__)
     with st.sidebar:
-        st.header("Document scope")
+        st.header("Your documents")
         uploaded = st.file_uploader(
             "Upload PDF or image (20 MB max)",
             type=["pdf", "png", "jpg", "jpeg"],
             accept_multiple_files=True,
+            key=f"uploads_{st.session_state.get('upload_generation', 0)}",
         )
-        if st.button("Index uploads", disabled=not retriever or not uploaded):
-            for item in uploaded:
+        processed = st.session_state.setdefault("processed_uploads", {})
+        for item in uploaded or []:
+            data = item.getvalue()
+            key = (item.name, hashlib.sha256(data).hexdigest())
+            if retriever is not None and key not in processed:
                 try:
-                    path = save_upload(
-                        item.name, item.getvalue(), "data/uploads/originals"
-                    )
-                    chunks = ingest_file(
-                        path, source_name=Path(item.name.replace("\\", "/")).name
-                    )
-                    count = retriever.index_chunks(chunks)
-                    st.success(f"{item.name}: {count} new chunks")
+                    with st.spinner(f"Preparing {item.name} for questions..."):
+                        index_upload(item.name, data, retriever, "data/uploads/originals")
+                    processed[key] = {'status': 'ready'}
                 except Exception as exc:
                     detail = (
                         str(exc)
                         if isinstance(exc, ValueError)
-                        and "Identical document content" in str(exc)
+                        and ("Identical document content" in str(exc)
+                             or "No readable content" in str(exc))
                         else f"Check the file and retry ({type(exc).__name__})."
                     )
-                    st.error(
-                        f"{item.name}: ingestion failed. {detail} Prior documents are preserved."
-                    )
+                    processed[key] = {'status': 'failed', 'detail': detail}
+            result = processed.get(key)
+            if result and result['status'] == 'failed':
+                st.error(f"{item.name}: upload failed. {result['detail']} Other documents are preserved.")
+            elif result:
+                st.success(f"{item.name}: ready for questions")
+            else:
+                st.info(f"{item.name}: waiting for the document index to become available.")
+        if any(result['status'] == 'failed' for result in processed.values()):
+            if st.button("Retry failed uploads"):
+                for key in list(processed):
+                    if processed[key]['status'] == 'failed':
+                        del processed[key]
+                st.rerun()
+        st.caption("Files are prepared automatically. Add more documents at any time.")
         names = retriever.source_names() if retriever else []
+        known = st.session_state.get('known_sources', [])
+        active = st.session_state.get('active_documents', names)
+        updated = [n for n in names if n in active or n not in known]
+        if 'active_documents' not in st.session_state or active != updated:
+            st.session_state['active_documents'] = updated
+        st.session_state['known_sources'] = names
         selected = st.multiselect(
-            "Active documents", names, default=names, key="active_documents"
+            "Active documents", names, key="active_documents"
         )
-        if st.button(
-            "Remove selected documents", disabled=not retriever or not selected
-        ):
-            ids = {c.document_id for c in retriever.chunks if c.source_name in selected}
+        delete_source = st.selectbox("Delete a document", names, index=None,
+                                     placeholder="Choose a file to delete")
+        pending = st.session_state.get('pending_deletion')
+        if st.button("Retry document deletion" if pending else "Delete file",
+                     disabled=not retriever or not (delete_source or pending)):
+            ids = pending or sorted({c.document_id for c in retriever.chunks
+                                     if c.source_name == delete_source})
+            st.session_state['pending_deletion'] = ids
             try:
                 for document_id in ids:
                     retriever.delete_document(document_id)
+                    remove_managed_upload(document_id, "data/uploads/originals")
+                st.session_state.pop('pending_deletion', None)
                 st.session_state.pop("active_documents", None)
+                # Clear the uploader so the deleted file cannot be indexed on the next rerun.
+                st.session_state['upload_generation'] = st.session_state.get('upload_generation', 0) + 1
+                st.session_state['processed_uploads'] = {}
+                st.session_state['history'] = []
                 st.rerun()
             except Exception:
                 st.error(
-                    "Removal was interrupted. Restart the index to complete recovery, then retry."
+                    "Deletion was interrupted. Retry document deletion to finish removing the file."
                 )
         st.caption(
-            "Removal deletes indexed evidence. Original private uploads remain in your local data/uploads folder."
+            "Delete file removes its searchable evidence and stored upload copy."
         )
-        use_provider = st.checkbox("Use OpenAI for document explanations", value=False)
-        retrieval_mode = st.selectbox(
-            "Retrieval method",
-            ["bm25", "dense", "hybrid"],
-            help="BM25 is the measured credential-free default. Dense and hybrid use the configured embedding provider; local_hash is a regression embedding, not a semantic model.",
-        )
-        if use_provider and not settings.openai_configured:
+        if not settings.openai_configured:
             st.warning(
                 "Set OPENAI_API_KEY in your local .env or environment to enable OpenAI generation."
             )
@@ -156,13 +179,12 @@ def main():
         )
         if not settings.web_enabled:
             st.caption(
-                "Set OPENAI_WEB_ENABLED=true to enable the web option. OpenAI generation must also be selected."
+                "Set OPENAI_WEB_ENABLED=true to enable the web option."
             )
         st.caption(
             "Web and visual reading are experimental and excluded from verified performance. Images are accepted for ingestion; image filenames are never numerical evidence."
         )
-    research_tab, calculator_tab = st.tabs(["Document research", "Calculators"])
-    with research_tab:
+    with st.container():
         for item in st.session_state.get("history", []):
             with st.chat_message("user"):
                 st.write(item["query"])
@@ -180,9 +202,9 @@ def main():
             try:
                 with st.spinner("Checking inputs and evidence..."):
                     response = ResearchAssistant(
-                        retriever, provider, retrieval_mode
+                        retriever, provider, "hybrid"
                     ).ask(
-                        query, selected, allow_web=allow_web, use_provider=use_provider
+                        query, selected, allow_web=allow_web, use_provider=True
                     )
             except Exception as exc:
                 reason = provider_failure_reason(exc)
@@ -193,11 +215,6 @@ def main():
                     {"query": query, "response": response.model_dump(mode="json")}
             )
             st.rerun()
-    with calculator_tab:
-        _render_tool_forms()
-        st.caption(
-            "Tax requires a reviewed jurisdiction/year rule pack; the bundled demo pack is deliberately rejected."
-        )
 
 
 if __name__ == "__main__":

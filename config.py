@@ -30,7 +30,8 @@ class Settings:
     web_enabled: bool = False
     gemini_api_key: str = field(default="", repr=False)
     gemini_embedding_model: str = "gemini-embedding-001"
-    embedding_provider: str = "local_hash"
+    embedding_provider: str = "minilm"
+    local_embedding_cache: str = "data/models/minilm"
     qdrant_collection: str = "finsight_chunks"
     qdrant_path: str = "data/index/qdrant"
 
@@ -47,8 +48,8 @@ class Settings:
             raise ValueError("OPENAI_MAX_OUTPUT_TOKENS must be an integer from 128 to 16384.")
         if self.openai_embedding_model != 'text-embedding-3-small':
             raise ValueError('OPENAI_EMBEDDING_MODEL must be text-embedding-3-small; other spaces require separate validation.')
-        if self.embedding_provider not in {"local_hash", "gemini", "openai"}:
-            raise ValueError("EMBEDDING_PROVIDER must be local_hash, gemini or openai; changing embedding spaces requires a separate index.")
+        if self.embedding_provider not in {"minilm", "local_hash", "gemini", "openai"}:
+            raise ValueError("EMBEDDING_PROVIDER must be minilm, local_hash, gemini or openai; changing embedding spaces requires a separate index.")
 
     @property
     def openai_configured(self) -> bool:
@@ -82,7 +83,8 @@ def load_settings() -> Settings:
         gemini_embedding_model=os.getenv(
             "GEMINI_EMBEDDING_MODEL", "gemini-embedding-001"
         ).strip(),
-        embedding_provider=os.getenv("EMBEDDING_PROVIDER", "local_hash").strip().lower(),
+        embedding_provider=os.getenv("EMBEDDING_PROVIDER", "minilm").strip().lower(),
+        local_embedding_cache=os.getenv("LOCAL_EMBEDDING_CACHE", "data/models/minilm").strip(),
         qdrant_collection=os.getenv("QDRANT_COLLECTION", "finsight_chunks").strip(),
         qdrant_path=os.getenv("QDRANT_PATH", "data/index/qdrant").strip(),
     )

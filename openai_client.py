@@ -59,7 +59,7 @@ class OpenAIClient(EmbeddingClient, AnswerPrompts):
     def __init__(
         self,
         settings: Settings,
-        embedding_dimensions: int = 768,
+        embedding_dimensions: int | None = None,
         *,
         client=None,
         sleep=time.sleep,

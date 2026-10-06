@@ -17,8 +17,9 @@ insufficient. Wrong years, swapped companies, extra assertions and unsupported
 insolvency statements are rejected. The mandatory-check indicator is not a
 calibrated probability or a proof of arbitrary narrative entailment.
 
-The local CPU workflow needs no model key. Optional OpenAI generation and semantic
-embeddings have separate identities and observability. Index journals support
+The offline CPU evaluation and local MiniLM embeddings need no model key. The
+app calls OpenAI for final generation after local retrieval prepares the context.
+Embedding spaces have separate identities and observability. Index journals support
 restart/replacement/deletion recovery; conflicting uploads and storage locks
 produce actionable errors. USD defaults and portfolio conventions are visible.
 

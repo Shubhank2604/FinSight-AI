@@ -1,4 +1,4 @@
-"""Independent hash, OpenAI and optional legacy Gemini embedding spaces."""
+"""Local MiniLM/hash embeddings and isolated legacy cloud embedding adapters."""
 
 from __future__ import annotations
 
@@ -13,22 +13,25 @@ class EmbeddingError(ValueError):
 
 
 class EmbeddingClient:
-    def __init__(self, settings: Settings, embedding_dimensions: int = 768):
+    def __init__(self, settings: Settings, embedding_dimensions: int | None = None):
         self.settings = settings
-        self.embedding_dimensions = embedding_dimensions
+        self.embedding_dimensions = (384 if settings.embedding_provider == 'minilm' else 768) if embedding_dimensions is None else embedding_dimensions
         self.query_embeddings: dict[str, list[float]] = {}
         self._client = None
         self.embedding_requests = []
         if (
             settings.embedding_provider == "openai"
-            and not 1 <= embedding_dimensions <= 1536
+            and not 1 <= self.embedding_dimensions <= 1536
         ):
             raise ValueError("OpenAI embedding dimensions must be between 1 and 1536.")
+        if settings.embedding_provider == 'minilm' and self.embedding_dimensions != 384:
+            raise ValueError('MiniLM requires 384-dimensional vectors; use a separate index.')
 
     @property
     def embedding_model(self):
         return {
             "local_hash": "blake2b-hash-v1",
+            "minilm": "sentence-transformers/all-MiniLM-L6-v2",
             "openai": self.settings.openai_embedding_model,
             "gemini": self.settings.gemini_embedding_model,
         }[self.settings.embedding_provider]
@@ -122,6 +125,20 @@ class EmbeddingClient:
             return []
         if self.settings.embedding_provider == "local_hash":
             return [hash_embedding(text, self.embedding_dimensions) for text in texts]
+        if self.settings.embedding_provider == 'minilm':
+            import time
+            from minilm_embeddings import load_encoder
+            started = time.perf_counter()
+            try:
+                vectors = load_encoder(self.settings.local_embedding_cache).encode(texts)
+            except Exception:
+                raise EmbeddingError('local_model',
+                    'Local MiniLM embeddings could not run. Check the installed dependencies and cached model; the first model download needs network access. Existing index data is preserved.') from None
+            self.embedding_requests.append({'status': 'completed', 'provider': 'minilm',
+                'model': self.embedding_model, 'dimensions': self.embedding_dimensions,
+                'inputs': len(texts), 'latency_ms': round((time.perf_counter() - started) * 1000, 3),
+                'local_inference': True})
+            return vectors
         if self.settings.embedding_provider == "openai":
             return self._openai_embed(texts)
         if not self.settings.gemini_api_key:
@@ -162,7 +179,8 @@ class EmbeddingClient:
     def embed_query(self, query: str) -> list[float]:
         if query in self.query_embeddings:
             return self.query_embeddings[query]
-        return self._embed([query], "RETRIEVAL_QUERY")[0]
+        self.query_embeddings[query] = self._embed([query], "RETRIEVAL_QUERY")[0]
+        return self.query_embeddings[query]
 
     def embed_queries(self, queries: list[str]) -> None:
         unique = list(

@@ -67,7 +67,7 @@ def test_scorer_rejects_small_result_and_binding_mutations(mutation):
 
 
 def test_deletion_recovery_after_delete_succeeds_but_ack_fails(tmp_path, monkeypatch):
-    p = OpenAIClient(Settings())
+    p = OpenAIClient(Settings(embedding_provider='local_hash'))
     r = HybridRetriever('recovery', str(tmp_path/'qdrant'), p)
     chunks = ingest_file('evals/fixtures/Cedar.pdf')
     r.index_chunks(chunks)
@@ -87,32 +87,33 @@ def test_deletion_recovery_after_delete_succeeds_but_ack_fails(tmp_path, monkeyp
         reopened.close()
 
 
-@pytest.mark.parametrize('problem', ['partial_prepayment', 'fractional_duration'])
-def test_emi_form_never_silently_drops_input(tmp_path, monkeypatch, problem):
+@pytest.mark.parametrize('query,status', [
+    ('Calculate EMI on a $500000 loan at 8% for 20 years with prepayment $5000', 'unsupported'),
+    ('Calculate EMI on a $500000 loan at 8% for 20.1 years', 'clarification'),
+])
+def test_emi_question_never_silently_drops_input(tmp_path, monkeypatch, query, status):
     from streamlit.testing.v1 import AppTest
     monkeypatch.setenv('QDRANT_PATH', str(tmp_path/'qdrant'))
     monkeypatch.setenv('EMBEDDING_PROVIDER', 'local_hash')
     app = AppTest.from_file('app.py', default_timeout=20).run()
-    if problem == 'partial_prepayment': app.number_input(key='emi_prepay_amount').set_value(5000.)
-    else: app.number_input(key='emi_tenure').set_value(20.1)
-    app.button(key='FormSubmitter:emi_tool_form-Calculate EMI').click().run()
+    app.text_area(key='query').set_value(query)
+    app.button(key='FormSubmitter:query_form-Ask').click().run()
     assert not app.exception
     response = app.session_state['history'][-1]['response']
-    assert response['status'] == 'clarification' and not response['calculations']
+    assert response['status'] == status and not response['calculations']
 
 
-def test_portfolio_form_exposes_supported_conventions_and_usd(tmp_path, monkeypatch):
+def test_portfolio_question_supports_conventions_and_usd(tmp_path, monkeypatch):
     from streamlit.testing.v1 import AppTest
     monkeypatch.setenv('QDRANT_PATH', str(tmp_path/'qdrant'))
     monkeypatch.setenv('EMBEDDING_PROVIDER', 'local_hash')
     app = AppTest.from_file('app.py', default_timeout=20).run()
-    assert app.selectbox(key='emi_currency').value == app.selectbox(key='portfolio_currency').value == 'USD'
-    assert not any(b.label == 'Estimate Tax' for b in app.button)
-    app.selectbox(key='portfolio_timing').select('beginning')
-    app.selectbox(key='portfolio_rate_convention').select('effective_annual')
-    app.button(key='FormSubmitter:portfolio_tool_form-Simulate Portfolio').click().run()
+    assert not app.tabs
+    app.text_area(key='query').set_value('Calculate portfolio growth investing $1000 per month at the beginning of each month for 10 years at 8% effective annual return')
+    app.button(key='FormSubmitter:query_form-Ask').click().run()
     assert not app.exception
     c = app.session_state['history'][-1]['response']['calculations'][0]
+    assert c['inputs']['currency'] == 'USD'
     assert c['inputs']['contribution_timing'] == 'beginning'
     rate = 1.08 ** (1/12) - 1
     reference = 1000 * ((1+rate)**120 - 1) / rate * (1+rate)
@@ -158,7 +159,7 @@ def test_unexpected_request_exception_is_visible_and_pending_clears(tmp_path, mo
 def test_true_but_unrequested_provider_facts_are_rejected(tmp_path, response_text):
     from schemas import AnswerClaim, StructuredLLMAnswer
     from orchestration import ResearchAssistant
-    p = OpenAIClient(Settings())
+    p = OpenAIClient(Settings(embedding_provider='local_hash'))
     r = HybridRetriever('binding', str(tmp_path/'qdrant'), p)
     chunk = hit('Company: Cedar\nPeriod: 2025\nCurrency: USD\nRevenue: 120\nNet income: 24\nRevenue 2024: USD 100').chunk
     r.index_chunks([chunk])

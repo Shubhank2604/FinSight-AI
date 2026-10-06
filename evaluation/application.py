@@ -25,6 +25,7 @@ from llm_prompts import PROMPT_VERSION
 from openai_client import OpenAIClient
 from orchestration import ResearchAssistant, provider_failure_reason
 from retrieval import HybridRetriever
+from storage_io import atomic_replace
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -39,7 +40,7 @@ def provenance(dataset_path, provider):
         {
             ROOT / name
             for name in names
-            if not any(
+            if (ROOT / name).is_file() and not any(
                 part.startswith(".") or part in {"data", "__pycache__"}
                 for part in Path(name).parts
             )
@@ -301,7 +302,7 @@ def write_report(report, destination):
     temporary.write_bytes(
         gzip.compress(data, mtime=0) if destination.suffix == ".gz" else data
     )
-    temporary.replace(destination)
+    atomic_replace(temporary, destination)
 
 
 def run(
@@ -497,7 +498,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument(
         "--embedding-provider",
-        choices=["local_hash", "gemini", "openai"],
+        choices=["local_hash", "minilm", "gemini", "openai"],
         default="local_hash",
     )
     p.add_argument(
@@ -522,7 +523,7 @@ def main():
             else "evals/repair_v3/results/offline.json.gz"
         )
     if (
-        args.live or args.embedding_provider != "local_hash"
+        args.live or args.embedding_provider in {"openai", "gemini"}
     ) and args.budget_usd is None:
         p.error(
             "Paid evaluation requires an explicitly authorized --budget-usd cap and ledger."

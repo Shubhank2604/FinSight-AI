@@ -7,6 +7,7 @@ reservation; reported usage replaces it. This is a list-price estimate, not bill
 
 import json
 from pathlib import Path
+from storage_io import atomic_replace
 
 PRICES = {
     "gpt-5.4-mini": (0.75, 4.50),
@@ -42,7 +43,7 @@ class EvaluationBudget:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         pending = self.path.with_suffix(".pending.json")
         pending.write_text(json.dumps(self.data, indent=2), encoding="utf-8")
-        pending.replace(self.path)
+        atomic_replace(pending, self.path)
 
     def reserve(self, model, input_bytes, max_output=0, attempts=1):
         if (

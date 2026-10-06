@@ -111,7 +111,7 @@ outside these timings and retained separately in embedding telemetry.
 | Hybrid | 1.000000 | 1.000000 | 0.998513 |
 
 Sources, cases, top-k and context selection are identical. Required-page labels
-include duplicate text/table chunks. The UI defaults to BM25 for the inexpensive
+include duplicate text/table chunks. At the time of that measurement, the UI defaulted to BM25 for the inexpensive
 local workflow; hybrid was selected for the combined semantic run from its
 best development-set recall. This small corpus does not establish that fusion
 wins elsewhere. Hash vectors are not semantic embeddings.
@@ -288,3 +288,103 @@ The one-time administrator helper and deletion signal were removed after it
 finished. No application code, dependencies or provider configuration changed;
 no paid API calls were made. The previously reported local cleanup blocker is
 resolved.
+
+## Automatic upload and RAG flow - 2026-10-06 (initial embedding configuration)
+
+The app now indexes uploads automatically and always uses hybrid retrieval plus
+financial context reranking. The generation and retrieval-method sidebar switches
+and the standalone calculator tab were removed. Document answers use OpenAI
+without a user toggle. Calculations remain typed, deterministic and available in
+the same question box. The embedding default is OpenAI `text-embedding-3-small`
+at 768 dimensions. Offline evaluators still select local hash embeddings explicitly.
+The existing private configuration changed only its embedding-provider line;
+credentials and all other configuration bytes were preserved.
+
+Upload tests cover successful-rerun idempotence, adding files while preserving
+scope deselections, explicit retry after failure, separate documents with identical
+filenames, specific-file deletion, and prevention of automatic re-ingestion after
+deletion. Deletion removes searchable evidence and hash-verified managed upload
+copies, not external acquisition originals. Failed deletion retains document IDs
+for a retry. The final unit suite passed **229 tests**, and `pip check` passed.
+One preceding run hit a transient Windows access-denied error replacing a budget
+test's temporary JSON file; the complete suite passed in a fresh scratch directory.
+
+Existing gates passed without threshold changes: hybrid retrieval Recall@3
+0.944444 on 18 historical cases; citation/abstention and router gates; and all
+**390/390 offline application outcomes** across BM25, hash dense and hybrid modes.
+The final offline report is `.test-tmp/app-runtime/final-rag-offline.json.gz`, with
+source digest `3ba1dfeb0d8d8e2cecb8663bb66f4ac18692799e3f3fd84d32d9606ae3ff894b`.
+These are internal bound-fact/tool checks, not evidence of arbitrary-PDF accuracy.
+
+A live Streamlit AppTest on the public Cedar fixture passed automatic semantic
+indexing, a rerun with no repeated document embedding, hybrid retrieval, automatic
+OpenAI generation of 2025 revenue USD 120 million with a page-2 citation, a document
+current ratio of 2.0 from the deterministic tool, and specific-file deletion.
+Evidence is `.test-tmp/app-runtime/live-rag-ui.json`. An earlier partial smoke
+check is retained separately: a second AppTest form submission needed a fresh
+widget cycle; the first grounded answer had already passed. All seven new paid
+reservations, including that attempt, remain in the original budget ledger.
+Their accounted estimate is **$0.0028712**, bringing the cumulative estimate to
+**$0.3587655 of the authorized $2 cap**. Actual invoiced cost is unknown.
+
+The reranker uses soft token, financial metric alias, year and table signals after
+reciprocal rank fusion, with 24 candidates per retrieval branch and up to eight
+final context chunks. Distinct conflicting evidence is not deduplicated. It is
+not a learned cross-encoder and has not been established as an optimal ranking
+method. The changes are verified locally; no new remote CI result is claimed.
+
+## Local MiniLM embeddings - 2026-10-06
+
+This replaces the initial OpenAI embedding configuration above. The app and
+normal indexing CLI now default to local CPU `all-MiniLM-L6-v2`, using normalized
+384-dimensional vectors. OpenAI is used only for final answer generation after
+local context preparation. The app separates its embedding and generation clients
+and rejects cloud embedding configurations. BM25, fusion and financial reranking
+remain local. Legacy cloud adapters are retained for explicit historical evaluation
+compatibility, not normal application indexing.
+
+The public model revision is pinned to
+`1110a243fdf4706b3f48f1d95db1a4f5529b4d41`. Only the ONNX and tokenizer artifacts
+are downloaded; cached inference works offline. Long chunks use complete 256-token
+windows with weighted mean pooling rather than silently truncating their tails.
+Model revision, dimensions, pooling and backend form a distinct collection identity.
+Prior OpenAI/hash collections and private original uploads are preserved. They had
+zero indexed documents when this switch was checked; original copies are not
+silently restored into a new index. The private configuration changed only its
+embedding-provider line to `minilm`.
+
+Validation passed:
+
+- **237 unit tests**, including local-only embeddings, query caching, full long-chunk
+  token coverage, collection separation, rejection of cloud CLI indexing, and
+  bounded Windows file-lock recovery; `pip check` and locked dependency resolution.
+- **390/390 application outcomes** using actual MiniLM embeddings across BM25,
+  dense and hybrid modes. There were zero OpenAI calls. All selected-context label
+  coverage passed. The benchmark uses internal agent-authored bound-fact/tool labels.
+- The unchanged retrieval, citation/abstention and router quality gates.
+- Cached indexing and hybrid search with `HF_HUB_OFFLINE=1`, no OpenAI key, and
+  OpenAI client construction blocked. Evidence: `minilm-offline-proof.json`.
+- Live UI: automatic local indexing, hybrid retrieval, one final cited OpenAI
+  revenue answer, deterministic document current ratio 2.0, and deletion. Only
+  one OpenAI request was reserved, for final generation; zero embedding API calls.
+  Evidence: `live-minilm-ui.json`.
+
+Evidence is under `.test-tmp/app-runtime`. The final semantic report is
+`minilm-semantic-final.json.gz`, source digest
+`ae75008fc260236fe1af343bcab18bc3ce4ff439f250267d0a6c6c4cea098c54`.
+The raw page-labeled retrieval Recall@3 was 0.995370 for BM25, 0.990741 for MiniLM
+dense and 0.986111 for hybrid. Those coarse ranking labels and perfect outcome
+checks do not establish an optimal reranker or arbitrary-PDF reliability.
+
+Repeated local unit runs exposed Windows error 5 while atomically replacing index
+journals/catalogs. Atomic replacement now retries only Windows errors 5/32, up to
+four waits totaling 0.75 seconds, and preserves both the old target and pending
+file when retries fail. Non-Windows permission errors fail immediately. The same
+helper protects budget and evaluation report replacements; no checks were weakened.
+
+The new live check accounted for an estimated **$0.001428**, bringing the original
+$2 evaluation ledger to **$0.3601935**. This is an estimate, not an invoice. No paid
+embedding requests were made for MiniLM. The dependency lock has 92 pins, with 15
+added local-runtime dependencies; no Torch/GPU package is needed. The temporary
+FastEmbed wrapper used during investigation was removed along with its unused
+helper packages. These results are local; no remote CI result was measured for this revision.

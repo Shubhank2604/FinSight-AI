@@ -17,7 +17,7 @@ clarification or abstention. Confidence diagnostics are binary gates, not probab
 The application separates Streamlit presentation from a Python orchestration layer.
 Uploads become page-aware chunks in a local Qdrant index. A rule-based router
 selects retrieval, education or typed financial tools; the verifier checks the
-result before display. Optional OpenAI generation sits behind that same verifier.
+result before display. Automatic OpenAI generation sits behind that same verifier.
 See the [architecture](docs/architecture.md) for contracts and recovery behavior.
 
 PDF ingestion preserves source/page/company/period/currency/unit metadata. EMI,
@@ -29,15 +29,18 @@ currency. Conflicts remain visible even when another chunk contains a complete l
 
 The generation provider is the official OpenAI Responses SDK with configurable
 validated model profiles; the default is `gpt-5.4-mini-2026-03-17`. Generation
-is optional. The UI default retrieval is BM25 with credential-free local hash vectors.
-Optional semantic embeddings use `text-embedding-3-small`, 768 dimensions, in
-separate collections. Legacy Gemini embeddings remain optional; Gemini generation
-is removed. Collection identities include provider/model/dimensions/ingestion version.
+is automatic in the app. Document questions use BM25 plus dense retrieval, reciprocal
+rank fusion, financial context reranking, and verified OpenAI answers. Semantic
+embeddings use local CPU `sentence-transformers/all-MiniLM-L6-v2` with 384 dimensions.
+OpenAI is called only for final answer generation after context preparation.
+BM25 and financial reranking are local. Credential-free hash vectors remain an
+explicit regression baseline. Collection identities include the pinned model
+revision, vector dimensions, token-window pooling, and ingestion version.
 The v3 ingestion change requires re-indexing; preserve existing uploads and `.env`.
 
 Streamlit shows source evidence, interpreted inputs, authoritative results,
 assumptions and optional diagnostics. USD is the default calculation currency.
-Portfolio timing and rate conventions are selectable. Tax is disabled until reviewed
+Portfolio timing and rate conventions can be specified in questions. Tax is disabled until reviewed
 rule packs exist. Web and vision are experimental. Queries are independent;
 displayed history is not conversation memory. Index recovery uses a journal and
 Qdrant as authority; duplicate-content aliases are rejected with the existing name.
@@ -61,30 +64,37 @@ python -m streamlit run app.py
 ```
 
 On Linux/macOS use `source .venv/bin/activate` and `cp`.
-Set `OPENAI_API_KEY` privately for generation or semantic embeddings. The UI
-starts with generation off. Configuration defaults and supported model profiles
+Set `OPENAI_API_KEY` privately for final answer generation. Upload indexing and
+semantic retrieval use MiniLM locally and need no OpenAI key. The first model
+download needs network access and caches pinned ONNX weights under ignored
+`data/models/minilm`; subsequent embedding inference works offline. The app
+uses OpenAI automatically only when an answer requires generation. Configuration defaults and supported model profiles
 are in [.env.example](.env.example) and the [provider runbook](docs/openai-migration.md).
 
 ## Upload and index documents
 
-1. Upload PDFs in the sidebar and click **Index uploads**. Each file is limited to 20 MB.
-2. Select the relevant **Active documents**, choose a retrieval method and ask a
-   question in **Document research**. Inspect source pages and calculation inputs.
-3. Use **Calculators** for explicit scenarios. Enable **Use OpenAI for document
-   explanations** only when you want credentialed generation.
+1. Upload PDFs in the sidebar. Files are indexed automatically; each is limited to 20 MB.
+2. Ask questions across your uploaded documents, or narrow **Active documents**.
+   Hybrid retrieval and reranking run automatically. Inspect source pages and inputs.
+3. Ask calculations in the same question box, for example current ratio in a report
+   or EMI for an explicit loan scenario. Supported arithmetic uses deterministic tools.
+4. Add more files at any time. Choose a specific file under **Delete a document**
+   and click **Delete file** to remove its indexed evidence and managed upload copy.
+   Same-name files with different contents are kept as separate documents.
 
-For a credential-free walkthrough, use `evals/fixtures/Cedar.pdf`, `Elm.pdf`, and
-`evals/repair_v3/Mint-2024-CFO.pdf` with the [demo queries](docs/demo.md). Images
+For a walkthrough, use `evals/fixtures/Cedar.pdf`, `Elm.pdf`, and
+`evals/repair_v3/Mint-2024-CFO.pdf` with the [demo queries](docs/demo.md).
+`python demo.py` remains credential-free. Images
 can be indexed, but verified visual answers remain unsupported.
 
 For batch indexing, stop the app first because the local index has one owner:
 
 ```powershell
-python index_uploads.py --folder evals/fixtures --embedding-provider local_hash
+python index_uploads.py --folder evals/fixtures --embedding-provider minilm
 ```
 
-Original uploads remain under `data/uploads/originals`; removing indexed documents
-does not delete them. Provider changes create separate index identities and require
+Original uploads remain under `data/uploads/originals` until that file is deleted
+in the app. CLI index-only deletion preserves originals. Provider changes create separate index identities and require
 re-indexing. Preserve the old index when changing providers.
 
 ## Reproduce the evidence
@@ -107,8 +117,8 @@ do not reset it to bypass the cap. A rerun repeats requests rather than resuming
 checkpoint. Paid runs are excluded from CI.
 
 ```powershell
-python -m evaluation.application --embedding-provider openai --budget-usd 2 --output .test-tmp/semantic.json.gz --quality-gate
-python -m evaluation.application --live --embedding-provider openai --mode hybrid --repeats 3 --budget-usd 2 --output .test-tmp/live.json.gz --quality-gate
+python -m evaluation.application --embedding-provider minilm --output .test-tmp/semantic.json.gz --quality-gate
+python -m evaluation.application --live --embedding-provider minilm --mode hybrid --repeats 3 --budget-usd 2 --output .test-tmp/live.json.gz --quality-gate
 python -m evaluation.provider_checks --live --budget-usd 2 --output .test-tmp/provider.json
 ```
 
@@ -120,7 +130,7 @@ checks complete fact tuples, full labeled tool inputs/results, exact rejection
 statuses and the displayed answer. Mutations reject swapped company/year/metric,
 wrong values/units, tiny ratio errors and extra unsupported assertions.
 
-Final repair measurements on clean source `02d6ea4`: 223 tests; router 120/120;
+Historical final repair measurements on clean source `02d6ea4`: 223 tests; router 120/120;
 offline application 390/390; combined OpenAI semantic/hybrid retrieval and generation
 381/390 (97.69%) across three repeats. There were 120 generation calls and eight
 embedding requests in that final application run. It had eight false abstentions

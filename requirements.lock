@@ -1,4 +1,4 @@
-# Python 3.13; OpenAI generation, optional Gemini embeddings excluded. See docs/dependencies.md.
+# Python 3.13; local MiniLM embeddings and OpenAI generation; legacy Gemini excluded. See docs/dependencies.md.
 altair==6.1.0
 annotated-types==0.7.0
 anyio==4.13.0
@@ -76,3 +76,20 @@ urllib3==2.6.3
 uvicorn==0.46.0
 watchdog==6.0.0
 websockets==16.0
+
+# Local MiniLM CPU inference and its additional dependencies.
+annotated-doc==0.0.4
+filelock==3.29.0
+flatbuffers==25.12.19
+fsspec==2026.9.0
+hf-xet==1.6.0
+huggingface-hub==1.16.1
+markdown-it-py==4.0.0
+mdurl==0.1.2
+onnxruntime==1.30.0
+pyyaml==6.0.3
+rich==15.0.0
+shellingham==1.5.4
+tokenizers==0.23.2
+tqdm==4.67.3
+typer==0.25.1

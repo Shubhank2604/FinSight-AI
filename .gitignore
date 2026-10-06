@@ -13,6 +13,7 @@ htmlcov/
 .streamlit/secrets.toml
 data/uploads/
 data/index/
+data/models/
 *.log
 evals/results/dependency-install.json
 logs/

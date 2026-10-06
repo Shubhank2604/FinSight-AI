@@ -29,10 +29,18 @@ def test_streamlit_document_citations_are_readable(tmp_path,monkeypatch):
     retriever=HybridRetriever('finsight_chunks',str(tmp_path/'qdrant'),provider)
     retriever.index_chunks(ingest_file('evals/fixtures/Cedar.pdf'))
     retriever.close()
+    from orchestration import document_fact_answer
+    calls = []
+    def grounded(self, query, hits, tools):
+        calls.append((query, hits))
+        return document_fact_answer(query, hits)
+    monkeypatch.setattr(OpenAIClient, 'generate_grounded_answer', grounded)
     app=AppTest.from_file('app.py',default_timeout=20).run()
     app.text_area(key='query').set_value('What is revenue in the report for 2025?')
     app.button(key='FormSubmitter:query_form-Ask').click().run()
     assert not app.exception
     response=app.session_state['history'][-1]['response']
     assert response['status']=='ok' and response['citations'][0]['page']==2
+    assert len(calls) == 1 and calls[0][1]
+    assert all(hit.source == 'hybrid' for hit in calls[0][1])
     assert any('Cedar.pdf, page 2' in e.value for e in app.markdown)

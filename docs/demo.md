@@ -16,10 +16,12 @@ Generation is disabled except for a deliberately injected failure; no API calls 
 
 For an interactive demo run `python -m streamlit run app.py`, upload
 `evals/fixtures/Cedar.pdf`, `Elm.pdf`, and `evals/repair_v3/Mint-2024-CFO.pdf`,
-index them, select the appropriate source and use the queries in `demo.py`.
-Keep generation and web access off. Show evidence and interpreted inputs before
-advanced diagnostics. Tax has no reachable calculation form. Options are a
-deterministic Black-Scholes model with stated assumptions; web/vision remain experimental.
+wait for automatic indexing, select the appropriate source and use the queries
+in `demo.py`. The app uses OpenAI automatically and requires a key; use the CLI
+demo above for credential-free examples. Keep web access off. Show evidence and interpreted inputs before
+advanced diagnostics. The standalone calculator tab has been removed. Supported calculations remain
+available through questions; tax, option pricing through questions, and verified
+vision are unsupported. Web remains experimental.
 
-Original uploads remain private locally when index evidence is removed.
+Original uploads remain private locally until the user deletes the file in the app.
 Document extraction is conservative; this demo does not establish arbitrary-PDF support.
